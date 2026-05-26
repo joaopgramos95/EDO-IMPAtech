@@ -1,0 +1,208 @@
+\documentclass[a4paper,
+11pt,  reqno]{amsart}
+\usepackage[margin=1.2in,marginparwidth=1.5cm, marginparsep=0.5cm]{geometry}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+\title{Exercícios de ``Introdução às Equações Diferenciais''  IMPA-TECH 2026-01}
+
+\begin{document}
+
+\maketitle
+
+\section*{Lista 2}
+\begin{enumerate}
+    \item \textbf{Soluções Monótonas.} Seja $f:\mathbb{R}\to \mathbb{R}$ uma função contínua. Mostre que toda solução da equação diferencial $x'=f(x)$ é monótona.
+
+    \medskip
+
+    \item {\bf Invari\^ancia de intervalos.} Seja $f:\mathbb{R}\to\mathbb{R}$ uma fun\c{c}\~ao cont\'inua. Suponha que existem $a<b$ tais que
+    \[
+    f(a)=f(b)=0 \quad \text{e} \quad f(x)>0 \ \text{para todo } x\in(a,b).
+    \]
+    Mostre que, se $x(t)$ \'e solu\c{c}\~ao de
+    \[
+    x' = f(x)
+    \]
+    com $x(0)\in(a,b)$, ent\~ao
+    \[
+    x(t)\in(a,b)\quad \text{para todo } t \ge 0.
+    \]
+
+    \item {\bf Tempo de explosão finito.} Considere o problema de valor inicial
+    \[
+    x' = x^p,\quad x(0)=x_0>0,\quad p>1.
+    \]
+    \begin{enumerate}
+        \item Resolva explicitamente a equa\c{c}\~ao diferencial.
+        \item Mostre que a solu\c{c}\~ao explode em tempo finito - isto é, que existe um $T > 0$ que depende apenas de $x_0$, tal que $|x(s)|\to \infty$ à medida que $s \nearrow T.$
+        \item Encontre o tempo de explos\~ao em fun\c{c}\~ao de $x_0$.
+    \end{enumerate}
+
+    \medskip
+
+    \item {\bf Compara\c{c}\~ao de solu\c{c}\~oes.} Sejam $f,g:\mathbb{R}\to\mathbb{R}$ fun\c{c}\~oes cont\'inuas tais que
+    \[
+    f(x)\le g(x)\quad \forall x\in\mathbb{R}.
+    \]
+    Sejam $x(t)$ e $y(t)$ solu\c{c}\~oes de
+    \[
+    x'=f(x), \quad y'=g(y),
+    \]
+    com $x(0)=y(0)$. Mostre que
+    \[
+    x(t)\le y(t)\quad \text{para todo } t\ge 0.
+    \]
+
+    
+
+    \medskip
+
+\item \textbf{Solução Periódica.} Seja $x:I\to \mathbb{R}^n$ uma solução de $x'=f(x)$, onde $f:\mathbb{R}^n \to \mathbb{R}^n$ é uma função contínua. 
+
+Dizemos que $x$ é uma solução \emph{maximal} se não existe $\tilde{x}:J \to \mathbb{R}^n$, onde $J \supset I$ e $\tilde{x} = x$ em $I$. 
+
+Suponha que $x$ é maximal. Mostre que se $x:I\to \mathbb{R}^n$ não é injetiva, então:
+\begin{enumerate}
+    \item $I=\mathbb{R}$
+    \item Existe um $T>0$ tal que $x(t+T)=x(t)$ para todo $t\in\mathbb{R}$.
+\end{enumerate}
+
+    \medskip
+
+
+\item{{\bf Gr\"onwall.}} Seja $u(t)$ uma função contínua e não negativa em um intervalo $[a, b]$. Se existem constantes $\alpha \geq 0$ e $\beta \geq 0$ tais que:$$u(t) \leq \alpha + \int_{a}^{t} \beta \cdot u(s) \, ds$$para todo $t \in [a, b]$, então:$$u(t) \leq \alpha e^{\beta(t - a)}$$
+
+    \medskip
+
+ \item {\bf Gato e rato.} Um rato parte da origem no instante $t=0$ e move-se ao longo do eixo $y$ com velocidade constante $v_r>0$. Um gato parte do ponto $(g,0)$, com $g>0$, e move-se com velocidade constante $v_g>0$, apontando a cada instante na dire\c{c}\~ao da posi\c{c}\~ao instant\^anea do rato.
+
+    Denotando por $(x(t),y(t))$ a posi\c{c}\~ao do gato no instante $t$, e pela posi\c{c}\~ao do rato o ponto
+    \[
+    R(t)=(0,v_r t),
+    \]
+    pede-se:
+
+    \begin{enumerate}
+        \item Modele o movimento do gato por uma equação diferencial.
+        \item Encontre a curva que descreve o movimento do gato, em função de $v_r,v_g$ e $g$.
+        \item Determine, em fun\c{c}\~ao de $v_r$, $v_g$ e $g$, em quais casos o gato alcan\c{c}a o rato em tempo finito.
+        \item No caso em que o gato alcan\c{c}a o rato, determine o tempo de captura.
+    \end{enumerate}
+
+    \medskip
+
+    \item  {\bf Equa\c{c}\~ao \'integro-diferencial com m\'edia acumulada.} Seja $y:[0,\infty)\to\mathbb{R}$ uma fun\c{c}\~ao de classe $C^1$ satisfazendo
+\[
+y'(t)=1-\int_0^t y(s)\,ds,
+\qquad y(0)=0.
+\]
+
+\begin{enumerate}
+    \item Defina
+    \[
+    z(t)=\int_0^t y(s)\,ds
+    \]
+    e mostre que o problema acima pode ser escrito como um sistema de duas equa\c{c}\~oes diferenciais de primeira ordem para $(y(t),z(t))$.
+    \item Mostre que a quantidade
+    \[
+    E(t)=\frac{1}{2}y(t)^2+\frac{1}{2}z(t)^2-z(t)
+    \]
+    \'e constante ao longo das solu\c{c}\~oes.
+    \item Determine explicitamente $y(t)$ e $z(t)$. 
+\end{enumerate}
+
+\medskip
+
+\item \textbf{Dependência das Condições Iniciais.}  
+Considere o Problema de Valor Inicial:
+\[ \dfrac{dy}{dt} = f(y), \quad y(0) = y_0 \]
+
+em que $f: \mathbb{R} \to \mathbb{R}$ é uma função Lipschitz contínua com constante $L > 0$. 
+Mostre que se $y(t)$ e $z(t)$ são duas soluções com condições iniciais $y_0$ e $z_0$, respectivamente, então 
+\[ |y(t) - z(t)| \leq |y_0 - z_0| e^{Lt} \]
+
+    \medskip
+
+\item \textbf{Sensibilidade via Expansão de Taylor.} Considere o PVI perturbado:
+\[ \dot{y} = -y + \varepsilon y^2, \quad y(0) = 1 \]
+\begin{enumerate}
+    \item Determine a solução exata $y(t, \varepsilon)$.
+    \item Calcule a aproximação de Taylor de primeira ordem em relação a $\varepsilon$ em torno de $\varepsilon = 0$:
+    \[ y(t, \varepsilon) \approx y_0(t) + \varepsilon \cdot w(t) \]
+
+    onde $y_0(t)$ é a solução para $\varepsilon = 0$ e $w(t) = \dfrac{\partial y}{\partial \varepsilon} \big|_{\varepsilon=0}$.
+    \item Mostre que o erro absoluto entre a solução exata e a aproximação é de ordem $O(\varepsilon^2)$ para $t > 0$.
+\end{enumerate}
+
+    \medskip
+
+    
+\item \textbf{Existência e unicidade em dimensão maior.} Sejam $\Omega\subset\mathbb{R}^n$ um aberto, $J\subset \mathbb{R}$ um intervalo aberto e $f:J\times\Omega\to\mathbb{R}^n$ uma função continua tal que as derivadas parciais $\partial_{y_j}f$ com relação as $n$ ultimas variáveis são continuas. Considerar o sistema de equações
+\begin{equation*}
+    \left\{\begin{array}{c}
+        y_1' = f_1(t,y_1,\cdots,y_n)  \\
+        \vdots \\
+        y_n' = f_n(t,y_1,\cdots,y_n) .
+    \end{array}\right.
+\end{equation*}
+Dado $t_0\in J$ e $\mathbf{y_0}=(y_1^0,\cdots,y_n^0)\in\Omega$, provar que existe um intervalo $I\subset J$, $x_0\in I$, e uma única função diferenciável $\phi:I\to\Omega$ que é solução do sistema de equações e satisfaz $\phi(x_0)=\mathbf{y_0}$. 
+
+
+
+\medskip
+
+\item {\bf Exist\^encia global sob crescimento linear.} Seja $f:\mathbb{R}\times\mathbb{R} \to\mathbb{R}$ uma fun\c{c}\~ao cont\'inua, com derivada $\partial_y f$ continua com relação \`a vari\'avel $y$, e suponha que existe uma constante $C>0$ tal que
+\[
+|f(t,y)|\le C(1+|y|)
+\qquad \text{para todo } (t,y)\in \mathbb{R}\times\mathbb{R}.
+\]
+Considere o problema de valor inicial
+\[
+\begin{cases}
+y'(t)=f(t,y(t)),\\
+y(t_0)=y_0,
+\end{cases}
+\qquad (t_0,y_0)\in \mathbb{R}\times\mathbb{R}.
+\]
+Mostre que:
+
+\begin{enumerate}
+    \item existe uma \'unica solu\c{c}\~ao maximal
+    \[
+    \varphi:I\to\mathbb{R}
+    \]
+    do problema de valor inicial;
+
+    \item a solu\c{c}\~ao maximal est\'a definida em todo $\mathbb{R}$, isto \'e,
+    \[
+    I=\mathbb{R};
+    \]
+
+    \item para todo $t\in\mathbb{R}$, vale a estimativa
+    \[
+    |\varphi(t)|
+    \le
+    \bigl(|y_0|+1\bigr)e^{C|t-t_0|}-1.
+    \]
+\end{enumerate}
+
+
+\end{enumerate}
+
+\end{document}
+
+\item Considere uma EDO expressa na forma de uma 1-forma diferencial em $\mathbb{R}^3$:
+$$\omega = P(x,y,z)dx + Q(x,y,z)dy + R(x,y,z)dz = 0$$
+
+Dizemos que $\omega$ é integrável se admitir um fator integrante $\mu(x,y,z)$ tal que $\mu\omega$ seja uma forma exata.
+
+\begin{enumerate}
+    \item Seja $\mathbf{F} = (P, Q, R)$ o campo vetorial associado à forma $\omega$. Mostre que uma condição necessária para a existência de um fator integrante $\mu$ suave e não nulo é que o campo $\mathbf{F}$ seja ortogonal ao seu próprio rotacional, isto é:
+    $$\mathbf{F} \cdot (\nabla \times \mathbf{F}) = 0$$
+
+    \item  Verifique se a EDO abaixo satisfaz a condição de integrabilidade:
+    $$(y^2 + yz)dx + (x^2 + xz)dy + (x^2 + y^2)dz = 0.$$
+
+\end{enumerate}

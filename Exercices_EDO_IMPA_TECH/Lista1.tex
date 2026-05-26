@@ -1,0 +1,169 @@
+\documentclass[a4paper,
+11pt,  reqno]{amsart}
+\usepackage[margin=1.2in,marginparwidth=1.5cm, marginparsep=0.5cm]{geometry}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+\title{Exercícios de ``Introdução às Equações Diferenciais''  IMPA-TECH 2026-01}
+
+\begin{document}
+
+\maketitle
+
+\section*{Lista 1}
+\begin{enumerate}
+    \item \textbf{(Solução exata da equação logística)} Existem duas maneiras de resolver a equação logística $\dot{N} = rN(1 - N/K)$ analiticamente para uma condição inicial arbitrária $N_0$.
+    
+    \begin{enumerate}
+        \item Separe as variáveis e integre, utilizando frações parciais.
+        \item Faça a mudança de variáveis $x = 1/N$. Em seguida, derive e resolva a equação diferencial resultante para $x$.
+    \end{enumerate}
+
+    \medskip
+    
+    \item \textbf{(Dinâmica de Gompertz)} Considere o modelo matemático para o crescimento de tumores malignos descrito pela seguinte equação diferencial ordinária (EDO) de primeira ordem:
+    
+    \begin{equation*}
+        \frac{dN}{dt} = -aN \ln(bN)
+    \end{equation*}
+    
+    Onde $N(t) > 0$ representa a população de células tumorais no instante $t$, e os parâmetros $a, b$ são constantes reais positivas.
+    
+    \begin{enumerate}
+        \item Mostre que a mudança de variável $u = \ln(bN)$ transforma a equação original em uma EDO linear de primeira ordem para a variável $u(t)$.
+        \item Resolva a equação resultante para determinar a solução explícita $N(t)$, considerando a condição inicial $N(0) = N_0$.
+        \item Determine o valor do limite $\displaystyle \lim_{t \to \infty} N(t)$ e interprete o significado biológico do parâmetro $b$ com base neste resultado.
+    \end{enumerate}
+
+    \medskip
+    
+    \textit{\textbf{Dica:} Ao realizar a mudança de variável, utilize a regra da cadeia para encontrar $\frac{du}{dt}$ em termos de $N$ e $\frac{dN}{dt}$. Note que $\frac{d}{dt}[\ln(bN)] = \frac{1}{bN} \cdot b \frac{dN}{dt} = \frac{1}{N} \frac{dN}{dt}$.}
+
+    \medskip
+
+\item \textbf{(Cinética de Autocatálise)} Em sistemas químicos, uma reação é dita autocatalítica quando o produto estimula sua própria produção. Considere que a concentração $x(t)$ de uma substância $X$ evolui segundo a lei:
+    
+    \begin{equation*}
+        \frac{dx}{dt} = (k_1 a)x - k_{-1} x^2
+    \end{equation*}
+    
+    Onde $a, k_1, k_{-1}$ são parâmetros constantes e positivos.
+    
+    \begin{enumerate}
+        \item Classifique a EDO acima e utilize a mudança de variável $v = x^{-1}$ para linearizá-la.
+        \item Determine a solução analítica explícita $x(t)$ sujeita à condição inicial $x(0) = x_0$.
+        \item Analise o comportamento de $x(t)$ quando $t \to \infty$. O valor obtido depende da concentração inicial $x_0$? Justifique.
+    \end{enumerate}
+
+    \medskip
+    
+    \textit{\textbf{Dica:} A substituição $v = x^{-1}$ implica em $\frac{dx}{dt} = -x^2 \frac{dv}{dt}$. Substitua na equação original e divida todos os termos por $-x^2$ para obter uma EDO linear na variável $v$.}
+
+    \medskip
+
+\item \textbf{(Problema de Mistura)} Um reservatório contém inicialmente 1000 litros de água pura. Uma solução salina com concentração de $0,05$ kg/L é bombeada para dentro do tanque a uma taxa de $5$ L/min. A mistura, mantida uniforme por agitação, sai do tanque a uma taxa inferior de $3$ L/min.
+
+\begin{enumerate}
+    \item Demonstre que a quantidade de sal $Q(t)$ no reservatório é descrita pela EDO:
+    \begin{equation*}
+        \frac{dQ}{dt} + \frac{3}{1000 + 2t}Q = 0,25
+    \end{equation*}
+    
+    \item Encontre o fator integrante $\mu(t)$ associado a esta equação linear.
+    
+    \item Determine a solução particular $Q(t)$ considerando a condição inicial $Q(0) = 0$ e calcule a massa de sal presente no tanque após $50$ minutos.
+\end{enumerate}
+
+\medskip
+
+\textit{\textbf{Dica:} O volume é variável, $V(t) = V_0 + \Delta r \cdot t$. A montagem da EDO baseia-se no princípio de que a taxa de variação da massa é igual à taxa de entrada menos a taxa de saída.}
+
+\medskip
+
+\item \textbf{(Queda com Resistência de Rayleigh)} Uma partícula de massa $m$ cai verticalmente partindo do repouso sob a aceleração da gravidade $g$. O meio oferece uma resistência ao movimento que pode ser descrita pela função de dissipação de Rayleigh, $\mathcal{F} = \dfrac{1}{2}\lambda v^2$ com $\lambda$ uma constante e $v$ a velocidade.
+
+\begin{enumerate}
+    \item Utilizando a segunda lei de Newton, obtenha a equação de movimento (EDO) para a velocidade $v(t)$.
+    \item Resolva a EDO analiticamente para encontrar a expressão da velocidade em função do tempo.
+    \item Demonstre que a velocidade da partícula é limitada superiormente por $v_{lim} = mg/\lambda$.
+\end{enumerate}
+
+\medskip
+
+\textit{\textbf{Dica:} A força de resistência $F_r$ é obtida através do gradiente da função de dissipação em relação à velocidade, ou seja, $F_r = -\dfrac{d \mathcal{F}}{d v}$. Ao montar a segunda lei de Newton ($ma = \sum F$), lembre-se que a força de resistência se opõe ao vetor velocidade, enquanto o peso atua a favor do movimento (tomando o sentido para baixo como positivo).}
+
+\medskip
+
+\item \textbf{(EDOs lineares de primeira ordem)} Considere a seguinte equação:
+\begin{equation*}
+    a(t)x' + b(t)x + c(t) =0,
+\end{equation*}
+onde $a,b,c$ são funções continuas definidas em $\mathbb{R}.$ Suponha que $a(x) \neq 0$ para todo $x \in \mathbb{R}.$ Encontre todas as soluções de tal equação. 
+
+\medskip
+
+\item \textbf{(EDO de Bernoulli)} Considere a equação
+\begin{equation}\label{eq: Bernoulli 1}
+    t\cdot x' + x = t^2\cdot x^2.
+\end{equation}
+\begin{enumerate}
+    \item Determine se a equação \eqref{eq: Bernoulli 1} é linear e/ou separável. 
+    \item Encontrar todas as soluções de \eqref{eq: Bernoulli 1}. 
+    \item Mais geralmente, considere a equação 
+    \begin{equation*}
+        t\cdot x' + x = t^2 \cdot x^n
+    \end{equation*}
+    $n\in\mathbb{N}$, $n\geq1$, e encontre todas as soluções.
+\end{enumerate}
+
+\medskip
+
+\textit{ \textbf{ Dica:} Construa uma mudança de variável $u = f(x)$ tal que $u$ satisfaz uma equação linear.}
+
+\medskip
+
+\item \textbf{(EDO homogêneas)} As EDOs homogêneas são equações que podem ser escritas na forma
+\begin{equation*}
+    x' = f\left(\frac{x}{t}\right)
+\end{equation*}
+para alguma função $f$. Considere a seguinte equação:
+\begin{equation}\label{Eq: Homogenea 1}
+    x' = \frac{t^2+x^2}{xt}.
+\end{equation}
+\begin{enumerate}
+    \item Prove que a equação \eqref{Eq: Homogenea 1} é homogênea. 
+    \item Encontre todas as soluções de \eqref{Eq: Homogenea 1}.
+\end{enumerate}
+
+\medskip
+
+\item {\bf (Equação redutível)} Considere a equação diferencial
+\[
+y' = y - x y^2, \qquad x \in \mathbb{R}.
+\]
+Determine a solução geral.
+
+\medskip
+
+\textit{\textbf{ Dica:} Procure uma mudança de variável que transforme a equação em uma EDO linear de primeira ordem.}
+
+\medskip
+
+\item {\bf (Mudança de variável)} Considere a equação diferencial
+\[
+y' = \frac{x + y + 1}{x + y - 1}, \qquad x \in \mathbb{R}.
+\]
+Determine a solução geral.
+
+\medskip
+
+\textit{\textbf{ Dica:} Observe que a equação depende da combinação \(x+y\). Introduza uma nova variável conveniente.} 
+
+
+\end{enumerate}
+
+\clearpage
+
+
+\end{document}

@@ -1,0 +1,789 @@
+\documentclass[a4paper,11pt,reqno]{amsart}
+\usepackage[margin=1.2in,marginparwidth=1.5cm,marginparsep=0.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+
+\title{Solucionário do Simulado de ``Introdução às Equações Diferenciais''  IMPA-TECH 2026-01}
+
+\begin{document}
+
+\maketitle
+
+\section*{Solucionário}
+
+\begin{enumerate}
+
+\item Resolva os seguintes problemas de valor inicial. Em cada item, indique explicitamente o maior intervalo em que a solução está definida.
+
+\begin{enumerate}
+
+\item
+\[
+    y'+2y=e^{-t},
+    \qquad
+    y(0)=1.
+\]
+
+Esta é uma equação linear de primeira ordem. O fator integrante é
+\[
+    \mu(t)=e^{\int 2\,dt}=e^{2t}.
+\]
+Multiplicando a equação por $e^{2t}$, obtemos
+\[
+    e^{2t}y'+2e^{2t}y=e^t,
+\]
+isto é,
+\[
+    \left(e^{2t}y(t)\right)'=e^t.
+\]
+Integrando,
+\[
+    e^{2t}y(t)=e^t+C.
+\]
+Portanto
+\[
+    y(t)=e^{-t}+Ce^{-2t}.
+\]
+Usando a condição inicial $y(0)=1$,
+\[
+    1=1+C,
+\]
+logo $C=0$. Assim,
+\[
+    \boxed{y(t)=e^{-t}.}
+\]
+A solução está definida para todo $t\in\mathbb{R}$. Portanto o maior intervalo de existência é
+\[
+    \boxed{\mathbb{R}.}
+\]
+
+\item
+\[
+    y'=t(1+y^2),
+    \qquad
+    y(0)=0.
+\]
+
+A equação é separável:
+\[
+    \frac{dy}{1+y^2}=t\,dt.
+\]
+Integrando,
+\[
+    \arctan y=\frac{t^2}{2}+C.
+\]
+Como $y(0)=0$, temos
+\[
+    \arctan(0)=0=C.
+\]
+Logo
+\[
+    \arctan y=\frac{t^2}{2},
+\]
+e portanto
+\[
+    \boxed{y(t)=\tan\left(\frac{t^2}{2}\right).}
+\]
+
+Agora precisamos determinar o maior intervalo contendo $0$ no qual essa expressão está definida e resolve o PVI. A função tangente tem assíntotas quando seu argumento é da forma
+\[
+    \frac{\pi}{2}+k\pi,
+    \qquad k\in\mathbb{Z}.
+\]
+Perto de $t=0$, o primeiro problema ocorre quando
+\[
+    \frac{t^2}{2}=\frac{\pi}{2},
+\]
+isto é,
+\[
+    t^2=\pi.
+\]
+Portanto o maior intervalo contendo $0$ é
+\[
+    \boxed{(-\sqrt{\pi},\sqrt{\pi}).}
+\]
+
+\item
+\[
+    y'=\frac{t+y}{t},
+    \qquad
+    y(1)=0,
+    \qquad
+    t>0.
+\]
+
+Podemos reescrever a equação como
+\[
+    y'=1+\frac{y}{t}.
+\]
+A expressão $\frac{y}{t}$ sugere a mudança de variável
+\[
+    z(t)=\frac{y(t)}{t},
+    \qquad\text{isto é,}\qquad
+    y(t)=tz(t).
+\]
+Então
+\[
+    y'(t)=z(t)+tz'(t).
+\]
+Substituindo na equação,
+\[
+    z+tz'=1+z.
+\]
+Cancelando $z$ dos dois lados,
+\[
+    tz'=1.
+\]
+Como $t>0$,
+\[
+    z'=\frac{1}{t}.
+\]
+Integrando,
+\[
+    z(t)=\ln t+C.
+\]
+Logo
+\[
+    y(t)=t(\ln t+C).
+\]
+Usando $y(1)=0$,
+\[
+    0=1(\ln 1+C)=C.
+\]
+Portanto
+\[
+    \boxed{y(t)=t\ln t.}
+\]
+Como a própria equação só está considerada para $t>0$, e a solução está definida em todo esse intervalo, o maior intervalo de existência contendo $1$ é
+\[
+    \boxed{(0,+\infty).}
+\]
+
+\end{enumerate}
+
+
+\item Considere o problema de valor inicial
+\[
+    \frac{dy}{dt}=3y^{2/3},
+    \qquad
+    y(t_0)=y_0.
+\]
+
+\begin{enumerate}
+
+\item No ponto $(t_0,y_0)=(0,1)$, temos o PVI
+\[
+    y'=3y^{2/3},
+    \qquad
+    y(0)=1.
+\]
+A função
+\[
+    f(t,y)=3y^{2/3}
+\]
+é contínua em todo o plano. Além disso,
+\[
+    \frac{\partial f}{\partial y}(t,y)=2y^{-1/3}
+\]
+é contínua em qualquer região que não contenha $y=0$. Como o ponto inicial é $(0,1)$, existe uma vizinhança desse ponto onde $f$ e $\partial f/\partial y$ são contínuas. Portanto, pelo teorema de existência e unicidade, existe uma única solução local passando por $(0,1)$.
+
+Vamos encontrá-la explicitamente. Para $y\neq 0$, podemos escrever
+\[
+    \frac{dy}{dt}=3y^{2/3}.
+\]
+Como
+\[
+    \frac{d}{dt}\left(y^{1/3}\right)
+    =
+    \frac{1}{3}y^{-2/3}y',
+\]
+obtemos
+\[
+    \frac{d}{dt}\left(y^{1/3}\right)=1.
+\]
+Logo
+\[
+    y^{1/3}=t+C.
+\]
+Portanto
+\[
+    y(t)=(t+C)^3.
+\]
+Usando $y(0)=1$,
+\[
+    1=C^3,
+\]
+e então $C=1$. Assim, a solução local é
+\[
+    \boxed{y(t)=(t+1)^3.}
+\]
+
+Em particular, em qualquer intervalo suficientemente pequeno contendo $0$, essa solução é única.
+
+Observação: se perguntarmos por extensões globais em intervalos maiores que atravessam o ponto $t=-1$, a não unicidade pode reaparecer depois que a solução atinge $y=0$. Por exemplo,
+\[
+    y(t)=(t+1)^3
+\]
+e
+\[
+    y(t)=
+    \begin{cases}
+        0, & t\leq -1,\\
+        (t+1)^3, & t\geq -1,
+    \end{cases}
+\]
+são ambas soluções globais que satisfazem $y(0)=1$. Isso não contradiz a unicidade local perto de $t=0$.
+
+\item No ponto $(t_0,y_0)=(0,0)$, temos
+\[
+    y'=3y^{2/3},
+    \qquad
+    y(0)=0.
+\]
+A solução identicamente nula,
+\[
+    \boxed{y(t)\equiv 0,}
+\]
+é uma solução.
+
+Por outro lado,
+\[
+    \boxed{y(t)=t^3}
+\]
+também é solução, pois
+\[
+    y'(t)=3t^2,
+\]
+enquanto
+\[
+    3y(t)^{2/3}=3(t^3)^{2/3}=3t^2.
+\]
+Além disso,
+\[
+    y(0)=0.
+\]
+Portanto o PVI não tem solução única.
+
+Na verdade, há infinitas soluções. Para cada $a\geq 0$, a função
+\[
+    y_a(t)=
+    \begin{cases}
+        0, & t\leq a,\\
+        (t-a)^3, & t\geq a,
+    \end{cases}
+\]
+é solução e satisfaz $y_a(0)=0$.
+
+\item A diferença entre os dois casos está na hipótese de unicidade do teorema de existência e unicidade.
+
+A função
+\[
+    f(t,y)=3y^{2/3}
+\]
+é contínua em todo lugar, portanto o teorema de existência garante existência local para qualquer condição inicial.
+
+No entanto, a derivada parcial em relação a $y$ é
+\[
+    \frac{\partial f}{\partial y}(t,y)=2y^{-1/3},
+\]
+que não é contínua em $y=0$.
+
+No ponto $(0,1)$, estamos longe de $y=0$, então $f$ é localmente Lipschitz em $y$ e a solução local é única.
+
+No ponto $(0,0)$, a hipótese de unicidade falha. Isso não prova automaticamente que a solução não é única, mas abre a possibilidade de não unicidade. De fato, como vimos no item anterior, há várias soluções passando por $(0,0)$.
+
+\end{enumerate}
+
+
+\item Considere a equação diferencial
+\[
+    t^2y''-2ty'+2y=t^3,
+    \qquad
+    t>0.
+\]
+
+\begin{enumerate}
+
+\item A equação homogênea associada é
+\[
+    t^2y''-2ty'+2y=0.
+\]
+Para $y_1(t)=t$, temos
+\[
+    y_1'(t)=1,
+    \qquad
+    y_1''(t)=0.
+\]
+Substituindo,
+\[
+    t^2\cdot 0-2t\cdot 1+2t=0.
+\]
+Logo
+\[
+    \boxed{y_1(t)=t}
+\]
+é solução da equação homogênea.
+
+\item Procuramos soluções da forma
+\[
+    y(t)=t^m.
+\]
+Então
+\[
+    y'(t)=mt^{m-1},
+    \qquad
+    y''(t)=m(m-1)t^{m-2}.
+\]
+Substituindo na equação homogênea,
+\[
+    t^2m(m-1)t^{m-2}
+    -
+    2tmt^{m-1}
+    +
+    2t^m
+    =
+    0.
+\]
+Isto é,
+\[
+    \left[m(m-1)-2m+2\right]t^m=0.
+\]
+Logo o polinômio característico é
+\[
+    m(m-1)-2m+2=m^2-3m+2=(m-1)(m-2).
+\]
+Assim,
+\[
+    m=1
+    \qquad\text{ou}\qquad
+    m=2.
+\]
+Já conhecíamos a solução $t$. A segunda solução é
+\[
+    \boxed{y_2(t)=t^2.}
+\]
+Como $t$ e $t^2$ não são múltiplas uma da outra em $(0,+\infty)$, elas são linearmente independentes.
+
+\item A solução geral da homogênea é
+\[
+    y_h(t)=C_1t+C_2t^2.
+\]
+
+Para encontrar uma solução particular da equação não homogênea
+\[
+    t^2y''-2ty'+2y=t^3,
+\]
+tentamos
+\[
+    y_p(t)=At^3.
+\]
+Então
+\[
+    y_p'(t)=3At^2,
+    \qquad
+    y_p''(t)=6At.
+\]
+Substituindo,
+\[
+    t^2(6At)-2t(3At^2)+2At^3
+    =
+    6At^3-6At^3+2At^3
+    =
+    2At^3.
+\]
+Queremos que isso seja igual a $t^3$, logo
+\[
+    2A=1,
+    \qquad
+    A=\frac12.
+\]
+Assim,
+\[
+    y_p(t)=\frac12t^3.
+\]
+Portanto a solução geral é
+\[
+    \boxed{y(t)=C_1t+C_2t^2+\frac12t^3.}
+\]
+
+\item Devemos impor
+\[
+    y(1)=0,
+    \qquad
+    y'(1)=1.
+\]
+Temos
+\[
+    y(t)=C_1t+C_2t^2+\frac12t^3
+\]
+e
+\[
+    y'(t)=C_1+2C_2t+\frac32t^2.
+\]
+Logo
+\[
+    y(1)=C_1+C_2+\frac12=0,
+\]
+isto é,
+\[
+    C_1+C_2=-\frac12.
+\]
+Além disso,
+\[
+    y'(1)=C_1+2C_2+\frac32=1,
+\]
+isto é,
+\[
+    C_1+2C_2=-\frac12.
+\]
+Subtraindo a primeira equação da segunda, obtemos
+\[
+    C_2=0.
+\]
+Então
+\[
+    C_1=-\frac12.
+\]
+Portanto
+\[
+    \boxed{
+    y(t)=\frac12t^3-\frac12t.
+    }
+\]
+
+Como a equação está definida para $t>0$, e o ponto inicial é $t=1$, o maior intervalo natural de existência é
+\[
+    \boxed{(0,+\infty).}
+\]
+
+\end{enumerate}
+
+
+\item Seja $a:[0,1]\to(0,+\infty)$ uma função contínua, e seja $\lambda\in\mathbb{R}$. Considere a equação
+\[
+    x''+\lambda a(t)x=0.
+\]
+Suponha que exista uma solução não identicamente nula $x$ tal que
+\[
+    x(0)=0,
+    \qquad
+    x'(1)=0.
+\]
+
+\begin{enumerate}
+
+\item Suponha, por absurdo, que $\lambda\leq 0$ e que exista uma solução não identicamente nula satisfazendo as condições de contorno.
+
+Multiplicamos a equação por $x(t)$:
+\[
+    x''(t)x(t)+\lambda a(t)x(t)^2=0.
+\]
+Integramos de $0$ a $1$:
+\[
+    \int_0^1 x''(t)x(t)\,dt
+    +
+    \lambda\int_0^1 a(t)x(t)^2\,dt
+    =
+    0.
+\]
+Pela fórmula de integração por partes,
+\[
+    \int_0^1 x''(t)x(t)\,dt
+    =
+    \left[x'(t)x(t)\right]_0^1
+    -
+    \int_0^1 (x'(t))^2\,dt.
+\]
+Agora,
+\[
+    \left[x'(t)x(t)\right]_0^1
+    =
+    x'(1)x(1)-x'(0)x(0).
+\]
+Como $x'(1)=0$ e $x(0)=0$, esse termo é nulo. Portanto
+\[
+    \int_0^1 x''(t)x(t)\,dt
+    =
+    -
+    \int_0^1 (x'(t))^2\,dt.
+\]
+Substituindo na identidade integral,
+\[
+    -
+    \int_0^1 (x'(t))^2\,dt
+    +
+    \lambda\int_0^1 a(t)x(t)^2\,dt
+    =
+    0.
+\]
+Assim,
+\[
+    \int_0^1 (x'(t))^2\,dt
+    =
+    \lambda\int_0^1 a(t)x(t)^2\,dt.
+\]
+Se $\lambda\leq 0$, o lado direito é menor ou igual a zero, pois
+\[
+    a(t)>0
+    \qquad\text{e}\qquad
+    x(t)^2\geq 0.
+\]
+Por outro lado, o lado esquerdo é sempre maior ou igual a zero. Logo ambos os lados devem ser iguais a zero. Em particular,
+\[
+    \int_0^1 (x'(t))^2\,dt=0.
+\]
+Como $(x')^2$ é contínua e não negativa, segue que
+\[
+    x'(t)=0
+    \qquad\text{para todo }t\in[0,1].
+\]
+Logo $x$ é constante. Como $x(0)=0$, concluímos que
+\[
+    x(t)\equiv 0,
+\]
+contradizendo a hipótese de que $x$ não é identicamente nula.
+
+Portanto, se $\lambda\leq 0$, tal solução não pode existir.
+
+\item Do item anterior, concluímos imediatamente que a existência de uma solução não identicamente nula satisfazendo
+\[
+    x(0)=0,
+    \qquad
+    x'(1)=0
+\]
+implica
+\[
+    \boxed{\lambda>0.}
+\]
+
+\item Tomemos
+\[
+    a(t)\equiv 1
+\]
+e
+\[
+    \lambda=\frac{\pi^2}{4}.
+\]
+A equação fica
+\[
+    x''+\frac{\pi^2}{4}x=0.
+\]
+Considere
+\[
+    x(t)=\sin\left(\frac{\pi t}{2}\right).
+\]
+Então
+\[
+    x(0)=\sin 0=0.
+\]
+Além disso,
+\[
+    x'(t)=\frac{\pi}{2}\cos\left(\frac{\pi t}{2}\right),
+\]
+e portanto
+\[
+    x'(1)=\frac{\pi}{2}\cos\left(\frac{\pi}{2}\right)=0.
+\]
+A função $x$ não é identicamente nula. Logo este é um exemplo com $\lambda>0$.
+
+\end{enumerate}
+
+
+\item Seja $I\subset\mathbb{R}$ um intervalo aberto e seja
+\[
+    L:C^2(I)\to C^0(I)
+\]
+um operador da forma
+\[
+    L[y](t)=y''(t)+p(t)y'(t)+q(t)y(t),
+\]
+onde $p,q:I\to\mathbb{R}$ são funções contínuas.
+
+\begin{enumerate}
+
+\item Queremos mostrar que não existe uma equação linear homogênea de segunda ordem com coeficientes contínuos em todo $\mathbb{R}$,
+\[
+    y''+p(t)y'+q(t)y=0,
+\]
+que possua simultaneamente
+\[
+    y_1(t)=\sin(t^2),
+    \qquad
+    y_2(t)=\cos(t^2)
+\]
+como soluções em todo $\mathbb{R}$.
+
+Calculamos primeiro o Wronskiano:
+\[
+    W(y_1,y_2)(t)
+    =
+    \begin{vmatrix}
+        y_1(t) & y_2(t)\\
+        y_1'(t) & y_2'(t)
+    \end{vmatrix}
+    =
+    y_1(t)y_2'(t)-y_1'(t)y_2(t).
+\]
+Temos
+\[
+    y_1'(t)=2t\cos(t^2),
+    \qquad
+    y_2'(t)=-2t\sin(t^2).
+\]
+Logo
+\[
+    W(y_1,y_2)(t)
+    =
+    \sin(t^2)\bigl(-2t\sin(t^2)\bigr)
+    -
+    \bigl(2t\cos(t^2)\bigr)\cos(t^2).
+\]
+Portanto
+\[
+    W(y_1,y_2)(t)
+    =
+    -2t\sin^2(t^2)-2t\cos^2(t^2)
+    =
+    -2t.
+\]
+Assim,
+\[
+    \boxed{W(y_1,y_2)(t)=-2t.}
+\]
+
+Em particular,
+\[
+    W(y_1,y_2)(0)=0,
+\]
+mas
+\[
+    W(y_1,y_2)(t)\neq 0
+    \qquad\text{se }t\neq 0.
+\]
+
+Suponha, por absurdo, que existam funções contínuas $p,q:\mathbb{R}\to\mathbb{R}$ tais que $y_1$ e $y_2$ sejam soluções da mesma equação
+\[
+    y''+p(t)y'+q(t)y=0
+\]
+em todo $\mathbb{R}$.
+
+Pela identidade de Abel, o Wronskiano de duas soluções deve satisfazer
+\[
+    W(t)=W(t_0)\exp\left(-\int_{t_0}^{t}p(s)\,ds\right).
+\]
+Tomando $t_0=0$, como $W(0)=0$, obtemos
+\[
+    W(t)=0\cdot\exp\left(-\int_0^{t}p(s)\,ds\right)=0
+\]
+para todo $t\in\mathbb{R}$. Portanto o Wronskiano deveria ser identicamente nulo em $\mathbb{R}$.
+
+Mas calculamos que
+\[
+    W(t)=-2t,
+\]
+que não é identicamente nulo. Contradição.
+
+Logo não existe tal equação em todo $\mathbb{R}$.
+
+\item O resultado anterior não vale se substituirmos $\mathbb{R}$ por $(0,+\infty)$. De fato, em $(0,+\infty)$ o Wronskiano é
+\[
+    W(t)=-2t\neq 0.
+\]
+Assim, as funções $y_1$ e $y_2$ podem formar uma base de soluções de uma equação linear homogênea de segunda ordem com coeficientes contínuos em $(0,+\infty)$.
+
+Vamos encontrar essa equação.
+
+Queremos funções $p,q$ tais que
+\[
+    y''+p(t)y'+q(t)y=0
+\]
+tenha
+\[
+    y_1(t)=\sin(t^2),
+    \qquad
+    y_2(t)=\cos(t^2)
+\]
+como soluções.
+
+Pela identidade de Abel,
+\[
+    W'=-pW.
+\]
+Como
+\[
+    W(t)=-2t,
+    \qquad
+    W'(t)=-2,
+\]
+temos
+\[
+    -2=-p(t)(-2t).
+\]
+Logo
+\[
+    -2=2tp(t),
+\]
+isto é,
+\[
+    \boxed{p(t)=-\frac{1}{t}.}
+\]
+
+Agora usamos uma das soluções para determinar $q$. Para
+\[
+    y_1(t)=\sin(t^2),
+\]
+temos
+\[
+    y_1'(t)=2t\cos(t^2)
+\]
+e
+\[
+    y_1''(t)=2\cos(t^2)-4t^2\sin(t^2).
+\]
+Substituindo na equação,
+\[
+    y_1''+p(t)y_1'+q(t)y_1=0.
+\]
+Como $p(t)=-1/t$,
+\[
+    \left(2\cos(t^2)-4t^2\sin(t^2)\right)
+    -
+    \frac{1}{t}\left(2t\cos(t^2)\right)
+    +
+    q(t)\sin(t^2)
+    =
+    0.
+\]
+Os termos com cosseno cancelam:
+\[
+    -4t^2\sin(t^2)+q(t)\sin(t^2)=0.
+\]
+Logo
+\[
+    q(t)=4t^2.
+\]
+Portanto a equação é
+\[
+    \boxed{
+        y''-\frac{1}{t}y'+4t^2y=0,
+        \qquad
+        t>0.
+    }
+\]
+
+Os coeficientes
+\[
+    p(t)=-\frac1t,
+    \qquad
+    q(t)=4t^2
+\]
+são contínuos em $(0,+\infty)$. Portanto, nesse intervalo, existe uma equação linear homogênea de segunda ordem com coeficientes contínuos que possui $\sin(t^2)$ e $\cos(t^2)$ como soluções.
+
+A mesma fórmula também define uma equação em $(-\infty,0)$, mas não em todo $\mathbb{R}$, pois o coeficiente $-1/t$ não é contínuo em $t=0$.
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,128 @@
+\documentclass[a4paper,
+11pt,  reqno]{amsart}
+\usepackage[margin=1.2in,marginparwidth=1.5cm, marginparsep=0.5cm]{geometry}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+\title{Exercícios de ``Introdução às Equações Diferenciais''  IMPA-TECH 2026-01}
+
+\begin{document}
+
+\maketitle
+
+\section*{Simulado 1}
+
+\vspace{5mm}
+
+\begin{enumerate}
+
+\item Resolva os seguintes problemas de valor inicial. Em cada item, indique explicitamente o maior intervalo em que a solução está definida.
+
+\begin{enumerate}
+    \item 
+    \[
+        y' + 2y = e^{-t}, \qquad y(0)=1.
+    \]
+
+    \item 
+    \[
+        y' = t(1+y^2), \qquad y(0)=0.
+    \]
+
+    \item 
+    \[
+        y' = \frac{t+y}{t}, \qquad y(1)=0, \qquad t>0.
+    \]
+    \emph{Dica:} tente reconhecer uma expressão simples cuja derivada aparece na equação.
+\end{enumerate}
+
+\vspace{2mm}
+
+\item Considere o problema de valor inicial
+\[
+    \frac{dy}{dt}=3y^{2/3},
+    \qquad
+    y(t_0)=y_0.
+\]
+
+\begin{enumerate}
+    \item No ponto $(t_0,y_0)=(0,1)$, determine se existe solução e se ela é única. Justifique.
+
+    \item Faça o mesmo para o ponto $(t_0,y_0)=(0,0)$. Caso a solução não seja única, exiba duas soluções distintas.
+
+    \item Explique por que os dois casos acima têm comportamentos diferentes à luz do teorema de existência e unicidade.
+\end{enumerate}
+
+
+\vspace{2mm}
+
+\item Considere a equação diferencial
+\[
+    t^2y''-2ty'+2y=t^3,
+    \qquad
+    t>0.
+\]
+
+\begin{enumerate}
+    \item Verifique que $y_1(t)=t$ é uma solução da equação homogênea associada.
+
+    \item Encontre uma segunda solução $y_2$ da equação homogênea que seja linearmente independente de $y_1$.
+
+    \item Encontre a solução geral da equação não homogênea.
+
+\end{enumerate}
+
+\vspace{2mm}
+
+
+\item Seja $a:[0,1]\to(0,+\infty)$ uma função contínua, e seja $\lambda\in\mathbb{R}$. Considere a equação
+\[
+    x''+\lambda a(t)x=0.
+\]
+Suponha que exista uma solução não identicamente nula $x$ tal que
+\[
+    x(0)=0,
+    \qquad
+    x'(1)=0.
+\]
+
+\begin{enumerate}
+    \item Mostre que, se $\lambda\leq 0$, então tal solução não pode existir.
+
+    \item Exiba um exemplo com $\lambda>0$ para o qual existe uma solução não identicamente nula satisfazendo
+    \[
+        x(0)=0,
+        \qquad
+        x'(1)=0.
+    \]
+
+\end{enumerate}
+
+\vspace{6mm}
+\newpage
+
+\item Considere os itens abaixo:
+
+\begin{enumerate}
+    \item Mostre que não existe uma equação linear homogênea de segunda ordem com coeficientes contínuos em todo $\mathbb{R}$,
+\[
+    y''+p(t)y'+q(t)y=0,
+\]
+que possua simultaneamente as duas funções
+\[
+    y_1(t)=\sin(t^2)
+    \qquad\text{e}\qquad
+    y_2(t)=\cos(t^2)
+\]
+como soluções em todo $\mathbb{R}$.
+
+    \item O resultado do item anterior vale ainda se substituirmos $\mathbb{R}$ por $(0,+\infty)$? 
+\end{enumerate}
+
+
+
+
+\end{enumerate}
+
+\end{document}

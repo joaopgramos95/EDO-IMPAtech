@@ -1,0 +1,393 @@
+\bigskip\noindent\textbf{Solução 41.}\quad
+Ao longo de toda a seção, $\mathcal{L}[f](s)=\int_0^\infty e^{-st}f(t)\,\d t$ denota a transformada de Laplace, e
+\[
+u_c(t)=\begin{cases}0,&t<c,\\[1mm]1,&t\ge c,\end{cases}\qquad c\ge 0,
+\]
+é a função degrau unitário (de Heaviside) com salto em $t=c$. Usaremos repetidamente as três regras básicas:
+\begin{itemize}[leftmargin=2.2em]
+\item \emph{deslocamento em $s$:} $\mathcal{L}[e^{at}g(t)](s)=G(s-a)$, onde $G=\mathcal{L}[g]$;
+\item \emph{deslocamento em $t$:} $\mathcal{L}[u_c(t)\,g(t-c)](s)=e^{-cs}G(s)$;
+\item \emph{derivada em $s$:} $\mathcal{L}[t^n g(t)](s)=(-1)^n G^{(n)}(s)$ (demonstrada no Problema 43).
+\end{itemize}
+Recordamos ainda $\mathcal{L}[\cos\omega t]=\dfrac{s}{s^2+\omega^2}$, $\mathcal{L}[\sin\omega t]=\dfrac{\omega}{s^2+\omega^2}$ e $\mathcal{L}[t^n]=\dfrac{n!}{s^{n+1}}$.
+
+\medskip
+\noindent\textbf{Parte (1): transformadas.}
+\begin{enumerate}[label=(\alph*)]
+
+\item Pela identidade $\sin(2t)\cos(2t)=\tfrac12\sin(4t)$,
+\[
+\mathcal{L}[\sin 2t\cos 2t]=\tfrac12\,\mathcal{L}[\sin 4t]=\tfrac12\cdot\frac{4}{s^2+16}
+=\boxed{\dfrac{2}{s^2+16}}\,,\qquad s>0.
+\]
+
+\item De $\cos^2(3t)=\tfrac12\big(1+\cos 6t\big)$,
+\[
+\mathcal{L}[\cos^2 3t]=\tfrac12\Big(\frac1s+\frac{s}{s^2+36}\Big)
+=\boxed{\dfrac{1}{2s}+\dfrac{s}{2(s^2+36)}}\,,\qquad s>0.
+\]
+
+\item Partimos de $\mathcal{L}[\sin 3t]=\dfrac{3}{s^2+9}$. Pelo deslocamento em $s$ (fator $e^{2t}$),
+\[
+\mathcal{L}[e^{2t}\sin 3t]=\frac{3}{(s-2)^2+9}\,,\qquad s>2.
+\]
+Multiplicar por $t$ corresponde a $-\dfrac{\d}{\d s}$:
+\[
+\mathcal{L}[t e^{2t}\sin 3t]=-\frac{\d}{\d s}\Big[\frac{3}{(s-2)^2+9}\Big]
+=\frac{3\cdot 2(s-2)}{\big[(s-2)^2+9\big]^2}
+=\boxed{\dfrac{6(s-2)}{\big[(s-2)^2+9\big]^2}}\,,\qquad s>2.
+\]
+
+\item Escrevemos $f$ na forma $u_7(t)\,g(t-7)$. Como $t+3=(t-7)+10$,
+\[
+f(t)=u_7(t)\big[(t-7)+10\big],\qquad g(\tau)=\tau+10.
+\]
+Logo $G(s)=\mathcal{L}[\tau+10]=\dfrac1{s^2}+\dfrac{10}{s}$ e, pelo deslocamento em $t$,
+\[
+\mathcal{L}[f]=e^{-7s}\Big(\frac1{s^2}+\frac{10}{s}\Big)
+=\boxed{e^{-7s}\Big(\dfrac{1}{s^2}+\dfrac{10}{s}\Big)}\,,\qquad s>0.
+\]
+
+\item Aqui $g(\tau)=\tau^2$ avaliada em $\tau=t-3$ exige expandir $t^2$ em potências de $t-3$:
+\[
+t^2=(t-3)^2+6(t-3)+9.
+\]
+Assim $f(t)=u_3(t)\big[(t-3)^2+6(t-3)+9\big]$ e
+\[
+\mathcal{L}[f]=e^{-3s}\Big(\frac{2}{s^3}+\frac{6}{s^2}+\frac{9}{s}\Big)
+=\boxed{e^{-3s}\Big(\dfrac{2}{s^3}+\dfrac{6}{s^2}+\dfrac{9}{s}\Big)}\,,\qquad s>0.
+\]
+
+\item Em $t\ge 2$ vale $t^2-4t+4=(t-2)^2$. Como $f\equiv 1$ em $[0,2)$, escrevemos
+\[
+f(t)=1+u_2(t)\big[(t-2)^2-1\big],
+\]
+pois para $t\ge 2$ isto dá $1+(t-2)^2-1=(t-2)^2$, e para $t<2$ dá $1$. Logo
+\[
+\mathcal{L}[f]=\frac1s+e^{-2s}\Big(\frac{2}{s^3}-\frac1s\Big)
+=\boxed{\dfrac{1}{s}+e^{-2s}\Big(\dfrac{2}{s^3}-\dfrac{1}{s}\Big)}\,,\qquad s>0.
+\]
+
+\item Aqui $f=t$ em $[0,3)$ e $f=5$ em $t\ge 3$, ou seja, em $t\ge 3$ subtraímos $t-5$ de $t$. Escrevemos
+\[
+f(t)=t+u_3(t)\,(5-t),\qquad 5-t=2-(t-3),
+\]
+de modo que $f(t)=t+u_3(t)\big[2-(t-3)\big]$. Portanto
+\[
+\mathcal{L}[f]=\frac1{s^2}+e^{-3s}\Big(\frac{2}{s}-\frac1{s^2}\Big)
+=\boxed{\dfrac{1}{s^2}+e^{-3s}\Big(\dfrac{2}{s}-\dfrac{1}{s^2}\Big)}\,,\qquad s>0.
+\]
+(Confere: em $t\ge 3$, $t+2-(t-3)=5$.)
+
+\item A função vale $t-\pi$ em $[\pi,2\pi)$ e $0$ fora. Liga-se a rampa em $t=\pi$ e desliga-se em $t=2\pi$:
+\[
+f(t)=u_\pi(t)\,(t-\pi)-u_{2\pi}(t)\,(t-\pi).
+\]
+No segundo termo, escrevemos $t-\pi$ em potências de $t-2\pi$: $t-\pi=(t-2\pi)+\pi$. Logo
+\[
+f(t)=u_\pi(t)\,(t-\pi)-u_{2\pi}(t)\big[(t-2\pi)+\pi\big],
+\]
+e
+\[
+\mathcal{L}[f]=\frac{e^{-\pi s}}{s^2}-e^{-2\pi s}\Big(\frac1{s^2}+\frac{\pi}{s}\Big)
+=\boxed{\dfrac{e^{-\pi s}}{s^2}-e^{-2\pi s}\Big(\dfrac{1}{s^2}+\dfrac{\pi}{s}\Big)}\,,\qquad s>0.
+\]
+
+\item A função é $\cos(\pi t)$ em $[0,4)$ e $0$ em $t\ge 4$:
+\[
+f(t)=\cos(\pi t)-u_4(t)\cos(\pi t).
+\]
+Para escrever o segundo termo como $g(t-4)$, note que $\cos(\pi t)=\cos\big(\pi(t-4)+4\pi\big)=\cos\big(\pi(t-4)\big)$. Assim
+\[
+f(t)=\cos(\pi t)-u_4(t)\cos\big(\pi(t-4)\big),
+\]
+e
+\[
+\mathcal{L}[f]=\frac{s}{s^2+\pi^2}-e^{-4s}\,\frac{s}{s^2+\pi^2}
+=\boxed{\dfrac{s\,\big(1-e^{-4s}\big)}{s^2+\pi^2}}\,,\qquad s>0.
+\]
+
+\item A função é $t$ em $[0,1)$ e $e^t$ em $t\ge 1$, isto é, em $t\ge 1$ somamos $e^t-t$ à rampa:
+\[
+f(t)=t+u_1(t)\,(e^t-t).
+\]
+Expandimos $g(\tau)=e^t-t$ em $\tau=t-1$: $e^t=e\cdot e^{t-1}$ e $t=(t-1)+1$, logo
+\[
+e^t-t=e\,e^{t-1}-(t-1)-1.
+\]
+Portanto
+\[
+\mathcal{L}[f]=\frac1{s^2}+e^{-s}\Big[\frac{e}{s-1}-\frac1{s^2}-\frac1s\Big]
+=\boxed{\dfrac{1}{s^2}+e^{-s}\Big(\dfrac{e}{s-1}-\dfrac{1}{s^2}-\dfrac{1}{s}\Big)}\,,\qquad s>1.
+\]
+
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Parte (2): transformadas inversas.}
+\begin{enumerate}[label=(\alph*)]
+
+\item Como $s^2-1=(s-1)(s+1)$,
+\[
+F(s)=\frac{1}{(s+1)(s^2-1)}=\frac{1}{(s-1)(s+1)^2}.
+\]
+Decompomos em frações parciais:
+\[
+\frac{1}{(s-1)(s+1)^2}=\frac{A}{s-1}+\frac{B}{s+1}+\frac{C}{(s+1)^2}.
+\]
+Multiplicando, $1=A(s+1)^2+B(s-1)(s+1)+C(s-1)$. Em $s=1$: $1=4A\Rightarrow A=\tfrac14$. Em $s=-1$: $1=-2C\Rightarrow C=-\tfrac12$. O coeficiente de $s^2$ dá $0=A+B\Rightarrow B=-\tfrac14$. Como $\mathcal{L}^{-1}\big[(s+1)^{-2}\big]=t e^{-t}$,
+\[
+\mathcal{L}^{-1}[F]=\boxed{\tfrac14 e^{t}-\tfrac14 e^{-t}-\tfrac12\,t\,e^{-t}}\,.
+\]
+
+\item Completando o quadrado, $s^2+4s+13=(s+2)^2+9$ e $2s+3=2(s+2)-1$:
+\[
+F(s)=\frac{2(s+2)}{(s+2)^2+9}-\frac{1}{(s+2)^2+9}.
+\]
+Pelo deslocamento em $s$ (fator $e^{-2t}$) e $\mathcal{L}[\cos 3t]=\tfrac{s}{s^2+9}$, $\mathcal{L}[\sin 3t]=\tfrac{3}{s^2+9}$,
+\[
+\mathcal{L}^{-1}[F]=\boxed{e^{-2t}\Big(2\cos 3t-\tfrac13\sin 3t\Big)}\,.
+\]
+
+\item Como $\mathcal{L}^{-1}\big[(s-2)^{-1}\big]=e^{2t}$, o fator $e^{-3s}$ produz um deslocamento em $t$:
+\[
+\mathcal{L}^{-1}\Big[\frac{e^{-3s}}{s-2}\Big]=\boxed{u_3(t)\,e^{2(t-3)}}\,.
+\]
+
+\item Como $\mathcal{L}^{-1}\big[(s^2+6)^{-1}\big]=\dfrac{1}{\sqrt6}\sin(\sqrt6\,t)$, o termo $1$ dá esse seno e o fator $e^{-2s}$ desloca-o em $t=2$:
+\[
+\mathcal{L}^{-1}\Big[\frac{1+e^{-2s}}{s^2+6}\Big]
+=\boxed{\dfrac{1}{\sqrt6}\sin(\sqrt6\,t)+u_2(t)\,\dfrac{1}{\sqrt6}\sin\!\big(\sqrt6\,(t-2)\big)}\,.
+\]
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 42.}\quad
+Escrevendo $u_c(t)=u(t-c)$ para o degrau com salto em $c$, o lado direito é $u(t)-u(t-\pi)=1-u_\pi(t)$, ou seja, $1$ em $[0,\pi)$ e $0$ em $t\ge\pi$. Seja $Y(s)=\mathcal{L}[y]$. Com $y(0)=y'(0)=0$ temos $\mathcal{L}[y'']=s^2Y$, e
+\[
+\mathcal{L}[1-u_\pi(t)]=\frac1s-\frac{e^{-\pi s}}{s}=\frac{1-e^{-\pi s}}{s}.
+\]
+Aplicando $\mathcal{L}$ à equação $y''+4y=1-u_\pi(t)$,
+\[
+(s^2+4)\,Y(s)=\frac{1-e^{-\pi s}}{s}
+\quad\Longrightarrow\quad
+Y(s)=\big(1-e^{-\pi s}\big)\,\frac{1}{s(s^2+4)}.
+\]
+Decompomos $\dfrac{1}{s(s^2+4)}=\dfrac{A}{s}+\dfrac{Bs+C}{s^2+4}$; de $1=A(s^2+4)+(Bs+C)s$ vem $A=\tfrac14$, $B=-\tfrac14$, $C=0$:
+\[
+\frac{1}{s(s^2+4)}=\frac14\Big(\frac1s-\frac{s}{s^2+4}\Big).
+\]
+Logo, definindo $h(t):=\mathcal{L}^{-1}\Big[\dfrac{1}{s(s^2+4)}\Big]=\tfrac14\big(1-\cos 2t\big)$, o fator $e^{-\pi s}$ desloca:
+\[
+y(t)=h(t)-u_\pi(t)\,h(t-\pi)
+=\tfrac14\big(1-\cos 2t\big)-u_\pi(t)\,\tfrac14\big(1-\cos 2(t-\pi)\big).
+\]
+Como $\cos 2(t-\pi)=\cos 2t$, podemos simplificar por trechos:
+\[
+\boxed{\,y(t)=\begin{cases}\dfrac{1-\cos 2t}{4}, & 0\le t<\pi,\\[2mm] 0, & t\ge\pi.\end{cases}}
+\]
+\emph{Verificação.} Em $[0,\pi)$: $y=\tfrac14(1-\cos2t)$ dá $y'=\tfrac12\sin2t$, $y''=\cos2t$, e $y''+4y=\cos2t+(1-\cos2t)=1$, como exigido; ainda $y(0)=0$, $y'(0)=0$. Em $t=\pi$: $y(\pi^-)=\tfrac14(1-\cos2\pi)=0$ e $y'(\pi^-)=\tfrac12\sin2\pi=0$, logo $y$ e $y'$ são contínuas ao colar com a solução nula $y\equiv0$ em $t\ge\pi$, onde $y''+4y=0$ coincide com o lado direito nulo. A solução é, portanto, consistente.
+
+
+\bigskip\noindent\textbf{Solução 43.}\quad
+Dizer que $f$ é de \emph{ordem exponencial} $s_0$ significa que existem constantes $M>0$ e $T\ge0$ tais que
+\[
+|f(t)|\le M e^{s_0 t}\qquad\text{para todo }t\ge T.
+\]
+Suponhamos ainda $f$ contínua por partes em $[0,\infty)$, de modo que $F(s)=\int_0^\infty e^{-st}f(t)\,\d t$ converge (absolutamente) para $s>s_0$. Provaremos por indução em $n$ que, para $s>s_0$,
+\[
+F^{(n)}(s)=\int_0^\infty \frac{\partial^n}{\partial s^n}\big(e^{-st}\big)\,f(t)\,\d t
+=\int_0^\infty (-t)^n e^{-st}f(t)\,\d t=(-1)^n\,\mathcal{L}[t^n f(t)](s),
+\]
+o que é exatamente a fórmula desejada. O ponto delicado é justificar a troca da derivação em $s$ com a integral em $t$.
+
+\emph{Diferenciação sob o sinal de integral.} Fixe $s_1>s_0$ e considere o intervalo $s\in[s_1,\infty)$. Para qualquer $k\ge0$, o integrando $\partial_s^k\big(e^{-st}\big)f(t)=(-t)^k e^{-st}f(t)$ é dominado, em valor absoluto, por uma função integrável em $t$ \emph{independente de} $s$ no intervalo $[s_1,\infty)$: de fato, para $t\ge T$,
+\[
+\big|(-t)^k e^{-st}f(t)\big|\le t^k e^{-st}M e^{s_0 t}\le M\,t^k e^{-(s_1-s_0)t},
+\]
+e $\delta:=s_1-s_0>0$, de modo que $t^k e^{-\delta t}$ é integrável em $[T,\infty)$ (decaimento exponencial vence o crescimento polinomial); em $[0,T]$ o integrando é limitado, pois $f$ é contínua por partes e $t^k e^{-st}$ é limitado. Logo
+\[
+g_k(t):=M\,t^k e^{-\delta t}\,\mathbf 1_{[T,\infty)}(t)+C_k\,\mathbf 1_{[0,T)}(t)\in L^1([0,\infty)),
+\]
+onde $C_k=\sup_{[0,T]}\big|t^k e^{-s_1 t}f(t)\big|<\infty$, é um majorante integrável uniforme em $s\in[s_1,\infty)$.
+
+A existência de tal majorante integrável, válido numa vizinhança de cada $s>s_0$ (basta tomar $s_1$ ligeiramente menor que o ponto considerado, ainda $>s_0$), é precisamente a hipótese do teorema de diferenciação sob o sinal de integral (corolário do Teorema da Convergência Dominada): se $\Phi(s,t)$ e $\partial_s\Phi(s,t)$ existem e $|\partial_s\Phi(s,t)|\le g(t)$ com $g\in L^1$ uniformemente em $s$ numa vizinhança de $s$, então $\frac{\d}{\d s}\int\Phi\,\d t=\int\partial_s\Phi\,\d t$.
+
+\emph{Passo base $n=1$.} Com $\Phi(s,t)=e^{-st}f(t)$, temos $\partial_s\Phi=(-t)e^{-st}f(t)$, dominado por $g_1\in L^1$ em $[s_1,\infty)$. Portanto
+\[
+F'(s)=\frac{\d}{\d s}\int_0^\infty e^{-st}f(t)\,\d t
+=\int_0^\infty (-t)e^{-st}f(t)\,\d t=-\,\mathcal{L}[t f(t)](s),
+\]
+para todo $s>s_1$; como $s_1>s_0$ é arbitrário, vale para todo $s>s_0$. Isto é a fórmula com $n=1$, e mostra de passagem que $\mathcal{L}[t f(t)]$ existe (a integral converge, pois dominada por $g_1$).
+
+\emph{Passo indutivo.} Suponha a fórmula válida para $n$, isto é, $F^{(n)}(s)=(-1)^n\mathcal{L}[t^n f](s)=\int_0^\infty(-t)^n e^{-st}f(t)\,\d t$ para $s>s_0$. A função $t^n f(t)$ é também de ordem exponencial $s_0$ (pois $t^n e^{s_0 t}\le e^{(s_0+\varepsilon)t}$ a partir de certo $t$, para qualquer $\varepsilon>0$; mais diretamente, $|t^n f(t)|\le M t^n e^{s_0 t}$ e $t^n e^{-\delta t}\in L^1$ garante a convergência como acima). Aplicando o caso $n=1$ à função $t^n f$, ou diretamente derivando a integral acima sob o sinal (o integrando $\partial_s\big[(-t)^n e^{-st}\big]f=(-t)^{n+1}e^{-st}f$ é dominado por $g_{n+1}\in L^1$ uniformemente em $[s_1,\infty)$),
+\[
+F^{(n+1)}(s)=\frac{\d}{\d s}\int_0^\infty(-t)^n e^{-st}f(t)\,\d t
+=\int_0^\infty(-t)^{n+1}e^{-st}f(t)\,\d t=(-1)^{n+1}\mathcal{L}[t^{n+1}f](s),
+\]
+para $s>s_0$. Isto encerra a indução, e a existência de $\mathcal{L}[t^n f]$ para todo $n$ e todo $s>s_0$ está justificada pela dominação uniforme exibida. Assim,
+\[
+\boxed{\;\mathcal{L}[t^n f(t)](s)=(-1)^n F^{(n)}(s),\qquad s>s_0.\;}
+\qquad\blacksquare
+\]
+
+
+\bigskip\noindent\textbf{Solução 44.}\quad
+Seja $Y(s)=\mathcal{L}[y]$. Com $y(0)=y'(0)=0$ temos $\mathcal{L}[y']=sY$ e $\mathcal{L}[y'']=s^2Y$. O termo $ty'$ trata-se pela regra da derivada em $s$ (Problema 43, $n=1$): multiplicar por $t$ corresponde a $-\dfrac{\d}{\d s}$ aplicado à transformada, logo
+\[
+\mathcal{L}[t y'(t)]=-\frac{\d}{\d s}\,\mathcal{L}[y'(t)]=-\frac{\d}{\d s}\big(sY-y(0)\big)=-\frac{\d}{\d s}(sY)=-\big(Y+sY'\big).
+\]
+Como $\mathcal{L}[4]=4/s$, aplicando $\mathcal{L}$ à equação $y''+ty'-2y=4$:
+\[
+s^2Y-\big(Y+sY'\big)-2Y=\frac4s.
+\]
+Reorganizando em $Y$ e $Y'$:
+\[
+-sY'+\big(s^2-3\big)Y=\frac4s
+\quad\Longrightarrow\quad
+Y'-\Big(s-\frac3s\Big)Y=-\frac{4}{s^2}.
+\]
+Esta é uma EDO linear de \emph{primeira ordem} em $Y(s)$. O fator integrante é
+\[
+\mu(s)=\exp\!\Big(-\!\int\Big(s-\frac3s\Big)\d s\Big)=\exp\!\Big(-\frac{s^2}{2}+3\ln s\Big)=s^3 e^{-s^2/2}.
+\]
+Então $\big(\mu Y\big)'=\mu\cdot\big(-4/s^2\big)=-4 s\,e^{-s^2/2}$, cuja primitiva é
+\[
+\int -4 s\,e^{-s^2/2}\,\d s=4\,e^{-s^2/2}+C.
+\]
+Logo $\mu Y=4 e^{-s^2/2}+C$, isto é,
+\[
+Y(s)=\frac{4 e^{-s^2/2}+C}{s^3 e^{-s^2/2}}=\frac{4}{s^3}+\frac{C}{s^3}\,e^{s^2/2}.
+\]
+Para que $Y$ seja a transformada de Laplace de uma função (de ordem exponencial), é necessário $Y(s)\to0$ quando $s\to\infty$; o termo $\dfrac{C}{s^3}e^{s^2/2}$ explode (cresce mais rápido que qualquer potência), logo devemos tomar $C=0$. Portanto
+\[
+Y(s)=\frac{4}{s^3}\quad\Longrightarrow\quad y(t)=\mathcal{L}^{-1}\Big[\frac{4}{s^3}\Big]=4\cdot\frac{t^2}{2}=2t^2.
+\]
+\[
+\boxed{\,y(t)=2t^2\,}.
+\]
+\emph{Verificação.} $y=2t^2$ dá $y'=4t$, $y''=4$, e $y''+ty'-2y=4+t\cdot4t-2\cdot2t^2=4+4t^2-4t^2=4$; além disso $y(0)=0$, $y'(0)=0$. A solução satisfaz o PVI exatamente.
+
+
+\bigskip\noindent\textbf{Solução 45.}\quad
+Seja $Y(s)=\mathcal{L}[y]$. O termo integral é a convolução $\displaystyle\int_0^t y(\tau)e^{-(t-\tau)}\,\d\tau=(y*e^{-t})(t)$, cuja transformada é o produto das transformadas:
+\[
+\mathcal{L}\big[y*e^{-t}\big]=Y(s)\cdot\mathcal{L}[e^{-t}]=\frac{Y(s)}{s+1}.
+\]
+Com $y(0)=1$ e $y'(0)=-1$,
+\[
+\mathcal{L}[y'']=s^2Y-s\,y(0)-y'(0)=s^2Y-s+1,\qquad
+\mathcal{L}[y']=sY-y(0)=sY-1.
+\]
+Aplicando $\mathcal{L}$ à equação $y''+2y'+y+(y*e^{-t})=0$:
+\[
+\big(s^2Y-s+1\big)+2\big(sY-1\big)+Y+\frac{Y}{s+1}=0.
+\]
+Agrupando os coeficientes de $Y$ e os termos constantes:
+\[
+\Big(s^2+2s+1+\frac{1}{s+1}\Big)Y=s+1.
+\]
+Note que $s^2+2s+1=(s+1)^2$, logo o coeficiente é
+\[
+(s+1)^2+\frac{1}{s+1}=\frac{(s+1)^3+1}{s+1}.
+\]
+Portanto
+\[
+Y(s)=\frac{(s+1)^2}{(s+1)^3+1}.
+\]
+Para inverter, fazemos a substituição $\sigma:=s+1$ (deslocamento em $s$, fator $e^{-t}$). Com $\sigma^3+1=(\sigma+1)(\sigma^2-\sigma+1)$,
+\[
+\frac{\sigma^2}{\sigma^3+1}=\frac{\sigma^2}{(\sigma+1)(\sigma^2-\sigma+1)}.
+\]
+Decompomos em frações parciais: $\dfrac{\sigma^2}{(\sigma+1)(\sigma^2-\sigma+1)}=\dfrac{A}{\sigma+1}+\dfrac{B\sigma+C}{\sigma^2-\sigma+1}$. De $\sigma^2=A(\sigma^2-\sigma+1)+(B\sigma+C)(\sigma+1)$:
+em $\sigma=-1$, $1=A\cdot3\Rightarrow A=\tfrac13$; coeficiente de $\sigma^2$: $1=A+B\Rightarrow B=\tfrac23$; termo constante: $0=A+C\Rightarrow C=-\tfrac13$. Assim
+\[
+\frac{\sigma^2}{\sigma^3+1}=\frac{1/3}{\sigma+1}+\frac{\tfrac23\sigma-\tfrac13}{\sigma^2-\sigma+1}.
+\]
+Para o segundo termo completamos o quadrado: $\sigma^2-\sigma+1=\big(\sigma-\tfrac12\big)^2+\tfrac34$, e escrevemos o numerador em $\sigma-\tfrac12$:
+\[
+\tfrac23\sigma-\tfrac13=\tfrac23\big(\sigma-\tfrac12\big)+\tfrac13-\tfrac13=\tfrac23\big(\sigma-\tfrac12\big).
+\]
+Logo
+\[
+\frac{\sigma^2}{\sigma^3+1}=\frac{1/3}{\sigma+1}+\frac{2}{3}\cdot\frac{\sigma-\tfrac12}{\big(\sigma-\tfrac12\big)^2+\tfrac34}.
+\]
+Em $\sigma$ (variável da transformada), com $\omega=\tfrac{\sqrt3}{2}$,
+\[
+\mathcal{L}^{-1}\Big[\frac{1/3}{\sigma+1}\Big]=\tfrac13 e^{-t},\qquad
+\mathcal{L}^{-1}\Big[\frac{2}{3}\cdot\frac{\sigma-\tfrac12}{(\sigma-\tfrac12)^2+\tfrac34}\Big]=\tfrac23\,e^{t/2}\cos\!\Big(\tfrac{\sqrt3}{2}t\Big).
+\]
+Como $Y(s)$ é a expressão acima avaliada em $\sigma=s+1$, o deslocamento introduz um fator global $e^{-t}$:
+\[
+y(t)=e^{-t}\Big[\tfrac13 e^{-t}+\tfrac23 e^{t/2}\cos\!\Big(\tfrac{\sqrt3}{2}t\Big)\Big]
+=\tfrac13 e^{-2t}+\tfrac23 e^{-t/2}\cos\!\Big(\tfrac{\sqrt3}{2}t\Big).
+\]
+\[
+\boxed{\,y(t)=\dfrac13 e^{-2t}+\dfrac23 e^{-t/2}\cos\!\Big(\dfrac{\sqrt3}{2}\,t\Big)\,}.
+\]
+\emph{Verificação das condições iniciais.} Em $t=0$:
+\[
+y(0)=\tfrac13+\tfrac23=1.\quad\checkmark
+\]
+Derivando, $y'(t)=-\tfrac23 e^{-2t}+\tfrac23\Big[-\tfrac12 e^{-t/2}\cos\big(\tfrac{\sqrt3}{2}t\big)-\tfrac{\sqrt3}{2}e^{-t/2}\sin\big(\tfrac{\sqrt3}{2}t\big)\Big]$, donde
+\[
+y'(0)=-\tfrac23+\tfrac23\big(-\tfrac12\big)=-\tfrac23-\tfrac13=-1.\quad\checkmark
+\]
+As duas condições iniciais são satisfeitas.
+
+
+\bigskip\noindent\textbf{Solução 46.}\quad
+Seja $Y(s)=\mathcal{L}[y]$. A condição $y(0)=0$ deixa $y'(0)$ como parâmetro livre, que fixaremos pela condição integral. Recordamos a identidade
+\[
+\int_0^\infty y(t)\,\d t=\lim_{s\to0^+}\int_0^\infty e^{-st}y(t)\,\d t=\lim_{s\to0^+}Y(s),
+\]
+válida quando a integral imprópria converge. Com $y(0)=0$ e $y'(0)=:a$,
+\[
+\mathcal{L}[y'']=s^2Y-a,\qquad \mathcal{L}[y']=sY,\qquad \mathcal{L}[12 e^{-2t}]=\frac{12}{s+2}.
+\]
+Aplicando $\mathcal{L}$ a $y''+4y'+3y=12 e^{-2t}$:
+\[
+\big(s^2Y-a\big)+4sY+3Y=\frac{12}{s+2}
+\quad\Longrightarrow\quad
+\big(s^2+4s+3\big)Y=\frac{12}{s+2}+a.
+\]
+Como $s^2+4s+3=(s+1)(s+3)$,
+\[
+Y(s)=\frac{12}{(s+2)(s+1)(s+3)}+\frac{a}{(s+1)(s+3)}.
+\]
+\emph{Fixação de $a$.} Usamos $\displaystyle\int_0^\infty y\,\d t=\lim_{s\to0}Y(s)=1$:
+\[
+\lim_{s\to0}Y(s)=\frac{12}{2\cdot1\cdot3}+\frac{a}{1\cdot3}=2+\frac{a}{3}=1
+\quad\Longrightarrow\quad a=-3.
+\]
+Portanto $y'(0)=-3$ e
+\[
+Y(s)=\frac{12}{(s+1)(s+2)(s+3)}-\frac{3}{(s+1)(s+3)}.
+\]
+\emph{Inversão.} Para o primeiro termo, $\dfrac{12}{(s+1)(s+2)(s+3)}=\dfrac{A}{s+1}+\dfrac{B}{s+2}+\dfrac{C}{s+3}$ com
+\[
+A=\frac{12}{(1)(2)}=6,\quad B=\frac{12}{(-1)(1)}=-12,\quad C=\frac{12}{(-2)(-1)}=6.
+\]
+Para o segundo, $\dfrac{3}{(s+1)(s+3)}=\dfrac{3/2}{s+1}-\dfrac{3/2}{s+3}$. Subtraindo,
+\[
+Y(s)=\Big(6-\tfrac32\Big)\frac{1}{s+1}-\frac{12}{s+2}+\Big(6+\tfrac32\Big)\frac{1}{s+3}
+=\frac{9/2}{s+1}-\frac{12}{s+2}+\frac{15/2}{s+3}.
+\]
+Invertendo termo a termo,
+\[
+\boxed{\,y(t)=\tfrac92 e^{-t}-12\,e^{-2t}+\tfrac{15}{2}e^{-3t}\,}.
+\]
+\emph{Verificação.} As condições iniciais:
+\[
+y(0)=\tfrac92-12+\tfrac{15}{2}=\tfrac{9+15}{2}-12=12-12=0\quad\checkmark
+\]
+e, de $y'(t)=-\tfrac92 e^{-t}+24 e^{-2t}-\tfrac{45}{2}e^{-3t}$,
+\[
+y'(0)=-\tfrac92+24-\tfrac{45}{2}=-27+24=-3\quad\checkmark,
+\]
+coerente com $a=-3$. A condição integral:
+\[
+\int_0^\infty y\,\d t=\frac{9/2}{1}-\frac{12}{2}+\frac{15/2}{3}=\tfrac92-6+\tfrac52=7-6=1\quad\checkmark.
+\]
+Finalmente, todos os expoentes são negativos, logo $y(t)\to0$ quando $t\to\infty$ e a integral converge; substituindo na EDO, $y''+4y'+3y$ aplicado a cada $e^{-\lambda t}$ com $\lambda\in\{1,2,3\}$ dá $(\lambda^2-4\lambda+3)e^{-\lambda t}$, que se anula para $\lambda=1,3$ e vale $(4-8+3)=-1$ para $\lambda=2$; assim a contribuição é $(-12)\cdot(-1)e^{-2t}=12 e^{-2t}$, igual ao termo forçante. A solução é consistente.

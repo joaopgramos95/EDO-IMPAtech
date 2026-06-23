@@ -1,0 +1,274 @@
+\bigskip\noindent\textbf{Solução 6.}\quad
+Considere o problema de valor inicial
+\[
+y'=2\sqrt{|y|},\qquad y(0)=0 .
+\]
+O campo $F(t,y)=2\sqrt{|y|}$ é contínuo em $\R^2$, de modo que o teorema de Peano garante existência de solução local; o que falha é a \emph{unicidade}, e exibimos a seguir uma família infinita de soluções distintas.
+
+\emph{A solução trivial.} A função $y\equiv0$ satisfaz $y'=0=2\sqrt{|0|}$ e $y(0)=0$.
+
+\emph{Soluções não triviais.} Procuremos primeiro uma solução com $y\ge0$. Aí a equação é $y'=2\sqrt y$, separável: enquanto $y>0$,
+\[
+\frac{\d y}{2\sqrt y}=\d t\ \Longrightarrow\ \sqrt y=t+\text{const}.
+\]
+A escolha mais simples é $\sqrt y=t$ para $t\ge0$, ou seja $y(t)=t^2$. De fato, para $t\ge0$,
+\[
+\big(t^2\big)'=2t=2\sqrt{t^2}=2\sqrt{|t^2|},
+\]
+e $y(0)=0$. Esta é uma segunda solução, distinta de $y\equiv0$.
+
+\emph{Família a um parâmetro de soluções.} Mais geralmente, para cada $a\ge0$ defina
+\begin{equation}\label{eq:p6-fam}
+y_a(t)=\begin{cases}0, & t\le a,\\[2pt](t-a)^2, & t> a.\end{cases}
+\end{equation}
+Verifiquemos que cada $y_a$ é de classe $C^1$ e resolve o PVI. Para $t<a$, $y_a=0$ e $y_a'=0=2\sqrt{|y_a|}$. Para $t>a$, $y_a=(t-a)^2$ e $y_a'=2(t-a)=2\sqrt{(t-a)^2}=2\sqrt{|y_a|}$ (note $t-a>0$). No ponto de colagem $t=a$, a derivada à esquerda é $0$ e a derivada à direita é $\lim_{t\to a^+}2(t-a)=0$; logo $y_a$ é diferenciável em $a$ com $y_a'(a)=0=2\sqrt{|y_a(a)|}$. Assim $y_a\in C^1(\R)$ resolve a equação, e $y_a(0)=0$ pois $0\le a$. Variando $a\in[0,\infty)$ obtemos infinitas soluções distintas (e $a=+\infty$ corresponde a $y\equiv0$); pode-se ainda colar para a esquerda ou usar ramos negativos $y=-(t-a)^2$, mas \eqref{eq:p6-fam} já basta para exibir não-unicidade.
+
+\emph{Qual hipótese de Picard--Lindelöf falha.} O teorema de Picard--Lindelöf exige que $F(t,y)$ seja contínua e \emph{lipschitziana em $y$} (uniformemente em $t$) numa vizinhança do dado inicial. Aqui $F(t,y)=2\sqrt{|y|}$ \textbf{não é lipschitziana em $y$ em nenhuma vizinhança de $y=0$}: para $y>0$,
+\[
+\frac{|F(t,y)-F(t,0)|}{|y-0|}=\frac{2\sqrt y}{y}=\frac{2}{\sqrt y}\xrightarrow[y\to0^+]{}+\infty ,
+\]
+de modo que não existe constante $L$ com $|F(t,y)-F(t,0)|\le L|y|$ perto de $0$. É exatamente a ausência da condição de Lipschitz junto à reta $y=0$ que permite às soluções ``descolarem'' do equilíbrio em instantes arbitrários, destruindo a unicidade.
+\qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 7.}\quad
+Consideramos
+\[
+y'=3y^{2/3},\qquad y(0)=0,\qquad y(t)\ge0 .
+\]
+O campo $F(t,y)=3y^{2/3}$ (para $y\ge0$) é contínuo, logo há existência por Peano. Determinemos \emph{todas} as soluções com $y\ge0$.
+
+\emph{Forma das soluções não triviais.} Suponha que $y$ é uma solução $\ge0$ e que $y(t_1)>0$ para algum $t_1$. No maior intervalo aberto em torno de $t_1$ onde $y>0$, podemos separar variáveis:
+\[
+\frac{\d y}{3y^{2/3}}=\d t\ \Longrightarrow\ y^{1/3}=t+c\ \Longrightarrow\ y(t)=(t+c)^3 .
+\]
+Substituindo de volta: $\big((t+c)^3\big)'=3(t+c)^2=3\big[(t+c)^3\big]^{2/3}$ desde que $t+c\ge0$ (para que $y\ge0$). Assim, nos ramos em que $y>0$, a solução é necessariamente $y(t)=(t+c)^3$ com $t+c>0$.
+
+\emph{Classificação completa.} Pela condição inicial e por $y\ge0$, montamos as soluções colando o equilíbrio $y\equiv0$ com ramos cúbicos. Fixe $b\ge0$ e defina
+\begin{equation}\label{eq:p7-fam}
+y_b(t)=\begin{cases}0, & t\le b,\\[2pt](t-b)^3, & t> b.\end{cases}
+\end{equation}
+Para $t<b$: $y_b=0$, $y_b'=0=3\cdot0^{2/3}$. Para $t>b$: $y_b=(t-b)^3>0$ e $y_b'=3(t-b)^2=3\big[(t-b)^3\big]^{2/3}$. Em $t=b$: a derivada à esquerda é $0$ e $\lim_{t\to b^+}3(t-b)^2=0$, logo $y_b'(b)=0=3y_b(b)^{2/3}$; portanto $y_b\in C^1(\R)$. Além disso $y_b(0)=0$ pois $b\ge0$. A solução identicamente nula corresponde a $b=+\infty$. Reciprocamente, qualquer solução $\ge0$ é desta forma: seja $b:=\sup\{t\ge0:y\equiv0\text{ em }[0,t]\}$ (com $b=+\infty$ se $y\equiv0$); para $t>b$ a solução é positiva e, pelo cálculo acima, igual a $(t-b)^3$. Assim
+\[
+\boxed{\,y_b(t)=\big(\max\{t-b,\,0\}\big)^3,\quad b\in[0,\infty],\,}
+\]
+são exatamente todas as soluções com $y\ge0$.
+
+\emph{Por que não há contradição com Picard--Lindelöf.} Picard--Lindelöf assegura unicidade local apenas quando $F$ é lipschitziana em $y$ perto do dado inicial. Aqui $F(t,y)=3y^{2/3}$ \textbf{não é lipschitziana em $y$ junto a $y=0$}: para $y>0$,
+\[
+\frac{|F(t,y)-F(t,0)|}{y}=\frac{3y^{2/3}}{y}=\frac{3}{y^{1/3}}\xrightarrow[y\to0^+]{}+\infty .
+\]
+Como a hipótese de Lipschitz falha exatamente onde se dá o dado inicial $y(0)=0$, o teorema simplesmente não se aplica, e a multiplicidade de soluções não o contradiz. (Para dados $y(0)=y_0\neq0$, $F$ é $C^1$ perto de $y_0$ e a solução é localmente única.)
+\qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 8.}\quad
+Dada a equação de segunda ordem
+\[
+x''=\sin x+t\,x',
+\]
+introduzimos a velocidade $v:=x'$. Então $x'=v$ e $v'=x''=\sin x+t\,v$. Pondo $u:=(x,v)\in\R^2$, obtemos o sistema de primeira ordem
+\begin{equation}\label{eq:p8-sys}
+u'=G(t,u),\qquad G(t,x,v):=\big(\,v,\ \sin x+t\,v\,\big),
+\end{equation}
+com dado inicial $u(0)=(x(0),x'(0))=(a,b)$. Uma função $x$ de classe $C^2$ resolve a equação original com $x(0)=a$, $x'(0)=b$ se e somente se $u=(x,x')$ resolve \eqref{eq:p8-sys} com $u(0)=(a,b)$.
+
+\emph{Existência e unicidade local.} Fixe $(a,b)\in\R^2$. Mostramos que $G$ é contínua e localmente lipschitziana na variável $u=(x,v)$, uniformemente em $t$ sobre compactos; o teorema de Picard--Lindelöf dará então existência e unicidade local.
+
+A continuidade de $G$ em $(t,x,v)$ é clara. Para a condição de Lipschitz, fixe $T>0$ e um raio $r>0$, e considere o cilindro
+\[
+K=\{(t,x,v):|t|\le T,\ |x-a|\le r,\ |v-b|\le r\}.
+\]
+Para $(t,x_1,v_1),(t,x_2,v_2)$ em $K$,
+\[
+G(t,x_1,v_1)-G(t,x_2,v_2)=\big(\,v_1-v_2,\ (\sin x_1-\sin x_2)+t(v_1-v_2)\,\big).
+\]
+Como $|\sin x_1-\sin x_2|\le|x_1-x_2|$ (o seno é $1$-lipschitziano, pois $|\sin'|\le1$) e $|t|\le T$ em $K$,
+\[
+\big|G(t,x_1,v_1)-G(t,x_2,v_2)\big|\le|v_1-v_2|+|x_1-x_2|+T|v_1-v_2|
+\le(1+T)\big(|x_1-x_2|+|v_1-v_2|\big).
+\]
+Logo $G$ é lipschitziana em $u$ em $K$ com constante $L=1+T$ (independente de $t$). Pelo teorema de Picard--Lindelöf, existe $\delta>0$ e uma \emph{única} solução $u\in C^1((-\delta,\delta),\R^2)$ de \eqref{eq:p8-sys} com $u(0)=(a,b)$. Traduzindo de volta, sua primeira componente $x$ é a única solução local de $x''=\sin x+t\,x'$ com $x(0)=a$, $x'(0)=b$. Como $(a,b)\in\R^2$ era arbitrário, isto vale para todo dado inicial.
+\qquad$\blacksquare$
+
+\emph{Observação.} De fato $G$ é $C^\infty$ em $(t,x,v)$, o que já implica que seja localmente lipschitziana em $u$; o cálculo explícito acima exibe a constante. Além disso, como $G$ cresce no máximo linearmente em $u$ para cada $t$ fixo ($|G(t,u)|\le|v|+1+|t||v|\le 1+(1+|t|)|u|$), a solução de fato se estende a todo $\R$, embora a existência local já responda ao enunciado.
+
+
+\bigskip\noindent\textbf{Solução 9.}\quad
+Seja $f$ a solução maximal de
+\[
+f'=1+f^2,\qquad f(0)=0 .
+\]
+O campo $(t,z)\mapsto1+z^2$ é $C^1$, logo Picard--Lindelöf garante uma única solução maximal, definida num intervalo aberto maximal $I\ni0$.
+
+\emph{Fórmula de adição.} Fixe $y$ tal que $f(y)$ esteja definido, e considere as duas funções de $x$
+\[
+A(x):=f(x+y),\qquad B(x):=\frac{f(x)+f(y)}{1-f(x)f(y)},
+\]
+definidas para $x$ num intervalo aberto em torno de $0$ onde os denominadores não se anulam. Mostramos que $A$ e $B$ resolvem \emph{o mesmo} PVI de primeira ordem e concluímos por unicidade.
+
+\emph{$A$ resolve.} Pela regra da cadeia, $A'(x)=f'(x+y)=1+f(x+y)^2=1+A(x)^2$, e $A(0)=f(y)$.
+
+\emph{$B$ resolve.} Escreva $g:=f(y)$ (constante) e $p(x):=f(x)$, de modo que $p'=1+p^2$ e
+\[
+B=\frac{p+g}{1-pg}.
+\]
+Derivando pela regra do quociente, com $p'=1+p^2$,
+\[
+B'=\frac{p'(1-pg)-(p+g)(-p'g)}{(1-pg)^2}
+=\frac{p'\big[(1-pg)+(p+g)g\big]}{(1-pg)^2}
+=\frac{(1+p^2)(1+g^2)}{(1-pg)^2}.
+\]
+Por outro lado,
+\[
+1+B^2=1+\frac{(p+g)^2}{(1-pg)^2}=\frac{(1-pg)^2+(p+g)^2}{(1-pg)^2}.
+\]
+Expandindo o numerador:
+\[
+(1-pg)^2+(p+g)^2=1-2pg+p^2g^2+p^2+2pg+g^2=1+p^2+g^2+p^2g^2=(1+p^2)(1+g^2).
+\]
+Logo $1+B^2=\dfrac{(1+p^2)(1+g^2)}{(1-pg)^2}=B'$. Assim $B'=1+B^2$, e $B(0)=\dfrac{p(0)+g}{1-p(0)g}=\dfrac{0+g}{1-0}=g=f(y)$.
+
+\emph{Conclusão por unicidade.} $A$ e $B$ satisfazem ambos $w'=1+w^2$ com $w(0)=f(y)$. Pela unicidade de Picard--Lindelöf, $A\equiv B$ no intervalo comum de definição (em torno de $x=0$), isto é,
+\[
+f(x+y)=\frac{f(x)+f(y)}{1-f(x)f(y)},
+\]
+válido sempre que ambos os lados estejam definidos e $f(x)f(y)\neq1$. (Por continuidade/identidade analítica, a igualdade se estende a todo par $(x,y)$ admissível no domínio de $f$.)
+
+\emph{Resolução explícita.} A equação $f'=1+f^2$ é separável:
+\[
+\frac{\d f}{1+f^2}=\d t\ \Longrightarrow\ \arctan f(t)=t+c .
+\]
+A condição $f(0)=0$ dá $\arctan0=c$, i.e.\ $c=0$. Portanto
+\[
+\boxed{\,f(t)=\tan t\,},\qquad t\in\Big(-\tfrac\pi2,\tfrac\pi2\Big),
+\]
+sendo este o intervalo maximal. \emph{Verificação:} $(\tan t)'=\sec^2 t=1+\tan^2 t=1+f^2$, e $f(0)=\tan0=0$. Consistentemente, a fórmula de adição recupera a identidade trigonométrica $\tan(x+y)=\dfrac{\tan x+\tan y}{1-\tan x\tan y}$.
+\qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 10.}\quad
+Em $[0,1/4]$ definimos
+\[
+u_0(x)=0,\qquad u_{n+1}(x)=x+\int_0^x u_n(t)^2\,\d t .
+\]
+Trata-se da iteração de Picard para o problema integral associado a $u'=u^2$, $u(0)=0$? Não exatamente: o termo $x$ corresponde ao PVI $u'=1+u^2$ com $u(0)=0$, como veremos em (b). Trabalhamos no intervalo $J=[0,1/4]$.
+
+\emph{(a) Convergência uniforme.}
+Seja $\|\cdot\|$ a norma do supremo em $J$. Primeiro, uma cota uniforme. Afirmamos que
+\begin{equation}\label{eq:p10-bound}
+\|u_n\|\le \tfrac12\qquad\text{para todo }n .
+\end{equation}
+De fato, $\|u_0\|=0\le\tfrac12$. Se $\|u_n\|\le\tfrac12$, então para $x\in J$,
+\[
+|u_{n+1}(x)|\le x+\int_0^x u_n(t)^2\,\d t\le \tfrac14+\tfrac14\cdot\tfrac14=\tfrac14+\tfrac1{16}=\tfrac5{16}\le\tfrac12 ,
+\]
+(usamos $x\le\tfrac14$ e $u_n^2\le\tfrac14$ sobre um intervalo de comprimento $\le\tfrac14$). Por indução vale \eqref{eq:p10-bound}.
+
+Agora estimamos as diferenças. Para $x\in J$,
+\[
+u_{n+1}(x)-u_n(x)=\int_0^x\big(u_n(t)^2-u_{n-1}(t)^2\big)\,\d t
+=\int_0^x\big(u_n(t)+u_{n-1}(t)\big)\big(u_n(t)-u_{n-1}(t)\big)\,\d t .
+\]
+Por \eqref{eq:p10-bound}, $|u_n+u_{n-1}|\le1$ em $J$, logo
+\[
+|u_{n+1}(x)-u_n(x)|\le\int_0^x\big|u_n(t)-u_{n-1}(t)\big|\,\d t\le x\,\|u_n-u_{n-1}\|\le\tfrac14\|u_n-u_{n-1}\| .
+\]
+Tomando o supremo em $x$,
+\[
+\|u_{n+1}-u_n\|\le\tfrac14\,\|u_n-u_{n-1}\| .
+\]
+Como $\|u_1-u_0\|=\|u_1\|$ e $u_1(x)=x$ dá $\|u_1\|=\tfrac14$, segue por indução
+\[
+\|u_{n+1}-u_n\|\le\Big(\tfrac14\Big)^{n}\,\|u_1-u_0\|=\Big(\tfrac14\Big)^{n}\cdot\tfrac14=\Big(\tfrac14\Big)^{n+1}.
+\]
+A série $\sum_n\|u_{n+1}-u_n\|\le\sum_n(\tfrac14)^{n+1}<\infty$ converge; pela soma telescópica
+\[
+u_n=u_0+\sum_{k=0}^{n-1}(u_{k+1}-u_k),
+\]
+a sequência $(u_n)$ é uniformemente de Cauchy em $J$ e, sendo $C(J)$ com a norma do supremo um espaço de Banach, converge uniformemente a uma função contínua $u\in C(J)$. \qquad$\blacksquare$
+
+\emph{(b) A função limite.}
+Passamos ao limite na recorrência. Como $u_n\to u$ uniformemente e $|u_n|\le\tfrac12$, também $u_n^2\to u^2$ uniformemente em $J$ (pois $|u_n^2-u^2|=|u_n+u||u_n-u|\le1\cdot\|u_n-u\|$). Portanto a integral comuta com o limite:
+\[
+u(x)=\lim_{n\to\infty}u_{n+1}(x)=x+\lim_{n\to\infty}\int_0^x u_n(t)^2\,\d t=x+\int_0^x u(t)^2\,\d t .
+\]
+O lado direito é uma função $C^1$ de $x$ (integral de função contínua mais $x$); logo $u\in C^1(J)$ e, derivando,
+\[
+\boxed{\,u'(x)=1+u(x)^2,\qquad u(0)=0\,}.
+\]
+Esta é exatamente a equação da Solução 9, cuja única solução é $u(x)=\tan x$. De fato $\tan x$ está definida e satisfaz $|\tan x|\le\tan\tfrac14<\tfrac12$ em $[0,1/4]$ (pois $\tan\tfrac14\approx0{,}2553$), consistente com \eqref{eq:p10-bound}. Assim
+\[
+u(x)=\tan x\qquad\text{em }[0,1/4].
+\]
+\qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 11.}\quad
+Seja $n>1$ inteiro. Pergunta-se se existe $y:[0,\infty)\to\R$ diferenciável com
+\[
+y'(t)=y(t)^n\quad(t\ge0),\qquad y(0)>0 .
+\]
+A resposta é \textbf{não}.
+
+\emph{Argumento.} Suponha que tal $y$ exista; seja $y(0)=y_0>0$. Como $y$ é contínua e $y(0)>0$, $y>0$ num intervalo maximal $[0,T)$ (com $0<T\le\infty$). Nesse intervalo $y'=y^n>0$, logo $y$ é estritamente crescente e $y(t)\ge y_0>0$; em particular $y$ não atinge $0$ por valores positivos, e portanto, enquanto a solução existe e é positiva, ela permanece positiva. Onde $y>0$ podemos separar variáveis: de $y'=y^n$,
+\[
+\frac{\d y}{y^n}=\d t\ \Longrightarrow\ \frac{y^{1-n}}{1-n}=t+c .
+\]
+Usando $y(0)=y_0$: $c=\dfrac{y_0^{1-n}}{1-n}$. Como $n>1$, $1-n<0$; escrevendo $m:=n-1\ge1$,
+\[
+-\frac1{m\,y^{m}}=t-\frac1{m\,y_0^{m}}
+\ \Longrightarrow\
+\frac1{y^{m}}=\frac1{y_0^{m}}-m\,t .
+\]
+Logo
+\begin{equation}\label{eq:p11-blowup}
+y(t)=\Big(y_0^{-m}-m\,t\Big)^{-1/m},\qquad m=n-1\ge1 .
+\end{equation}
+Esta expressão é a \emph{única} solução do PVI enquanto positiva (o campo $z\mapsto z^n$ é $C^1$ em $z>0$, garantindo unicidade local por Picard--Lindelöf). O denominador $y_0^{-m}-mt$ se anula em
+\[
+T^*:=\frac{1}{m\,y_0^{m}}=\frac{1}{(n-1)\,y_0^{\,n-1}}>0,
+\]
+e, à medida que $t\to T^{*-}$, $y_0^{-m}-mt\to0^+$, donde
+\[
+y(t)=\big(y_0^{-m}-mt\big)^{-1/m}\xrightarrow[t\to T^{*-}]{}+\infty .
+\]
+Ou seja, a solução explode em tempo finito $T^*<\infty$: $y$ não pode ser estendida (continuamente, muito menos diferenciavelmente) até $t=T^*$, e a fortiori não a todo $[0,\infty)$. Como qualquer solução diferenciável com $y(0)>0$ coincide com \eqref{eq:p11-blowup} em $[0,T)$ (por unicidade) e esta diverge antes de $T^*$, nenhuma extensão a $[0,\infty)$ é possível.
+
+\emph{Conclusão.}
+\[
+\boxed{\text{Não existe função diferenci\'avel em }[0,\infty)\text{ com }y'=y^n\ (n>1)\text{ e }y(0)>0:}
+\]
+toda tal solução explode no tempo finito $T^*=\dfrac{1}{(n-1)\,y(0)^{\,n-1}}$.
+
+\emph{Observação.} A hipótese $n>1$ é essencial. Para $n=1$ a solução é $y(t)=y_0e^{t}$, definida em todo $[0,\infty)$; o blow-up em tempo finito é fenômeno do crescimento superlinear $y^n$ com $n>1$.
+\qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 12.}\quad
+Buscamos todas as funções diferenciáveis $y$ com
+\[
+y'=\sqrt y,\qquad y(0)=0 .
+\]
+Para que $\sqrt y$ faça sentido (raiz real), exige-se implicitamente $y\ge0$ no domínio. O campo $F(t,y)=\sqrt y$ é contínuo em $\{y\ge0\}$ mas não é lipschitziano em $y$ junto a $y=0$, de sorte que a unicidade falha e há uma família de soluções.
+
+\emph{Não-negatividade.} Como $y$ é diferenciável com $y'=\sqrt y\ge0$, a função $y$ é não-decrescente; com $y(0)=0$ isto força $y(t)\ge0$ para $t\ge0$ e $y(t)\le0$ para $t\le0$. Mas $y\ge0$ é necessário para $\sqrt y$ estar definido, logo, para $t<0$, deve-se ter $y(t)=0$ (único valor $\ge0$ compatível com $y$ não-decrescente e $y(0)=0$). Assim $y\equiv0$ em $(-\infty,0]$, e resta determinar $y$ em $[0,\infty)$.
+
+\emph{Ramos não triviais.} Onde $y>0$ separamos variáveis:
+\[
+\frac{\d y}{\sqrt y}=\d t\ \Longrightarrow\ 2\sqrt y=t+\text{const}\ \Longrightarrow\ y=\Big(\frac{t+\text{const}}{2}\Big)^2=\frac{(t-c)^2}{4},
+\]
+válido enquanto $t-c\ge0$ (para que $2\sqrt y=t-c\ge0$). Verificando: para $t>c$, $\big(\tfrac{(t-c)^2}{4}\big)'=\tfrac{2(t-c)}{4}=\tfrac{t-c}{2}=\sqrt{\tfrac{(t-c)^2}{4}}=\sqrt y$. (O sinal da raiz é positivo pois $t-c>0$.)
+
+\emph{Todas as soluções.} Colando o equilíbrio $y\equiv0$ com um ramo parabólico que se inicia num instante $c\ge0$, defina, para cada $c\in[0,\infty]$,
+\begin{equation}\label{eq:p12-fam}
+y_c(t)=\begin{cases}0, & t\le c,\\[4pt]\dfrac{(t-c)^2}{4}, & t> c,\end{cases}
+\end{equation}
+com a convenção $y_\infty\equiv0$. Cada $y_c$ é diferenciável: para $t<c$, $y_c'=0=\sqrt{y_c}$; para $t>c$, $y_c'=\tfrac{t-c}{2}=\sqrt{y_c}$; em $t=c$, a derivada à esquerda é $0$ e $\lim_{t\to c^+}\tfrac{t-c}{2}=0$, logo $y_c'(c)=0=\sqrt{y_c(c)}$. Além disso $y_c(0)=0$ (pois $c\ge0$) e $y_c\ge0$. Reciprocamente, toda solução é desta forma: seja $c:=\sup\{t\ge0:y\equiv0\text{ em }[0,t]\}$ (com $c=\infty$ se $y\equiv0$ em $[0,\infty)$); para $t>c$ vale $y>0$ e, pelo cálculo acima junto à continuidade de $y$ em $c$ (onde $y(c)=0$, forçando a constante a ser $c$), tem-se $y(t)=\tfrac{(t-c)^2}{4}$. Portanto a família \eqref{eq:p12-fam} é \emph{exatamente} o conjunto das soluções diferenciáveis:
+\[
+\boxed{\,y_c(t)=\dfrac{\big(\max\{t-c,\,0\}\big)^2}{4},\qquad c\in[0,\infty].\,}
+\]
+Em particular há infinitas soluções (uma para cada instante de ``descolamento'' $c\ge0$, mais a solução nula), evidenciando a não-unicidade decorrente da falha da condição de Lipschitz em $y=0$.
+
+\emph{Verificação da condição inicial.} Para qualquer $c\ge0$, $0\le0$ implica $y_c(0)=0$, como requerido; e a equação $y'=\sqrt y$ foi checada em cada ramo e no ponto de colagem.
+\qquad$\blacksquare$

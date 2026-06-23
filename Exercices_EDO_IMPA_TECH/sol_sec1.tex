@@ -1,0 +1,158 @@
+\bigskip\noindent\textbf{Solução 1.}\quad
+Escrevendo $M(x,y)=2xy+e^x$ e $N(x,y)=x^2+\cos y$, ambas de classe $C^\infty$ em $\R^2$, verificamos a condição de exatidão:
+\[
+\frac{\partial M}{\partial y}=2x=\frac{\partial N}{\partial x}.
+\]
+Como o domínio $\R^2$ é simplesmente conexo, a forma é exata e existe um potencial $F$ com $F_x=M$ e $F_y=N$. Integrando $F_x=2xy+e^x$ em $x$,
+\[
+F(x,y)=x^2y+e^x+g(y),
+\]
+para alguma função $g$. Derivando em $y$ e impondo $F_y=N$,
+\[
+F_y=x^2+g'(y)=x^2+\cos y\ \Longrightarrow\ g'(y)=\cos y\ \Longrightarrow\ g(y)=\sin y,
+\]
+a menos de constante. Logo as soluções são as curvas de nível de
+\[
+F(x,y)=x^2y+e^x+\sin y=C.
+\]
+A condição inicial $y(0)=0$ fornece $F(0,0)=0+1+0=1$, donde $C=1$. A solução é dada implicitamente por
+\[
+\boxed{\,x^2y+e^x+\sin y=1\,}.
+\]
+
+Para decidir se esta relação define $y$ como função de $x$ numa vizinhança de $x=0$, aplicamos o teorema da função implícita à equação $\Phi(x,y):=F(x,y)-1=0$ no ponto $(0,0)$, que a satisfaz. Como
+\[
+\frac{\partial \Phi}{\partial y}(x,y)=x^2+\cos y,
+\qquad
+\frac{\partial \Phi}{\partial y}(0,0)=0+\cos 0=1\neq 0,
+\]
+e $\Phi\in C^\infty$, o teorema garante uma única função $y=\varphi(x)$ de classe $C^\infty$ definida numa vizinhança de $x=0$, com $\varphi(0)=0$ e satisfazendo $\Phi(x,\varphi(x))=0$. Portanto a relação implícita define, de fato, $y$ localmente como função de $x$ em torno de $x=0$. Sua derivada nesse ponto é
+\[
+\varphi'(0)=-\frac{\Phi_x(0,0)}{\Phi_y(0,0)}=-\frac{(2xy+e^x)\big|_{(0,0)}}{(x^2+\cos y)\big|_{(0,0)}}=-\frac{1}{1}=-1.
+\]
+
+\bigskip\noindent\textbf{Solução 2.}\quad
+A equação
+\[
+y'+\frac{2t}{1+t^2}\,y=\frac{1}{1+t^2}
+\]
+é linear de primeira ordem. O coeficiente $p(t)=\dfrac{2t}{1+t^2}$ e o termo $q(t)=\dfrac{1}{1+t^2}$ são contínuos em todo $\R$. Um fator integrante é
+\[
+\mu(t)=\exp\!\left(\int \frac{2t}{1+t^2}\,\d t\right)=\exp\!\big(\ln(1+t^2)\big)=1+t^2.
+\]
+Multiplicando a equação por $\mu$, o lado esquerdo torna-se uma derivada exata:
+\[
+\big((1+t^2)\,y\big)'=(1+t^2)\,y'+2t\,y=(1+t^2)\!\left(y'+\frac{2t}{1+t^2}y\right)=(1+t^2)\cdot\frac{1}{1+t^2}=1.
+\]
+Integrando,
+\[
+(1+t^2)\,y=t+C,\qquad\text{ou seja}\qquad y(t)=\frac{t+C}{1+t^2}.
+\]
+A condição inicial $y(0)=2$ dá $\dfrac{0+C}{1}=2$, logo $C=2$ e
+\[
+\boxed{\,y(t)=\dfrac{t+2}{1+t^2}\,}.
+\]
+
+\emph{Verificação.} Tem-se $y(0)=\dfrac{2}{1}=2$. Além disso,
+\[
+y'(t)=\frac{(1+t^2)-(t+2)(2t)}{(1+t^2)^2}=\frac{1-4t-t^2}{(1+t^2)^2},
+\]
+e
+\[
+y'+\frac{2t}{1+t^2}y=\frac{1-4t-t^2}{(1+t^2)^2}+\frac{2t(t+2)}{(1+t^2)^2}=\frac{1-4t-t^2+2t^2+4t}{(1+t^2)^2}=\frac{1+t^2}{(1+t^2)^2}=\frac{1}{1+t^2},
+\]
+como requerido.
+
+\emph{Intervalo maximal.} Como $p$ e $q$ são contínuos em todo $\R$, a teoria das equações lineares garante que a solução do PVI existe e é única em todo o eixo. A fórmula obtida está, de fato, definida para todo $t\in\R$ (o denominador $1+t^2$ nunca se anula). Logo o intervalo maximal é
+\[
+\boxed{\,(-\infty,+\infty)\,}.
+\]
+
+\bigskip\noindent\textbf{Solução 3.}\quad
+A equação $y'=x(1+y^2)$ é separável. Como $1+y^2\ge 1>0$, podemos dividir por $1+y^2$:
+\[
+\frac{y'}{1+y^2}=x\ \Longrightarrow\ \int\frac{\d y}{1+y^2}=\int x\,\d x\ \Longrightarrow\ \arctan y=\frac{x^2}{2}+C.
+\]
+A condição inicial $y(0)=1$ dá $\arctan 1=0+C$, isto é, $C=\dfrac{\pi}{4}$. Assim
+\[
+\arctan y=\frac{x^2}{2}+\frac{\pi}{4},
+\]
+e, enquanto o argumento permanece em $\left(-\tfrac\pi2,\tfrac\pi2\right)$, podemos inverter:
+\[
+\boxed{\,y(x)=\tan\!\left(\frac{x^2}{2}+\frac{\pi}{4}\right)}.
+\]
+
+\emph{Verificação.} Em $x=0$, $y(0)=\tan\!\big(\tfrac\pi4\big)=1$. Derivando,
+\[
+y'(x)=\sec^2\!\left(\frac{x^2}{2}+\frac{\pi}{4}\right)\cdot x=x\left(1+\tan^2\!\left(\frac{x^2}{2}+\frac{\pi}{4}\right)\right)=x\,(1+y^2),
+\]
+usando $\sec^2\theta=1+\tan^2\theta$, o que confirma a equação.
+
+\emph{Intervalo maximal.} A função $\tan$ está definida (e é suave) precisamente enquanto seu argumento pertence a $\left(-\tfrac\pi2,\tfrac\pi2\right)$. Como $\dfrac{x^2}{2}+\dfrac{\pi}{4}\ge \dfrac{\pi}{4}>-\dfrac{\pi}{2}$ sempre, a restrição efetiva é a cota superior:
+\[
+\frac{x^2}{2}+\frac{\pi}{4}<\frac{\pi}{2}\ \Longleftrightarrow\ \frac{x^2}{2}<\frac{\pi}{4}\ \Longleftrightarrow\ x^2<\frac{\pi}{2}\ \Longleftrightarrow\ |x|<\sqrt{\tfrac{\pi}{2}}.
+\]
+Quando $x\to \pm\sqrt{\pi/2}$, o argumento tende a $\tfrac\pi2$ e $y(x)\to+\infty$: a solução explode em tempo finito. Portanto o intervalo maximal contendo $x=0$ é
+\[
+\boxed{\ \left(-\sqrt{\tfrac{\pi}{2}},\ \sqrt{\tfrac{\pi}{2}}\right)\ }.
+\]
+
+\bigskip\noindent\textbf{Solução 4.}\quad
+A equação $y'+y=e^{-t}$ é linear com coeficiente constante. Um fator integrante é $\mu(t)=e^{t}$. Multiplicando,
+\[
+\big(e^{t}y\big)'=e^{t}y'+e^{t}y=e^{t}\big(y'+y\big)=e^{t}\cdot e^{-t}=1.
+\]
+Integrando,
+\[
+e^{t}y=t+C\ \Longrightarrow\ y(t)=(t+C)\,e^{-t}.
+\]
+A condição inicial $y(0)=2$ dá $C=2$, logo
+\[
+\boxed{\,y(t)=(t+2)\,e^{-t}\,}.
+\]
+
+\emph{Verificação.} Em $t=0$, $y(0)=2\cdot 1=2$. Ademais,
+\[
+y'(t)=e^{-t}-(t+2)e^{-t}=-(t+1)e^{-t},
+\qquad
+y'+y=-(t+1)e^{-t}+(t+2)e^{-t}=e^{-t},
+\]
+confirmando a equação.
+
+\emph{Comportamento quando $t\to+\infty$.} Como o decaimento exponencial domina o crescimento linear,
+\[
+\lim_{t\to+\infty}(t+2)e^{-t}=0.
+\]
+Logo $y(t)\to 0$. Mais precisamente, $y(t)>0$ para todo $t$, e $y'(t)=-(t+1)e^{-t}<0$ para $t>-1$, de modo que a solução é positiva e estritamente decrescente em $[0,+\infty)$, aproximando-se monotonamente de $0$.
+
+\bigskip\noindent\textbf{Solução 5.}\quad
+Com $M(x,y)=y\cos x+2x$ e $N(x,y)=\sin x$, verificamos a exatidão:
+\[
+\frac{\partial M}{\partial y}=\cos x=\frac{\partial N}{\partial x}.
+\]
+Procuramos um potencial $F$ com $F_x=M$ e $F_y=N$. De $F_y=\sin x$, integrando em $y$,
+\[
+F(x,y)=y\sin x+h(x),
+\]
+para alguma função $h$. Derivando em $x$ e impondo $F_x=M$,
+\[
+F_x=y\cos x+h'(x)=y\cos x+2x\ \Longrightarrow\ h'(x)=2x\ \Longrightarrow\ h(x)=x^2.
+\]
+Portanto as soluções são as curvas de nível de
+\[
+F(x,y)=y\sin x+x^2=C.
+\]
+A condição inicial $y(0)=1$ dá $F(0,1)=1\cdot \sin 0+0=0$, logo $C=0$ e a solução é dada implicitamente por
+\[
+y\sin x+x^2=0.
+\]
+
+Resolvendo explicitamente para $y$ onde $\sin x\neq 0$,
+\[
+\boxed{\,y(x)=-\frac{x^2}{\sin x}\,}.
+\]
+Esta fórmula está definida e é suave em torno de $x=0$ no intervalo $(-\pi,\pi)$, do qual se exclui o ponto isolado $x=0$; ali, contudo, o limite
+\[
+\lim_{x\to 0}\left(-\frac{x^2}{\sin x}\right)=\lim_{x\to 0}\left(-x\cdot\frac{x}{\sin x}\right)=0,
+\]
+mostra que $y$ admite extensão contínua a $x=0$ com $y(0)=0$. Note, porém, que a curva de nível $y\sin x+x^2=0$ passa por $(0,1)$ — o ponto inicial — porque em $x=0$ a relação $y\cdot 0+0=0$ se satisfaz para \emph{qualquer} valor de $y$; em particular para $y=1$. Assim a condição inicial $y(0)=1$ é compatível com a curva implícita, mas o ramo que define $y$ como função de $x$ numa vizinhança de $x=0$ é o dado pela expressão acima, com $y(x)\to 0$ quando $x\to 0$. Isto reflete que $F_y(0,1)=\sin 0=0$: o teorema da função implícita não se aplica em $(0,1)$, e a curva $\{y\sin x+x^2=0\}$ tem, em $x=0$, a reta vertical $x=0$ inteira como parte do conjunto de nível, além do ramo $y=-x^2/\sin x$.

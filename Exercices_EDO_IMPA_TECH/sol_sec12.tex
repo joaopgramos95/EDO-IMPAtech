@@ -1,0 +1,334 @@
+\bigskip\noindent\textbf{Solução 59.}\quad
+Recordemos que, para $v=(v_1,v_2)$ e $w=(w_1,w_2)$, $\det(v,w)=v_1w_2-v_2w_1$, e que a curvatura com sinal de $\gamma=(\gamma_1,\gamma_2)$ é
+\[
+\kappa=\frac{\det(\gamma',\gamma'')}{\|\gamma'\|^3}
+=\frac{\gamma_1'\gamma_2''-\gamma_2'\gamma_1''}{\big((\gamma_1')^2+(\gamma_2')^2\big)^{3/2}} .
+\]
+Esta quantidade é \emph{invariante por reparametrização} que preserva a orientação: se $\gamma=\sigma\circ\varphi$ com $\varphi'>0$, a regra da cadeia mostra que numerador e denominador são ambos multiplicados por $(\varphi')^3$, que se cancela. Por isso podemos calcular $\kappa$ em qualquer parametrização conveniente.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Para o gráfico $y=f(x)$ tomamos a parametrização natural $\gamma(x)=(x,f(x))$. Então
+\[
+\gamma'(x)=(1,f'(x)),\qquad \gamma''(x)=(0,f''(x)),
+\]
+de modo que
+\[
+\det(\gamma',\gamma'')=\det\begin{pmatrix}1&0\\ f'&f''\end{pmatrix}=1\cdot f''-f'\cdot0=f''(x),
+\qquad
+\|\gamma'(x)\|=\sqrt{1+f'(x)^2}.
+\]
+Logo
+\[
+\boxed{\,\kappa(x)=\dfrac{f''(x)}{\bigl(1+f'(x)^2\bigr)^{3/2}}\,}.
+\]
+O sinal de $\kappa$ coincide com o de $f''$: a curva é convexa ($\kappa>0$) onde $f$ é convexa, côncava onde $f$ é côncava.
+
+\item \emph{Reta.} Parametrizando $\gamma(t)=p+tv$ com $v\neq0$, temos $\gamma'=v$ constante e $\gamma''=0$, donde $\det(\gamma',\gamma'')=0$ e
+\[
+\boxed{\,\kappa\equiv0\,}.
+\]
+Geometricamente, a direção tangente nunca muda; curvatura nula caracteriza, de fato, os segmentos de reta (ver Problema~61(b)).
+
+\emph{Circunferência de raio $R$.} Parametrizando $\gamma(t)=c+R(\cos t,\sin t)$,
+\[
+\gamma'(t)=R(-\sin t,\cos t),\qquad \gamma''(t)=R(-\cos t,-\sin t),
+\]
+\[
+\det(\gamma',\gamma'')
+=\det\begin{pmatrix}-R\sin t&-R\cos t\\ R\cos t&-R\sin t\end{pmatrix}
+=R^2(\sin^2t+\cos^2t)=R^2,
+\qquad \|\gamma'\|=R,
+\]
+logo
+\[
+\boxed{\,\kappa=\dfrac{R^2}{R^3}=\dfrac1R\,}.
+\]
+Percorrida no sentido oposto (horário) obteríamos $\kappa=-1/R$. Assim a curvatura de uma circunferência é constante e igual ao inverso do raio (a menos de sinal, dado pela orientação): quanto menor o raio, maior a curvatura, em acordo com a intuição.
+
+\item Na espiral de Euler a curva está parametrizada por comprimento de arco e $\kappa(s)=s$. Como $\theta'(s)=\kappa(s)=s$ e podemos tomar $\theta(0)=0$, integrando,
+\[
+\theta(s)=\int_0^s u\,\d u=\frac{s^2}{2}.
+\]
+Para uma curva p.c.a.\ o vetor tangente unitário é $\gamma'(s)=(\cos\theta(s),\sin\theta(s))$ (ver Problema~60). Logo
+\[
+x'(s)=\cos\!\Big(\frac{s^2}{2}\Big),\qquad y'(s)=\sin\!\Big(\frac{s^2}{2}\Big),
+\]
+e, fixando $\gamma(0)=(0,0)$, integramos termo a termo:
+\[
+\boxed{\,\gamma(s)=\left(\int_0^s\cos\!\frac{u^2}{2}\,\d u,\ \int_0^s\sin\!\frac{u^2}{2}\,\d u\right)\,}.
+\]
+Estas são exatamente as integrais de Fresnel. Como $\|\gamma'\|=1$ por construção, a parametrização é de fato por comprimento de arco, e a curvatura recuperada é $\theta'(s)=s$, como desejado. Quando $s\to+\infty$ as integrais de Fresnel convergem (a $\sqrt{\pi/2}\,$, após reescalonamento), e a curva espirala em torno de um ponto-limite, com curvatura crescendo sem cota; analogamente para $s\to-\infty$.
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 60.}\quad
+Dada $\kappa:[0,L]\to\R$ contínua, $\theta_0\in\R$ e $p_0\in\R^2$, definimos
+\[
+\theta(s)=\theta_0+\int_0^s\kappa(u)\,\d u,\qquad
+\gamma(s)=p_0+\int_0^s\big(\cos\theta(u),\sin\theta(u)\big)\,\d u,
+\]
+de modo que $\gamma'(s)=(\cos\theta(s),\sin\theta(s))$ e $\gamma(0)=p_0$. Como $\kappa$ é contínua, $\theta\in C^1$ e $\gamma\in C^2$.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Diretamente,
+\[
+|\gamma'(s)|=\sqrt{\cos^2\theta(s)+\sin^2\theta(s)}=1
+\]
+para todo $s$. Logo o comprimento de $\gamma$ entre $0$ e $s$ é $\int_0^s|\gamma'|=s$, isto é, $s$ é o parâmetro de comprimento de arco. \qquad$\blacksquare$
+
+\item Sendo $\gamma$ p.c.a., $\|\gamma'\|\equiv1$ e a curvatura com sinal reduz-se a $\kappa_\gamma=\det(\gamma',\gamma'')$. Derivando $\gamma'(s)=(\cos\theta,\sin\theta)$,
+\[
+\gamma''(s)=\theta'(s)\,(-\sin\theta,\cos\theta).
+\]
+Portanto
+\[
+\det(\gamma',\gamma'')
+=\det\begin{pmatrix}\cos\theta & -\theta'\sin\theta\\ \sin\theta & \theta'\cos\theta\end{pmatrix}
+=\theta'\cos^2\theta+\theta'\sin^2\theta=\theta'(s).
+\]
+Como $\theta'(s)=\kappa(s)$ por construção, concluímos que a curvatura com sinal de $\gamma$ é exatamente $\kappa(s)$. Em particular, $\gamma''=\kappa\,N$ com $N=(-\sin\theta,\cos\theta)$ o normal unitário obtido girando $T=\gamma'$ de $+\pi/2$. \qquad$\blacksquare$
+
+\item \emph{(Teorema fundamental das curvas planas.)} Sejam $\gamma_1,\gamma_2:[0,L]\to\R^2$ duas curvas $C^2$ parametrizadas por comprimento de arco com a mesma curvatura com sinal $\kappa$. Escrevendo $T_i=\gamma_i'$ e $N_i=(-(\gamma_i')_2,(\gamma_i')_1)$, as equações de Frenet planas (parte (b) e Problema~61(a)) dão
+\[
+T_i'=\kappa\,N_i,\qquad N_i'=-\kappa\,T_i,\qquad i=1,2.
+\]
+Após aplicar a $\gamma_2$ a rotação que leva $T_2(0)$ em $T_1(0)$ (uma rotação aplicada a uma curva preserva a curvatura com sinal e leva o referencial de Frenet no referencial girado) e a translação que leva o seu ponto inicial em $\gamma_1(0)$, podemos supor
+\[
+\gamma_1(0)=\gamma_2(0),\qquad T_1(0)=T_2(0),
+\]
+e então também $N_1(0)=N_2(0)$, pois $N_i$ é obtido de $T_i$ por uma rotação fixa de $+\pi/2$.
+
+Considere a função de energia
+\[
+\Phi(s):=|T_1(s)-T_2(s)|^2+|N_1(s)-N_2(s)|^2\ \ge 0,\qquad \Phi(0)=0.
+\]
+Derivando e usando as equações de Frenet,
+\[
+\tfrac12\Phi'
+=\langle T_1-T_2,\,T_1'-T_2'\rangle+\langle N_1-N_2,\,N_1'-N_2'\rangle
+=\kappa\,\langle T_1-T_2,\,N_1-N_2\rangle-\kappa\,\langle N_1-N_2,\,T_1-T_2\rangle=0.
+\]
+Logo $\Phi$ é constante, e como $\Phi(0)=0$ temos $\Phi\equiv0$. Em particular $T_1(s)=T_2(s)$ para todo $s$. Integrando,
+\[
+\gamma_1(s)-\gamma_2(s)=\gamma_1(0)-\gamma_2(0)+\int_0^s\big(T_1-T_2\big)=0.
+\]
+Portanto $\gamma_1\equiv\gamma_2$: as duas curvas coincidem. Assim a curvatura com sinal determina a curva a menos de um movimento rígido direto, e a parte (a)--(b) mostra que toda função contínua $\kappa$ é, de fato, a curvatura de alguma curva. \qquad$\blacksquare$
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 61.}\quad
+Seja $\gamma:[0,L]\to\R^2$ de classe $C^2$, parametrizada por comprimento de arco ($\|\gamma'\|\equiv1$), com curvatura com sinal constante $\kappa\equiv k$. Pomos
+\[
+T(s)=\gamma'(s),\qquad N(s)=(-T_2(s),T_1(s)),
+\]
+de modo que $\{T,N\}$ é, em cada $s$, uma base ortonormal positivamente orientada ($N$ é $T$ girado de $+\pi/2$).
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Como $\|T\|^2=T_1^2+T_2^2\equiv1$, derivando obtemos $\langle T,T'\rangle=0$: o vetor $T'$ é ortogonal a $T$, logo é múltiplo de $N$. Escreva $T'=\lambda N$ para alguma função $\lambda$. Então
+\[
+\det(T,T')=\det(T,\lambda N)=\lambda\,\det(T,N)=\lambda\big(T_1\cdot T_1-T_2\cdot(-T_2)\big)=\lambda(T_1^2+T_2^2)=\lambda.
+\]
+Por outro lado, sendo $\gamma$ p.c.a., $\det(T,T')=\det(\gamma',\gamma'')=\kappa=k$. Logo $\lambda=k$ e
+\[
+\boxed{\,T'(s)=k\,N(s)\,}.
+\]
+Para $N$, derivamos $N=(-T_2,T_1)$:
+\[
+N'=(-T_2',T_1')=-(T_1',T_2')\ \text{girado}\ \ \Longrightarrow\ \
+N'=(-(kN)_2,(kN)_1).
+\]
+Como $N=(-T_2,T_1)$, temos $N_1=-T_2$, $N_2=T_1$, e usando $T'=kN=k(-T_2,T_1)$,
+\[
+N'=(-T_2',\,T_1')=(-kT_1,\,-kT_2)=-k\,(T_1,T_2)=-k\,T.
+\]
+Portanto
+\[
+\boxed{\,N'(s)=-k\,T(s)\,}.
+\]
+Estas são as equações de Frenet planas no caso de curvatura constante. \qquad$\blacksquare$
+
+\item Se $k=0$, então $T'\equiv0$ por (a), logo $T(s)=T(0)=:v$ é um vetor constante unitário. Integrando $\gamma'=v$,
+\[
+\gamma(s)=\gamma(0)+s\,v,
+\]
+que é a parametrização de uma reta. Assim a imagem de $\gamma$ está contida na reta $\{\gamma(0)+t\,v:t\in\R\}$. \qquad$\blacksquare$
+
+\item Suponha $k\neq0$ e defina o ``centro''
+\[
+c(s):=\gamma(s)+\frac1k\,N(s).
+\]
+Derivando e usando (a),
+\[
+c'(s)=\gamma'(s)+\frac1k\,N'(s)=T(s)+\frac1k\,(-k\,T(s))=T(s)-T(s)=0.
+\]
+Logo $c(s)\equiv c$ é constante. Daí
+\[
+\gamma(s)-c=-\frac1k\,N(s)\quad\Longrightarrow\quad
+\|\gamma(s)-c\|=\frac1{|k|}\,\|N(s)\|=\frac1{|k|},
+\]
+pois $\|N\|\equiv1$. Portanto todo ponto da imagem de $\gamma$ dista exatamente $1/|k|$ do ponto fixo $c$: a imagem está contida na circunferência de centro $c$ e raio $1/|k|$. Isto recupera, em sentido inverso, o cálculo do Problema~59(b): curvatura com sinal constante não nula caracteriza os arcos de circunferência. \qquad$\blacksquare$
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 62.}\quad
+Seja $\gamma:[0,L]\to\R^2$ suave, simples, fechada e estritamente convexa, parametrizada por comprimento de arco, com curvatura com sinal $\kappa>0$ em todo ponto. Como $\|\gamma'\|\equiv1$, podemos escrever
+\[
+\gamma'(s)=(\cos\theta(s),\sin\theta(s)),
+\]
+onde $\theta$ é uma escolha \emph{contínua} (de fato $C^1$) do ângulo tangente, com $\theta'(s)=\kappa(s)$ (Problema~60(b)). A função $s\mapsto\gamma'(s)$ é a aplicação tangente; identificando vetores unitários com pontos do círculo $S^1$, ela é a chamada \emph{aplicação de Gauss} ou \emph{indicatriz tangente}, e $\theta$ é um seu levantamento contínuo a $\R$.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Como $\gamma$ é fechada e suave (de classe $C^1$ com extremidades coladas suavemente), $\gamma'(L)=\gamma'(0)$, isto é, os vetores tangentes inicial e final coincidem. Para um levantamento contínuo do ângulo isto força
+\[
+\theta(L)-\theta(0)=2\pi m
+\]
+para algum inteiro $m\in\mathbb{Z}$ --- o \emph{índice de rotação} (ou número de voltas) da curva. O teorema do índice de rotação de Hopf (\emph{Umlaufsatz}) afirma que, para uma curva fechada \emph{simples} (sem auto-interseções), $m=\pm1$, o sinal dependendo da orientação de percurso.
+
+No nosso caso o sinal é determinado pela convexidade: como $\theta'(s)=\kappa(s)>0$ para todo $s$, a função $\theta$ é \emph{estritamente crescente}, logo $\theta(L)-\theta(0)>0$, forçando $m\ge1$. Pelo Umlaufsatz $m=1$. Concluímos que, ao percorrer a curva uma vez, a direção tangente dá exatamente uma volta completa:
+\[
+\boxed{\,\theta(L)=\theta(0)+2\pi\,}.
+\]
+Intuitivamente: numa curva convexa fechada percorrida no sentido positivo, a tangente gira sempre no mesmo sentido (pois $\kappa>0$) e, por ser a curva simples e fechada, perfaz precisamente uma única revolução. \qquad$\blacksquare$
+
+\item Integrando a relação intrínseca $\theta'=\kappa$ sobre $[0,L]$ e usando (a),
+\[
+\int_0^L\kappa(s)\,\d s=\int_0^L\theta'(s)\,\d s=\theta(L)-\theta(0)=2\pi.
+\]
+Logo
+\[
+\boxed{\,\int_0^L\kappa(s)\,\d s=2\pi\,}.
+\]
+Esta é a forma elementar do teorema de Gauss--Bonnet no plano: a curvatura total de uma curva convexa simples fechada é $2\pi$. \qquad$\blacksquare$
+
+\item A convexidade estrita equivale a $\kappa>0$ em todo ponto, o que torna $\theta$ \emph{estritamente monótona crescente}. Suponha, por absurdo, que a tangente desse $m\ge2$ voltas, isto é, $\theta(L)-\theta(0)=2\pi m\ge4\pi$. Por monotonia estrita e pelo teorema do valor intermediário, $\theta$ assumiria \emph{cada} valor angular (módulo $2\pi$) em pelo menos $m\ge2$ instantes distintos $s_1<s_2$ em $[0,L)$; nesses dois instantes os vetores tangentes $\gamma'(s_1),\gamma'(s_2)$ seriam paralelos e \emph{de mesmo sentido}. Para uma curva convexa simples isso é impossível com $s_1\neq s_2$ no interior do período: o teorema do índice de rotação garante que, sendo a curva simples, o levantamento contínuo varre o intervalo $[\theta(0),\theta(0)+2\pi)$ uma única vez, cada direção tangente positivamente orientada ocorrendo em um único instante (geometricamente, uma curva convexa admite, em cada direção, exatamente uma reta tangente com aquele sentido). Voltas adicionais exigiriam que a curva se cruzasse ou perdesse a convexidade ($\kappa$ mudaria de sinal para ``desfazer'' parte da rotação), contradizendo as hipóteses. Portanto $m=1$, sem voltas adicionais. \qquad$\blacksquare$
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 63.}\quad
+Sejam $a>0$, $L>2a$. Procuramos maximizar a área
+\[
+A[y]=\int_{-a}^a y(x)\,\d x
+\]
+entre as funções suaves $y:[-a,a]\to[0,\infty)$ com $y(\pm a)=0$ e \emph{comprimento prescrito}
+\[
+\mathcal L[y]=\int_{-a}^a\sqrt{1+y'(x)^2}\,\d x=L.
+\]
+A condição $L>2a$ garante que o vínculo é compatível com gráficos não triviais (o segmento reto $y\equiv0$ tem comprimento $2a<L$). Suponhamos, conforme o enunciado, que exista um maximizador $y$, suave e positivo em $(-a,a)$.
+
+\medskip
+\noindent\emph{Variação com vínculo (multiplicador de Lagrange).}
+Como $\mathcal L[y]=L$ é uma restrição integral (isoperimétrica), o método dos multiplicadores de Lagrange para o cálculo das variações afirma: existe uma constante $\lambda\in\R$ tal que $y$ é ponto crítico do funcional aumentado
+\[
+J[y]:=A[y]-\lambda\,\mathcal L[y]=\int_{-a}^a\Big(y-\lambda\sqrt{1+y'^2}\Big)\,\d x=:\int_{-a}^a F(y,y')\,\d x,
+\]
+\emph{sem} vínculo, entre as funções com $y(\pm a)=0$. (Justificativa: para qualquer par de perturbações admissíveis $\eta_1,\eta_2$ que se anulam em $\pm a$, considere $y+t_1\eta_1+t_2\eta_2$; a condição de extremo de $A$ sujeito a $\mathcal L=L$ na vizinhança de $y$, supondo $\delta\mathcal L\not\equiv0$, equivale, pelo teorema dos multiplicadores em dimensão finita aplicado a $(t_1,t_2)\mapsto(A,\mathcal L)$, à existência de $\lambda$ com $\delta A=\lambda\,\delta\mathcal L$.)
+
+\medskip
+\noindent\emph{Equação de Euler--Lagrange.}
+Para $F(y,y')=y-\lambda\sqrt{1+y'^2}$ temos
+\[
+F_y=1,\qquad F_{y'}=-\lambda\,\frac{y'}{\sqrt{1+y'^2}}.
+\]
+A equação de Euler--Lagrange $\dfrac{\d}{\d x}F_{y'}=F_y$ fica
+\begin{equation}\label{eq:63EL}
+-\lambda\,\frac{\d}{\d x}\!\left(\frac{y'}{\sqrt{1+y'^2}}\right)=1.
+\end{equation}
+Calculando a derivada,
+\[
+\frac{\d}{\d x}\!\left(\frac{y'}{\sqrt{1+y'^2}}\right)
+=\frac{y''\sqrt{1+y'^2}-y'\cdot\dfrac{y'y''}{\sqrt{1+y'^2}}}{1+y'^2}
+=\frac{y''(1+y'^2)-y'^2y''}{(1+y'^2)^{3/2}}
+=\frac{y''}{(1+y'^2)^{3/2}}.
+\]
+Reconhecemos a curvatura com sinal do gráfico,
+\[
+\kappa=\frac{y''}{(1+y'^2)^{3/2}}.
+\]
+Logo \eqref{eq:63EL} torna-se
+\[
+-\lambda\,\kappa(x)=1\qquad\Longrightarrow\qquad
+\boxed{\,\kappa(x)=-\frac1\lambda=\text{const}\,}.
+\]
+(O multiplicador $\lambda\neq0$, pois caso contrário \eqref{eq:63EL} daria $0=1$.) Portanto o maximizador tem \emph{curvatura com sinal constante}.
+
+\medskip
+\noindent\emph{Conclusão: arco de circunferência.}
+Pelo Problema~61(c), uma curva $C^2$ com curvatura com sinal constante $\kappa_0\neq0$ tem imagem contida numa circunferência de raio $1/|\kappa_0|=|\lambda|$. (Não pode ser $\kappa_0=0$: uma reta tem comprimento $2a$ entre $x=-a$ e $x=a$, abaixo de $L$; equivalentemente, $\kappa\equiv0$ daria $y$ afim, e com $y(\pm a)=0$ seria $y\equiv0$, que não maximiza a área e viola o comprimento.) Assim o gráfico de $y$ é um \emph{arco de circunferência} de raio $R=|\lambda|$, simétrico em relação ao eixo $x=0$ (a simetria do problema sob $x\mapsto-x$ e a unicidade do arco com extremos $(\pm a,0)$, comprimento $L$ e altura positiva fixam o arco como o segmento circular sobre a corda $[-a,a]$). Em suma, dentre todos os gráficos de comprimento $L$ ligando $(-a,0)$ a $(a,0)$, o de maior área é o arco circular --- a versão ``de gráfico'' da desigualdade isoperimétrica. \qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 64.}\quad
+A curva está parametrizada por comprimento de arco e
+\[
+\theta'(s)=\kappa(s),\qquad x'(s)=\cos\theta(s),\qquad y'(s)=\sin\theta(s),\qquad s\ge0,
+\]
+com $\kappa$ contínua em $[0,\infty)$ e $\displaystyle\int_0^\infty|\kappa(s)|\,\d s<\infty$. Em particular $\kappa$ é absolutamente integrável em $[0,\infty)$.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Para $0\le s\le t$,
+\[
+\theta(t)-\theta(s)=\int_s^t\kappa(u)\,\d u,\qquad
+|\theta(t)-\theta(s)|\le\int_s^t|\kappa(u)|\,\d u\le\int_s^\infty|\kappa(u)|\,\d u.
+\]
+Como $\int_0^\infty|\kappa|<\infty$, a cauda $\int_s^\infty|\kappa|\to0$ quando $s\to\infty$. Logo, dado $\varepsilon>0$, existe $S$ tal que $\int_S^\infty|\kappa|<\varepsilon$, e então $|\theta(t)-\theta(s)|<\varepsilon$ para todos $t\ge s\ge S$: $\theta$ satisfaz o critério de Cauchy em $+\infty$. Portanto existe o limite finito
+\[
+\theta_\infty:=\lim_{s\to\infty}\theta(s)\in\R,
+\]
+e fazendo $t\to\infty$ na desigualdade acima obtemos a estimativa de cauda
+\begin{equation}\label{eq:64tail}
+|\theta(s)-\theta_\infty|\le\int_s^\infty|\kappa(u)|\,\d u\qquad\text{para todo }s\ge0.
+\end{equation}
+(De fato $\theta(s)-\theta_\infty=-\int_s^\infty\kappa(u)\,\d u$.) \qquad$\blacksquare$
+
+\item O vetor tangente unitário é $T(s)=(x'(s),y'(s))=(\cos\theta(s),\sin\theta(s))$. Como $s\mapsto(\cos,\sin)$ é contínua e $\theta(s)\to\theta_\infty$ por (a), segue da continuidade que
+\[
+\lim_{s\to\infty}T(s)=(\cos\theta_\infty,\sin\theta_\infty)=:T_\infty,
+\]
+um vetor unitário fixo. Assim a curva possui uma \emph{direção assintótica} $T_\infty$. \qquad$\blacksquare$
+
+\item Suponha adicionalmente $\displaystyle\int_0^\infty s|\kappa(s)|\,\d s<\infty$. Por \eqref{eq:64tail} e o teorema de Tonelli (integrando $|\kappa|\ge0$, a troca de ordem é lícita),
+\[
+\int_0^\infty|\theta(s)-\theta_\infty|\,\d s
+\le\int_0^\infty\!\left(\int_s^\infty|\kappa(u)|\,\d u\right)\d s
+=\int_0^\infty\!\!\int_0^\infty\mathbf 1_{\{u>s\}}\,|\kappa(u)|\,\d s\,\d u .
+\]
+Para cada $u$ fixo, $\int_0^\infty\mathbf 1_{\{u>s\}}\,\d s=\int_0^u\d s=u$. Logo
+\[
+\int_0^\infty|\theta(s)-\theta_\infty|\,\d s\le\int_0^\infty u\,|\kappa(u)|\,\d u<\infty.
+\]
+Portanto
+\[
+\boxed{\,\int_0^\infty|\theta(s)-\theta_\infty|\,\d s\le\int_0^\infty s\,|\kappa(s)|\,\d s<\infty\,}.
+\]
+\qquad$\blacksquare$
+
+\item Sem perda de generalidade (após uma rotação) tomamos $\theta_\infty=0$, de modo que a reta assintótica passando por $\gamma(0)$ na direção $T_\infty=(\cos\theta_\infty,\sin\theta_\infty)$ torna-se o eixo horizontal $\{y=\text{const}\}$ que passa por $\gamma(0)$; a distância (com sinal) de $\gamma(s)$ a essa reta é a variação da coordenada na direção \emph{ortogonal} a $T_\infty$, isto é,
+\[
+d(s):=\big\langle \gamma(s)-\gamma(0),\,N_\infty\big\rangle,\qquad N_\infty:=(-\sin\theta_\infty,\cos\theta_\infty).
+\]
+Como $\gamma(s)-\gamma(0)=\int_0^s T(u)\,\d u$ e $\langle T(u),N_\infty\rangle=\sin(\theta(u)-\theta_\infty)$ (produto interno de dois vetores unitários cujos ângulos diferem de $\theta(u)-\theta_\infty-\pi/2$, ou diretamente $\cos\theta_u(-\sin\theta_\infty)+\sin\theta_u\cos\theta_\infty=\sin(\theta_u-\theta_\infty)$),
+\[
+d(s)=\int_0^s\sin\big(\theta(u)-\theta_\infty\big)\,\d u.
+\]
+Usando $|\sin t|\le|t|$ e a parte (c),
+\[
+|d(s)|\le\int_0^s\big|\sin(\theta(u)-\theta_\infty)\big|\,\d u
+\le\int_0^s|\theta(u)-\theta_\infty|\,\d u
+\le\int_0^\infty|\theta(u)-\theta_\infty|\,\d u<\infty,
+\]
+uniformemente em $s$. Logo
+\[
+\boxed{\,\sup_{s\ge0}\operatorname{dist}\big(\gamma(s),\,\ell\big)<\infty\,},
+\qquad \ell:=\{\gamma(0)+t\,T_\infty:t\in\R\},
+\]
+isto é, a curva permanece a distância limitada da reta que passa por $\gamma(0)$ na direção assintótica $(\cos\theta_\infty,\sin\theta_\infty)$. (De fato $d(s)$ tem limite finito quando $s\to\infty$, pois $\int_0^\infty\sin(\theta-\theta_\infty)$ converge absolutamente; a curva é assintótica a uma reta paralela a $\ell$.) \qquad$\blacksquare$
+
+\end{enumerate}

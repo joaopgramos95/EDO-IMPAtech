@@ -1,0 +1,196 @@
+\bigskip\noindent\textbf{Solução 56.}\quad
+Trata-se de um problema de minimização com um \emph{vínculo integral}, o que
+sugere o método dos multiplicadores de Lagrange. Procuramos um ponto crítico do
+funcional
+\[
+    J[y]=\int_0^L (y')^2\,\d x
+\]
+na classe das funções $y\in C^1([0,L])$ com $y(0)=y(L)=0$ e
+$\int_0^L y\,\d x=A$. Introduzindo um multiplicador $\lambda\in\R$ para o
+vínculo, formamos o lagrangiano auxiliar
+\[
+    F(x,y,y')=(y')^2-\lambda\,y,
+\]
+cuja equação de Euler--Lagrange $\dfrac{\d}{\d x}F_{y'}-F_y=0$ fornece
+\[
+    \frac{\d}{\d x}\bigl(2y'\bigr)-(-\lambda)=0
+    \quad\Longrightarrow\quad
+    2y''+\lambda=0,
+    \qquad\text{isto é}\qquad y''=-\frac{\lambda}{2}.
+\]
+Como $y''$ é constante, $y$ é necessariamente um polinômio quadrático:
+\[
+    y(x)=-\frac{\lambda}{4}\,x^2+bx+c .
+\]
+Impomos agora as três condições. De $y(0)=0$ vem $c=0$. De $y(L)=0$ vem
+$-\frac{\lambda}{4}L^2+bL=0$, ou seja $b=\frac{\lambda}{4}L$, de modo que
+\[
+    y(x)=-\frac{\lambda}{4}\,x^2+\frac{\lambda}{4}L\,x
+        =\frac{\lambda}{4}\,x(L-x).
+\]
+Resta usar o vínculo. Como $\int_0^L x(L-x)\,\d x=\frac{L^3}{6}$, obtemos
+\[
+    A=\int_0^L y\,\d x=\frac{\lambda}{4}\cdot\frac{L^3}{6}=\frac{\lambda L^3}{24},
+    \qquad\text{donde}\qquad \lambda=\frac{24A}{L^3}.
+\]
+Substituindo, $\frac{\lambda}{4}=\frac{6A}{L^3}$ e portanto
+\[
+    \boxed{\,y(x)=\frac{6A}{L^3}\,x(L-x)\,}.
+\]
+Como verificação do vínculo,
+$\int_0^L \frac{6A}{L^3}x(L-x)\,\d x=\frac{6A}{L^3}\cdot\frac{L^3}{6}=A$.
+Que se trata de fato de um \emph{mínimo} é claro: o integrando $(y')^2$ é convexo
+em $y'$, e o conjunto das funções admissíveis (definido por restrições afins) é
+convexo; logo $J$ é convexo nessa classe e o único ponto crítico é o minimizador
+global.
+
+\bigskip\noindent\textbf{Solução 57.}\quad
+O integrando do tempo de descida,
+\[
+    F(y,y')=\frac{\sqrt{1+y'^2}}{\sqrt{y}},
+\]
+\emph{não depende explicitamente da variável independente $x$}. Essa é
+exatamente a situação em que vale a \emph{identidade de Beltrami}: ao longo de
+todo extremal a quantidade $F-y'\,F_{y'}$ é constante.
+
+\begin{enumerate}[label=(\alph*)]
+\item Recordemos a identidade de Beltrami. Para um lagrangiano $F=F(y,y')$, a
+equação de Euler--Lagrange é $\frac{\d}{\d x}F_{y'}=F_y$, e então
+\[
+    \frac{\d}{\d x}\bigl(F-y'F_{y'}\bigr)
+    =F_y\,y'+F_{y'}\,y''-y''F_{y'}-y'\frac{\d}{\d x}F_{y'}
+    =y'\Bigl(F_y-\frac{\d}{\d x}F_{y'}\Bigr)=0 .
+\]
+Logo $F-y'F_{y'}=\text{const}$. Calculemos. Temos
+\[
+    F_{y'}=\frac{1}{\sqrt{y}}\cdot\frac{y'}{\sqrt{1+y'^2}},
+\]
+de modo que
+\[
+    F-y'F_{y'}
+    =\frac{\sqrt{1+y'^2}}{\sqrt{y}}-\frac{y'^2}{\sqrt{y}\,\sqrt{1+y'^2}}
+    =\frac{(1+y'^2)-y'^2}{\sqrt{y}\,\sqrt{1+y'^2}}
+    =\frac{1}{\sqrt{y}\,\sqrt{1+y'^2}}.
+\]
+Igualando a uma constante e elevando ao quadrado obtemos
+$y\,(1+y'^2)=\text{const}$. Como $y>0$ e a constante é o inverso do quadrado da
+constante de Beltrami, ela é positiva; chamando-a de $a>0$,
+\[
+    \boxed{\,y\bigl(1+y'^2\bigr)=a\,}.
+\]
+
+\item Integremos a relação de primeira ordem $y(1+y'^2)=a$. Dela,
+\[
+    y'^2=\frac{a-y}{y}
+    \quad\Longrightarrow\quad
+    \frac{\d y}{\d x}=\sqrt{\frac{a-y}{y}}
+    \quad\Longrightarrow\quad
+    \d x=\sqrt{\frac{y}{a-y}}\;\d y .
+\]
+A substituição que racionaliza essa raiz é a parametrização angular
+\[
+    y=a\sin^2\!\Bigl(\frac{\varphi}{2}\Bigr)=\frac{a}{2}\,(1-\cos\varphi),
+\]
+para a qual $a-y=a\cos^2(\varphi/2)$ e $\d y=a\sin(\varphi/2)\cos(\varphi/2)\,\d\varphi$.
+Logo
+\[
+    \d x=\sqrt{\frac{\sin^2(\varphi/2)}{\cos^2(\varphi/2)}}\;
+         a\sin(\varphi/2)\cos(\varphi/2)\,\d\varphi
+        =a\sin^2\!\Bigl(\frac{\varphi}{2}\Bigr)\,\d\varphi
+        =\frac{a}{2}\,(1-\cos\varphi)\,\d\varphi,
+\]
+e integrando (escolhendo a origem de $\varphi$ no ponto inicial),
+\[
+    x=\frac{a}{2}\,(\varphi-\sin\varphi),
+    \qquad
+    y=\frac{a}{2}\,(1-\cos\varphi).
+\]
+Pondo $R:=a/2$, isto é precisamente a ciclóide
+\[
+    \boxed{\;x(\varphi)=R\,(\varphi-\sin\varphi),
+        \qquad y(\varphi)=R\,(1-\cos\varphi)\;}
+\]
+descrita por um ponto da circunferência de raio $R$ que rola sobre o eixo $x$ (a
+parametrização do enunciado corresponde a renomear $R$ por $a$). Verifiquemos
+diretamente que essa curva satisfaz a equação extremal. De
+$\frac{\d y}{\d\varphi}=R\sin\varphi$ e
+$\frac{\d x}{\d\varphi}=R(1-\cos\varphi)$ vem
+\[
+    y'=\frac{\sin\varphi}{1-\cos\varphi},
+    \qquad
+    1+y'^2=\frac{(1-\cos\varphi)+(1+\cos\varphi)}{1-\cos\varphi}
+          =\frac{2}{1-\cos\varphi},
+\]
+onde usamos $\sin^2\varphi=(1-\cos\varphi)(1+\cos\varphi)$. Portanto
+\[
+    y\,(1+y'^2)=R(1-\cos\varphi)\cdot\frac{2}{1-\cos\varphi}=2R,
+\]
+constante, e a identificação $y(1+y'^2)=a$ dá $a=2R$, em acordo com $R=a/2$.
+
+\item A ciclóide construída em (b) tem um parâmetro livre, o raio $R$ (ou
+$a=2R$), e parte da origem em $\varphi=0$ com a orientação fixada. Exigir que ela
+\emph{passe pelo ponto final} $(x_1,y_1)$ impõe duas equações,
+\[
+    x_1=R\,(\varphi_1-\sin\varphi_1),
+    \qquad
+    y_1=R\,(1-\cos\varphi_1),
+\]
+nas duas incógnitas $R$ e $\varphi_1$ (o valor de $\varphi$ no ponto de chegada).
+Tomando o quociente para eliminar $R$,
+\[
+    \frac{x_1}{y_1}=\frac{\varphi_1-\sin\varphi_1}{1-\cos\varphi_1},
+\]
+que é uma única equação na incógnita $\varphi_1$. O lado direito é uma função
+contínua e estritamente crescente de $\varphi_1\in(0,2\pi)$, indo de $0$ (quando
+$\varphi_1\to0^+$) a $+\infty$ (quando $\varphi_1\to2\pi^-$); logo, para qualquer
+razão $x_1/y_1>0$, existe um único $\varphi_1$ que a resolve. Determinado
+$\varphi_1$, qualquer das duas equações acima fixa $R=\dfrac{y_1}{1-\cos\varphi_1}$.
+Assim, o ponto final $(x_1,y_1)$ determina de modo único o raio $R$ (equivalentemente,
+a constante $a$) e o intervalo $\varphi\in[0,\varphi_1]$ percorrido pelo arco.
+\end{enumerate}
+
+\bigskip\noindent\textbf{Solução 58.}\quad
+O funcional $E[y]=\int_0^1 (y'')^2\,\d x$ depende da \emph{segunda} derivada, de
+modo que a condição de extremo é a equação de Euler--Poisson, a generalização da
+equação de Euler--Lagrange para lagrangianos $F(x,y,y',y'')$:
+\[
+    F_y-\frac{\d}{\d x}F_{y'}+\frac{\d^2}{\d x^2}F_{y''}=0 .
+\]
+Aqui $F=(y'')^2$, logo $F_y=F_{y'}=0$ e $F_{y''}=2y''$, e a equação reduz-se a
+\[
+    \frac{\d^2}{\d x^2}\bigl(2y''\bigr)=0
+    \quad\Longrightarrow\quad
+    y^{(4)}=0 .
+\]
+A solução geral de $y^{(4)}=0$ é um polinômio de grau $\le 3$:
+\[
+    y(x)=ax^3+bx^2+cx+d .
+\]
+(As quatro condições de contorno do enunciado fixam todos os quatro coeficientes
+e são exatamente as condições naturais para um problema de segunda ordem com
+$y$ e $y'$ prescritos nos extremos.) Como $y'(x)=3ax^2+2bx+c$, as condições dão
+\[
+    \begin{aligned}
+    y(0)=0:&\quad d=0,\\
+    y'(0)=\alpha:&\quad c=\alpha,\\
+    y(1)=0:&\quad a+b+c+d=0,\\
+    y'(1)=\beta:&\quad 3a+2b+c=\beta.
+    \end{aligned}
+\]
+Das duas primeiras, $d=0$ e $c=\alpha$. As duas últimas tornam-se
+\[
+    a+b=-\alpha,
+    \qquad
+    3a+2b=\beta-\alpha .
+\]
+Subtraindo o dobro da primeira da segunda, $a=(\beta-\alpha)-2(-\alpha)=\alpha+\beta$,
+e então $b=-\alpha-a=-2\alpha-\beta$. Portanto
+\[
+    \boxed{\,y(x)=(\alpha+\beta)\,x^3-(2\alpha+\beta)\,x^2+\alpha\,x\,},
+\]
+isto é $a=\alpha+\beta$, $b=-(2\alpha+\beta)$, $c=\alpha$, $d=0$. Conferindo as
+condições nos extremos: $y(1)=(\alpha+\beta)-(2\alpha+\beta)+\alpha=0$ e
+$y'(1)=3(\alpha+\beta)-2(2\alpha+\beta)+\alpha=\beta$, como exigido. Esse cúbico é
+de fato o minimizador: o integrando $(y'')^2$ é convexo em $y''$ e o conjunto
+admissível é afim, de sorte que $E$ é convexo e o único extremal é o mínimo
+global.

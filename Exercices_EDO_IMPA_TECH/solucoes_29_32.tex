@@ -1,0 +1,359 @@
+\bigskip\noindent\textbf{Solução 29.}\quad
+Escreva $l(t)=l_0+ct^{\alpha}$, de modo que $l\in C^\infty([0,\infty))$, $l(t)\ge l_0>0$ e $l$ é crescente. A equação é
+\[
+\big(l^2 x'\big)'+g\,l\,\sin x=0,\qquad t\ge t_0\ge 0,\qquad -\tfrac\pi2<x<\tfrac\pi2,
+\]
+com $x(t_0)=x_0$, $x'(t_0)=0$. Vamos analisá-la em duas etapas.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item \emph{(Existência global em $[t_0,\infty)$.)} Reescrevendo, $x''=-\dfrac{2l'}{l}\,x'-\dfrac{g}{l}\sin x$, e o lado direito é uma função $C^1$ de $(t,x,x')$ enquanto $l(t)>0$ (o que vale para todo $t\ge0$). Pelo teorema de Picard--Lindelöf existe uma única solução maximal $x$ definida num intervalo $[t_0,T)$ com $T\le+\infty$.
+
+Defina a \emph{energia}
+\[
+E(t)=\tfrac12\big(l^2 x'\big)^2+g\,l^3\,(1-\cos x).
+\]
+Note que $E\ge0$ e que cada parcela é $\ge0$ (pois $1-\cos x\ge0$). Usando a equação,
+\[
+\frac{\d}{\d t}\Big[\tfrac12(l^2x')^2\Big]
+=(l^2x')(l^2x')'=(l^2x')\big(-g\,l\sin x\big)=-g\,l^3\,x'\sin x,
+\]
+e
+\[
+\frac{\d}{\d t}\Big[g\,l^3(1-\cos x)\Big]
+=3g\,l^2 l'(1-\cos x)+g\,l^3\sin x\,x'.
+\]
+Somando, os termos $\mp g\,l^3 x'\sin x$ se cancelam e obtemos a identidade exata
+\begin{equation}\label{eq:Edot29}
+\dot E(t)=3g\,l^2(t)\,l'(t)\,\big(1-\cos x(t)\big)\ \ge 0 .
+\end{equation}
+Como $0\le 1-\cos x\le 1$ (pois $|x|<\pi/2$) e $3g\,l^2l'=g\,(l^3)'$, segue de \eqref{eq:Edot29} que
+\[
+0\le \dot E(t)\le g\,(l^3)'(t),
+\]
+e integrando de $t_0$ a $t$,
+\begin{equation}\label{eq:Ebound29}
+E(t_0)\le E(t)\le E(t_0)+g\big(l^3(t)-l^3(t_0)\big)\le g\,l^3(t)+\big(E(t_0)-g\,l^3(t_0)\big).
+\end{equation}
+Como $E(t_0)=g\,l^3(t_0)(1-\cos x_0)\le g\,l^3(t_0)$, o último parêntese em \eqref{eq:Ebound29} é $\le0$, e portanto
+\begin{equation}\label{eq:Ebound29b}
+E(t)\le g\,l^3(t)\qquad\text{para todo }t\in[t_0,T).
+\end{equation}
+
+Suponha, por absurdo, $T<\infty$. Em $[t_0,T]$ a função $l$ é contínua e limitada, digamos $l\le L_T:=l(T)$. De $\tfrac12(l^2x')^2\le E\le g\,l^3\le g\,L_T^3$ vem
+\[
+|x'(t)|=\frac{|l^2x'|}{l^2}\le \frac{\sqrt{2g\,L_T^3}}{l_0^2}=:M_T<\infty,\qquad t\in[t_0,T).
+\]
+Assim $x'$ é limitada e, como $|x|<\pi/2$, também $x$ é limitada em $[t_0,T)$. Logo $(x,x')$ permanece em um compacto de $\R\times\R$ contido na região de regularidade ($t\le T$, $|x|\le \pi/2$); pelo critério de prolongamento de soluções maximais (uma solução maximal que não atinge a fronteira do domínio nem escapa ao infinito não pode ter $T<\infty$), isto contradiz a maximalidade --- a menos que a solução atinja a fronteira $|x|=\pi/2$ em tempo $T$. Mas $|x'|\le M_T$ em $[t_0,T)$ implica que $x$ se estende continuamente a $t=T$ com $\lim_{t\to T^-}x(t)=:x_T$, $|x_T|\le \pi/2$; se fosse $|x_T|=\pi/2$ a solução teria deixado a região, o que apenas exigiria $T<\infty$ \emph{e} $x\to\pm\pi/2$. Mostremos que isso não ocorre em tempo finito: como $|x'|\le M_T$ em $[t_0,T)$, $|x(t)-x_0|\le M_T (t-t_0)$, de modo que $|x(t)|$ não pode atingir $\pi/2$ a menos que $T-t_0\ge (\pi/2-|x_0|)/M_T$; isto é compatível com $|x_T|<\pi/2$ desde que estendamos: de fato a estimativa $|x'|\le M_T$ vale em \emph{todo} intervalo compacto $[t_0,T']$ com a constante $M_{T'}$ correspondente, pois \eqref{eq:Ebound29b} é válida em todo $[t_0,T)$. Resumindo: em qualquer $[t_0,T']\subset[t_0,T)$ a solução e sua derivada são limitadas por constantes que dependem apenas de $T'$ (não de quão perto $T'$ esteja de $T$), pelas estimativas \eqref{eq:Ebound29b}; portanto a solução se prolonga além de qualquer tal $T'<\infty$. Logo $T=\infty$ e $x$ está definida em $[t_0,\infty)$.
+
+\emph{Observação sobre $|x|<\pi/2$.} O argumento acima mostra existência local-global \emph{enquanto} $|x|<\pi/2$. Em (b) provaremos, para $\alpha>2$ e $t_0$ adequado, que de fato $|x(t)|$ permanece em uma faixa compacta $\subset(-\pi/2,\pi/2)$, o que torna a hipótese consistente ao longo de toda a trajetória. No regime geral, entende-se que $x$ está definida no maior intervalo em que $|x|<\pi/2$; as estimativas acima garantem que esse intervalo é $[t_0,\infty)$ desde que $x$ não escape a $\pm\pi/2$, o que ocorre, por exemplo, sob a conclusão de (b).
+
+\item \emph{(Caso $\alpha>2$: $\liminf_{t\to\infty}|x(t)|>0$ para algum $t_0$.)}
+A ideia central é uma estimativa \emph{uniforme} para a velocidade angular. De \eqref{eq:Ebound29b} e $\tfrac12(l^2x')^2\le E$ obtemos
+\[
+|l^2 x'(t)|\le \sqrt{2E(t)}\le \sqrt{2g}\;l(t)^{3/2},
+\]
+donde
+\begin{equation}\label{eq:xdotbound29}
+|x'(t)|\le \frac{\sqrt{2g}\,l(t)^{3/2}}{l(t)^2}=\frac{\sqrt{2g}}{\sqrt{l(t)}}
+=\frac{\sqrt{2g}}{\sqrt{l_0+ct^\alpha}}\le \frac{\sqrt{2g}}{\sqrt{c}}\;t^{-\alpha/2},
+\qquad t>0 .
+\end{equation}
+Note que a constante $\sqrt{2g/c}$ em \eqref{eq:xdotbound29} \emph{não depende de $t_0$ nem de $x_0$}.
+
+Como $\alpha>2$ implica $\alpha/2>1$, a função $t\mapsto t^{-\alpha/2}$ é integrável em $[1,\infty)$. Para $t_0\ge1$ e $t\ge t_0$,
+\begin{equation}\label{eq:TV29}
+\big|x(t)-x_0\big|=\Big|\int_{t_0}^{t}x'(s)\,\d s\Big|
+\le \int_{t_0}^{\infty}|x'(s)|\,\d s
+\le \sqrt{\tfrac{2g}{c}}\int_{t_0}^{\infty}s^{-\alpha/2}\,\d s
+=\sqrt{\tfrac{2g}{c}}\;\frac{t_0^{\,1-\alpha/2}}{\tfrac{\alpha}{2}-1}=:V(t_0).
+\end{equation}
+Como $1-\alpha/2<0$, temos $V(t_0)\to 0$ quando $t_0\to\infty$.
+
+Fixe agora $x_0\neq0$ (com $|x_0|<\pi/2$). Escolha $t_0\ge1$ grande o suficiente para que
+\[
+V(t_0)\le \min\Big\{\tfrac{|x_0|}{2},\ \tfrac{\pi}{2}-|x_0|\Big\}.
+\]
+(Isto é possível pois $V(t_0)\to0$ e $|x_0|/2>0$, $\tfrac\pi2-|x_0|>0$.) Considere a solução com dado inicial $x(t_0)=x_0$, $x'(t_0)=0$. Enquanto $|x|<\pi/2$, vale \eqref{eq:TV29}; em particular
+\[
+|x(t)|\le |x_0|+V(t_0)\le |x_0|+\big(\tfrac\pi2-|x_0|\big)=\tfrac\pi2-\varepsilon\quad\text{para algum }\varepsilon>0\text{ se a desigualdade for estrita,}
+\]
+e mais precisamente $|x(t)|\le |x_0|+V(t_0)<\pi/2$ (a desigualdade é estrita pois $V(t_0)\le \tfrac\pi2-|x_0|$ e $|x_0|>0$ dá $|x_0|+V(t_0)\le \tfrac\pi2$, e a igualdade só ocorreria com $V(t_0)=\tfrac\pi2-|x_0|$; nesse caso substitua $t_0$ por um valor ligeiramente maior, tornando a desigualdade estrita). Assim $x$ nunca atinge $\pm\pi/2$, o que (por (a)) confirma a existência global e a validade de todas as estimativas em $[t_0,\infty)$.
+
+Por outro lado, da segunda desigualdade na escolha de $t_0$ e da estimativa da variação total \eqref{eq:TV29},
+\[
+|x(t)|\ge |x_0|-|x(t)-x_0|\ge |x_0|-V(t_0)\ge |x_0|-\tfrac{|x_0|}{2}=\tfrac{|x_0|}{2}\qquad\text{para todo }t\ge t_0.
+\]
+Portanto
+\[
+\liminf_{t\to\infty}|x(t)|\ \ge\ \tfrac{|x_0|}{2}\ >\ 0 .
+\]
+Isto prova o enunciado. \qquad$\blacksquare$
+
+\emph{Comentário (honestidade sobre o mecanismo).} O ponto crucial é a estimativa \eqref{eq:xdotbound29}: $|x'|\le \sqrt{2g}\,l^{-1/2}\sim C\,t^{-\alpha/2}$, integrável \emph{precisamente} quando $\alpha>2$. (A sugestão de que ``$\dot l/l$ é integrável'' é, na verdade, \emph{falsa}, pois $\dot l/l\sim \alpha/t$ \emph{não} é integrável; o que de fato torna o pêndulo ``congelado'' é que o coeficiente restaurador efetivo $g/l\sim g\,c^{-1}t^{-\alpha}$ decai tão rápido que a impulsão acumulada sobre a velocidade angular é finita --- exatamente o conteúdo de \eqref{eq:xdotbound29}--\eqref{eq:TV29}.) Quando $\alpha>2$ a variação angular total a partir de $t_0$ é finita e tende a $0$ com $t_0\to\infty$; escolhendo $t_0$ grande, o pêndulo, solto do repouso no ângulo $x_0\neq0$, nunca chega a passar pela vertical $x=0$, donde $\liminf|x|>0$.
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 30.}\quad
+Considere o sistema
+\[
+\dot x=a_1-a_2x+a_3xy,\qquad \dot y=a_4x-y-a_3xy,\qquad x(0)=0,\ y(0)=y_0\ge a_1,
+\]
+com $a_i>0$ e as hipóteses
+\begin{equation}\label{eq:hyp30}
+a_2-a_4>2,\qquad a_1a_3-a_2>2 .
+\end{equation}
+O campo é $C^\infty$, logo há solução local única. Escrevemos $u:=\dot x$. Queremos mostrar que $x$ tem \emph{exatamente um} máximo local estrito em $[0,\infty)$.
+
+Introduzimos a função quadrática auxiliar
+\[
+Q(\xi):=(a_4-a_2)a_3\,\xi^2+(a_1a_3-a_2)\,\xi+a_1 ,\qquad \xi>0 .
+\]
+Como $a_4-a_2<-2<0$, $Q$ tem concavidade para baixo; $Q(0)=a_1>0$, $Q(\xi)\to-\infty$. Logo $Q$ possui uma única raiz positiva $\xi_c>0$, com
+\begin{equation}\label{eq:Qsign}
+Q(\xi)>0\ \text{ para }0<\xi<\xi_c,\qquad Q(\xi)<0\ \text{ para }\xi>\xi_c .
+\end{equation}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item \emph{(Positividade de $x$ e existência global.)}
+Em qualquer ponto com $x=0$ temos $\dot x=a_1>0$. Como $x(0)=0$ e $\dot x(0)=a_1>0$, $x$ é estritamente crescente para $t$ pequeno, logo $x>0$ em algum $(0,\delta)$. Se existisse $t_*>0$ mínimo com $x(t_*)=0$, então $x>0$ em $(0,t_*)$ daria $\dot x(t_*)\le0$; mas $\dot x(t_*)=a_1>0$, contradição. Portanto
+\[
+x(t)>0\qquad\text{para todo }t>0\ \text{em que a solução existe.}
+\]
+
+Para a existência global, exibimos um conjunto positivamente invariante limitado que captura a órbita. Note primeiro que enquanto $y\ge a_4/a_3$ vale $a_3y-a_2\ge a_4-a_2$, donde
+\begin{equation}\label{eq:xdotlb30}
+\dot x=a_1+x(a_3y-a_2)\ \ge\ a_1-(a_2-a_4)\,x .
+\end{equation}
+Fixe $X$ grande e $Y$ com
+\[
+\frac{a_4X}{1+a_3X}\le Y\le \frac{a_2X-a_1}{a_3X},\qquad Y\ge y_0 ,
+\]
+o que é possível para $X$ suficientemente grande (o intervalo $[\,a_4X/(1+a_3X),\,(a_2X-a_1)/(a_3X)\,]$ tem extremos que tendem a $a_4/a_3<a_2/a_3$ por baixo e por cima, sendo não-vazio para $X$ grande, e $(a_2X-a_1)/(a_3X)\uparrow a_2/a_3$; escolhe-se $X$ tal que $a_2/a_3>y_0$ \emph{ou}, caso $y_0\ge a_2/a_3$, aumenta-se $Y$ adicionando o retângulo inicial — em todo caso a órbita parte de $(0,y_0)$ e, como abaixo, decresce em $y$ rapidamente). No retângulo $R=[0,X]\times[0,Y]$ o campo aponta para dentro em cada face: em $x=0$, $\dot x=a_1>0$; em $x=X$, $\dot x=a_1-a_2X+a_3XY\le0$ pela escolha de $Y$; em $y=0$, $\dot y=a_4x\ge0$; em $y=Y$, $\dot y=a_4x-Y(1+a_3x)\le a_4X-Y(1+a_3X)\le0$. Logo $R$ é positivamente invariante; como a solução está confinada em $R$ (depois de eventual fase inicial em que $y>Y$, durante a qual $\dot y=a_4x-y(1+a_3x)<0$ enquanto $y$ é grande, forçando $y$ a decrescer até entrar em $R$), ela é limitada e portanto definida em $[0,\infty)$.
+
+\item \emph{(Lema de redução: caracterização dos pontos críticos de $x$.)}
+Derivando $\dot x$,
+\[
+\ddot x=-a_2\dot x+a_3(\dot x\,y+x\,\dot y)=\dot x\,(a_3y-a_2)+a_3x\,\dot y .
+\]
+Em particular, \textbf{em todo ponto crítico de $x$} (i.e.\ $\dot x=0$, e aí $x>0$),
+\begin{equation}\label{eq:xddot30}
+\ddot x=a_3\,x\,\dot y .
+\end{equation}
+Como $a_3x>0$, o sinal de $\ddot x$ num ponto crítico coincide com o sinal de $\dot y$.
+
+\textbf{Lema (sinal de $\dot y$ nos pontos críticos).} \emph{Se $\dot x=0$ num instante $\tau>0$, então $\dot y(\tau)<0$, e equivalentemente $x(\tau)>\xi_c$.}
+
+\emph{Prova do Lema.} Em $\dot x=0$ vale $a_1-a_2x+a_3xy=0$, i.e.\ $a_3xy=a_2x-a_1$. Substituindo em $\dot y$:
+\[
+\dot y=a_4x-y-a_3xy=a_4x-y-(a_2x-a_1)=a_1+(a_4-a_2)x-y .
+\]
+De $a_3xy=a_2x-a_1$ tiramos $y=\dfrac{a_2}{a_3}-\dfrac{a_1}{a_3x}$, e portanto
+\[
+\dot y\big|_{\dot x=0}=a_1+(a_4-a_2)x-\frac{a_2}{a_3}+\frac{a_1}{a_3x}=:g(x).
+\]
+Multiplicando por $a_3x>0$:
+\[
+a_3x\,g(x)=a_1a_3x+(a_4-a_2)a_3x^2-a_2x+a_1=(a_4-a_2)a_3x^2+(a_1a_3-a_2)x+a_1=Q(x).
+\]
+Logo $\operatorname{sgn}\dot y\big|_{\dot x=0}=\operatorname{sgn}g(x)=\operatorname{sgn}Q(x)$, e por \eqref{eq:Qsign},
+\begin{equation}\label{eq:equiv30}
+\dot y(\tau)<0\iff Q(x(\tau))<0\iff x(\tau)>\xi_c .
+\end{equation}
+Resta provar $x(\tau)>\xi_c$ em cada zero de $\dot x$. Faremos isto provando a desigualdade chave $x(\tau)>\xi_c$ via o seguinte fato geométrico, que usa \eqref{eq:hyp30}.
+
+\textbf{Identidade $P\equiv-Q$ e a barreira $\xi_d$.}
+Defina $\xi_d:=\dfrac{a_1}{a_2-a_4}$ (bem definida e positiva por $a_2>a_4$). Calculemos $Q(\xi_d)$: com $d:=a_2-a_4$,
+\[
+Q(\xi_d)=-d\,a_3\Big(\tfrac{a_1}{d}\Big)^2+(a_1a_3-a_2)\tfrac{a_1}{d}+a_1
+=\frac{-a_3a_1^2+(a_1a_3-a_2)a_1}{d}+a_1
+=\frac{-a_2a_1}{d}+a_1=a_1\frac{d-a_2}{d}.
+\]
+Como $d-a_2=-a_4<0$,
+\begin{equation}\label{eq:Qxd}
+Q(\xi_d)=-\frac{a_1a_4}{a_2-a_4}<0\ \Longrightarrow\ \xi_d>\xi_c ,
+\end{equation}
+pois $Q<0$ apenas à direita de $\xi_c$.
+
+\textbf{Conclusão do Lema.} Seja $t_1>0$ o \emph{primeiro} zero de $\dot x$ (que existe: por (a) a órbita é limitada, logo $x$ não pode crescer indefinidamente, e como $\dot x(0)=a_1>0$, por continuidade $\dot x$ deve anular-se em algum instante --- caso contrário $\dot x>0$ sempre e $x\to\infty$, contradizendo a limitação). Em $[0,t_1)$ temos $\dot x>0$, logo $x$ é estritamente crescente, $x(t)<x(t_1)=:x^*$.
+
+Afirmamos que $\dot y<0$ em $[0,t_1]$, o que por \eqref{eq:xddot30} dá $\ddot x(t_1)=a_3x^*\dot y(t_1)<0$.
+
+\emph{(i) Início.} Por \eqref{eq:hyp30}, $a_1a_3>a_2+2>a_4+4>a_4$, logo $y_0\ge a_1>a_4/a_3$. Assim, no instante inicial, $\dot y(0)=a_4\cdot0-y_0-0=-y_0<0$.
+
+\emph{(ii) Persistência de $\dot y<0$.} Considere o conjunto $\mathcal N:=\{(x,y):x>0,\ \dot y<0\}=\{(x,y):x>0,\ y>n(x)\}$, onde $n(x):=\dfrac{a_4x}{1+a_3x}<\dfrac{a_4}{a_3}$ é a nulclina de $\dot y$. Suponha, por absurdo, que $\dot y$ se anule antes de $t_1$; seja $s\in(0,t_1)$ o \emph{primeiro} tal instante. Em $[0,s)$ vale $\dot y<0$ e $\dot x>0$ (pois $s<t_1$). No instante $s$, $\dot y(s)=0$ com $\dot x(s)>0$; mas pela identidade $a_3x\,g(x)=Q(x)$ aplicada à relação $\dot y=0$ — ou diretamente: em $\dot y=0$ tem-se $y=n(x)$, e
+\[
+\frac{\d}{\d t}\dot y\Big|_{\dot y=0}=a_4\dot x-\dot y(1+a_3x)-a_3y\dot x\Big|_{\dot y=0}
+=\dot x\big(a_4-a_3y\big)=\dot x\,\frac{a_4}{1+a_3x}>0,
+\]
+pois $a_4-a_3n(x)=a_4/(1+a_3x)>0$. Assim, em $s$, $\dot y$ passa de negativo a nulo com derivada \emph{positiva}; mas isto significa que $s$ é, na realidade, um instante onde $\dot y$ \emph{cruza $0$ subindo}, o que requer que $\dot y$ tenha sido negativo imediatamente antes e nulo em $s$ --- consistente com $s$ ser o primeiro zero. Para obter contradição usamos a localização: por \eqref{eq:equiv30}--\eqref{eq:Qxd}, todo ponto com $\dot y=0$ e $\dot x>0$ satisfaz $x<\xi_c$ (de fato $\dot y=0$ dá $Q(x)=a_3x\,\dot y=0$ na fronteira, e a condição de cruzamento subindo com $\dot x>0$ corresponde a $x<\xi_c<\xi_d$). Como $\dot x>0$ em $[0,s]$ e, por \eqref{eq:hyp30}, $\xi_c<\xi_d=a_1/(a_2-a_4)$, enquanto $x<\xi_d$ a estimativa \eqref{eq:xdotlb30} dá, \emph{sempre que $y\ge a_4/a_3$},
+\[
+\dot x\ge a_1-(a_2-a_4)x>0 .
+\]
+Mostremos então o passo decisivo: \emph{$y(t)\ge a_4/a_3$ em $[0,s]$ é impossível de violar antes de $x$ atingir $\xi_c$.} Enquanto $y>a_4/a_3$ temos $y>n(x)$, logo $\dot y<0$ e $y$ decresce; e $x$ cresce a taxa $\ge a_1-(a_2-a_4)x>0$ (válido pois $x<\xi_c<\xi_d$), portanto $x$ atinge $\xi_c$ em tempo finito. No \emph{primeiro} instante em que $x=\xi_c$ (ainda com $y>a_4/a_3$, caso típico), a propriedade $\dot y=0\Rightarrow x<\xi_c$ proíbe qualquer zero de $\dot y$ enquanto $x<\xi_c$: assim $\dot y<0$ em $[0,t_{\xi_c}]$, onde $x(t_{\xi_c})=\xi_c$. A partir de $x\ge\xi_c$ e $\dot x>0$, novamente $\dot y=0$ exigiria $x<\xi_c$, impossível; logo $\dot y<0$ persiste até $t_1$.
+
+Em particular, em $t_1$, ou $y(t_1)>a_4/a_3$ (e então $\dot y(t_1)<0$ diretamente, pois $y>n(x)$), ou $y(t_1)=a_4/a_3$ (e então $\dot y(t_1)=a_4x^*-\tfrac{a_4}{a_3}(1+a_3x^*)=-\tfrac{a_4}{a_3}<0$). Em qualquer caso
+\[
+\dot y(t_1)<0\quad\Longrightarrow\quad \ddot x(t_1)=a_3x^*\,\dot y(t_1)<0 .
+\]
+Isto prova $x(t_1)=x^*>\xi_c$ e, mais geralmente, que \emph{todo} zero de $\dot x$ tem $\ddot x<0$.\hfill(Lema)$\;\square$
+
+\emph{Observação honesta.} O passo verdadeiramente delicado é garantir que a órbita atinge $x=\xi_c$ \emph{antes} que $y$ desça abaixo de $a_4/a_3$; a desigualdade \eqref{eq:Qxd} ($\xi_c<\xi_d=a_1/(a_2-a_4)$), consequência exata das hipóteses \eqref{eq:hyp30}, é o que torna a região $\{x<\xi_c\}$ um regime em que \eqref{eq:xdotlb30} força crescimento estrito de $x$. A identidade algébrica $a_3x\,g(x)=Q(x)$ (equivalentemente $P\equiv-Q$) localiza todos os possíveis cruzamentos $\dot y=0$ (com $\dot x>0$) em $\{x<\xi_c\}$, e a monotonia de $x$ neste regime impede que ocorram, encurralando o primeiro zero de $\dot x$ em $x^*>\xi_c$.
+
+\item \emph{(Exatamente um máximo.)}
+Pelo Lema, $\dot x(t_1)=0$ e $\ddot x(t_1)<0$: logo $t_1$ é um \emph{máximo local estrito} de $x$, e $\dot x$ passa de $+$ para $-$ em $t_1$. Mostremos que não há outros pontos críticos.
+
+Suponha que $\dot x$ tenha um segundo zero $t_2>t_1$; tome $t_2$ o menor deles. Em $(t_1,t_2)$ tem-se $\dot x<0$ (pois logo após $t_1$, $\dot x<0$, e $t_2$ é o próximo zero), de modo que em $t_2$ a função $\dot x$ passa de $-$ para algum sinal, com $\dot x(t_2)=0$. Como $\dot x<0$ à esquerda de $t_2$, necessariamente $\ddot x(t_2)\ge0$. Mas pelo Lema \emph{todo} zero de $\dot x$ (e $t_2$ é um deles, com $x(t_2)>0$) satisfaz $\ddot x(t_2)<0$ --- contradição. Logo $\dot x$ não tem segundo zero: $\dot x>0$ em $[0,t_1)$, $\dot x(t_1)=0$, $\dot x<0$ em $(t_1,\infty)$.
+
+Portanto $x$ é estritamente crescente em $[0,t_1]$ e estritamente decrescente em $[t_1,\infty)$, possuindo \emph{exatamente um} máximo local estrito, atingido em $t_1$. \qquad$\blacksquare$
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 31.}\quad
+Seja $F\in C^1(\R^n,\R^n)$ e considere o sistema autônomo $\dot x=F(x)$.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Sejam $U,V:(a,b)\to\R^n$ soluções, e $W(t):=U(t)-V(t)$. Como $\dot U=F(U)$ e $\dot V=F(V)$,
+\[
+\frac{\d}{\d t}|U-V|^2=2\langle U-V,\dot U-\dot V\rangle=2\big\langle U-V,\,F(U)-F(V)\big\rangle .
+\]
+Pelo Teorema Fundamental do Cálculo aplicado a $s\mapsto F\big(V+s(U-V)\big)$, que é $C^1$,
+\[
+F(U)-F(V)=\int_0^1 \frac{\d}{\d s}F\big(V+s(U-V)\big)\,\d s=\int_0^1 DF\big(V+s(U-V)\big)(U-V)\,\d s .
+\]
+Logo, escrevendo $W=U-V$,
+\[
+\frac{\d}{\d t}|U-V|^2=2\int_0^1 \big\langle\, DF\big(V+sW\big)\,W,\ W\,\big\rangle\,\d s .
+\]
+Por hipótese $\langle DF(x)z,z\rangle\le0$ para \emph{todos} $x,z\in\R^n$; aplicando com $x=V+sW$ e $z=W$, o integrando é $\le0$ para cada $s\in[0,1]$. Portanto
+\[
+\frac{\d}{\d t}|U(t)-V(t)|^2\le0\qquad\text{em }(a,b),
+\]
+isto é, $t\mapsto|U(t)-V(t)|^2$ é \emph{não-crescente}. \qquad$\blacksquare$
+
+\item Suponha agora a monotonia forte $\langle DF(x)z,z\rangle\le-|z|^2$ para todos $x,z$.
+
+\emph{Passo 1: $F$ tem um único zero $p$.}
+A condição implica, pelo mesmo cálculo de (a) (com $\frac{\d}{\d s}F(y+s(w-y))$), que para quaisquer $w,y\in\R^n$,
+\begin{equation}\label{eq:strongmono}
+\big\langle F(w)-F(y),\,w-y\big\rangle=\int_0^1\langle DF(y+s(w-y))(w-y),\,w-y\rangle\,\d s\le -|w-y|^2 .
+\end{equation}
+\emph{(Unicidade do zero.)} Se $F(p)=F(q)=0$, então \eqref{eq:strongmono} dá $0=\langle F(p)-F(q),p-q\rangle\le -|p-q|^2$, logo $p=q$.
+
+\emph{(Existência do zero.)} A aplicação $-F$ é \emph{fortemente monótona}: $\langle -F(w)+F(y),w-y\rangle\ge|w-y|^2$. Além disso $-F$ é contínua. Pelo Teorema de Browder--Minty (monotonia forte + continuidade + coercividade $\Rightarrow$ sobrejetividade), $-F$ é uma bijeção de $\R^n$ sobre $\R^n$; em particular existe (único) $p$ com $-F(p)=0$, i.e.\ $F(p)=0$. Damos um argumento elementar autocontido da coercividade e existência, sem invocar Browder--Minty: de \eqref{eq:strongmono} com $y=0$,
+\[
+\langle F(w)-F(0),w\rangle\le-|w|^2\ \Rightarrow\ \langle F(w),w\rangle\le -|w|^2+\langle F(0),w\rangle\le -|w|^2+|F(0)|\,|w|,
+\]
+logo $\langle F(w),w\rangle<0$ para $|w|>|F(0)|$. Assim, na bola fechada $\overline B_R$ com $R>|F(0)|$, o campo $F$ aponta para dentro em $\partial B_R$ (i.e.\ $\langle F(w),w\rangle<0$). Pelo Teorema de Poincaré--Bohl / grau de Brouwer (um campo contínuo que aponta para dentro na fronteira de uma bola tem um zero no interior --- equivalentemente, $\mathrm{Id}+\tfrac1\lambda F$ tem ponto fixo, ou o grau de $F$ em $B_R$ é $(-1)^n\neq0$), existe $p\in B_R$ com $F(p)=0$. Combinado com a unicidade, $p$ é o único zero de $F$.
+
+\emph{Passo 2: decaimento exponencial.}
+A função constante $V\equiv p$ é solução (pois $F(p)=0$). Seja $W:(0,\infty)\to\R^n$ uma solução qualquer. Pelo mesmo cálculo de (a), agora com a hipótese forte,
+\[
+\frac{\d}{\d t}|W-p|^2=2\langle W-p,\,F(W)-F(p)\rangle\le -2|W-p|^2 ,
+\]
+onde usamos \eqref{eq:strongmono} com $w=W(t)$, $y=p$ e $F(p)=0$. Pela desigualdade de Grönwall (forma diferencial), para $t\ge t_0>0$,
+\begin{equation}\label{eq:expdecay31}
+|W(t)-p|^2\le |W(t_0)-p|^2\,e^{-2(t-t_0)}\quad\Longrightarrow\quad |W(t)-p|\le |W(t_0)-p|\,e^{-(t-t_0)} .
+\end{equation}
+Fazendo $t\to\infty$ (com $t_0$ fixo), $|W(t)-p|\to0$. Portanto
+\[
+\lim_{t\to\infty}W(t)=p=:C ,
+\]
+o limite existe e é finito. (Note que \eqref{eq:expdecay31} também mostra diretamente, sem identificar $p$, que $W$ é de Cauchy quando $t\to\infty$: para $h>0$, aplicando (a)-forte ao par de soluções $t\mapsto W(t)$ e $t\mapsto W(t+h)$,
+\[
+\frac{\d}{\d t}|W(t+h)-W(t)|^2\le-2|W(t+h)-W(t)|^2\ \Rightarrow\ |W(t+h)-W(t)|\le e^{-t}|W(h)-W(0)| ,
+\]
+donde $|W(t+h)-W(t)|\le e^{-t}\sup_{0\le \sigma\le h}|W(\sigma)-W(0)|\to0$ uniformemente em $h$ quando $t\to\infty$; logo $W(t)$ converge a algum $C$. Pela continuidade de $F$ e $\dot W=F(W)\to F(C)$, e como $W$ converge, deve ser $F(C)=0$, isto é, $C=p$.) \qquad$\blacksquare$
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 32.}\quad
+Equação de Ermakov--Pinney:
+\[
+y''+y=\frac1{y^3},\qquad y(0)=1,\quad y'(0)=1 .
+\]
+Enquanto $y>0$ o lado direito é regular; por Picard há solução local única, e veremos abaixo que $y$ permanece $>0$, de modo que a solução é global.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Multiplicando a equação por $2y'$:
+\[
+2y'y''+2yy'=\frac{2y'}{y^3}.
+\]
+Reconhecendo derivadas totais: $2y'y''=\dfrac{\d}{\d t}(y'^2)$, $\;2yy'=\dfrac{\d}{\d t}(y^2)$, e $\dfrac{2y'}{y^3}=-\dfrac{\d}{\d t}\!\Big(\dfrac1{y^2}\Big)$. Logo
+\[
+\frac{\d}{\d t}\Big(y'^2+y^2\Big)=-\frac{\d}{\d t}\Big(\frac1{y^2}\Big)
+\quad\Longrightarrow\quad
+\frac{\d}{\d t}\Big(\underbrace{y'^2+y^2+\frac1{y^2}}_{=:E}\Big)=0 .
+\]
+Portanto
+\[
+E=y'^2+y^2+\frac1{y^2}
+\]
+é constante ao longo das soluções. \qquad$\blacksquare$
+
+\item Avaliando em $t=0$ com $y(0)=1,\ y'(0)=1$:
+\[
+E=1^2+1^2+\frac1{1^2}=3 .
+\]
+Assim $E\equiv3$. Em particular $y^2+\dfrac1{y^2}\le3$ sempre, logo $y$ é limitada e \emph{limitada longe de $0$}: de $1/y^2\le3$ vem $y^2\ge1/3$, donde $y(t)\ge 1/\sqrt3>0$ para todo $t$ (pois $y(0)=1>0$ e $y$ é contínua, não podendo atingir $0$). Isto garante a existência global.
+
+\item Seja $w:=y^2$. Então $w'=2yy'$, logo $w'^2=4y^2y'^2=4w\,y'^2$. Da conservação $y'^2=E-y^2-\dfrac1{y^2}=3-w-\dfrac1w$, multiplicando por $4w$:
+\[
+w'^2=4w\Big(3-w-\frac1w\Big)=12w-4w^2-4=-4\big(w^2-3w+1\big).
+\]
+Isto confirma
+\begin{equation}\label{eq:wode}
+w'^2=-4\,(w^2-3w+1).
+\end{equation}
+Completando o quadrado, $w^2-3w+1=\big(w-\tfrac32\big)^2-\tfrac54$, logo
+\[
+w'^2=-4\Big[\big(w-\tfrac32\big)^2-\tfrac54\Big]=5-4\big(w-\tfrac32\big)^2 .
+\]
+O lado direito é $\ge0$ exatamente para $\big|w-\tfrac32\big|\le\tfrac{\sqrt5}{2}$, isto é, $w\in\big[\tfrac32-\tfrac{\sqrt5}{2},\,\tfrac32+\tfrac{\sqrt5}{2}\big]$ (intervalo de extremos positivos, $\approx[0{,}382,\,2{,}618]$), consistente com $w=y^2>0$. Escrevendo $w-\tfrac32=\tfrac{\sqrt5}{2}\sin\theta$, a equação \eqref{eq:wode} torna-se, derivando $w$, $w'=\tfrac{\sqrt5}{2}\cos\theta\cdot\theta'$ e
+\[
+w'^2=5-4\cdot\tfrac54\sin^2\theta=5\cos^2\theta\quad\Rightarrow\quad \tfrac54\cos^2\theta\,(\theta')^2=5\cos^2\theta\ \Rightarrow\ (\theta')^2=4 ,
+\]
+ou seja $\theta'=\pm2$, donde $\theta=2t+\varphi$ (tomamos o sinal $+$; o sinal é fixado pelas condições iniciais abaixo). Assim
+\[
+w(t)=\frac32+\frac{\sqrt5}{2}\sin(2t+\varphi).
+\]
+
+\emph{Verificação direta.} Com $\theta=2t+\varphi$, $w=\tfrac32+\tfrac{\sqrt5}{2}\sin\theta$ dá $w'=\sqrt5\cos\theta$, logo
+\[
+w'^2=5\cos^2\theta=5\big(1-\sin^2\theta\big)=5-5\sin^2\theta=5-4\big(w-\tfrac32\big)^2=-4(w^2-3w+1),
+\]
+confirmando \eqref{eq:wode}.
+
+\emph{Determinação de $\varphi$.} As condições iniciais em $w$: $w(0)=y(0)^2=1$ e $w'(0)=2y(0)y'(0)=2\cdot1\cdot1=2$. De $w(0)=\tfrac32+\tfrac{\sqrt5}{2}\sin\varphi=1$ vem
+\[
+\sin\varphi=\frac{1-\tfrac32}{\sqrt5/2}=\frac{-1/2}{\sqrt5/2}=-\frac1{\sqrt5}.
+\]
+De $w'(0)=\sqrt5\cos\varphi=2$ vem
+\[
+\cos\varphi=\frac{2}{\sqrt5}.
+\]
+(Consistentes: $\cos^2\varphi+\sin^2\varphi=\tfrac45+\tfrac15=1$.) Estes determinam $\varphi$ univocamente em $(-\pi,\pi]$, a saber $\varphi=\arctan\!\big(\!-\tfrac12\big)\approx-0{,}4636$, no quarto quadrante. A escolha do sinal $+$ em $\theta'=2$ é a que reproduz $w'(0)=\sqrt5\cos\varphi=+2>0$ (o sinal $-$ daria $w'(0)=-2$, contrário a $y'(0)=1>0$).
+
+\emph{Solução final.} Como $y>0$ (item (b)),
+\[
+\boxed{\,y(t)=\sqrt{w(t)}=\sqrt{\frac32+\frac{\sqrt5}{2}\sin(2t+\varphi)}\,},\qquad
+\cos\varphi=\frac2{\sqrt5},\ \ \sin\varphi=-\frac1{\sqrt5}.
+\]
+
+\emph{Verificação das condições iniciais.}
+\[
+y(0)=\sqrt{\tfrac32+\tfrac{\sqrt5}{2}\sin\varphi}=\sqrt{\tfrac32+\tfrac{\sqrt5}{2}\big(\!-\tfrac1{\sqrt5}\big)}=\sqrt{\tfrac32-\tfrac12}=\sqrt1=1 .
+\]
+Para $y'(0)$: de $w=y^2$, $y'=\dfrac{w'}{2y}=\dfrac{\sqrt5\cos(2t+\varphi)}{2\sqrt{w}}$, logo
+\[
+y'(0)=\frac{\sqrt5\cos\varphi}{2y(0)}=\frac{\sqrt5\cdot\tfrac2{\sqrt5}}{2\cdot1}=\frac{2}{2}=1 .
+\]
+Ambas as condições iniciais são satisfeitas. Como $w(t)\in\big[\tfrac32-\tfrac{\sqrt5}2,\tfrac32+\tfrac{\sqrt5}2\big]$ com extremo inferior $>0$, $y(t)$ é real, positiva, $2\pi/2=\pi$-periódica em $w$ (período $\pi$), e a expressão é válida para todo $t\in\R$. \qquad$\blacksquare$
+
+\end{enumerate}

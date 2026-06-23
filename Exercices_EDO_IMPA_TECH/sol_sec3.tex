@@ -1,0 +1,133 @@
+\bigskip\noindent\textbf{Solução 13.}\quad
+Escreva a equação como $y'=f(y)$ com
+\[
+f(y)=y(y-1)(y+2)=y^3+y^2-2y .
+\]
+Como $f$ é um polinômio, é de classe $C^\infty$ e, em particular, localmente Lipschitz; assim, por cada dado inicial $y(0)=y_0$ passa uma única solução maximal. Por se tratar de uma equação \emph{autônoma} escalar, as soluções constantes são exatamente as raízes de $f$, e qualquer solução não constante é estritamente monótona e não pode cruzar um equilíbrio (caso contrário, por unicidade, coincidiria com a solução constante). Os pontos estacionários são, portanto, os zeros de $f$:
+\[
+y=-2,\qquad y=0,\qquad y=1 .
+\]
+
+\medskip\noindent\emph{Sinal de $f$.}
+Como $f$ é cúbico com coeficiente líder positivo e raízes simples em $-2<0<1$, seu sinal alterna entre os intervalos determinados por elas:
+\begin{equation}\label{P13:sinal}
+f<0 \text{ em } (-\infty,-2),\quad f>0 \text{ em } (-2,0),\quad f<0 \text{ em } (0,1),\quad f>0 \text{ em } (1,+\infty).
+\end{equation}
+(Por exemplo, $f(-3)=(-3)(-4)(-1)=-12<0$, $f(-1)=(-1)(-2)(1)=2>0$, $f(\tfrac12)=\tfrac12(-\tfrac12)(\tfrac52)=-\tfrac58<0$, $f(2)=2\cdot1\cdot4=8>0$.) O sinal de $f$ dá o sentido do fluxo na reta: onde $f>0$ a solução cresce, onde $f<0$ decresce.
+
+\medskip\noindent\emph{Classificação por linearização.}
+Derivando,
+\[
+f'(y)=3y^2+2y-2 ,
+\]
+e avaliando nos equilíbrios:
+\[
+f'(-2)=12-4-2=6>0,\qquad f'(0)=-2<0,\qquad f'(1)=3+2-2=3>0 .
+\]
+Pelo critério de estabilidade linearizada para equações autônomas escalares ($f'(\bar y)<0\Rightarrow$ equilíbrio assintoticamente estável, $f'(\bar y)>0\Rightarrow$ instável):
+\[
+y=-2 \text{ é instável},\qquad y=0 \text{ é (assintoticamente) estável},\qquad y=1 \text{ é instável}.
+\]
+Isto é coerente com \eqref{P13:sinal}: em torno de $y=0$ o fluxo aponta para o equilíbrio em ambos os lados ($f>0$ à esquerda, $f<0$ à direita), enquanto em torno de $-2$ e de $1$ ele aponta para fora em pelo menos um lado.
+
+\medskip\noindent\emph{Limites quando $t\to+\infty$.}
+Como cada solução não constante é monótona e confinada à faixa entre dois equilíbrios consecutivos (que ela não pode atravessar), seu limite quando $t\to+\infty$ só pode ser um equilíbrio ou $\pm\infty$. Analisemos cada bacia, usando \eqref{P13:sinal}.
+
+\begin{itemize}
+\item $y_0<-2$: aqui $f<0$, logo $y$ é decrescente e permanece $<-2$; não há equilíbrio abaixo, portanto $y(t)\to-\infty$. De fato isso ocorre em \emph{tempo finito}: para $y$ muito negativo, $f(y)\sim y^3$, e a comparação com $y'=y^3$ (cuja solução explode em tempo finito) mostra que a solução maximal tem intervalo de existência limitado à direita. Assim, rigorosamente, $\displaystyle\lim_{t\to T^-}y(t)=-\infty$ para um certo $T<+\infty$ (blow-up), e $+\infty$ não pertence ao domínio.
+
+\item $y_0=-2$: solução constante, $y(t)\equiv-2$.
+
+\item $-2<y_0<0$: aqui $f>0$, logo $y$ cresce, limitada superiormente por $0$; portanto
+\[
+\lim_{t\to+\infty}y(t)=0 .
+\]
+
+\item $y_0=0$: solução constante, $y(t)\equiv0$.
+
+\item $0<y_0<1$: aqui $f<0$, logo $y$ decresce, limitada inferiormente por $0$; portanto
+\[
+\lim_{t\to+\infty}y(t)=0 .
+\]
+
+\item $y_0=1$: solução constante, $y(t)\equiv1$.
+
+\item $y_0>1$: aqui $f>0$, logo $y$ cresce e não há equilíbrio acima; portanto $y\to+\infty$. Novamente $f(y)\sim y^3$ para $y$ grande, e a comparação com $y'=y^3$ dá blow-up em tempo finito: $\displaystyle\lim_{t\to T^-}y(t)=+\infty$ com $T<+\infty$.
+\end{itemize}
+
+\medskip\noindent
+Em resumo, a bacia de atração do único equilíbrio estável $y=0$ é o intervalo aberto $(-2,1)$: para todo $y_0\in(-2,1)$ tem-se $\lim_{t\to+\infty}y(t)=0$. Para $y_0\in\{-2,0,1\}$ a solução é constante. Para $y_0>1$ a solução explode a $+\infty$ em tempo finito, e para $y_0<-2$ explode a $-\infty$ em tempo finito; em ambos os casos não há solução definida para todo $t>0$.
+
+\bigskip\noindent\textbf{Solução 14.}\quad
+Escreva $y'=f(y)$ com
+\[
+f(y)=y^2(4-y^2)=y^2(2-y)(2+y)=4y^2-y^4 .
+\]
+Como antes, $f\in C^\infty$ garante existência e unicidade locais; as soluções constantes são os zeros de $f$, e nenhuma solução não constante cruza um equilíbrio. Os pontos de equilíbrio são
+\[
+y=-2,\qquad y=0\ (\text{raiz dupla}),\qquad y=2 .
+\]
+
+\medskip\noindent\emph{Sinal de $f$.}
+Como $y^2\ge0$, o sinal de $f$ coincide com o de $4-y^2=(2-y)(2+y)$:
+\begin{equation}\label{P14:sinal}
+f<0 \text{ em } (-\infty,-2),\quad f>0 \text{ em } (-2,0),\quad f>0 \text{ em } (0,2),\quad f<0 \text{ em } (2,+\infty),
+\end{equation}
+com $f>0$ \emph{em todo} $(-2,2)\setminus\{0\}$. O fator $y^2$ apenas anula $f$ em $0$ sem mudar o sinal de $f$ ao atravessá-lo: este é o sintoma do equilíbrio \emph{semiestável}.
+
+\medskip\noindent\emph{Classificação.}
+Derivando,
+\[
+f'(y)=8y-4y^3=4y(2-y^2) ,
+\]
+de modo que
+\[
+f'(-2)=4(-2)(2-4)=16>0,\qquad f'(0)=0,\qquad f'(2)=4\cdot2\cdot(2-4)=-16<0 .
+\]
+Logo, pelo critério linearizado,
+\[
+y=-2 \text{ é instável},\qquad y=2 \text{ é (assintoticamente) estável}.
+\]
+Para $y=0$ a linearização é \emph{inconclusiva} ($f'(0)=0$), e devemos recorrer ao sinal de $f$. Por \eqref{P14:sinal}, $f>0$ \emph{em ambos} os lados de $0$ (em $(-2,0)$ e em $(0,2)$); portanto soluções com dado abaixo de $0$ aproximam-se de $0$ pela esquerda, enquanto soluções com dado acima de $0$ afastam-se de $0$ subindo. Como o fluxo aponta para o equilíbrio de um lado e para longe do outro, $y=0$ é \emph{semiestável} (estável por baixo, instável por cima). Em particular $0$ não é estável nem instável no sentido usual; é atrator apenas das condições iniciais negativas próximas.
+
+\medskip\noindent\emph{Limites quando $t\to+\infty$.}
+Cada solução não constante é monótona e presa à faixa entre equilíbrios consecutivos. Usando \eqref{P14:sinal}, analisemos as bacias. O enunciado pede o limite \emph{para todo dado inicial cuja solução exista para todo $t>0$}; identificamos primeiro onde há blow-up.
+
+\begin{itemize}
+\item $y_0>2$: aqui $f<0$, logo $y$ decresce, limitada inferiormente por $2$; portanto
+\[
+\lim_{t\to+\infty}y(t)=2 .
+\]
+A solução é global em $(0,+\infty)$ (decrescente e limitada).
+
+\item $y_0=2$: solução constante $y\equiv2$ (limite $2$).
+
+\item $0<y_0<2$: aqui $f>0$, logo $y$ cresce, limitada superiormente por $2$; portanto
+\[
+\lim_{t\to+\infty}y(t)=2 .
+\]
+
+\item $y_0=0$: solução constante $y\equiv0$ (limite $0$).
+
+\item $-2<y_0<0$: aqui $f>0$, logo $y$ cresce, limitada superiormente por $0$; portanto
+\[
+\lim_{t\to+\infty}y(t)=0 ,
+\]
+aproximando-se do equilíbrio semiestável \emph{por baixo}.
+
+\item $y_0=-2$: solução constante $y\equiv-2$ (limite $-2$).
+
+\item $y_0<-2$: aqui $f<0$, logo $y$ decresce e não há equilíbrio abaixo; assim $y\to-\infty$. Como $f(y)=4y^2-y^4\sim -y^4$ para $|y|$ grande, a comparação com $y'=-y^4$ mostra que a queda ocorre em \emph{tempo finito}: existe $T<+\infty$ com $\lim_{t\to T^-}y(t)=-\infty$ (blow-up). Estas soluções \emph{não} existem para todo $t>0$ e por isso ficam fora da pergunta.
+\end{itemize}
+
+\medskip\noindent
+Para os dados iniciais cuja solução existe em todo $(0,+\infty)$ --- isto é, $y_0\ge-2$ --- o limite quando $t\to+\infty$ é, portanto:
+\[
+\lim_{t\to+\infty}y(t)=
+\begin{cases}
+2, & y_0>0\quad(\text{incluindo } y_0=2\text{ e } y_0>2),\\[2pt]
+0, & -2<y_0\le0,\\[2pt]
+-2, & y_0=-2 .
+\end{cases}
+\]
+Assim a bacia de atração do equilíbrio estável $y=2$ é todo $(0,+\infty)$; o equilíbrio semiestável $y=0$ atrai exatamente os dados em $(-2,0]$ (sua bacia ``unilateral''); o equilíbrio instável $y=-2$ atrai apenas a si próprio. Para $y_0<-2$ a solução explode a $-\infty$ em tempo finito e não está definida para todo $t>0$.

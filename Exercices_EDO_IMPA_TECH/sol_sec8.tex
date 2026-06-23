@@ -1,0 +1,204 @@
+\bigskip\noindent\textbf{Solução 37.}\quad
+Seja $f\in C^2([0,1])$ com $f(0)=0$, $f'(0)=1$ e
+\[
+f''(x)=\frac{1}{1+f(x)}\qquad(0\le x\le 1).
+\]
+Para que o lado direito faça sentido é preciso ter $1+f(x)\neq0$; mostraremos primeiro que, de fato, $f>0$ em $(0,1]$, o que garante $1+f>1$ e, em particular, $f''>0$.
+
+\emph{Passo 1: $f$ é positiva e crescente em $(0,1]$.}
+Como $f(0)=0$ e $f'(0)=1>0$, existe $\delta>0$ com $f>0$ em $(0,\delta)$; aí $1+f>1>0$, logo $f''=1/(1+f)>0$. Afirmamos que $f>0$ em todo $(0,1]$. De fato, seja
+\[
+x_0:=\sup\{x\in(0,1]: f>0\text{ em }(0,x)\}.
+\]
+Em $(0,x_0)$ vale $f>0$, donde $f''>0$ e portanto $f'$ é estritamente crescente em $[0,x_0)$; como $f'(0)=1$, temos $f'(x)>1$ em $(0,x_0)$. Integrando, $f(x)>x>0$ em $(0,x_0)$. Por continuidade $f(x_0)\ge x_0>0$, de modo que $f$ permanece positiva à direita de $x_0$; logo, se fosse $x_0<1$, isto contradiria a definição de $x_0$. Portanto $x_0=1$ e
+\begin{equation}\label{eq:37-lower}
+f(x)>x\qquad\text{e}\qquad f'(x)>1\qquad\text{para todo }x\in(0,1].
+\end{equation}
+Em particular $f$ é positiva e estritamente crescente em $(0,1]$.
+
+\emph{Passo 2: estimativa fina via $f(x)>x$.}
+A desigualdade \eqref{eq:37-lower} controla o lado direito da equação: como $f(x)\ge x$ em $[0,1]$ (igualdade só em $x=0$),
+\[
+f''(x)=\frac{1}{1+f(x)}\le \frac{1}{1+x}\qquad(0\le x\le1).
+\]
+Integrando de $0$ a $x$ e usando $f'(0)=1$,
+\[
+f'(x)=1+\int_0^x f''(s)\,\d s\le 1+\int_0^x\frac{\d s}{1+s}=1+\ln(1+x).
+\]
+Integrando novamente de $0$ a $1$ e usando $f(0)=0$,
+\[
+f(1)=\int_0^1 f'(x)\,\d x\le \int_0^1\bigl(1+\ln(1+x)\bigr)\,\d x
+=1+\int_0^1\ln(1+x)\,\d x.
+\]
+Calculando a integral por partes,
+\[
+\int_0^1\ln(1+x)\,\d x=\Bigl[(1+x)\ln(1+x)-(1+x)\Bigr]_0^1=(2\ln2-2)-(0-1)=2\ln2-1.
+\]
+Logo
+\[
+f(1)\le 1+(2\ln2-1)=2\ln2.
+\]
+Como $2\ln2=\ln4$ e $4<e^{3/2}$ (pois $e^{3/2}>e^{1}\cdot e^{1/2}>2{,}71\cdot1{,}64>4$), tem-se $2\ln2<\tfrac32$; numericamente $2\ln2\approx1{,}3863$. Portanto
+\[
+\boxed{\,f(1)\le 2\ln2<\frac{3}{2}\,}.
+\]
+A desigualdade é, na verdade, estrita já na primeira passagem (em $x=0$ vale $f(x)=x$ apenas no extremo, e $f(x)>x$ no interior, de modo que $f''(x)<1/(1+x)$ em $(0,1]$), o que reforça $f(1)<2\ln2<\tfrac32$. \qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 38.}\quad
+Procuramos $\varphi\in C^1([a,\infty))$ com
+\begin{equation}\label{eq:38-int}
+\varphi(x)^2=\int_a^x\bigl(\varphi(y)^2+\varphi'(y)^2\bigr)\,\d y-(x-a)^3,\qquad x>a.
+\end{equation}
+
+\emph{Condições necessárias.}
+Fazendo $x\to a^+$ em \eqref{eq:38-int}, a integral e $(x-a)^3$ tendem a $0$, logo
+\begin{equation}\label{eq:38-init}
+\varphi(a)=0.
+\end{equation}
+O lado direito de \eqref{eq:38-int} é derivável (o integrando $\varphi^2+\varphi'^2$ é contínuo, pois $\varphi\in C^1$, e $(x-a)^3$ é suave); como o lado esquerdo $\varphi^2$ também é derivável, podemos derivar ambos os lados pelo Teorema Fundamental do Cálculo:
+\[
+2\varphi\varphi'=\varphi^2+\varphi'^2-3(x-a)^2.
+\]
+Reorganizando,
+\[
+\varphi'^2-2\varphi\varphi'+\varphi^2=3(x-a)^2,
+\quad\text{isto é}\quad
+(\varphi'-\varphi)^2=3(x-a)^2.
+\]
+Extraindo a raiz e usando que $x-a>0$,
+\begin{equation}\label{eq:38-ode}
+\varphi'(x)-\varphi(x)=\varepsilon\,\sqrt3\,(x-a),\qquad \varepsilon\in\{+1,-1\}.
+\end{equation}
+A priori o sinal $\varepsilon$ poderia variar com $x$; mas $\varphi'-\varphi$ é contínua e só pode mudar de sinal passando por $0$, o que (por \eqref{eq:38-ode}) só ocorre em $x=a$. Logo $\varepsilon$ é constante em $(a,\infty)$, com dois ramos possíveis.
+
+\emph{Resolução da EDO linear.}
+A equação \eqref{eq:38-ode} é linear de primeira ordem com fator integrante $e^{-x}$:
+\[
+\bigl(e^{-x}\varphi\bigr)'=\varepsilon\sqrt3\,(x-a)e^{-x}.
+\]
+Integrando de $a$ a $x$ e usando $\varphi(a)=0$,
+\[
+e^{-x}\varphi(x)=\varepsilon\sqrt3\int_a^x(s-a)e^{-s}\,\d s
+=\varepsilon\sqrt3\Bigl[-(s-a)e^{-s}-e^{-s}\Bigr]_a^x
+=\varepsilon\sqrt3\bigl(e^{-a}-(x-a)e^{-x}-e^{-x}\bigr).
+\]
+Multiplicando por $e^x$,
+\begin{equation}\label{eq:38-sol}
+\varphi(x)=\varepsilon\sqrt3\bigl(e^{\,x-a}-(x-a)-1\bigr),\qquad \varepsilon\in\{+1,-1\}.
+\end{equation}
+
+\emph{Verificação na equação integral original.}
+A derivação foi reversível a menos do valor da própria integral em \eqref{eq:38-int}; é necessário confirmar que cada ramo \eqref{eq:38-sol} satisfaz \eqref{eq:38-int}, e não apenas sua versão derivada. Escreva $u:=x-a\ge0$ e $g(u):=e^{u}-u-1$, de modo que $\varphi=\varepsilon\sqrt3\,g$, $g(0)=0$, $g'(u)=e^{u}-1$. Note que $\varphi^2=3g^2$ e $\varphi'^2=3(e^u-1)^2$ não dependem de $\varepsilon$. Defina
+\[
+\Phi(x):=\int_a^x\bigl(\varphi^2+\varphi'^2\bigr)\,\d y-(x-a)^3-\varphi(x)^2 .
+\]
+Então $\Phi(a)=-\varphi(a)^2=0$ por \eqref{eq:38-init}, e
+\[
+\Phi'(x)=\varphi^2+\varphi'^2-3(x-a)^2-2\varphi\varphi'=(\varphi'-\varphi)^2-3(x-a)^2=0
+\]
+por \eqref{eq:38-ode}. Logo $\Phi\equiv0$, ou seja, \eqref{eq:38-int} vale identicamente. Portanto \emph{ambos} os ramos são soluções legítimas.
+
+\emph{Conclusão.} As soluções continuamente diferenciáveis são exatamente
+\[
+\boxed{\;\varphi(x)=\pm\sqrt3\,\bigl(e^{\,x-a}-(x-a)-1\bigr)\;}.
+\]
+(De fato $\varphi\in C^\infty([a,\infty))$, $\varphi(a)=0$ e $\varphi'-\varphi=\pm\sqrt3\,(x-a)$, em concordância com a análise acima.) \qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 39.}\quad
+Seja $f_0\in C([0,1])$ e $M:=\max_{[0,1]}|f_0|<\infty$. Para $n\ge1$,
+\[
+f_n(x)=\int_0^x f_{n-1}(t)\,\d t,\qquad x\in[0,1].
+\]
+
+\emph{Passo 1: fórmula de Cauchy para a integração iterada.}
+Afirmamos que
+\begin{equation}\label{eq:39-cauchy}
+f_n(x)=\frac{1}{(n-1)!}\int_0^x (x-t)^{\,n-1}\,f_0(t)\,\d t\qquad(n\ge1).
+\end{equation}
+Procedemos por indução. Para $n=1$, $(x-t)^0/0!=1$ e \eqref{eq:39-cauchy} é a própria definição. Suponha \eqref{eq:39-cauchy} para $n$. Então, usando o teorema de Fubini para trocar a ordem de integração no triângulo $\{0\le t\le s\le x\}$,
+\[
+f_{n+1}(x)=\int_0^x f_n(s)\,\d s
+=\int_0^x\!\!\int_0^s \frac{(s-t)^{n-1}}{(n-1)!}\,f_0(t)\,\d t\,\d s
+=\int_0^x f_0(t)\Bigl(\int_t^x\frac{(s-t)^{n-1}}{(n-1)!}\,\d s\Bigr)\d t.
+\]
+A integral interna vale $\dfrac{(x-t)^{n}}{n!}$, logo $f_{n+1}(x)=\dfrac{1}{n!}\int_0^x(x-t)^{n}f_0(t)\,\d t$, que é \eqref{eq:39-cauchy} com $n+1$. Isto fecha a indução.
+
+\emph{Passo 2: convergência (uniforme) da série.}
+De \eqref{eq:39-cauchy} e $0\le x\le1$, para cada $x$,
+\[
+|f_n(x)|\le \frac{1}{(n-1)!}\int_0^x (x-t)^{\,n-1}\,|f_0(t)|\,\d t
+\le \frac{M}{(n-1)!}\int_0^x (x-t)^{\,n-1}\,\d t
+=\frac{M\,x^{\,n}}{n!}\le \frac{M}{n!}.
+\]
+Como $\sum_{n\ge1}M/n!=M(e-1)<\infty$, o teste de Weierstrass garante que a série $\sum_{n\ge1}f_n$ converge \emph{absoluta e uniformemente} em $[0,1]$; em particular converge para todo $x\in[0,1]$.
+
+\emph{Passo 3: fórmula explícita da soma.}
+A convergência uniforme permite somar dentro da integral em \eqref{eq:39-cauchy}. Para $0\le t\le x$,
+\[
+\sum_{n=1}^{\infty}\frac{(x-t)^{\,n-1}}{(n-1)!}=\sum_{k=0}^{\infty}\frac{(x-t)^{k}}{k!}=e^{\,x-t}.
+\]
+A troca de soma e integral justifica-se porque, para cada $x$ fixo, as somas parciais $\sum_{n=1}^{N}\frac{(x-t)^{n-1}}{(n-1)!}$ convergem uniformemente em $t\in[0,x]$ para $e^{x-t}$ (resto da série exponencial, dominado por $\frac{(x-t)^N}{N!}e^{x-t}\le \frac{e}{N!}\to0$), e $f_0$ é limitada. Portanto
+\[
+S(x):=\sum_{n=1}^{\infty}f_n(x)
+=\int_0^x\Bigl(\sum_{n=1}^{\infty}\frac{(x-t)^{\,n-1}}{(n-1)!}\Bigr)f_0(t)\,\d t
+=\boxed{\;\int_0^x e^{\,x-t}\,f_0(t)\,\d t\;}.
+\]
+
+\emph{Observação.} A função $S$ é a solução do problema $S'-S=f_0$, $S(0)=0$. De fato, $S(x)=e^x\int_0^x e^{-t}f_0(t)\,\d t$ dá $S(0)=0$ e $S'(x)=S(x)+f_0(x)$. \qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 40.}\quad
+Seja $f\in C([0,\infty))$ com
+\begin{equation}\label{eq:40-int}
+f(x)=1+\int_0^x (x-t)\bigl(f(t)-2e^t\bigr)\,\d t\qquad(x\ge0).
+\end{equation}
+
+\emph{Passo 1: redução a um problema de valor inicial.}
+Escreva o núcleo de \eqref{eq:40-int} separando $x$:
+\[
+f(x)=1+x\int_0^x\bigl(f(t)-2e^t\bigr)\,\d t-\int_0^x t\bigl(f(t)-2e^t\bigr)\,\d t.
+\]
+Ambos os integrandos são contínuos (pois $f$ é contínua), logo o lado direito é de classe $C^1$ e podemos derivar. Pela regra do produto e pelo Teorema Fundamental do Cálculo, os termos de fronteira se cancelam:
+\[
+f'(x)=\int_0^x\bigl(f(t)-2e^t\bigr)\,\d t+x\bigl(f(x)-2e^x\bigr)-x\bigl(f(x)-2e^x\bigr)
+=\int_0^x\bigl(f(t)-2e^t\bigr)\,\d t.
+\]
+Em particular $f'$ é $C^1$ (seu integrando é contínuo), de modo que $f\in C^2$, e derivando uma vez mais,
+\begin{equation}\label{eq:40-ode}
+f''(x)=f(x)-2e^x.
+\end{equation}
+As condições iniciais leem-se diretamente de \eqref{eq:40-int} e da expressão de $f'$ em $x=0$ (ambas as integrais anulam-se):
+\[
+f(0)=1,\qquad f'(0)=0.
+\]
+Assim $f$ resolve o problema de valor inicial de segunda ordem
+\[
+\boxed{\;f''-f=-2e^x,\qquad f(0)=1,\ \ f'(0)=0\;}.
+\]
+Reciprocamente, integrando \eqref{eq:40-ode} duas vezes com essas condições recupera-se \eqref{eq:40-int}, de modo que os dois problemas são equivalentes.
+
+\emph{Passo 2: resolução do PVI.}
+A equação homogênea $y''-y=0$ tem solução geral $c_1e^x+c_2e^{-x}$. Como $e^x$ é solução homogênea, buscamos uma solução particular da forma $f_p=Axe^x$ (ressonância). Então
+\[
+f_p'=A(1+x)e^x,\qquad f_p''=A(2+x)e^x,\qquad f_p''-f_p=2Ae^x.
+\]
+Igualando a $-2e^x$ obtém-se $A=-1$, isto é, $f_p=-xe^x$. A solução geral é
+\[
+f(x)=c_1e^x+c_2e^{-x}-xe^x.
+\]
+Impondo as condições iniciais: de $f(0)=c_1+c_2=1$ e
+\[
+f'(x)=c_1e^x-c_2e^{-x}-(1+x)e^x,\qquad f'(0)=c_1-c_2-1=0,
+\]
+vem $c_1-c_2=1$ e $c_1+c_2=1$, donde $c_1=1$, $c_2=0$. Portanto
+\[
+\boxed{\;f(x)=(1-x)\,e^{x}\;}.
+\]
+
+\emph{Verificação.} Tem-se $f(0)=1$ e $f'(x)=-e^x+(1-x)e^x=-xe^x$, logo $f'(0)=0$. Além disso
+\[
+f''(x)=-e^x-xe^x=-(1+x)e^x,\qquad f(x)-2e^x=(1-x)e^x-2e^x=-(1+x)e^x,
+\]
+de modo que $f''=f-2e^x$, confirmando \eqref{eq:40-ode}. Assim todas as condições do PVI são satisfeitas; integrando \eqref{eq:40-ode} duas vezes (ou substituindo diretamente) recupera-se a igualdade integral \eqref{eq:40-int}. \qquad$\blacksquare$

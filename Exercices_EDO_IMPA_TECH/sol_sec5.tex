@@ -1,0 +1,327 @@
+\bigskip\noindent\textbf{Solução 22.}\quad
+Sejam $A,B\in M_n(\mathbb{C})$. Queremos provar a equivalência
+\[
+    e^{t(A+B)}=e^{tA}e^{tB}\ \ \forall t\in\R
+    \qquad\Longleftrightarrow\qquad
+    AB=BA .
+\]
+
+\emph{($\Leftarrow$) Comutatividade implica a identidade.}
+Suponha $AB=BA$. Fixe $t$ e considere as duas funções matriciais
+\[
+    \Phi(s):=e^{s(A+B)},\qquad \Psi(s):=e^{sA}e^{sB},\qquad s\in\R .
+\]
+Ambas valem $I$ em $s=0$. A primeira satisfaz $\Phi'(s)=(A+B)\,\Phi(s)$. Para a segunda, pela regra do produto,
+\[
+    \Psi'(s)=A\,e^{sA}e^{sB}+e^{sA}\,B\,e^{sB}
+            =A\,\Psi(s)+e^{sA}\,B\,e^{sB}.
+\]
+Aqui usamos que $A$ comuta com $e^{sA}$ (séries em $A$). O ponto-chave é que, como $AB=BA$, também $B$ comuta com $e^{sA}=\sum_k \frac{s^k}{k!}A^k$, pois $B$ comuta com cada potência de $A$. Logo $e^{sA}B=Be^{sA}$ e
+\[
+    \Psi'(s)=A\,\Psi(s)+B\,e^{sA}e^{sB}=(A+B)\,\Psi(s).
+\]
+Portanto $\Phi$ e $\Psi$ resolvem o mesmo problema de valor inicial linear $M'=(A+B)M$, $M(0)=I$. Pela unicidade de soluções de EDOs lineares, $\Phi\equiv\Psi$; em particular, tomando $s=t$,
+\[
+    e^{t(A+B)}=e^{tA}e^{tB}\qquad\text{para todo }t.
+\]
+
+\emph{($\Rightarrow$) A identidade implica comutatividade.}
+Suponha $e^{t(A+B)}=e^{tA}e^{tB}$ para todo $t\in\R$. Expandimos ambos os lados em séries de potências de $t$ em torno de $t=0$ e comparamos os coeficientes. À esquerda,
+\[
+    e^{t(A+B)}=I+t(A+B)+\frac{t^2}{2}(A+B)^2+O(t^3),
+\]
+e $(A+B)^2=A^2+AB+BA+B^2$. À direita,
+\[
+    e^{tA}e^{tB}
+    =\Big(I+tA+\tfrac{t^2}{2}A^2+O(t^3)\Big)\Big(I+tB+\tfrac{t^2}{2}B^2+O(t^3)\Big),
+\]
+cujo termo de ordem $t^2$ é
+\[
+    \tfrac12 A^2+AB+\tfrac12 B^2 .
+\]
+Os termos de ordem $t^0$ ($=I$) e $t^1$ ($=A+B$) já coincidem automaticamente. Igualando os coeficientes de $t^2$:
+\[
+    \tfrac12\big(A^2+AB+BA+B^2\big)=\tfrac12 A^2+AB+\tfrac12 B^2 ,
+\]
+isto é, $\tfrac12(AB+BA)=AB$, ou seja $BA=AB$. Logo $AB=BA$.
+
+Combinando as duas direções, fica provada a equivalência. \qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 23.}\quad
+A matriz
+\[
+    A=\begin{pmatrix} 2&1&0\\ 0&2&0\\ 0&0&-1\end{pmatrix}
+\]
+é bloco-diagonal, $A=\begin{pmatrix}J&0\\0&-1\end{pmatrix}$, com $J=\begin{pmatrix}2&1\\0&2\end{pmatrix}$ um bloco de Jordan de autovalor $2$ e o autovalor $-1$ no canto inferior. Como blocos diagonais exponenciam-se separadamente,
+\[
+    e^{tA}=\begin{pmatrix} e^{tJ}&0\\ 0&e^{-t}\end{pmatrix}.
+\]
+Para $e^{tJ}$ escrevemos $J=2I_2+N$ com $N=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ nilpotente ($N^2=0$). Como $2I_2$ e $N$ comutam,
+\[
+    e^{tJ}=e^{2t I_2}\,e^{tN}=e^{2t}\big(I_2+tN\big)
+          =e^{2t}\begin{pmatrix}1&t\\0&1\end{pmatrix}
+          =\begin{pmatrix} e^{2t}&t\,e^{2t}\\ 0&e^{2t}\end{pmatrix}.
+\]
+Portanto
+\[
+    \boxed{\;
+    e^{tA}=\begin{pmatrix}
+        e^{2t} & t\,e^{2t} & 0\\
+        0 & e^{2t} & 0\\
+        0 & 0 & e^{-t}
+    \end{pmatrix}.
+    \;}
+\]
+A solução geral de $x'=Ax$ é $x(t)=e^{tA}x(0)$. Escrevendo $x(0)=(c_1,c_2,c_3)^{\!\top}$,
+\[
+    \boxed{\;
+    x(t)=e^{tA}\begin{pmatrix}c_1\\c_2\\c_3\end{pmatrix}
+        =\begin{pmatrix}
+            (c_1+c_2 t)\,e^{2t}\\[2pt]
+            c_2\,e^{2t}\\[2pt]
+            c_3\,e^{-t}
+        \end{pmatrix},
+    \qquad c_1,c_2,c_3\in\R .
+    \;}
+\]
+Equivalentemente, uma base de soluções é $e^{2t}(1,0,0)^{\!\top}$, $e^{2t}(t,1,0)^{\!\top}$ e $e^{-t}(0,0,1)^{\!\top}$.
+
+
+\bigskip\noindent\textbf{Solução 24.}\quad
+Procuramos $f,g:\R\to\R$ diferenciáveis com
+\[
+    f(x+y)=f(x)f(y)-g(x)g(y),\qquad
+    g(x+y)=f(x)g(y)+g(x)f(y),
+\]
+e $f(0)=1$, $g(0)=0$, $f'(0)=0$, $g'(0)=1$.
+
+A estratégia é converter as identidades funcionais em um sistema de EDOs. Fixe $x$ e derive ambas as identidades em relação a $y$; pela regra da cadeia, o lado esquerdo torna-se a derivada de $f$ (resp.\ $g$) avaliada em $x+y$:
+\[
+    f'(x+y)=f(x)f'(y)-g(x)g'(y),\qquad
+    g'(x+y)=f(x)g'(y)+g(x)f'(y).
+\]
+Pondo $y=0$ e usando $f(0)=1,\ g(0)=0,\ f'(0)=0,\ g'(0)=1$:
+\[
+    f'(x)=f(x)\cdot0-g(x)\cdot1=-g(x),\qquad
+    g'(x)=f(x)\cdot1+g(x)\cdot0=f(x).
+\]
+Obtemos assim o sistema linear de primeira ordem
+\[
+    \begin{pmatrix}f\\g\end{pmatrix}'
+    =\begin{pmatrix}0&-1\\1&0\end{pmatrix}
+     \begin{pmatrix}f\\g\end{pmatrix},
+    \qquad
+    \begin{pmatrix}f(0)\\g(0)\end{pmatrix}=\begin{pmatrix}1\\0\end{pmatrix}.
+\]
+A matriz $R=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$ gera rotações: $R^2=-I$, logo
+\[
+    e^{tR}=\cos t\,I+\sin t\,R=\begin{pmatrix}\cos t&-\sin t\\ \sin t&\cos t\end{pmatrix}.
+\]
+Portanto
+\[
+    \begin{pmatrix}f(x)\\g(x)\end{pmatrix}
+    =e^{xR}\begin{pmatrix}1\\0\end{pmatrix}
+    =\begin{pmatrix}\cos x\\ \sin x\end{pmatrix},
+\]
+ou seja
+\[
+    \boxed{\,f(x)=\cos x,\qquad g(x)=\sin x.\,}
+\]
+
+Resta verificar que este par realmente satisfaz \emph{todas} as identidades funcionais originais (não apenas as derivadas). De fato, as fórmulas de adição
+\[
+    \cos(x+y)=\cos x\cos y-\sin x\sin y,\qquad
+    \sin(x+y)=\cos x\sin y+\sin x\cos y
+\]
+são exatamente as relações pedidas, e $\cos0=1$, $\sin0=0$, $\cos'0=-\sin0=0$, $\sin'0=\cos0=1$ ajustam os dados iniciais. Pela unicidade do problema de Cauchy linear acima, $(\cos,\sin)$ é a \emph{única} solução. \qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 25.}\quad
+Seja $A:[0,T]\to M_n(\R)$ contínua e $X$ a solução de $X'=A X$, $X(0)=I$.
+
+\emph{(a) Identidade de Jacobi.}
+Use a fórmula de Jacobi para a derivada do determinante: se $M(t)$ é uma curva diferenciável de matrizes \emph{invertíveis}, então
+\begin{equation}\label{eq25:jacobi}
+    \frac{\d}{\d t}\det M=\det M\cdot\operatorname{tr}\!\big(M^{-1}M'\big).
+\end{equation}
+Recordemos a prova rápida via cofatores. Expandindo $\det M$ e usando $\frac{\partial \det M}{\partial M_{ij}}=\operatorname{cof}(M)_{ij}$ (cofatores), a regra da cadeia dá
+\[
+    \frac{\d}{\d t}\det M=\sum_{i,j}\operatorname{cof}(M)_{ij}\,M'_{ij}
+    =\operatorname{tr}\!\big(\operatorname{cof}(M)^{\!\top}M'\big).
+\]
+Pela identidade dos cofatores $\operatorname{cof}(M)^{\!\top}=(\det M)\,M^{-1}$, válida quando $M$ é invertível, segue
+\[
+    \frac{\d}{\d t}\det M=(\det M)\,\operatorname{tr}\!\big(M^{-1}M'\big),
+\]
+que é \eqref{eq25:jacobi}. Aplicando a $M=X$ (enquanto $X$ é invertível) obtém-se exatamente a identidade de Jacobi do enunciado.
+
+\emph{(b) Fórmula de Liouville.}
+Substituindo $X'=AX$ em \eqref{eq25:jacobi}, temos, enquanto $X$ for invertível,
+\[
+    \frac{\d}{\d t}\det X=\det X\cdot\operatorname{tr}\!\big(X^{-1}AX\big)
+    =\det X\cdot\operatorname{tr}(A),
+\]
+pois o traço é invariante por conjugação, $\operatorname{tr}(X^{-1}AX)=\operatorname{tr}(A)$. Assim a função escalar $w(t):=\det X(t)$ satisfaz a EDO linear escalar
+\[
+    w'(t)=\operatorname{tr}\big(A(t)\big)\,w(t),\qquad w(0)=\det I=1 .
+\]
+Note que esta dedução pressupôs apenas que $X$ é invertível; mas o argumento se estende a todo $[0,T]$, pois a EDO escalar acima é válida \emph{a priori} num intervalo em torno de $0$ onde $X$ é invertível, e sua solução
+\begin{equation}\label{eq25:liouville}
+    \det X(t)=w(t)=\exp\!\left(\int_0^t \operatorname{tr}\big(A(s)\big)\,\d s\right)
+\end{equation}
+nunca se anula. De fato, defina $w(t)$ pelo lado direito de \eqref{eq25:liouville}: ele satisfaz $w'=\operatorname{tr}(A)\,w$, $w(0)=1$. Por outro lado, enquanto $\det X\neq0$ a função $\det X$ satisfaz a mesma EDO escalar com o mesmo dado inicial; por unicidade as duas coincidem onde $\det X\neq0$. Como $w(t)>0$ para todo $t$ (exponencial de um número real) e $\det X(0)=1>0$, a continuidade impede que $\det X$ atinja $0$: se houvesse um primeiro $t_*$ com $\det X(t_*)=0$, então em $[0,t_*)$ teríamos $\det X=w>0$, e por continuidade $\det X(t_*)=w(t_*)>0$, contradição. Logo $\det X\equiv w>0$ em $[0,T]$, valendo \eqref{eq25:liouville} em todo o intervalo.
+
+Em particular, $\det X(t)=\exp\!\big(\int_0^t\operatorname{tr}A\big)\neq0$ para todo $t\in[0,T]$, isto é, \textbf{$X(t)$ é invertível para todo $t$}. \qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 26.}\quad
+A equação
+\[
+    (*)\qquad \sum_{n=0}^{7}\frac{\d^n x}{\d t^n}=0
+\]
+é linear, homogênea, de coeficientes constantes e ordem $7$. Seu polinômio característico é
+\[
+    p(\lambda)=\sum_{n=0}^{7}\lambda^n=\frac{\lambda^8-1}{\lambda-1}\qquad(\lambda\neq1).
+\]
+Logo as raízes de $p$ são exatamente as raízes oitavas da unidade \emph{exceto} $\lambda=1$ (que é cancelada pelo fator $\lambda-1$ do denominador). Escrevendo $\zeta_k=e^{2\pi i k/8}=e^{i\pi k/4}$ para $k=0,1,\dots,7$, as raízes de $p$ são $\zeta_1,\dots,\zeta_7$, todas simples (pois $\lambda^8-1$ tem raízes simples). Explicitamente:
+\[
+    \begin{aligned}
+    \zeta_1&=e^{i\pi/4}=\tfrac{\sqrt2}{2}(1+i), & \zeta_2&=i, & \zeta_3&=e^{3i\pi/4}=\tfrac{\sqrt2}{2}(-1+i),\\
+    \zeta_4&=-1, & \zeta_5&=e^{5i\pi/4}=\tfrac{\sqrt2}{2}(-1-i), & \zeta_6&=-i,\\
+    \zeta_7&=e^{7i\pi/4}=\tfrac{\sqrt2}{2}(1-i). & & &
+    \end{aligned}
+\]
+Estas agrupam-se em: a raiz real $\lambda=-1$ e os três pares conjugados
+\[
+    \tfrac{\sqrt2}{2}(1\pm i),\qquad \pm i,\qquad \tfrac{\sqrt2}{2}(-1\pm i).
+\]
+
+\emph{(a) Base real.}
+Cada raiz real $\lambda$ fornece a solução $e^{\lambda t}$; cada par conjugado $\alpha\pm i\beta$ fornece o par real $e^{\alpha t}\cos\beta t,\ e^{\alpha t}\sin\beta t$. Lendo as partes real $\alpha$ e imaginária $\beta$ acima:
+\begin{itemize}
+\item $\lambda=-1$: \quad $e^{-t}$;
+\item $\tfrac{\sqrt2}{2}(1\pm i)$, isto é $\alpha=\beta=\tfrac{\sqrt2}{2}$:\quad $e^{t/\sqrt2}\cos\tfrac{t}{\sqrt2},\ e^{t/\sqrt2}\sin\tfrac{t}{\sqrt2}$;
+\item $\pm i$, isto é $\alpha=0,\ \beta=1$:\quad $\cos t,\ \sin t$;
+\item $\tfrac{\sqrt2}{2}(-1\pm i)$, isto é $\alpha=-\tfrac{\sqrt2}{2},\ \beta=\tfrac{\sqrt2}{2}$:\quad $e^{-t/\sqrt2}\cos\tfrac{t}{\sqrt2},\ e^{-t/\sqrt2}\sin\tfrac{t}{\sqrt2}$.
+\end{itemize}
+Como há $7$ raízes simples, obtemos $7$ soluções linearmente independentes, que formam uma base do espaço (de dimensão $7$) das soluções reais:
+\[
+    \boxed{\;
+    \Big\{
+    e^{-t},\
+    e^{t/\sqrt2}\cos\tfrac{t}{\sqrt2},\ e^{t/\sqrt2}\sin\tfrac{t}{\sqrt2},\
+    \cos t,\ \sin t,\
+    e^{-t/\sqrt2}\cos\tfrac{t}{\sqrt2},\ e^{-t/\sqrt2}\sin\tfrac{t}{\sqrt2}
+    \Big\}.
+    \;}
+\]
+
+\emph{(b) Subespaço com $\lim_{t\to+\infty}x(t)=0$.}
+Uma solução elementar $e^{\alpha t}(\cos\beta t$ ou $\sin\beta t)$ tende a $0$ quando $t\to+\infty$ se e somente se $\alpha<0$ (parte real da raiz negativa); se $\alpha=0$ ela é oscilante e não tende a $0$, e se $\alpha>0$ diverge. Como uma combinação linear das soluções básicas tende a $0$ se e somente se cada componente correspondente a raízes com $\alpha\ge0$ é nula (as taxas de crescimento $e^{\alpha t}$ com $\alpha$ distintos são linearmente independentes, e os termos com $\alpha=0$ não decaem), o subespaço procurado é gerado exatamente pelas soluções associadas às raízes com parte real \emph{estritamente negativa}, a saber $\lambda=-1$ e $\tfrac{\sqrt2}{2}(-1\pm i)$:
+\[
+    \boxed{\;
+    \Big\{
+    e^{-t},\
+    e^{-t/\sqrt2}\cos\tfrac{t}{\sqrt2},\
+    e^{-t/\sqrt2}\sin\tfrac{t}{\sqrt2}
+    \Big\}.
+    \;}
+\]
+Este subespaço tem dimensão $3$.
+
+
+\bigskip\noindent\textbf{Solução 27.}\quad
+Considere o sistema linear (não-autônomo, mas com coeficientes contínuos em $t$)
+\[
+    \begin{pmatrix}x\\y\\z\end{pmatrix}'
+    =\underbrace{\begin{pmatrix}0&1&t\\ t^2&0&1\\ 1&e^t&0\end{pmatrix}}_{=:A(t)}
+     \begin{pmatrix}x\\y\\z\end{pmatrix},
+    \qquad t\in[0,1].
+\]
+Como $A(t)$ é contínua em $[0,1]$, para \emph{cada} dado inicial $v=(x_0,y_0,z_0)^{\!\top}\in\R^3$ o teorema de existência e unicidade para sistemas lineares garante uma única solução $\Phi(t;v)=(x,y,z)(t)$ definida em \emph{todo} $[0,1]$, e a aplicação $v\mapsto\Phi(\,\cdot\,;v)$ é \textbf{linear} no dado inicial $v$.
+
+Seja $M=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}$. Como as linhas satisfazem $(\text{linha }1)+(\text{linha }3)=2\,(\text{linha }2)$, $M$ tem posto $2$, e seu núcleo tem dimensão $1$. De fato,
+\[
+    M\begin{pmatrix}1\\-2\\1\end{pmatrix}
+    =\begin{pmatrix}1-4+3\\4-10+6\\7-16+9\end{pmatrix}=0,
+    \qquad\text{logo}\qquad
+    \ker M=\operatorname{span}\{v_0\},\quad v_0:=(1,-2,1)^{\!\top}.
+\]
+Imponha o dado inicial no núcleo: tome $v=s\,v_0$ com $s\in\R$. Então $Mv=s\,Mv_0=0$ automaticamente, qualquer que seja $s$, ou seja, a primeira condição $M\,(x(0),y(0),z(0))^{\!\top}=0$ é satisfeita para \emph{toda} solução partindo de $s v_0$.
+
+Falta ajustar a integral. Defina
+\[
+    I(s):=\int_0^1\Big(x(t)^2+y(t)^2+z(t)^2\Big)\,\d t=\int_0^1\big|\Phi(t;s v_0)\big|^2\,\d t .
+\]
+Pela linearidade no dado inicial, $\Phi(t;s v_0)=s\,\Phi(t;v_0)$, logo $\big|\Phi(t;s v_0)\big|^2=s^2\big|\Phi(t;v_0)\big|^2$ e
+\[
+    I(s)=s^2\,I(1),\qquad\text{onde}\qquad I(1)=\int_0^1\big|\Phi(t;v_0)\big|^2\,\d t .
+\]
+Resta ver que $I(1)>0$. A solução $\Phi(t;v_0)$ não é identicamente nula, pois $\Phi(0;v_0)=v_0=(1,-2,1)^{\!\top}\neq0$; por continuidade, $\big|\Phi(t;v_0)\big|^2>0$ numa vizinhança de $t=0$, de modo que a integral de uma função contínua não-negativa que é positiva em algum subintervalo é estritamente positiva: $I(1)>0$.
+
+Portanto, escolhendo
+\[
+    s=\frac{1}{\sqrt{I(1)}}>0,
+\]
+obtemos $I(s)=s^2 I(1)=1$. A solução $\Phi(\,\cdot\,;s v_0)$ está definida em todo $[0,1]$, satisfaz $M(x(0),y(0),z(0))^{\!\top}=0$ (pois o dado inicial $s v_0\in\ker M$) e $\int_0^1(x^2+y^2+z^2)=1$. Isto prova a existência. \qquad$\blacksquare$
+
+
+\bigskip\noindent\textbf{Solução 28.}\quad
+Considere a equação matricial $X'(t)=AX(t)+X(t)B$ em $\R^{2\times2}$.
+
+\emph{(a) Verificação da solução.}
+Seja $X(t)=e^{At}X(0)e^{Bt}$. Derivando (regra do produto; $A$ comuta com $e^{At}$ e $B$ com $e^{Bt}$):
+\[
+    X'(t)=A\,e^{At}X(0)e^{Bt}+e^{At}X(0)\,e^{Bt}B
+         =A\,\big(e^{At}X(0)e^{Bt}\big)+\big(e^{At}X(0)e^{Bt}\big)B
+         =AX(t)+X(t)B,
+\]
+onde na segunda igualdade usamos $\frac{\d}{\d t}e^{At}=Ae^{At}$ e $\frac{\d}{\d t}e^{Bt}=e^{Bt}B=Be^{Bt}$. Além disso $X(0)=e^{0}X(0)e^{0}=X(0)$. Logo $X(t)=e^{At}X(0)e^{Bt}$ resolve a equação com o dado inicial $X(0)$. \qquad$\blacksquare$
+
+\emph{(b) Caso explícito.}
+Com $A=\begin{pmatrix}0&-\omega\\ \omega&0\end{pmatrix}$ temos $A=\omega R$, $R=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$, $R^2=-I$, donde
+\[
+    e^{At}=\begin{pmatrix}\cos\omega t&-\sin\omega t\\ \sin\omega t&\cos\omega t\end{pmatrix}
+    \qquad\text{(rotação de ângulo }\omega t\text{).}
+\]
+Com $B=\begin{pmatrix}\alpha&0\\0&\beta\end{pmatrix}$ diagonal,
+\[
+    e^{Bt}=\begin{pmatrix}e^{\alpha t}&0\\0&e^{\beta t}\end{pmatrix}.
+\]
+Escrevendo $X(0)=\begin{pmatrix}x_{11}&x_{12}\\ x_{21}&x_{22}\end{pmatrix}$, calculamos $X(t)=e^{At}X(0)e^{Bt}$. Primeiro,
+\[
+    e^{At}X(0)
+    =\begin{pmatrix}
+        x_{11}\cos\omega t-x_{21}\sin\omega t & x_{12}\cos\omega t-x_{22}\sin\omega t\\[2pt]
+        x_{11}\sin\omega t+x_{21}\cos\omega t & x_{12}\sin\omega t+x_{22}\cos\omega t
+    \end{pmatrix}.
+\]
+Multiplicando à direita por $e^{Bt}=\operatorname{diag}(e^{\alpha t},e^{\beta t})$ (a coluna $1$ é escalada por $e^{\alpha t}$, a coluna $2$ por $e^{\beta t}$):
+\[
+    \boxed{\;
+    X(t)=\begin{pmatrix}
+        \big(x_{11}\cos\omega t-x_{21}\sin\omega t\big)e^{\alpha t}
+        & \big(x_{12}\cos\omega t-x_{22}\sin\omega t\big)e^{\beta t}\\[4pt]
+        \big(x_{11}\sin\omega t+x_{21}\cos\omega t\big)e^{\alpha t}
+        & \big(x_{12}\sin\omega t+x_{22}\cos\omega t\big)e^{\beta t}
+    \end{pmatrix}.
+    \;}
+\]
+
+\emph{(c) Caso $B=-A$: invariância dos traços de potências.}
+Se $B=-A$, então $e^{Bt}=e^{-At}=\big(e^{At}\big)^{-1}$, e por (a)
+\[
+    X(t)=e^{At}\,X(0)\,e^{-At},
+\]
+isto é, $X(t)$ é, para cada $t$, \emph{conjugada} de $X(0)$ pela matriz invertível $P(t):=e^{At}$. Como traços são invariantes por conjugação, e a conjugação respeita potências,
+\[
+    X(t)^k=\big(P X(0)P^{-1}\big)^k=P\,X(0)^k\,P^{-1},
+\]
+e portanto, para todo $k\in\mathbb{N}$,
+\[
+    \operatorname{Tr}\!\big(X(t)^k\big)
+    =\operatorname{Tr}\!\big(P\,X(0)^k\,P^{-1}\big)
+    =\operatorname{Tr}\!\big(X(0)^k\big),
+\]
+usando a propriedade cíclica $\operatorname{Tr}(PMP^{-1})=\operatorname{Tr}(P^{-1}PM)=\operatorname{Tr}(M)$. Logo $\operatorname{Tr}(X(t)^k)$ é constante (igual ao valor inicial) ao longo do tempo. Equivalentemente: a conjugação preserva o espectro de $X(t)$, de modo que os autovalores de $X(t)$ — e portanto qualquer função simétrica deles, em particular $\operatorname{Tr}(X(t)^k)=\sum_i \lambda_i^k$ — independem de $t$. \qquad$\blacksquare$

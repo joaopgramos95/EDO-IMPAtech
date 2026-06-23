@@ -1,0 +1,398 @@
+\bigskip\noindent\textbf{Solução 47.}\quad
+Seja $I_n$ o número de involuções de $S_n=\{1,\dots,n\}$, isto é, de permutações $\sigma$ com $\sigma^2=\mathrm{id}$. Uma tal permutação decompõe-se em ciclos de comprimento $1$ (pontos fixos) e $2$ (transposições), pois $\sigma=\sigma^{-1}$ proíbe ciclos mais longos.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Convencionamos $I_0=1$ (a única permutação do conjunto vazio) e $I_1=1$ (a identidade). Para $n\ge2$, classifiquemos as involuções de $S_n$ pelo destino do elemento $n$. Há duas possibilidades, mutuamente exclusivas e exaustivas:
+\begin{itemize}
+\item \emph{$n$ é ponto fixo}: $\sigma(n)=n$. Então a restrição de $\sigma$ a $\{1,\dots,n-1\}$ é uma involução arbitrária deste conjunto; há $I_{n-1}$ tais involuções.
+\item \emph{$n$ pertence a uma transposição}: $\sigma(n)=k$ com $k\in\{1,\dots,n-1\}$, e necessariamente $\sigma(k)=n$. Há $n-1$ escolhas para o parceiro $k$, e, fixado $k$, a restrição de $\sigma$ a $\{1,\dots,n-1\}\setminus\{k\}$ (um conjunto de $n-2$ elementos) é uma involução arbitrária, contribuindo com $I_{n-2}$.
+\end{itemize}
+Somando os dois casos,
+\begin{equation}\label{eq:47rec}
+I_n=I_{n-1}+(n-1)\,I_{n-2},\qquad n\ge2,
+\end{equation}
+com $I_0=I_1=1$. Os primeiros valores são $1,1,2,4,10,26,76,\dots$
+
+\item Seja $F(t)=\sum_{n\ge0}I_n\dfrac{t^n}{n!}$. Multiplicamos \eqref{eq:47rec} por $\dfrac{t^{n-1}}{(n-1)!}$ e somamos sobre $n\ge2$. O lado esquerdo é
+\[
+\sum_{n\ge2}I_n\frac{t^{n-1}}{(n-1)!}=\sum_{m\ge1}I_{m+1}\frac{t^{m}}{m!}=F'(t),
+\]
+pois $F'(t)=\sum_{n\ge1}I_n\dfrac{t^{n-1}}{(n-1)!}$ e o termo $n=1$ vale $I_1=1$, que é exatamente o termo que falta em $\sum_{n\ge2}$; mais precisamente, $\sum_{n\ge2}I_n\frac{t^{n-1}}{(n-1)!}=F'(t)-I_1=F'(t)-1$. O lado direito decompõe-se em duas parcelas:
+\[
+\sum_{n\ge2}I_{n-1}\frac{t^{n-1}}{(n-1)!}=\sum_{m\ge1}I_m\frac{t^m}{m!}=F(t)-1,
+\]
+\[
+\sum_{n\ge2}(n-1)I_{n-2}\frac{t^{n-1}}{(n-1)!}=\sum_{n\ge2}I_{n-2}\frac{t^{n-1}}{(n-2)!}=t\sum_{m\ge0}I_m\frac{t^m}{m!}=t\,F(t).
+\]
+Reunindo,
+\[
+F'(t)-1=\big(F(t)-1\big)+t\,F(t),
+\]
+ou seja
+\begin{equation}\label{eq:47ode}
+\boxed{\,F'(t)=(1+t)\,F(t)\,},\qquad F(0)=I_0=1.
+\end{equation}
+
+\item A equação \eqref{eq:47ode} é linear de primeira ordem e separável:
+\[
+\frac{F'}{F}=1+t\ \Longrightarrow\ \ln F(t)=t+\frac{t^2}{2}+\text{const}.
+\]
+A condição $F(0)=1$ fixa a constante em $0$, donde
+\[
+\boxed{\,F(t)=\exp\!\Big(t+\frac{t^2}{2}\Big)\,}.
+\]
+Como verificação, o coeficiente de $t^n/n!$ nesta exponencial é $\sum_{j\ge0}\frac{1}{j!\,2^j}\cdot\frac{n!}{(n-2j)!}=\sum_{j\ge0}\binom{n}{2j}\frac{(2j)!}{2^j j!}$, contando precisamente as escolhas de $j$ transposições disjuntas em $S_n$, em acordo com a interpretação combinatória.
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 48.}\quad
+Os números de Bell $B_n$ contam as partições de um conjunto de $n$ elementos; a recorrência dada,
+\begin{equation}\label{eq:48rec}
+B_{n+1}=\sum_{k=0}^n\binom{n}{k}B_k,\qquad B_0=1,
+\end{equation}
+reflete o fato de que, numa partição de $\{0,1,\dots,n\}$, o bloco que contém o elemento $n$ pode conter qualquer subconjunto dos demais; escolhendo $n-k$ companheiros para $n$ (equivalentemente, deixando $k$ elementos para fora), os $k$ restantes formam uma partição arbitrária, contada por $B_k$, e $\binom{n}{k}$ conta a escolha desses $k$ elementos.
+
+Seja $B(t)=\sum_{n\ge0}B_n\dfrac{t^n}{n!}$. A soma de convolução binomial em \eqref{eq:48rec} é o produto de duas EGF. De fato, lembrando que se $C_n=\sum_{k=0}^n\binom{n}{k}a_kb_{n-k}$ então $\sum C_n\frac{t^n}{n!}=\big(\sum a_n\frac{t^n}{n!}\big)\big(\sum b_n\frac{t^n}{n!}\big)$, tomamos $a_k=B_k$ e $b_{n-k}=1$ para todo índice. Como $\sum_{m\ge0}1\cdot\frac{t^m}{m!}=e^t$,
+\[
+\sum_{n\ge0}\Big(\sum_{k=0}^n\binom{n}{k}B_k\Big)\frac{t^n}{n!}=B(t)\,e^t.
+\]
+Por outro lado, $\sum_{n\ge0}B_{n+1}\dfrac{t^n}{n!}=B'(t)$. Logo \eqref{eq:48rec} traduz-se em
+\begin{equation}\label{eq:48ode}
+\boxed{\,B'(t)=e^t\,B(t)\,},\qquad B(0)=B_0=1.
+\end{equation}
+Esta equação é separável: $\dfrac{B'}{B}=e^t$, donde $\ln B(t)=e^t+\text{const}$; a condição $B(0)=1$ dá $\ln1=e^0+\text{const}$, i.e.\ $\text{const}=-1$. Portanto
+\[
+\boxed{\,B(t)=\exp\!\big(e^t-1\big)\,}.
+\]
+
+\emph{Fórmula de Dobinski.} Escrevemos $B(t)=e^{-1}\,e^{e^t}$ e expandimos a exponencial externa em série de potências:
+\[
+B(t)=e^{-1}\sum_{m\ge0}\frac{(e^t)^m}{m!}=e^{-1}\sum_{m\ge0}\frac{e^{mt}}{m!}.
+\]
+A troca de soma e o desenvolvimento $e^{mt}=\sum_{n\ge0}\dfrac{(mt)^n}{n!}$ são lícitos pela convergência absoluta (para $t$ num intervalo limitado, $\sum_m \frac{e^{mt}}{m!}=e^{e^t}<\infty$, e cada termo é série de potências de termos positivos). Reordenando,
+\[
+B(t)=e^{-1}\sum_{m\ge0}\frac{1}{m!}\sum_{n\ge0}\frac{m^n t^n}{n!}
+=\sum_{n\ge0}\Big(e^{-1}\sum_{m\ge0}\frac{m^n}{m!}\Big)\frac{t^n}{n!}.
+\]
+Comparando este coeficiente de $t^n/n!$ com a definição $B(t)=\sum_n B_n t^n/n!$, obtemos a fórmula de Dobinski
+\[
+\boxed{\,B_n=e^{-1}\sum_{m=0}^{\infty}\frac{m^n}{m!}\,}.
+\]
+(Para $n=0$ lê-se $B_0=e^{-1}\sum_m \frac1{m!}=e^{-1}e=1$, com a convenção $m^0=1$; para $n=4$, a soma vale $15=B_4$.)
+
+
+\bigskip\noindent\textbf{Solução 49.}\quad
+Seja $D_n$ o número de desarranjos de $\{1,\dots,n\}$, isto é, de permutações sem ponto fixo.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Convencionamos $D_0=1$ (a permutação vazia não tem pontos fixos) e $D_1=0$. Para deduzir a recorrência, contemos os desarranjos de $\{1,\dots,n+1\}$ pelo valor $\sigma(n+1)=k$, que pode ser qualquer $k\in\{1,\dots,n\}$ ($n$ escolhas, pois $\sigma(n+1)\neq n+1$). Fixado $k$, há dois subcasos disjuntos:
+\begin{itemize}
+\item \emph{$\sigma(k)=n+1$} (o par $\{k,n+1\}$ forma uma transposição): os demais $n-1$ elementos $\{1,\dots,n\}\setminus\{k\}$ devem formar um desarranjo entre si, o que dá $D_{n-1}$.
+\item \emph{$\sigma(k)\neq n+1$}: considere $\sigma$ restrita a $\{1,\dots,n\}$ com o ``buraco'' $n+1$ identificado a $k$. Formalmente, defina $\tau$ em $\{1,\dots,n\}$ por $\tau(j)=\sigma(j)$ se $\sigma(j)\neq n+1$, e $\tau(k)=$ (o único $j$ com $\sigma(j)=n+1$). Então $\tau$ é uma permutação de $\{1,\dots,n\}$ sem ponto fixo: para $j\neq k$ teríamos $\tau(j)=\sigma(j)\neq j$, e $\tau(k)\neq k$ pois $\tau(k)=k$ obrigaria $\sigma(k)=n+1$, excluído neste subcaso. Esta correspondência é uma bijeção com os desarranjos de $\{1,\dots,n\}$, dando $D_n$.
+\end{itemize}
+Como há $n$ escolhas de $k$, conclui-se
+\begin{equation}\label{eq:49rec}
+D_{n+1}=n\,(D_n+D_{n-1}),\qquad n\ge1,
+\end{equation}
+com $D_0=1$, $D_1=0$. Daí $D_2=1,\ D_3=2,\ D_4=9,\ D_5=44,\dots$
+
+\item Seja $F(t)=\sum_{n\ge0}D_n\dfrac{t^n}{n!}$. Para transformar \eqref{eq:49rec} numa equação de \emph{primeira ordem}, multiplicamos por $\dfrac{t^n}{n!}$ e somamos em $n\ge1$. O lado esquerdo é
+\[
+\sum_{n\ge1}D_{n+1}\frac{t^n}{n!}=\sum_{m\ge2}D_m\frac{t^{m-1}}{(m-1)!}=F'(t)-D_1=F'(t),
+\]
+pois $D_1=0$ (e $F'(t)=\sum_{m\ge1}D_m\frac{t^{m-1}}{(m-1)!}$, cujo termo $m=1$ vale $D_1=0$). No lado direito,
+\[
+\sum_{n\ge1}n\,D_n\frac{t^n}{n!}=\sum_{n\ge1}D_n\frac{t^n}{(n-1)!}=t\sum_{n\ge1}D_n\frac{t^{n-1}}{(n-1)!}=t\,F'(t),
+\]
+\[
+\sum_{n\ge1}n\,D_{n-1}\frac{t^n}{n!}=\sum_{n\ge1}D_{n-1}\frac{t^n}{(n-1)!}=t\sum_{m\ge0}D_m\frac{t^m}{m!}=t\,F(t).
+\]
+Portanto $F'(t)=t\,F'(t)+t\,F(t)$, isto é,
+\begin{equation}\label{eq:49ode}
+\boxed{\,(1-t)\,F'(t)=t\,F(t)\,}\qquad\Longleftrightarrow\qquad F'(t)=\frac{t}{1-t}\,F(t),
+\end{equation}
+com $F(0)=D_0=1$. (A passagem está honesta: a recorrência de segunda ordem para os $D_n$ colapsa numa EDO de primeira ordem porque o fator $n$ na recorrência produz, via $\sum n a_n t^n/n!=tF'$, exatamente o termo $tF'$ que combina com $F'$.)
+
+A equação \eqref{eq:49ode} é separável. Escrevendo $\dfrac{t}{1-t}=-1+\dfrac{1}{1-t}$,
+\[
+\ln F(t)=\int\Big(-1+\frac1{1-t}\Big)\d t=-t-\ln(1-t)+\text{const}.
+\]
+Com $F(0)=1$ a constante é $0$, logo
+\[
+\boxed{\,F(t)=\frac{e^{-t}}{1-t}\,}.
+\]
+
+\emph{Fórmula fechada.} O fator $\dfrac{1}{1-t}=\sum_{j\ge0}t^j$ é a EGF da sequência $j\mapsto j!$ (pois $\frac{1}{1-t}=\sum_j j!\,\frac{t^j}{j!}$), e $e^{-t}=\sum_{k\ge0}\frac{(-1)^k}{k!}t^k$. O produto, lido como EGF, dá pela regra da convolução binomial
+\[
+D_n=\sum_{k=0}^n\binom{n}{k}(-1)^k\,(n-k)!=\sum_{k=0}^n\frac{n!}{k!\,(n-k)!}(-1)^k(n-k)!=n!\sum_{k=0}^n\frac{(-1)^k}{k!}.
+\]
+Logo
+\[
+\boxed{\,D_n=n!\sum_{k=0}^n\frac{(-1)^k}{k!}\,},
+\]
+a conhecida fórmula da inclusão–exclusão; em particular $D_n/n!\to e^{-1}$ quando $n\to\infty$.
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 50.}\quad
+No grafo completo $K_m$ todo vértice é adjacente aos outros $m-1$. Um passeio de comprimento $n$ é uma sequência de $n$ arestas com extremos consecutivos coincidentes; equivalentemente, uma sequência de vértices $v_0,v_1,\dots,v_n$ com $v_i\neq v_{i+1}$ (arestas de $K_m$ ligam vértices distintos). Fixamos $v_0=1$ e um vértice-alvo $j\neq1$. Sejam $a_n$ o número de tais passeios com $v_n=1$ e $b_n$ o número com $v_n=j$.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Por simetria de $K_m$, o número de passeios de $1$ até \emph{qualquer} vértice fixo $\neq1$ é o mesmo, igual a $b_n$. Há $m-1$ vértices distintos de $1$, e o total de passeios de comprimento $n$ a partir de $1$ é $a_n+(m-1)b_n$.
+
+Estendamos um passeio de comprimento $n$ a um de comprimento $n+1$, examinando o penúltimo vértice $v_n$:
+\begin{itemize}
+\item Para terminar em $1$ (contando $a_{n+1}$): o passo final $v_n\to1$ exige $v_n\neq1$. Cada um dos $m-1$ vértices $\neq1$ é o alvo de $b_n$ passeios de comprimento $n$, e de cada um há exatamente uma aresta até $1$. Logo $a_{n+1}=(m-1)\,b_n$.
+\item Para terminar em $j$ (contando $b_{n+1}$): o penúltimo vértice $v_n$ deve ser $\neq j$. Ou $v_n=1$ (há $a_n$ tais passeios, e uma aresta $1\to j$), ou $v_n\in\{$vértices $\neq1,\,\neq j\}$, que são $m-2$ vértices, cada um alvo de $b_n$ passeios, e cada um liga-se a $j$. Logo $b_{n+1}=a_n+(m-2)\,b_n$.
+\end{itemize}
+Com os dados iniciais $a_0=1$ (o passeio trivial em $1$) e $b_0=0$, obtemos
+\begin{equation}\label{eq:50rec}
+a_{n+1}=(m-1)\,b_n,\qquad b_{n+1}=a_n+(m-2)\,b_n.
+\end{equation}
+
+\item Sejam $A(t)=\sum_{n\ge0}a_n\dfrac{t^n}{n!}$ e $B(t)=\sum_{n\ge0}b_n\dfrac{t^n}{n!}$. Multiplicando cada relação em \eqref{eq:50rec} por $\dfrac{t^n}{n!}$ e somando em $n\ge0$, e usando $\sum_{n\ge0}c_{n+1}\frac{t^n}{n!}=C'(t)$,
+\begin{equation}\label{eq:50sys}
+\boxed{\;A'(t)=(m-1)\,B(t),\qquad B'(t)=A(t)+(m-2)\,B(t)\;}
+\end{equation}
+com $A(0)=1$, $B(0)=0$.
+
+\item O sistema \eqref{eq:50sys} é linear com matriz
+\[
+M=\begin{pmatrix}0 & m-1\\[2pt] 1 & m-2\end{pmatrix},\qquad
+\binom{A}{B}'=M\binom{A}{B}.
+\]
+O polinômio característico é $\lambda^2-(m-2)\lambda-(m-1)=0$, isto é, $(\lambda-(m-1))(\lambda+1)=0$, com autovalores
+\[
+\lambda_1=m-1,\qquad \lambda_2=-1.
+\]
+Como $m\ge2$, os autovalores são distintos e a solução é combinação de $e^{(m-1)t}$ e $e^{-t}$:
+\[
+A(t)=\alpha\,e^{(m-1)t}+\beta\,e^{-t},\qquad B(t)=\frac{A'(t)}{m-1}=\alpha\,e^{(m-1)t}-\frac{\beta}{m-1}\,e^{-t},
+\]
+onde usamos a primeira equação $B=A'/(m-1)$ para expressar $B$. As condições iniciais $A(0)=1$, $B(0)=0$ dão
+\[
+\alpha+\beta=1,\qquad \alpha-\frac{\beta}{m-1}=0\ \Longrightarrow\ \alpha=\frac{\beta}{m-1}.
+\]
+Substituindo, $\frac{\beta}{m-1}+\beta=1$, isto é, $\beta\cdot\frac{m}{m-1}=1$, donde
+\[
+\beta=\frac{m-1}{m},\qquad \alpha=\frac1m.
+\]
+Logo
+\[
+A(t)=\frac1m\,e^{(m-1)t}+\frac{m-1}{m}\,e^{-t},\qquad
+B(t)=\frac1m\,e^{(m-1)t}-\frac1m\,e^{-t}.
+\]
+Extraindo o coeficiente de $t^n/n!$ (i.e.\ usando $e^{ct}=\sum_n c^n t^n/n!$), obtemos as fórmulas fechadas
+\[
+\boxed{\,a_n=\frac{(m-1)^n+(m-1)(-1)^n}{m}\,},\qquad
+\boxed{\,b_n=\frac{(m-1)^n-(-1)^n}{m}\,}.
+\]
+Confere-se $a_0=\frac{1+(m-1)}{m}=1$, $b_0=\frac{1-1}{m}=0$, e a identidade esperada $a_n+(m-1)b_n=(m-1)^n$ (número total de passeios de comprimento $n$ saindo de $1$).
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 51.}\quad
+$C_n$ é o número de maneiras de inserir parênteses bem formados num produto de $n+1$ fatores $x_0x_1\cdots x_n$; equivalentemente, o número de árvores binárias com $n+1$ folhas (ou de árvores binárias completas com $n$ nós internos). Tem-se $C_0=C_1=1$, $C_2=2$.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Em qualquer parentização de $x_0\cdots x_{n+1}$ (um produto de $n+2$ fatores), há uma \emph{última} multiplicação efetuada, que parte o produto em dois blocos: $\big(x_0\cdots x_k\big)\cdot\big(x_{k+1}\cdots x_{n+1}\big)$ para algum $k\in\{0,1,\dots,n\}$. O bloco esquerdo tem $k+1$ fatores e admite $C_k$ parentizações; o bloco direito tem $n+1-k$ fatores e admite $C_{n-k}$ parentizações. Como a escolha de $k$ e as parentizações de cada bloco são independentes e esgotam todas as possibilidades,
+\begin{equation}\label{eq:51rec}
+C_{n+1}=\sum_{k=0}^n C_k\,C_{n-k},\qquad n\ge0,\quad C_0=1.
+\end{equation}
+
+\item Seja $C(t)=\sum_{n\ge0}C_n t^n$ (geradora \emph{ordinária}). O quadrado de uma OGF tem coeficientes de Cauchy: $C(t)^2=\sum_{n\ge0}\big(\sum_{k=0}^n C_kC_{n-k}\big)t^n$. Por \eqref{eq:51rec}, o coeficiente de $t^n$ em $C(t)^2$ é $C_{n+1}$. Logo
+\[
+t\,C(t)^2=\sum_{n\ge0}C_{n+1}t^{n+1}=\sum_{m\ge1}C_m t^m=C(t)-C_0=C(t)-1,
+\]
+isto é,
+\begin{equation}\label{eq:51eq}
+\boxed{\,C(t)=1+t\,C(t)^2\,}.
+\end{equation}
+
+\item A relação \eqref{eq:51eq} é uma equação quadrática em $C=C(t)$: $t\,C^2-C+1=0$, com soluções
+\[
+C(t)=\frac{1\pm\sqrt{1-4t}}{2t}.
+\]
+Escolhemos o sinal compatível com $C(0)=C_0=1$. Com o sinal $+$, $C(t)\to\infty$ quando $t\to0$ (numerador $\to2$, denominador $\to0$); com o sinal $-$, por L'Hôpital ou pelo desenvolvimento $\sqrt{1-4t}=1-2t-2t^2-\cdots$,
+\[
+\frac{1-\sqrt{1-4t}}{2t}\xrightarrow[t\to0]{}1.
+\]
+Portanto
+\[
+\boxed{\,C(t)=\frac{1-\sqrt{1-4t}}{2t}\,}.
+\]
+Para extrair os coeficientes, usamos a série binomial generalizada para $(1-4t)^{1/2}$:
+\[
+\sqrt{1-4t}=\sum_{n\ge0}\binom{1/2}{n}(-4t)^n.
+\]
+O coeficiente é, para $n\ge1$,
+\[
+\binom{1/2}{n}(-4)^n=\frac{\tfrac12(\tfrac12-1)\cdots(\tfrac12-n+1)}{n!}(-4)^n.
+\]
+Os fatores no numerador são $\tfrac12\cdot(-\tfrac12)\cdot(-\tfrac32)\cdots(-\tfrac{2n-3}{2})=(-1)^{n-1}\dfrac{1\cdot3\cdot5\cdots(2n-3)}{2^n}=(-1)^{n-1}\dfrac{(2n-2)!}{2^{2n-1}(n-1)!}$, usando $1\cdot3\cdots(2n-3)=\dfrac{(2n-2)!}{2^{n-1}(n-1)!}$. Logo
+\[
+\binom{1/2}{n}(-4)^n=(-1)^{n-1}\frac{(2n-2)!}{2^{2n-1}(n-1)!\,n!}\,(-1)^n 2^{2n}
+=-\,\frac{2\,(2n-2)!}{(n-1)!\,n!}=-\frac{2}{n}\binom{2n-2}{n-1}.
+\]
+Assim $\sqrt{1-4t}=1-\sum_{n\ge1}\dfrac{2}{n}\binom{2n-2}{n-1}t^n$, e
+\[
+\frac{1-\sqrt{1-4t}}{2t}=\frac{1}{2t}\sum_{n\ge1}\frac{2}{n}\binom{2n-2}{n-1}t^n
+=\sum_{n\ge1}\frac1n\binom{2n-2}{n-1}t^{n-1}
+=\sum_{m\ge0}\frac{1}{m+1}\binom{2m}{m}t^{m}.
+\]
+Comparando com $C(t)=\sum_m C_m t^m$,
+\[
+\boxed{\,C_n=\frac{1}{n+1}\binom{2n}{n}\,},
+\]
+o $n$-ésimo número de Catalan. (Verificação: $C_0=1$, $C_1=1$, $C_2=\tfrac13\binom42=2$, $C_3=\tfrac14\binom63=5$.)
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 52.}\quad
+A sequência de Fibonacci é definida por $a_0=0$, $a_1=1$, $a_{n+2}=a_{n+1}+a_n$ para $n\ge0$.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Seja $A(t)=\sum_{n\ge0}a_n t^n$. Multipliquemos a recorrência por $t^{n+2}$ e somemos em $n\ge0$:
+\[
+\sum_{n\ge0}a_{n+2}t^{n+2}=\sum_{n\ge0}a_{n+1}t^{n+2}+\sum_{n\ge0}a_n t^{n+2}.
+\]
+O lado esquerdo é $A(t)-a_0-a_1t=A(t)-t$. As parcelas à direita são $t\big(A(t)-a_0\big)=t\,A(t)$ e $t^2A(t)$. Logo
+\[
+A(t)-t=t\,A(t)+t^2A(t)\ \Longrightarrow\ A(t)\big(1-t-t^2\big)=t,
+\]
+isto é,
+\[
+\boxed{\,A(t)=\frac{t}{1-t-t^2}\,}.
+\]
+
+\item As raízes de $1-t-t^2=0$ são $t=\dfrac{-1\pm\sqrt5}{2}$. É conveniente fatorar via as raízes do polinômio recíproco $x^2-x-1$, que são
+\[
+\varphi=\frac{1+\sqrt5}{2},\qquad \psi=\frac{1-\sqrt5}{2},
+\]
+com $\varphi+\psi=1$, $\varphi\psi=-1$. Então $1-t-t^2=-(t^2+t-1)=-(t-\frac{-1+\sqrt5}{2})(t-\frac{-1-\sqrt5}{2})$. Mais limpo: como $1-t-t^2=(1-\varphi t)(1-\psi t)$ (expandindo, $(1-\varphi t)(1-\psi t)=1-(\varphi+\psi)t+\varphi\psi t^2=1-t-t^2$), decompomos em frações parciais
+\[
+A(t)=\frac{t}{(1-\varphi t)(1-\psi t)}=\frac{P}{1-\varphi t}+\frac{Q}{1-\psi t}.
+\]
+Multiplicando, $t=P(1-\psi t)+Q(1-\varphi t)$. Igualando coeficientes: termo constante $P+Q=0$; coeficiente de $t$: $-P\psi-Q\varphi=1$. De $Q=-P$ vem $-P\psi+P\varphi=1$, i.e.\ $P(\varphi-\psi)=1$. Como $\varphi-\psi=\sqrt5$,
+\[
+P=\frac{1}{\sqrt5},\qquad Q=-\frac{1}{\sqrt5}.
+\]
+Usando $\dfrac{1}{1-\varphi t}=\sum_{n\ge0}\varphi^n t^n$ e analogamente para $\psi$,
+\[
+A(t)=\frac{1}{\sqrt5}\sum_{n\ge0}\varphi^n t^n-\frac{1}{\sqrt5}\sum_{n\ge0}\psi^n t^n
+=\sum_{n\ge0}\frac{\varphi^n-\psi^n}{\sqrt5}\,t^n.
+\]
+Comparando coeficientes,
+\[
+\boxed{\,a_n=\frac{1}{\sqrt5}\!\left[\Big(\frac{1+\sqrt5}{2}\Big)^n-\Big(\frac{1-\sqrt5}{2}\Big)^n\right]},
+\]
+que é a fórmula de Binet. (Confere: $a_0=0$, $a_1=\frac{\varphi-\psi}{\sqrt5}=1$, $a_2=\frac{\varphi^2-\psi^2}{\sqrt5}=\frac{(\varphi-\psi)(\varphi+\psi)}{\sqrt5}=1$.)
+
+\end{enumerate}
+
+
+\bigskip\noindent\textbf{Solução 53.}\quad
+Seja $a_0=1$, $a_1=4$ e $a_{n+2}=5a_{n+1}-6a_n$ para $n\ge0$. Pondo $A(t)=\sum_{n\ge0}a_n t^n$, multipliquemos a recorrência por $t^{n+2}$ e somemos em $n\ge0$:
+\[
+\sum_{n\ge0}a_{n+2}t^{n+2}=5\sum_{n\ge0}a_{n+1}t^{n+2}-6\sum_{n\ge0}a_n t^{n+2}.
+\]
+O lado esquerdo é $A(t)-a_0-a_1t=A(t)-1-4t$; à direita, $5t\big(A(t)-a_0\big)=5t\,A(t)-5t$ e $6t^2A(t)$. Logo
+\[
+A(t)-1-4t=5t\,A(t)-5t-6t^2A(t)\ \Longrightarrow\ A(t)\big(1-5t+6t^2\big)=1+4t-5t=1-t,
+\]
+donde
+\[
+\boxed{\,A(t)=\frac{1-t}{1-5t+6t^2}=\frac{1-t}{(1-2t)(1-3t)}\,}.
+\]
+(Fatoração: $1-5t+6t^2=(1-2t)(1-3t)$.) Decompomos em frações parciais
+\[
+\frac{1-t}{(1-2t)(1-3t)}=\frac{\alpha}{1-2t}+\frac{\beta}{1-3t}.
+\]
+Multiplicando, $1-t=\alpha(1-3t)+\beta(1-2t)$. Igualando: termo constante $\alpha+\beta=1$; coeficiente de $t$: $-3\alpha-2\beta=-1$, i.e.\ $3\alpha+2\beta=1$. Resolvendo, de $\beta=1-\alpha$ obtemos $3\alpha+2(1-\alpha)=1$, logo $\alpha+2=1$, $\alpha=-1$ e $\beta=2$. Assim
+\[
+A(t)=\frac{-1}{1-2t}+\frac{2}{1-3t}=-\sum_{n\ge0}2^n t^n+2\sum_{n\ge0}3^n t^n.
+\]
+Comparando coeficientes,
+\[
+\boxed{\,a_n=2\cdot3^n-2^n\,}.
+\]
+(Verificação: $a_0=2-1=1$, $a_1=6-2=4$, $a_2=18-4=14=5\cdot4-6\cdot1$, $a_3=54-8=46=5\cdot14-6\cdot4$.)
+
+
+\bigskip\noindent\textbf{Solução 54.}\quad
+Seja $a_0=0$ e $a_{n+1}=2a_n+n$ para $n\ge0$. Seja $A(t)=\sum_{n\ge0}a_n t^n$. Multiplicamos a recorrência por $t^{n+1}$ e somamos em $n\ge0$:
+\[
+\sum_{n\ge0}a_{n+1}t^{n+1}=2\sum_{n\ge0}a_n t^{n+1}+\sum_{n\ge0}n\,t^{n+1}.
+\]
+O lado esquerdo é $A(t)-a_0=A(t)$. A primeira parcela à direita é $2t\,A(t)$. A segunda usa a série conhecida $\sum_{n\ge0}n\,t^n=\dfrac{t}{(1-t)^2}$ (derivada de $\frac{1}{1-t}$ vezes $t$), donde $\sum_{n\ge0}n\,t^{n+1}=t\cdot\dfrac{t}{(1-t)^2}=\dfrac{t^2}{(1-t)^2}$. Assim
+\[
+A(t)=2t\,A(t)+\frac{t^2}{(1-t)^2}\ \Longrightarrow\ A(t)(1-2t)=\frac{t^2}{(1-t)^2},
+\]
+ou seja
+\[
+\boxed{\,A(t)=\frac{t^2}{(1-2t)(1-t)^2}\,}.
+\]
+Para a fórmula fechada, decompomos em frações parciais com denominador $(1-2t)(1-t)^2$:
+\[
+\frac{t^2}{(1-2t)(1-t)^2}=\frac{A}{1-2t}+\frac{B}{1-t}+\frac{C}{(1-t)^2}.
+\]
+Multiplicando por $(1-2t)(1-t)^2$:
+\[
+t^2=A(1-t)^2+B(1-t)(1-2t)+C(1-2t).
+\]
+Avaliando em pontos convenientes:
+\begin{itemize}
+\item $t=\tfrac12$: $\tfrac14=A(\tfrac12)^2=\tfrac14 A\Rightarrow A=1$.
+\item $t=1$: $1=C(1-2)=-C\Rightarrow C=-1$.
+\item $t=0$: $0=A+B+C=1+B-1\Rightarrow B=0$.
+\end{itemize}
+Logo
+\[
+A(t)=\frac{1}{1-2t}-\frac{1}{(1-t)^2}.
+\]
+Usando $\dfrac{1}{1-2t}=\sum_{n\ge0}2^n t^n$ e $\dfrac{1}{(1-t)^2}=\sum_{n\ge0}(n+1)t^n$,
+\[
+a_n=2^n-(n+1)=2^n-n-1.
+\]
+Portanto
+\[
+\boxed{\,a_n=2^n-n-1\,}.
+\]
+(Verificação: $a_0=1-0-1=0$, $a_1=2-1-1=0$, $a_2=4-2-1=1=2a_1+1$, $a_3=8-3-1=4=2a_2+2$.)
+
+
+\bigskip\noindent\textbf{Solução 55.}\quad
+Seja $a_0=1$ e
+\[
+a_{n+1}=\sum_{k=0}^n\binom{n}{k}a_k\,a_{n-k},\qquad n\ge0.
+\]
+Seja $A(t)=\sum_{n\ge0}a_n\dfrac{t^n}{n!}$ a função geradora \emph{exponencial}. A soma à direita é a convolução binomial de $(a_k)$ com $(a_k)$; pela regra de produto de EGF,
+\[
+\sum_{n\ge0}\Big(\sum_{k=0}^n\binom{n}{k}a_k a_{n-k}\Big)\frac{t^n}{n!}=A(t)^2.
+\]
+Por outro lado, $\sum_{n\ge0}a_{n+1}\dfrac{t^n}{n!}=A'(t)$. Igualando, a recorrência traduz-se em
+\begin{equation}\label{eq:55ode}
+\boxed{\,A'(t)=A(t)^2\,},\qquad A(0)=a_0=1.
+\end{equation}
+Esta é uma equação separável de Riccati elementar:
+\[
+\frac{A'}{A^2}=1\ \Longrightarrow\ -\frac{1}{A(t)}=t+\text{const}.
+\]
+A condição $A(0)=1$ dá $-1=0+\text{const}$, isto é, $\text{const}=-1$, donde $-\dfrac1{A(t)}=t-1$ e
+\[
+\boxed{\,A(t)=\frac{1}{1-t}\,}.
+\]
+Expandindo, $A(t)=\sum_{n\ge0}t^n=\sum_{n\ge0}n!\,\dfrac{t^n}{n!}$, de modo que o coeficiente de $t^n/n!$ é $n!$. Portanto
+\[
+\boxed{\,a_n=n!\,}.
+\]
+(Verificação direta: $a_1=\binom00 a_0^2=1=1!$; $a_2=\binom10 a_0a_1+\binom11 a_1a_0=2=2!$; $a_3=a_0a_2+2a_1a_1+a_2a_0=2+2+2=6=3!$.)

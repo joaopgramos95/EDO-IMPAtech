@@ -1,0 +1,186 @@
+\bigskip\noindent\textbf{Solução 15.}\quad
+A equação homogênea associada $y''-2y'+y=0$ tem polinômio característico $r^2-2r+1=(r-1)^2$, com raiz dupla $r=1$. Logo
+\[
+y_h(t)=(c_1+c_2 t)\,e^t .
+\]
+O termo forçante $e^t(1+t)$ é o produto de $e^t$ por um polinômio de grau $1$, e $e^t$ é solução homogênea de \emph{multiplicidade $2$}; pela regra da ressonância devemos multiplicar o palpite usual por $t^2$, procurando
+\[
+y_p(t)=t^2(at+b)\,e^t=(at^3+bt^2)\,e^t .
+\]
+O cálculo simplifica observando que, escrevendo $y=u(t)\,e^t$, vale a identidade
+\[
+y''-2y'+y=\big(u''+2u'+u\big)e^t-2\big(u'+u\big)e^t+u\,e^t=u''\,e^t .
+\]
+Assim, com $u=at^3+bt^2$, precisamos de $u''=1+t$. Como $u''=6at+2b$, comparando coeficientes obtemos $6a=1$ e $2b=1$, isto é $a=\tfrac16$, $b=\tfrac12$. Logo
+\[
+y_p(t)=\Big(\tfrac{t^3}{6}+\tfrac{t^2}{2}\Big)e^t ,
+\qquad
+y(t)=\Big(c_1+c_2 t+\tfrac{t^3}{6}+\tfrac{t^2}{2}\Big)e^t .
+\]
+Impondo as condições iniciais: $y(0)=c_1=0$. Derivando,
+\[
+y'(t)=\Big(c_2+t+\tfrac{t^2}{2}\Big)e^t+\Big(c_1+c_2 t+\tfrac{t^3}{6}+\tfrac{t^2}{2}\Big)e^t,
+\qquad y'(0)=c_2+c_1=c_2=1 .
+\]
+Portanto $c_1=0$, $c_2=1$ e
+\[
+\boxed{\,y(t)=\Big(t+\tfrac{t^2}{2}+\tfrac{t^3}{6}\Big)e^t\,}.
+\]
+\emph{Verificação.} $y(0)=0$ e $y'(0)=1$, como exigido; e $u=t+\tfrac{t^2}2+\tfrac{t^3}6$ satisfaz $u''=1+t$, logo $y''-2y'+y=u''e^t=e^t(1+t)$.
+
+
+\bigskip\noindent\textbf{Solução 16.}\quad
+A equação $t^2y''-2ty'+2y=0$ é de Euler em $(0,\infty)$. Buscamos soluções da forma $y=t^r$; como $y'=r\,t^{r-1}$ e $y''=r(r-1)t^{r-2}$,
+\[
+t^2y''-2ty'+2y=\big[r(r-1)-2r+2\big]t^r=\big(r^2-3r+2\big)t^r=(r-1)(r-2)\,t^r .
+\]
+A equação indicial $r^2-3r+2=0$ tem raízes simples $r=1$ e $r=2$, fornecendo as soluções $y_1=t$ (a dada) e $y_2=t^2$, linearmente independentes em $(0,\infty)$ (seu Wronskiano é $W(t)=t\cdot 2t-1\cdot t^2=t^2\neq0$). Logo a solução geral é
+\[
+\boxed{\,y(t)=c_1\,t+c_2\,t^2\,},\qquad t>0 .
+\]
+\emph{(Alternativamente, por redução de ordem.)} Pondo $y=t\,v(t)$ tem-se $y'=v+tv'$, $y''=2v'+tv''$, e
+\[
+t^2(2v'+tv'')-2t(v+tv')+2tv=t^3v''=0,
+\]
+de modo que $v''=0$, $v=c_1+c_2 t$, recuperando $y=c_1 t+c_2 t^2$.
+
+
+\bigskip\noindent\textbf{Solução 17.}\quad
+Os coeficientes $p(t)=\tan t$ e $q(t)=\cos t$ são contínuos em $(-\pi/2,\pi/2)$, de modo que a fórmula de Abel se aplica. Para a equação $y''+p(t)y'+q(t)y=0$, o Wronskiano $W=y_1y_2'-y_1'y_2$ satisfaz a equação de primeira ordem $W'=-p(t)\,W$, donde
+\[
+W(t)=W(0)\exp\!\Big(-\!\int_0^t p(s)\,\d s\Big)=W(0)\exp\!\Big(-\!\int_0^t \tan s\,\d s\Big).
+\]
+Como $\displaystyle\int_0^t \tan s\,\d s=\big[-\ln\cos s\big]_0^t=-\ln\cos t$ (e $\cos s>0$ no intervalo), segue
+\[
+W(t)=W(0)\,\exp(\ln\cos t)=W(0)\cos t .
+\]
+Com $W(0)=2$,
+\[
+\boxed{\,W(t)=2\cos t\,},\qquad t\in(-\pi/2,\pi/2).
+\]
+Em todo o intervalo $(-\pi/2,\pi/2)$ tem-se $\cos t>0$, logo $W(t)=2\cos t>0$ \emph{nunca se anula}. Como duas soluções de uma EDO linear de segunda ordem em um intervalo são linearmente dependentes se e somente se seu Wronskiano se anula identicamente (de fato em \emph{algum} ponto, pela própria fórmula de Abel), concluímos que $y_1$ e $y_2$ são linearmente independentes em $(-\pi/2,\pi/2)$ e \emph{não podem} tornar-se linearmente dependentes nesse intervalo.
+
+
+\bigskip\noindent\textbf{Solução 18.}\quad
+A homogênea $y''+4y=0$ tem raízes características $r=\pm 2i$, logo
+\[
+y_h(t)=c_1\cos 2t+c_2\sin 2t .
+\]
+O forçante $3\sin 2t$ tem frequência igual à da homogênea: há ressonância, e o palpite usual $A\cos2t+B\sin2t$ deve ser multiplicado por $t$. Procuramos então
+\[
+y_p(t)=t\,(A\cos 2t+B\sin 2t).
+\]
+Derivando,
+\[
+y_p'=A\cos2t+B\sin2t+t(-2A\sin2t+2B\cos2t),
+\]
+\[
+y_p''=-4A\sin2t+4B\cos2t+t(-4A\cos2t-4B\sin2t),
+\]
+e portanto $y_p''+4y_p=-4A\sin2t+4B\cos2t$ (os termos com fator $t$ cancelam-se). Igualando a $3\sin2t$ obtemos $4B=0$ e $-4A=3$, isto é $A=-\tfrac34$, $B=0$. Assim
+\[
+y_p(t)=-\tfrac34\,t\cos 2t,
+\qquad
+y(t)=c_1\cos2t+c_2\sin2t-\tfrac34\,t\cos2t .
+\]
+Condições iniciais: $y(0)=c_1=0$. Como
+\[
+y'(t)=-2c_1\sin2t+2c_2\cos2t-\tfrac34\cos2t+\tfrac32\,t\sin2t,
+\qquad y'(0)=2c_2-\tfrac34=1,
+\]
+vem $c_2=\tfrac{7}{8}$. Logo
+\[
+\boxed{\,y(t)=\tfrac{7}{8}\sin 2t-\tfrac{3}{4}\,t\cos 2t\,}.
+\]
+\emph{Verificação.} $y(0)=0$; e $y'(0)=2\cdot\tfrac78-\tfrac34=\tfrac74-\tfrac34=1$, como pedido.
+
+
+\bigskip\noindent\textbf{Solução 19.}\quad
+A equação característica de $y''-3y'+2y=0$ é $r^2-3r+2=(r-1)(r-2)=0$, com raízes simples $r=1,2$; logo
+\[
+y_h(t)=c_1\,e^t+c_2\,e^{2t}.
+\]
+Como $e^t$ é solução homogênea (ressonância simples), o termo $t\,e^t$ pede um palpite $t\,(at+b)\,e^t$. Escrevendo $y=u(t)\,e^t$ obtém-se a identidade útil
+\[
+y''-3y'+2y=\big(u''+2u'+u\big)e^t-3\big(u'+u\big)e^t+2u\,e^t=\big(u''-u'\big)e^t ,
+\]
+de modo que, com $u=at^2+bt$, precisamos de $u''-u'=t$. Ora, $u'=2at+b$ e $u''=2a$, logo
+\[
+u''-u'=2a-(2at+b)=-2at+(2a-b)=t .
+\]
+Comparando coeficientes: $-2a=1$ e $2a-b=0$, isto é $a=-\tfrac12$ e $b=2a=-1$. Assim $u=-\tfrac12 t^2-t$ e
+\[
+y_p(t)=-\Big(\tfrac{t^2}{2}+t\Big)e^t .
+\]
+A solução geral é
+\[
+\boxed{\,y(t)=c_1\,e^t+c_2\,e^{2t}-\Big(\tfrac{t^2}{2}+t\Big)e^t\,},
+\qquad c_1,c_2\in\R .
+\]
+\emph{Verificação.} Com $u=-\tfrac12 t^2-t$ tem-se $u''-u'=-1-(-t-1)=t$, logo $y_p''-3y_p'+2y_p=(u''-u')e^t=t\,e^t$.
+
+
+\bigskip\noindent\textbf{Solução 20.}\quad
+A equação $(1-x^2)y''-2xy'+2y=0$ é a equação de Legendre com $n=1$, e $y_1(x)=x$ é a solução polinomial $P_1(x)=x$. Para achar uma segunda solução independente em $(-1,1)$ usamos redução de ordem, escrevendo $y=v(x)\,y_1(x)=x\,v(x)$. Então
+\[
+y'=v+xv',\qquad y''=2v'+xv'',
+\]
+e, substituindo na equação,
+\[
+(1-x^2)(2v'+xv'')-2x(v+xv')+2xv
+=(1-x^2)x\,v''+\big[2(1-x^2)-2x^2\big]v'
+=(1-x^2)x\,v''+(2-4x^2)v'=0 .
+\]
+(Os termos sem derivada de $v$ cancelam, como deve ocorrer, pois $y_1$ é solução.) Pondo $w=v'$, obtemos a equação separável de primeira ordem
+\[
+\frac{w'}{w}=-\frac{2-4x^2}{x(1-x^2)} .
+\]
+Decompondo em frações parciais (note $2-4x^2=2(1-x^2)-2x^2$),
+\[
+\frac{2-4x^2}{x(1-x^2)}=\frac{2}{x}-\frac{4x}{1-x^2},
+\]
+de onde
+\[
+\ln|w|=-\!\int\!\Big(\frac{2}{x}-\frac{4x}{1-x^2}\Big)\d x
+=-2\ln|x|-2\ln|1-x^2|+\text{const},
+\]
+isto é $w=v'=\dfrac{C}{x^2(1-x^2)}$. Tomando $C=1$ e integrando, usamos a decomposição
+\[
+\frac{1}{x^2(1-x^2)}=\frac{1}{x^2}+\frac{1}{1-x^2}=\frac{1}{x^2}+\frac12\Big(\frac{1}{1-x}+\frac{1}{1+x}\Big),
+\]
+e portanto, em $(-1,1)$,
+\[
+v(x)=\int\frac{\d x}{x^2(1-x^2)}=-\frac1x+\frac12\ln\frac{1+x}{1-x}.
+\]
+A segunda solução é $y_2=x\,v(x)$:
+\[
+\boxed{\,y_2(x)=\frac{x}{2}\,\ln\frac{1+x}{1-x}-1\,},\qquad x\in(-1,1).
+\]
+Como $v'=1/\big(x^2(1-x^2)\big)\not\equiv0$, $v$ não é constante e $y_2$ é linearmente independente de $y_1=x$; a solução geral é $y=c_1\,x+c_2\,y_2(x)$. (Reconhece-se em $y_2$ a função de Legendre de segunda espécie $Q_1$, a menos de sinal e constante.)
+
+
+\bigskip\noindent\textbf{Solução 21.}\quad
+Seja $y$ uma solução de $y''+p(t)y'+q(t)y=0$ em $I$, com $p,q$ contínuas, satisfazendo $y(t_0)=y'(t_0)=0$. Queremos provar que $y\equiv0$ em $I$. Damos um argumento de energia com a desigualdade de Grönwall, que é elementar e autocontido.
+
+Defina a energia
+\[
+E(t):=y(t)^2+y'(t)^2\ \ge 0 ,\qquad E(t_0)=0 .
+\]
+Derivando e usando a equação $y''=-p\,y'-q\,y$,
+\[
+E'(t)=2yy'+2y'y''=2yy'+2y'(-py'-qy)=2(1-q)\,yy'-2p\,(y')^2 .
+\]
+Estimamos $|E'|$ por $E$. Em cada subintervalo compacto $[a,b]\subset I$ contendo $t_0$, a continuidade de $p,q$ dá uma constante $K\ge0$ com $|p(t)|\le K$ e $|1-q(t)|\le K$ para $t\in[a,b]$. Usando $2|yy'|\le y^2+(y')^2=E$ e $(y')^2\le E$,
+\[
+|E'(t)|\le 2|1-q|\,|yy'|+2|p|\,(y')^2\le K\,E(t)+2K\,E(t)=3K\,E(t),\qquad t\in[a,b].
+\]
+Em particular $E'(t)\le 3K\,E(t)$. Pela desigualdade de Grönwall (forma diferencial), para $t\ge t_0$ em $[a,b]$,
+\[
+0\le E(t)\le E(t_0)\,e^{3K(t-t_0)}=0 ,
+\]
+logo $E\equiv0$ em $[t_0,b]$. Para $t\le t_0$ aplica-se o mesmo argumento à variável invertida (ou observa-se $\tfrac{\d}{\d t}\big(E(t)e^{3K(t-t_0)}\big)\ge0$ via $E'\ge-3K E$), obtendo $E\equiv0$ em $[a,t_0]$. Como $[a,b]\subset I$ é arbitrário, $E\equiv0$ em todo $I$, ou seja $y(t)^2+y'(t)^2=0$, donde
+\[
+\boxed{\,y\equiv0\ \text{em }I\,}.
+\]
+
+\emph{Unicidade do PVI.} Sejam $y_a,y_b$ soluções de $y''+p y'+q y=0$ em $I$ com $y_a(t_0)=y_b(t_0)$ e $y_a'(t_0)=y_b'(t_0)$. Por linearidade, $w:=y_a-y_b$ é solução da mesma equação homogênea e satisfaz $w(t_0)=w'(t_0)=0$. Pelo que foi provado, $w\equiv0$ em $I$, isto é $y_a\equiv y_b$. Logo, dados $t_0\in I$ e valores $y(t_0),y'(t_0)$, existe no máximo uma solução --- a unicidade do problema de valor inicial. \qquad$\blacksquare$

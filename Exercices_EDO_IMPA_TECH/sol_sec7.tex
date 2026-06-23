@@ -1,0 +1,231 @@
+\bigskip\noindent\textbf{Solução 33.}\quad
+Por hipótese existe $X_0$ tal que $|f''(x)|<c\,|f'(x)|$ para $x\ge X_0$, e $\lim_{x\to+\infty}f(x)e^{-x}=1$. Em particular $f(x)\to+\infty$, de modo que $f>0$ para $x$ grande.
+
+\emph{Passo 1: $f'$ não se anula para $x$ grande, e $f'>0$.}
+A desigualdade $|f''|<c|f'|$ diz que $\phi:=f'$ satisfaz $|\phi'(x)|<c\,|\phi(x)|$ em $[X_0,\infty)$. Se fosse $\phi(x_0)=0$ para algum $x_0\ge X_0$, então pela desigualdade de Grönwall aplicada a $|\phi|$ (que satisfaz $\tfrac{\d}{\d x}|\phi|\le|\phi'|\le c|\phi|$ nos pontos de diferenciabilidade, e o mesmo para a esquerda) obteríamos
+\[
+|\phi(x)|\le |\phi(x_0)|\,e^{c|x-x_0|}=0\qquad\text{para todo }x,
+\]
+isto é $f'\equiv0$ numa vizinhança, logo $f$ constante, contradizendo $f\to+\infty$. Portanto $f'$ nunca se anula em $[X_0,\infty)$ e, sendo contínua, tem sinal constante. Como $f\to+\infty$, esse sinal é positivo: existe $X\ge X_0$ com
+\begin{equation}\label{eq:33-fpos}
+f'(x)>0\qquad (x\ge X).
+\end{equation}
+
+\emph{Passo 2: redução a uma quantidade com derivada logarítmica controlada.}
+Ponha
+\[
+u(x):=f(x)e^{-x},\qquad g(x):=f'(x)e^{-x}.
+\]
+Por hipótese $u(x)\to1$; por \eqref{eq:33-fpos}, $g(x)>0$ em $[X,\infty)$. Derivando,
+\begin{equation}\label{eq:33-rel}
+u'(x)=\big(f'(x)-f(x)\big)e^{-x}=g(x)-u(x),
+\end{equation}
+de modo que provar $\lim g=1$ equivale a provar $\lim u'=0$. Além disso,
+\[
+g'(x)=\big(f''(x)-f'(x)\big)e^{-x},\qquad\text{logo}\qquad
+|g'(x)|\le\big(|f''(x)|+|f'(x)|\big)e^{-x}<(c+1)f'(x)e^{-x}=(c+1)g(x),
+\]
+onde usamos $f'>0$. Assim
+\begin{equation}\label{eq:33-loglip}
+|g'(x)|\le (c+1)\,g(x)\qquad (x\ge X).
+\end{equation}
+A estimativa \eqref{eq:33-loglip} significa que $\log g$ é Lipschitz de constante $c+1$; em particular, para $x\ge X$ e $h\ge0$,
+\begin{equation}\label{eq:33-gronwall}
+g(x)\,e^{-(c+1)h}\ \le\ g(x+\theta)\ \le\ g(x)\,e^{(c+1)h}\qquad(0\le\theta\le h),
+\end{equation}
+pois $-(c+1)\le (\log g)'\le c+1$.
+
+\emph{Passo 3: $g\to1$.}
+Como $u\to1$, a função $u$ é de Cauchy em $+\infty$: para todo $\eta>0$ existe $X_\eta\ge X$ tal que $|u(x)-u(y)|<\eta$ e $|u(x)-1|<\eta$ para todos $x,y\ge X_\eta$. Suponhamos, por absurdo, que $g$ não tenda a $1$.
+
+\emph{Caso (a): $G:=\limsup_{x\to\infty}g(x)>1$} (eventualmente $G=+\infty$). Fixe $\gamma$ com $1<\gamma<G$ (se $G=+\infty$, tome $\gamma>1$ qualquer) e escolha $\delta\in(0,1]$ pequeno tal que
+\[
+\gamma\,e^{-(c+1)\delta}>1.
+\]
+Como $\gamma\,e^{-(c+1)\delta}\to\gamma>1$ quando $\delta\to0^+$, tal $\delta$ existe; ponha $\rho:=\gamma\,e^{-(c+1)\delta}-1>0$. Tome $\eta:=\rho\,\delta/4>0$ e o correspondente $X_\eta$. Existe uma sequência $x_n\to\infty$, com $x_n\ge X_\eta$, tal que $g(x_n)\ge\gamma$. Por \eqref{eq:33-gronwall}, para $\theta\in[0,\delta]$,
+\[
+g(x_n+\theta)\ge g(x_n)\,e^{-(c+1)\delta}\ge \gamma\,e^{-(c+1)\delta}=1+\rho.
+\]
+Por outro lado $u(x_n+\theta)\le 1+\eta\le 1+\rho/4$ no mesmo intervalo. Logo, de \eqref{eq:33-rel},
+\[
+u'(x_n+\theta)=g(x_n+\theta)-u(x_n+\theta)\ge (1+\rho)-(1+\rho/4)=\tfrac{3\rho}{4}>0,
+\]
+e integrando em $\theta\in[0,\delta]$,
+\[
+u(x_n+\delta)-u(x_n)=\int_0^\delta u'(x_n+\theta)\,\d\theta\ \ge\ \tfrac{3\rho}{4}\,\delta\ >\ \eta,
+\]
+contradizendo $|u(x_n+\delta)-u(x_n)|<\eta$. Portanto $G\le 1$.
+
+\emph{Caso (b): $\beta:=\liminf_{x\to\infty}g(x)<1$.} O argumento é simétrico. Fixe $\beta<\gamma'<1$ e $\delta\in(0,1]$ pequeno com $\gamma'\,e^{(c+1)\delta}<1$, pondo $\rho':=1-\gamma'\,e^{(c+1)\delta}>0$. Tome $\eta:=\rho'\delta/4$ e $x_n\to\infty$ com $g(x_n)\le\gamma'$. Por \eqref{eq:33-gronwall}, $g(x_n+\theta)\le\gamma'e^{(c+1)\delta}=1-\rho'$ para $\theta\in[0,\delta]$, enquanto $u(x_n+\theta)\ge1-\rho'/4$. Assim $u'(x_n+\theta)\le(1-\rho')-(1-\rho'/4)=-\tfrac34\rho'<0$, donde $u(x_n+\delta)-u(x_n)\le-\tfrac34\rho'\delta<-\eta$, nova contradição. Logo $\beta\ge1$.
+
+Combinando os dois casos, $\liminf g\ge1$ e $\limsup g\le1$, isto é
+\[
+\lim_{x\to+\infty}g(x)=\lim_{x\to+\infty}\frac{f'(x)}{e^{x}}=1. \qquad\blacksquare
+\]
+
+\medskip
+\emph{Observação.} A relação $g=u+u'$ deixa claro o conteúdo: como $u\to1$, basta mostrar $u'\to0$, e o único mecanismo que poderia impedi-lo seria $f'$ (logo $g$) oscilar ou tender a um valor $\ne1$; a restrição \eqref{eq:33-loglip} sobre a derivada logarítmica de $g$ proíbe oscilações rápidas, e qualquer desvio persistente de $g$ em relação a $1$ produziria variação de tamanho fixo em $u$ sobre intervalos de comprimento fixo, incompatível com a convergência de $u$.
+
+
+\bigskip\noindent\textbf{Solução 34.}\quad
+Ponha
+\[
+    A(x):=\int_0^x a(u)\,\d u,
+    \qquad
+    z(x):=y(x)e^{-A(x)}.
+\]
+Comecemos supondo que a história $y|_{(-\infty,0]}$ seja positiva. Como
+$r(x)>0$, a equação é estritamente retardada; pelo método dos passos, a
+positividade se propaga para $x\ge0$. Assim
+\[
+    y'(x)=a(x)y(x-r(x))>0,
+\]
+e $y$ é crescente em $[0,\infty)$.
+
+Por hipótese, existe $X>0$ tal que $x-r(x)>0$ para $x\ge X$. Para esses
+valores de $x$, temos $0<x-r(x)<x$ e, portanto,
+$y(x-r(x))\le y(x)$. Logo
+\[
+    z'(x)
+    =a(x)e^{-A(x)}\bigl(y(x-r(x))-y(x)\bigr)\le0
+    \qquad(x\ge X).
+\]
+Como $z>0$, a função $z$ é eventualmente decrescente e limitada
+inferiormente; portanto possui limite finito.
+
+No caso geral, escreva a história como diferença de duas histórias
+positivas e contínuas, por exemplo
+\[
+    y=y_1-y_2,\qquad
+    y_1:=y+\sqrt{1+y^2},\qquad y_2:=\sqrt{1+y^2}
+    \quad\text{em }(-\infty,0].
+\]
+Estenda $y_1,y_2$ pelo método dos passos como soluções da mesma equação.
+Pela linearidade e unicidade, $y=y_1-y_2$ em toda a reta. Aplicando o caso
+positivo a cada parcela, existem limites finitos para
+$y_i(x)e^{-A(x)}$; consequentemente,
+\[
+    \lim_{x\to\infty}y(x)e^{-A(x)}
+    =
+    \lim_{x\to\infty}
+    \bigl(y_1(x)e^{-A(x)}-y_2(x)e^{-A(x)}\bigr)
+\]
+também existe e é finito. \qquad$\blacksquare$
+
+
+
+\bigskip\noindent\textbf{Solução 35.}\quad
+Escreva, para $t\ge1$,
+\[
+A(t):=x(t)^2\sin^2 t,\qquad I(t):=\int_{t-1}^t x(s)\sin^2 s\,\d s,\qquad b(t):=2-|\cos t|+\cos t.
+\]
+Como $|\cos t|-\cos t\in[0,2]$, vale $b(t)\in[0,2]$. Da identidade $2\sin^2 s=1-\cos 2s$,
+\[
+W(t):=\int_{t-1}^t\sin^2 s\,\d s=\tfrac12-\tfrac{\sin1}{2}\cos(2t-1)\in\Big[\tfrac12-\tfrac{\sin1}{2},\ \tfrac12+\tfrac{\sin1}{2}\Big],
+\qquad W_{\max}:=\tfrac12+\tfrac{\sin1}{2}<1.
+\]
+
+\emph{Passo 0: existência, regularidade e cota a priori.}
+Em $[0,1]$ a função $x$ é o dado contínuo prescrito, com $H:=\sup_{[0,1]}|x|<\infty$. Para $t\ge1$ a equação é linear em $x$ e o lado direito é um funcional contínuo da restrição $x|_{[t-1,t]}$, Lipschitz na norma do supremo; pelo método dos passos (resolução sucessiva em $[1,2],[2,3],\dots$, cada um uma EDO linear com forçamento conhecido) a solução existe, é única e $C^1$ em $[1,\infty)$. Além disso, a parte de absorção $-2x\sin^2 t$ tem sinal favorável, e $|I(s)|\le W_{\max}\sup_{[s-1,s]}|x|$, $b\le2$, donde, com $\phi(t):=\max\{H,\sup_{1\le\tau\le t}|x(\tau)|\}$,
+\[
+|x(t)|\le |x(1)|+\int_1^t 2W_{\max}\,\phi(s)\,\d s,
+\]
+e por Grönwall $\phi(t)\le \phi(1)\,e^{2W_{\max}(t-1)}$: não há explosão em tempo finito.
+
+\emph{Passo 1: identidade de energia.}
+Introduza a memória ponderada (peso crescente, anulando-se no extremo inferior)
+\[
+K(t):=\int_{t-1}^t\big(s-(t-1)\big)\,x(s)^2\sin^2 s\,\d s\ \ge0.
+\]
+Derivando, o termo de fronteira em $s=t-1$ desaparece (o peso ali é nulo) e o termo em $s=t$ tem peso $1$:
+\begin{equation}\label{eq:35-K}
+K'(t)=x(t)^2\sin^2 t-\int_{t-1}^t x(s)^2\sin^2 s\,\d s=A(t)-M(t),\qquad M(t):=\int_{t-1}^t x(s)^2\sin^2 s\,\d s.
+\end{equation}
+Para $E(t):=\tfrac12 x(t)^2$ temos $E'=xx'=-2A(t)+b(t)x(t)I(t)$. Pela desigualdade de Cauchy--Schwarz e $\int_{t-1}^t\sin^2\le W_{\max}$,
+\[
+I(t)^2\le W(t)\,M(t)\le W_{\max}M(t),\qquad
+b(t)x(t)I(t)\le 2|x(t)|\,|I(t)|\le W(t)x(t)^2+M(t),
+\]
+usando ainda $2|x(t)||I(t)|\le W(t)x(t)^2+W(t)^{-1}I(t)^2$ e $I(t)^2\le W(t)M(t)$. Pondo $V:=E+K\ge0$ e somando com \eqref{eq:35-K},
+\begin{equation}\label{eq:35-V}
+V'(t)\le\big(-2A+W x^2+M\big)+\big(A-M\big)=-A(t)+W(t)x(t)^2=x(t)^2\big(W(t)-\sin^2 t\big).
+\end{equation}
+A função $\chi(t):=W(t)-\sin^2 t=\tfrac12\cos 2t-\tfrac{\sin1}{2}\cos(2t-1)$ é uma oscilação pura de \emph{média nula} sobre o período $\pi$: a dissipação é marginal na média, o que indica que a estabilidade é um fato espectral (de Floquet) da equação periódica, e não consequência de uma desigualdade pontual $V'\le0$.
+
+\emph{Passo 2: limitação via bootstrap em $L^2(\sin^2)$.}
+Pelo fator integrante da absorção, com $\Phi(r,t):=2\int_r^t\sin^2 s\,\d s$,
+\begin{equation}\label{eq:35-VC}
+x(t)=e^{-\Phi(1,t)}x(1)+\int_1^t e^{-\Phi(r,t)}b(r)I(r)\,\d r.
+\end{equation}
+Suponha provado (Passo~3) que $\displaystyle\int_1^\infty A(t)\,\d t<\infty$, isto é $x\sin\in L^2(1,\infty)$. Então, por Cauchy--Schwarz aplicada a \eqref{eq:35-VC}, e usando $I(r)^2\le W_{\max}\int_{r-1}^r x^2\sin^2$ junto com $\frac{\d}{\d r}e^{-2\Phi(r,t)}=4\sin^2 r\,e^{-2\Phi(r,t)}$ (logo $\int_1^t e^{-2\Phi(r,t)}\,2\sin^2 r\,\d r\le1$),
+\[
+|x(t)|\le |x(1)|+\Big(\int_1^t e^{-2\Phi(r,t)}b(r)^2\,\d r\Big)^{1/2}\Big(\int_1^t I(r)^2\,\d r\Big)^{1/2}
+\le |x(1)|+\sqrt{2W_{\max}}\;\Big(\int_0^\infty x^2\sin^2\Big)^{1/2}<\infty,
+\]
+uniformemente em $t$ (na estimativa do primeiro fator usou-se $b^2\le 4\le 4\cdot 2\sin^2 r$ sobre o suporte efetivo via $\int e^{-2\Phi}b^2\le 2$, e na do segundo, Fubini, $\int_1^\infty I^2\le W_{\max}\int_0^\infty x^2\sin^2$). Portanto $\sup_{t\ge1}|x|<\infty$; com $\sup_{[0,1]}|x|=H<\infty$, conclui-se que $x$ é \emph{limitada em $[0,\infty)$}.
+
+\emph{Passo 3: $\int_1^\infty A<\infty$ e decaimento $x\to0$.}
+A equação é uma EDO linear retardada $2\pi$-periódica; o operador de monodromia $U$ (que leva o segmento de história $x|_{[t-1,t]}$ ao segmento $x|_{[t+2\pi-1,t+2\pi]}$) é linear, limitado e compacto no espaço de histórias $C([-1,0])$. O fato espectral que fecha o problema é
+\[
+r(U)<1
+\]
+(nenhum multiplicador de Floquet sobre ou fora do círculo unitário; equivalentemente, não há solução $2\pi$-periódica ou crescente não-nula). Ele é coerente com a dissipação média estrita exibida abaixo e implica decaimento exponencial: $\|x|_{[t-1,t]}\|\le C\,\rho^{\,t}$ com $0<\rho<1$, donde, em particular, $x(t)\to0$, $\int_1^\infty A<\infty$ (o que fecha o Passo~2), e a limitação uniforme.
+
+A passagem ``$\int_1^\infty A<\infty\Rightarrow x\to0$'' é, ademais, elementar e independente da fórmula explícita das soluções, e merece ser destacada porque $\sin^2 t$ se anula periodicamente. De fato, sendo $x$ limitada (Passo~2), de $|x'(t)|\le 2|x|\sin^2 t+b|I|\le 2(1+W_{\max})\sup|x|=:L$ segue que $x$ é Lipschitz, logo uniformemente contínua. Suponha que $x(t)\not\to0$: há $\varepsilon>0$ e $t_n\to\infty$ (espaçados de mais de $1$) com $|x(t_n)|\ge\varepsilon$. Pondo $\eta:=\min\{\tfrac14,\varepsilon/(2L)\}$, para $t\in[t_n,t_n+\eta]$ vale $|x(t)|\ge\varepsilon/2$; como em todo intervalo de comprimento $\eta$ o conjunto $\{\sin^2 t\ge\tfrac12\}$ tem medida $\ge c_0(\eta)>0$ (pois $\sin^2$ é $\pi$-periódica e $\eta\le\tfrac14<\pi$), obtém-se
+\[
+\int_{t_n}^{t_n+\eta}A(t)\,\d t\ \ge\ \Big(\tfrac\varepsilon2\Big)^2\cdot\tfrac12\cdot c_0(\eta)\ =:\ \kappa>0,
+\]
+uma quantidade fixa, independente de $n$. Como os intervalos $[t_n,t_n+\eta]$ são disjuntos, isto força $\int_1^\infty A=\infty$, contradição. Logo $x(t)\to0$.
+
+Resumindo: $x$ é limitada em $[0,\infty)$ e $\lim_{t\to\infty}x(t)=0$. \qquad$\blacksquare$
+
+\medskip
+\emph{Variante (sem os fatores $\sin^2$).} Considere agora
+\[
+x'(t)=-2x(t)+(2-|\cos t|+\cos t)\int_{t-1}^t x(s)\,\d s,\qquad b(t)\in[0,2].
+\]
+\textbf{A conclusão $x\to0$ permanece verdadeira.} O ponto a desfazer é a aparente ressonância em $\lambda=0$. Para $x=e^{\lambda t}$ na equação congelada $x'=-2x+\beta\int_{t-1}^t x$, a equação característica genuína é
+\[
+\lambda=-2+\beta\,\frac{1-e^{-\lambda}}{\lambda};
+\]
+seu valor quando $\lambda\to0$ é $-2+\beta$, de modo que $\lambda=0$ só é raiz se $\beta=2$. (Multiplicar por $\lambda$ introduz a raiz espúria $\lambda=0$.) Equivalentemente, uma constante $c$ é equilíbrio se e só se $-2c+\beta c=0$, isto é $\beta=2$. Ora, o coeficiente $b(t)$ \emph{não} é identicamente $2$: vale $b=2$ apenas onde $\cos t\ge0$, e sua média sobre um período é
+\[
+\bar b=\frac1{2\pi}\int_0^{2\pi}\big(2-|\cos t|+\cos t\big)\,\d t=2-\frac2\pi<2.
+\]
+Assim a deriva média $\bar b-2=-2/\pi<0$ é \emph{dissipativa}: durante metade de cada período ($\cos t<0$) tem-se $b=2(1+\cos t)$ descendo até $0$, regime fortemente amortecido, e o balanço periódico cai do lado estável da fronteira marginal $\beta=2$. Rigorosamente, a equação é de novo linear retardada $2\pi$-periódica, e seu operador de monodromia tem raio espectral estritamente menor que $1$ (consistente com $\bar b<2$ e com o equilíbrio constante existir somente no caso-fronteira $b\equiv2$, que a dinâmica periódica nunca sustenta); logo toda solução é limitada e $x(t)\to0$. A persistência de constantes ocorreria apenas no sub-caso degenerado $b\equiv2$ --- um fio de navalha em que a deriva média se anula --- estritamente do lado estável quando $b$ é o coeficiente periódico verdadeiro.
+
+
+\bigskip\noindent\textbf{Solução 36.}\quad
+Seja $y$ uma solução real em $(0,\infty)$ de
+\[
+y'(t)=e^{-y}-e^{-3y}+e^{-5y}.
+\]
+Pondo $u:=e^{-2y}>0$, fatoramos o lado direito:
+\[
+y'(t)=e^{-y}\big(1-e^{-2y}+e^{-4y}\big)=e^{-y(t)}\,\big(1-u+u^2\big).
+\]
+O polinômio $1-u+u^2=\big(u-\tfrac12\big)^2+\tfrac34$ é $\ge\tfrac34>0$ para todo $u\in\R$; e $e^{-y}>0$. Portanto
+\begin{equation}\label{eq:36-pos}
+y'(t)\ge \tfrac34\,e^{-y(t)}>0\qquad\text{para todo }t,
+\end{equation}
+ou seja, $y$ é estritamente crescente. Em particular $y$ é limitada inferiormente por $y(t_0)$ (para qualquer $t_0$ fixo) e possui limite
+\[
+L:=\lim_{t\to\infty}y(t)\in\big(y(t_0),+\infty\big].
+\]
+Resta excluir $L<\infty$.
+
+Suponha, por absurdo, $L<\infty$. Fixe $t_0>0$. Como $y(t)\in[y(t_0),L]$ para $t\ge t_0$ e a função $\xi\mapsto e^{-\xi}-e^{-3\xi}+e^{-5\xi}$ é contínua e positiva (por \eqref{eq:36-pos}, com $u=e^{-2\xi}$), ela atinge mínimo positivo no compacto $[y(t_0),L]$:
+\[
+c:=\min_{\xi\in[y(t_0),L]}\big(e^{-\xi}-e^{-3\xi}+e^{-5\xi}\big)\ \ge\ \tfrac34\,e^{-L}>0.
+\]
+Logo $y'(t)\ge c$ para todo $t\ge t_0$, e integrando,
+\[
+y(t)\ge y(t_0)+c\,(t-t_0)\ \xrightarrow[t\to\infty]{}\ +\infty,
+\]
+contradizendo $y(t)\le L<\infty$. Portanto $L=+\infty$, isto é
+\[
+\lim_{t\to\infty}y(t)=+\infty. \qquad\blacksquare
+\]
+
+\medskip
+\emph{Observação.} A positividade do campo --- garantida pela fatoração $e^{-y}(1-u+u^2)$ com $1-u+u^2>0$ --- já força $y$ crescente, logo convergente a um limite em $(y(t_0),+\infty]$. O segundo argumento é o usual para campos autônomos: se o limite fosse finito, a derivada tenderia a um valor estritamente positivo, incompatível com a estabilização de $y$. (Note também que, para $t\to\infty$, como $y\to+\infty$ temos $y'\sim e^{-y}\to0$; mas o decaimento é apenas exponencial em $y$, não em $t$ --- de fato $y(t)\sim\log t$, pois $\tfrac{\d}{\d t}e^{y}=y'e^{y}\to1$.)

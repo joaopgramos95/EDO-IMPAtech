@@ -1,0 +1,230 @@
+\documentclass[10pt,a4paper]{amsart}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{enumitem}
+\usepackage[left=1.5cm, right=1.5cm]{geometry}
+
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\d}{\mathrm{d}}
+
+\title{Introdução às Equações Diferenciais - Lista 3}
+
+\begin{document}
+\maketitle
+
+\section*{Problemas Para Entregar}
+
+\noindent {\small Resolva e entregue os seis problemas a seguir.}
+
+\vspace{4mm}
+
+\noindent {\bf Problema 1.} Sejam $y_1, y_2$ duas soluções linearmente independentes da equação
+\[
+    xy'' - (x + 2)y' + 2y = 0, \qquad x \in (0,\infty).
+\]
+Se $W(y_1, y_2)(1) = e$, encontre o valor de $W(y_1, y_2)(2)$.
+
+\vspace{5mm}
+
+\noindent {\bf Problema 2.} Considere a seguinte EDO para $t > 0$:
+\[
+    t^2 x'' - t(t + 2)x' + (t + 2)x = 0.
+\]
+Sabendo que $x_1(t) = t$ é uma solução desta equação:
+\begin{enumerate}[label=(\alph*)]
+    \item Encontre a segunda solução $x_2(t)$ linearmente independente.
+    \item Escreva a solução geral da EDO.
+\end{enumerate}
+
+\vspace{5mm}
+
+\noindent {\bf Problema 3.} Usando o método de variação dos parâmetros, encontre a solução geral, para $t > 0$, da equação
+\[
+    x'' - 2x' + x = \frac{e^{t}}{t}.
+\]
+
+\vspace{5mm}
+
+\noindent {\bf Problema 4.} Resolva a equação
+\[
+    y'' + 3yy' + y^3 = 0.
+\]
+
+\vspace{5mm}
+
+\noindent {\bf Problema 5.} Encontre todas as funções diferenciáveis $f : (0,\infty) \to \R$ tais que
+\[
+    f(b) - f(a) = (b - a)\,f'\!\left(\sqrt{ab}\right)
+\]
+para todos $a, b > 0$.
+
+\vspace{5mm}
+
+\noindent {\bf Problema 6.} Seja $f$ uma função em $[0,\infty)$, diferenciável e satisfazendo
+\[
+    f'(x) = -3f(x) + 6f(2x)
+\]
+para $x > 0$. Suponha que $|f(x)| \leq e^{-\sqrt{x}}$ para $x \geq 0$, de modo que $f(x)$ tende rapidamente a $0$ quando $x$ cresce. Para $n$ inteiro não negativo, defina
+\[
+    \mu_n = \int_0^\infty x^n f(x) \,\d x,
+\]
+por vezes chamado de $n$-ésimo momento de $f$.
+\begin{enumerate}[label=(\alph*)]
+    \item Expresse $\mu_n$ em termos de $\mu_0$.
+    \item Prove que a sequência
+    \[
+        \left\{ \mu_n \frac{3^n}{n!} \right\}
+    \]
+    sempre converge, e que esse limite é $0$ somente se $\mu_0 = 0$.
+\end{enumerate}
+
+\vspace{8mm}
+
+\section*{Problemas Opcionais}
+
+\noindent {\small Os problemas a seguir não precisam ser entregues; ficam como sugestão de estudo.}
+
+\vspace{4mm}
+
+\noindent {\bf Problema 7.} Considere a equação diferencial de segunda ordem para $t \in \left(0, \frac{\pi}{2}\right)$:
+\[
+    x'' - 2\tan(t)\,x' + 3x = 0.
+\]
+Sabe-se que $x_1(t) = \sin(t)$ é uma solução desta equação no intervalo dado.
+\begin{enumerate}[label=(\alph*)]
+    \item Encontre a segunda solução $x_2(t)$ linearmente independente.
+    \item Apresente a solução geral da equação.
+\end{enumerate}
+
+\vspace{5mm}
+
+\noindent {\bf Problema 8.} Encontre todas as soluções, com $y > 0$, da equação
+\[
+    y y'' = (y')^2.
+\]
+
+\vspace{5mm}
+
+\noindent {\bf Problema 9.} Determine todos os números reais $L > 1$ para os quais o problema de valores de contorno
+\[
+    x^2 y'' + y = 0, \qquad 1 \leq x \leq L,
+\]
+\[
+    y(1) = y(L) = 0,
+\]
+admite uma solução não nula.
+
+\vspace{5mm}
+
+\noindent {\bf Problema 10.} Seja $x : \R \to \R$ uma solução.
+\begin{enumerate}[label=(\alph*)]
+    \item Se $x'' + x = 0$, mostre que $E(t) = x(t)^2 + x'(t)^2$ é constante. Conclua que toda solução é limitada e periódica.
+    \item Se $x'' + x' + x = 0$, mostre que $E(t) = x(t)^2 + x'(t)^2$ é não-crescente e que toda solução satisfaz $x(t) \to 0$ quando $t \to +\infty$.
+\end{enumerate}
+
+\vspace{5mm}
+
+\noindent {\bf Problema 11.} Considere um sistema físico cuja posição $y(t)$ é regida pela EDO de segunda ordem
+\[
+    y'' + 4y = \sec(2t),
+\]
+com as condições iniciais de repouso $y(0) = 0$ e $y'(0) = 0$.
+\begin{enumerate}[label=(\alph*)]
+    \item Determine a solução geral da equação homogênea associada.
+    \item Determine uma solução particular $y_p(t)$ para a equação original no intervalo $0 \leq t < \pi/4$.
+    \item Resolva o Problema de Valor Inicial (PVI) e expresse $y(t)$ de forma simplificada.
+    \item Discuta o que acontece com o deslocamento $y(t)$ à medida que $t$ se aproxima de $\pi/4$.
+\end{enumerate}
+
+\vspace{5mm}
+
+\noindent {\bf Problema 12.} Seja $k$ um inteiro positivo. Para quais valores do número real $c$ a equação diferencial
+\[
+    x'' - 2cx' + x = 0
+\]
+admite uma solução satisfazendo
+\[
+    x(0) = x(2\pi k) = 0?
+\]
+
+\vspace{5mm}
+
+\noindent {\bf Problema 13.} Resolva a equação
+\[
+    y'' + y = \frac{1}{y^3}.
+\]
+
+\vspace{5mm}
+
+\noindent {\bf Problema 14.} Seja $x : \R \to \R$ uma solução da equação diferencial
+\[
+    5x'' + 10x' + 6x = 0.
+\]
+Prove que a função $f : \R \to \R$, definida por
+\[
+    f(t) = \frac{x(t)^2}{1 + x(t)^4},
+\]
+atinge um valor máximo.
+
+\vspace{5mm}
+
+\noindent {\bf Problema 15.} Mostre que se
+\[
+    f(x) = a \sin(\sqrt{\lambda}\, x) + b \cos(\sqrt{\lambda}\, x)
+\]
+é $1$-periódica e $\int_0^1 f(x) \,\d x = 0$, então $\lambda = 4 n^2 \pi^2$ para algum $n \in \mathbb{N}$.
+
+\vspace{5mm}
+
+\noindent {\bf Problema 16.} Considere a equação
+\[
+    t x'' - (t + N)x' + Nx = 0,
+\]
+onde $N$ é um inteiro $\geq 0$. Mostre que $x_1(t) = e^t$ é uma solução e que uma segunda solução pode ser expressa na forma
+\[
+    x_2(t) = e^t \int t^N e^{-t} \,\d t.
+\]
+Mostre que $x_2$ é um polinômio de grau $N$, o qual é precisamente a reduzida de ordem $N$ da série de Taylor de $e^t$.
+
+\vspace{5mm}
+
+\noindent {\bf Problema 17.} Seja $f(t)$ uma função polinomial de grau $n$. Considere a equação
+\[
+    x'' + px' + qx = f(t), \qquad p, q \text{ constantes}.
+\]
+Mostre que:
+\begin{enumerate}[label=(\alph*)]
+    \item Se $q \neq 0$, então existe uma solução particular $x_p = Q(t)$ para alguma função polinomial $Q$ de grau $n$.
+    \item Se $p \neq 0$ e $q = 0$, então existe uma solução particular $x_p = tQ(t)$ para alguma função polinomial $Q$ de grau $n$.
+    \item Se $p = q = 0$, então existe uma solução particular $x_p = t^2 Q(t)$ para alguma função polinomial $Q$ de grau $n$.
+\end{enumerate}
+
+\vspace{5mm}
+
+\noindent {\bf Problema 18.} Seja $f(t) = e^{\alpha t} P(t)$, onde $P(t)$ é uma função polinomial de grau $n$. Considere a equação
+\[
+    x'' + px' + qx = f(t), \qquad p, q \text{ constantes}.
+\]
+Mostre que:
+\begin{enumerate}[label=(\alph*)]
+    \item Se $\alpha^2 + \alpha p + q \neq 0$, então existe uma solução particular $x_p = e^{\alpha t} Q(t)$ para alguma função polinomial $Q$ de grau $n$.
+    \item Se $2\alpha + p \neq 0$ e $\alpha^2 + \alpha p + q = 0$, então existe uma solução particular $x_p = t e^{\alpha t} Q(t)$ para alguma função polinomial $Q$ de grau $n$.
+    \item Se $2\alpha + p = \alpha^2 + \alpha p + q = 0$, então existe uma solução particular $x_p = t^2 e^{\alpha t} Q(t)$ para alguma função polinomial $Q$ de grau $n$.
+\end{enumerate}
+
+\vspace{5mm}
+
+\noindent {\bf Problema 19.} Seja $f : \R \to \R$ uma função diferenciável tal que $f(0) = 0$ e
+\[
+    |f'(x)| \leq |f(x)| \qquad \text{para todo } x \in \R.
+\]
+Prove que $f(x) = 0$ para todo $x \in \R$.
+
+\vspace{5mm}
+
+\noindent {\bf Problema 20.} Seja $f : [0,1] \to \R$ de classe $C^2$ com $f(0) = f(1) = 0$ e $|f''(x)| \leq 1$ para todo $x \in [0,1]$. Prove que
+\[
+    |f(x)| \leq \frac{1}{8} \qquad \text{para todo } x \in [0,1],
+\]
+e exiba uma função não nula para a qual vale a igualdade.
+
+\end{document}

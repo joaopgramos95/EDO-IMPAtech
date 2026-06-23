@@ -1,0 +1,890 @@
+\documentclass[10pt,a4paper]{amsart}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{enumitem}
+\usepackage[left=1.5cm, right=1.5cm]{geometry}
+
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\d}{\mathrm{d}}
+
+\theoremstyle{definition}
+\newtheorem{problema}{Problema}
+
+\title{Introdução às Equações Diferenciais -- Lista 4}
+
+\begin{document}
+\maketitle
+
+\noindent{\small Os problemas estão organizados por tema. A numeração é
+contínua ao longo de toda a lista.}
+
+\vspace{4mm}
+
+%=====================================================================
+\section*{1. Equações de primeira ordem}
+%=====================================================================
+
+\begin{problema}
+Resolva a equação exata
+\[
+    (2xy+e^x)\,\d x+(x^2+\cos y)\,\d y=0,
+    \qquad y(0)=0.
+\]
+Encontre a solução implicitamente e determine se ela define $y$ localmente
+como função de $x$ em uma vizinhança de $x=0$.
+\end{problema}
+
+\begin{problema}
+Resolva o problema de valor inicial
+\[
+    y'+\frac{2t}{1+t^2}\,y=\frac{1}{1+t^2},
+    \qquad y(0)=2,
+\]
+e determine o intervalo maximal no qual a solução está definida.
+\end{problema}
+
+\begin{problema}
+Resolva o problema de valor inicial
+\[
+    y'=x(1+y^2),
+    \qquad y(0)=1,
+\]
+e determine o intervalo maximal no qual a solução está definida.
+\end{problema}
+
+\begin{problema}
+Resolva
+\[
+    y'+y=e^{-t},
+    \qquad y(0)=2,
+\]
+e descreva o comportamento da solução quando $t\to+\infty$.
+\end{problema}
+
+\begin{problema}
+Resolva a equação exata
+\[
+    (y\cos x+2x)\,\d x+\sin x\,\d y=0,
+    \qquad y(0)=1,
+\]
+exibindo a solução explicitamente sempre que possível.
+\end{problema}
+
+%=====================================================================
+\section*{2. Existência, unicidade e iteração de Picard}
+%=====================================================================
+
+\begin{problema}
+Descreva várias soluções distintas de
+\[
+    y'=2\sqrt{|y|}, \qquad y(0)=0,
+\]
+e explique precisamente qual hipótese do teorema de Picard--Lindelöf falha.
+\end{problema}
+
+\begin{problema}
+Encontre todas as soluções de
+\[
+    y'=3y^{2/3}, \qquad y(0)=0,
+\]
+com $y(t)\ge 0$, e explique por que isto não contradiz o teorema de
+Picard--Lindelöf.
+\end{problema}
+
+\begin{problema}
+Considere a equação de segunda ordem
+\[
+    x''=\sin x+t\,x'.
+\]
+Reescreva-a como um sistema de primeira ordem e prove que, para todos
+$a,b\in\R$, existe uma única solução local satisfazendo $x(0)=a$ e
+$x'(0)=b$.
+\end{problema}
+
+\begin{problema}
+Prove a fórmula de adição
+\[
+    f(x+y)=\frac{f(x)+f(y)}{1-f(x)f(y)}
+\]
+para a solução maximal de
+\[
+    f'=1+f^2, \qquad f(0)=0,
+\]
+válida sempre que ambos os lados estejam definidos e $f(x)f(y)\neq 1$. Em
+seguida, resolva a equação explicitamente.
+\end{problema}
+
+\begin{problema}
+Defina funções $u_0,u_1,u_2,\ldots$ em $[0,1/4]$ por
+\[
+    u_0(x)=0,
+    \qquad
+    u_{n+1}(x)=x+\int_0^x u_n(t)^2\,\d t.
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Prove que $u_n$ converge uniformemente em $[0,1/4]$.
+    \item Identifique a função limite determinando a equação diferencial que ela satisfaz.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Seja $n$ um inteiro maior que $1$. Existe uma função diferenciável em
+$[0,\infty)$ cuja derivada é igual à sua $n$-ésima potência e cujo valor na
+origem é positivo?
+\end{problema}
+
+\begin{problema}
+Encontre todas as soluções diferenciáveis da equação
+\[
+    y'=\sqrt{y}, \qquad y(0)=0.
+\]
+\end{problema}
+
+%=====================================================================
+\section*{3. Equações autônomas e retrato de fase}
+%=====================================================================
+
+\begin{problema}
+Para a equação autônoma
+\[
+    y'=y(y-1)(y+2),
+\]
+classifique os pontos estacionários e determine
+$\lim_{t\to+\infty}y(t)$ para cada valor inicial $y(0)=y_0$.
+\end{problema}
+
+\begin{problema}
+Considere a equação autônoma
+\[
+    y'=y^2(4-y^2).
+\]
+classifique todos os pontos de equilíbrio e
+determine $\lim_{t\to+\infty}y(t)$ para todo valor inicial cuja solução existe para todo tempo positivo.
+\end{problema}
+
+%=====================================================================
+\section*{4. Equações lineares de segunda ordem}
+%=====================================================================
+
+\begin{problema}
+Resolva
+\[
+    y''-2y'+y=e^t(1+t),
+    \qquad y(0)=0,\qquad y'(0)=1.
+\]
+\end{problema}
+
+\begin{problema}
+Sabendo que $y_1(t)=t$ é uma solução em $(0,\infty)$, encontre a solução
+geral de
+\[
+    t^2y''-2ty'+2y=0.
+\]
+\end{problema}
+
+\begin{problema}
+Sejam $y_1,y_2$ soluções de
+\[
+    y''+\tan(t)\,y'+\cos(t)\,y=0
+\]
+em $(-\pi/2,\pi/2)$, cujo Wronskiano satisfaz $W(0)=2$. Encontre $W(t)$ e
+decida se $y_1,y_2$ podem se tornar linearmente dependentes nesse intervalo.
+\end{problema}
+
+\begin{problema}
+Resolva
+\[
+    y''+4y=3\sin(2t),
+    \qquad y(0)=0,
+    \qquad y'(0)=1.
+\]
+\end{problema}
+
+\begin{problema}
+Resolva
+\[
+    y''-3y'+2y=t\,e^t.
+\]
+\end{problema}
+
+\begin{problema}
+Sabendo que $y_1(x)=x$ é uma solução de
+\[
+    (1-x^2)y''-2xy'+2y=0
+\]
+em $(-1,1)$, encontre uma segunda solução linearmente independente nesse
+intervalo.
+\end{problema}
+
+\begin{problema}
+Sejam $p,q$ funções contínuas em um intervalo $I$, e seja $t_0\in I$. Prove
+que, se $y$ resolve
+\[
+    y''+p(t)y'+q(t)y=0
+\]
+e satisfaz $y(t_0)=y'(t_0)=0$, então $y\equiv 0$ em $I$. Deduza que duas
+soluções com o mesmo valor e a mesma derivada em $t_0$ coincidem.
+\end{problema}
+
+%=====================================================================
+\section*{5. Sistemas lineares e exponencial de matrizes}
+%=====================================================================
+
+\begin{problema}
+Sejam $A,B$ matrizes reais ou complexas. Prove que
+\[
+    e^{t(A+B)}=e^{tA}\cdot e^{tB}
+\]
+para todo $t\in\R$ se e somente se $AB=BA$.
+\end{problema}
+
+\begin{problema}
+Calcule $e^{tA}$ e resolva $x'=Ax$ para
+\[
+    A=\begin{pmatrix}
+        2 & 1 & 0\\
+        0 & 2 & 0\\
+        0 & 0 & -1
+    \end{pmatrix}.
+\]
+\end{problema}
+
+\begin{problema}
+Encontre todas as funções diferenciáveis $f,g:\R\to\R$ satisfazendo
+\[
+    f(x+y)=f(x)f(y)-g(x)g(y),
+    \qquad
+    g(x+y)=f(x)g(y)+g(x)f(y),
+\]
+para todos $x,y\in\R$, juntamente com
+\[
+    f(0)=1,\quad g(0)=0,\quad f'(0)=0,\quad g'(0)=1.
+\]
+\end{problema}
+
+\begin{problema}
+Seja $A:[0,T]\to M_n(\R)$ contínua e seja $X:[0,T]\to M_n(\R)$ a solução de
+\[
+    X'(t)=A(t)X(t),
+    \qquad X(0)=I.
+\]
+\begin{enumerate}
+    \item[(a)] Prove a a identidade de Jacobi
+$\tfrac{\d}{\d t}\det X=\det X\cdot\operatorname{tr}(X^{-1}X')$ enquanto $X$
+for invertível.
+\item[(b)] Prove a fórmula de Liouville
+\[
+    \det X(t)=\exp\left(\int_0^t \operatorname{tr}(A(s))\,\d s\right),
+\]
+e conclua, em particular, que $X(t)$ é invertível para todo $t$.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+\begin{enumerate}[label=(\alph*)]
+    \item Encontre uma base para o espaço das soluções reais da equação
+    diferencial
+    \[
+        (*)\qquad \sum_{n=0}^{7}\frac{\d^n x}{\d t^n}=0.
+    \]
+    \item Encontre uma base para o subespaço das soluções reais de $(*)$ que
+    satisfazem $\lim_{t\to+\infty}x(t)=0$.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Considere o sistema de equações diferenciais
+\[
+    \frac{\d x}{\d t}=y+tz,\qquad
+    \frac{\d y}{\d t}=z+t^2x,\qquad
+    \frac{\d z}{\d t}=x+e^ty.
+\]
+Prove que existe uma solução definida para todo $t\in[0,1]$ tal que
+\[
+    \begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}
+    \begin{pmatrix}x(0)\\y(0)\\z(0)\end{pmatrix}
+    =\begin{pmatrix}0\\0\\0\end{pmatrix}
+    \qquad\text{e}\qquad
+    \int_0^1\bigl(x(t)^2+y(t)^2+z(t)^2\bigr)\,\d t=1.
+\]
+\end{problema}
+
+\begin{problema}
+Considere matrizes $A,B\in\R^{2\times2}$ e a equação diferencial matricial
+\[
+    X'(t)=AX(t)+X(t)B,\qquad X(t)\in\R^{2\times2}.
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Prove que $X(t)=e^{At}X(0)e^{Bt}$ é solução.
+    \item Se
+    $A=\begin{pmatrix}0&-\omega\\\omega&0\end{pmatrix}$,
+    $B=\begin{pmatrix}\alpha&0\\0&\beta\end{pmatrix}$ e
+    $X(0)=\begin{pmatrix}x_{11}&x_{12}\\x_{21}&x_{22}\end{pmatrix}$,
+    escreva explicitamente a solução $X(t)$.
+    \item Prove que, caso $B = - A,$ então para todo $k\in\mathbb{N}$, o traço
+    $\operatorname{Tr}(X(t)^k)$ é constante ao longo do tempo.
+\end{enumerate}
+\end{problema}
+
+%=====================================================================
+\section*{6. Sistemas não-lineares e equações qualitativas}
+%=====================================================================
+
+\begin{problema}
+Sejam $l_0,c,\alpha,g$ constantes positivas, e seja $x(t)$ a solução da
+equação diferencial
+\[
+    \bigl((l_0+ct^\alpha)^2x'\bigr)'
+    +g[l_0+ct^\alpha]\sin x=0,
+    \qquad t\ge 0,\qquad -\tfrac{\pi}{2}<x<\tfrac{\pi}{2},
+\]
+satisfazendo as condições iniciais
+\[
+    x(t_0)=x_0,\qquad x'(t_0)=0.
+\]
+Esta é a equação do pêndulo matemático cujo comprimento varia de acordo com
+a lei $l=l_0+ct^\alpha$. Prove que $x(t)$ está definida no intervalo
+$[t_0,\infty)$; além disso, se $\alpha>2$, então, para todo $x_0\neq 0$,
+existe $t_0$ tal que
+\[
+    \liminf_{t\to\infty}|x(t)|>0.
+\]
+\end{problema}
+
+\begin{problema}
+Prove que, se $a_i$ $(i=1,2,3,4)$ são constantes positivas, $a_2-a_4>2$ e
+$a_1a_3-a_2>2$, então a solução $(x(t),y(t))$ do sistema
+\[
+    \dot{x}=a_1-a_2x+a_3xy,
+    \qquad
+    \dot{y}=a_4x-y-a_3xy
+    \qquad (x,y\in\R),
+\]
+com as condições iniciais
+\[
+    x(0)=0,\qquad y(0)\ge a_1,
+\]
+é tal que a função $x(t)$ possui exatamente um máximo local estrito no
+intervalo $[0,\infty)$.
+\end{problema}
+
+\begin{problema}
+Considere um sistema autônomo
+\[
+    \frac{\d x_i}{\d t}=F_i(x_1,\dots,x_n),
+\]
+onde $F=(F_1,\dots,F_n):\R^n\to\R^n$ é um campo vetorial de classe $C^1$.
+\begin{enumerate}[label=(\alph*)]
+    \item Sejam $U$ e $V$ duas soluções em $a<t<b$. Supondo que
+    $\langle DF(x)z,z\rangle\le 0$ para todos $x,z\in\R^n$, mostre que
+    $|U(t)-V(t)|^2$ é uma função decrescente de $t$.
+    \item Seja $W(t)$ uma solução definida para $t>0$. Supondo que
+    $\langle DF(x)z,z\rangle\le -|z|^2$, mostre que existe $C\in\R^n$ tal que
+    $\lim_{t\to\infty}W(t)=C$.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Considere a equação não-linear de Ermakov--Pinney
+\[
+    y''+y=\frac{1}{y^3},\qquad y(0)=1,\quad y'(0)=1.
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item A partir da equação, obtenha uma equação de primeira ordem e uma
+    quantidade conservada ao longo do tempo.
+    \item Use as condições iniciais para determinar o valor da quantidade
+    conservada.
+    \item Resolva a equação da quantidade conservada e encontre uma solução
+    da equação inicial.
+\end{enumerate}
+\end{problema}
+
+%=====================================================================
+\section*{7. Comportamento assintótico e equações com retardo}
+%=====================================================================
+
+\begin{problema}
+Seja $f(x)$ uma função real tal que
+\[
+    \lim_{x\to+\infty}\frac{f(x)}{e^x}=1
+\]
+e
+\[
+    |f''(x)|<c|f'(x)|
+\]
+para todo $x$ suficientemente grande. Prove que
+\[
+    \lim_{x\to+\infty}\frac{f'(x)}{e^x}=1.
+\]
+\end{problema}
+
+\begin{problema}
+Sejam $a(x)$ e $r(x)$ funções positivas e contínuas em $[0,\infty)$, e
+suponha que
+\[
+    \liminf_{x\to\infty}\bigl(x-r(x)\bigr)>0.
+\]
+Suponha que $y(x)$ seja uma função contínua em toda a reta real,
+diferenciável em $[0,\infty)$, e que satisfaça
+\[
+    y'(x)=a(x)y(x-r(x))
+\]
+em $[0,\infty)$. Prove que o limite
+\[
+    \lim_{x\to\infty} y(x)\exp\left\{-\int_0^x a(u)\,\d u\right\}
+\]
+existe e é finito.
+\end{problema}
+
+\begin{problema}
+Seja $x:[0,\infty)\to\R$ uma função diferenciável que satisfaz
+\[
+    x'(t)
+    =
+    -2x(t)\sin^2 t
+    +
+    (2-|\cos t|+\cos t)
+    \int_{t-1}^{t} x(s)\sin^2 s\,\d s
+\]
+em $[1,\infty)$. Prove que $x$ é limitada em $[0,\infty)$ e que
+$\lim_{t\to\infty}x(t)=0$. A conclusão continua verdadeira para funções que
+satisfazem
+\[
+    x'(t)
+    =
+    -2x(t)
+    +
+    (2-|\cos t|+\cos t)
+    \int_{t-1}^{t}x(s)\,\d s\,?
+\]
+\end{problema}
+
+\begin{problema}
+Seja $y(t)$ uma solução real, definida para $0<t<\infty$, da equação
+\[
+    \frac{\d y}{\d t}=e^{-y}-e^{-3y}+e^{-5y}.
+\]
+Mostre que $y(t)\to+\infty$ quando $t\to+\infty$.
+\end{problema}
+
+%=====================================================================
+\section*{8. Estimativas e equações integrais}
+%=====================================================================
+
+\begin{problema}
+Seja $f:[0,\infty)\to\R$ uma função duas vezes diferenciável tal que
+\[
+    f(0)=0,\qquad f'(0)=1,
+\]
+e
+\[
+    f''(x)=\frac{1}{1+f(x)}
+\]
+para todo $x\in[0,1]$. Prove que
+\[
+    f(1)<\frac{3}{2}.
+\]
+\end{problema}
+
+\begin{problema}
+Seja $a>0$. Encontre todas as funções continuamente diferenciáveis
+$\varphi:[a,\infty)\to\R$ tais que, para todo $x>a$,
+\[
+    \varphi(x)^2
+    =
+    \int_a^x \left(|\varphi(y)|^2+|\varphi'(y)|^2\right)\,\d y
+    -(x-a)^3.
+\]
+\end{problema}
+
+\begin{problema}
+Seja $f_0:[0,1]\to\R$ uma função contínua. Para $n\ge 1$, defina
+\[
+    f_n(x)=\int_0^x f_{n-1}(t)\,\d t.
+\]
+Prove que a série $\sum_{n=1}^{\infty} f_n(x)$ converge para todo
+$x\in[0,1]$, e encontre uma fórmula explícita para sua soma.
+\end{problema}
+
+\begin{problema}
+Seja $f:[0,\infty)\to\R$ contínua e suponha que
+\[
+    f(x)=1+\int_0^x (x-t)\bigl(f(t)-2e^t\bigr)\,\d t
+    \qquad(x\ge 0).
+\]
+Mostre que $f$ satisfaz um problema de valor inicial de segunda ordem e
+resolva-o explicitamente.
+\end{problema}
+
+%=====================================================================
+\section*{9. Transformada de Laplace}
+%=====================================================================
+
+\begin{problema}
+\begin{enumerate}
+    \item Encontre a transformada de Laplace das seguintes funções.
+    \begin{enumerate}[label=(\alph*)]
+        \item $f(t)=\sin(2t)\cos(2t)$.
+        \item $f(t)=\cos^2(3t)$.
+        \item $f(t)=t e^{2t}\sin(3t)$.
+        \item $f(t)=(t+3)u_7(t)$.
+        \item $f(t)=t^2u_3(t)$.
+        \item $f(t)=\begin{cases}1, & 0\le t<2,\\ t^2-4t+4, & t\ge 2.\end{cases}$
+        \item $f(t)=\begin{cases}t, & 0\le t<3,\\ 5, & t\ge 3.\end{cases}$
+        \item $f(t)=\begin{cases}0, & t<\pi,\\ t-\pi, & \pi\le t<2\pi,\\ 0, & t\ge 2\pi.\end{cases}$
+        \item $f(t)=\begin{cases}\cos(\pi t), & t<4,\\ 0, & t\ge 4.\end{cases}$
+        \item $f(t)=\begin{cases}t, & 0\le t<1,\\ e^t, & t\ge 1.\end{cases}$
+    \end{enumerate}
+    \item Encontre a transformada inversa de Laplace.
+    \begin{enumerate}[label=(\alph*)]
+        \item $F(s)=\dfrac{1}{(s+1)(s^2-1)}$.
+        \item $F(s)=\dfrac{2s+3}{s^2+4s+13}$.
+        \item $F(s)=\dfrac{e^{-3s}}{s-2}$.
+        \item $F(s)=\dfrac{1+e^{-2s}}{s^2+6}$.
+    \end{enumerate}
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Use a transformada de Laplace para resolver
+\[
+    y''+4y=u(t)-u(t-\pi),
+    \qquad y(0)=0,\qquad y'(0)=0,
+\]
+onde $u$ denota a função degrau.
+\end{problema}
+
+\begin{problema}
+Prove que, se uma função $f$ é de ordem exponencial $s_0$ e possui
+transformada de Laplace $F(s)=\mathcal{L}[f(t)]$, então
+$\mathcal{L}[t^n f(t)]$ existe para $s>s_0$ e
+\[
+    \mathcal{L}[t^n f(t)]=(-1)^n F^{(n)}(s),\qquad s>s_0,
+\]
+onde $F^{(n)}=\dfrac{\d^n}{\d s^n}F$.
+\end{problema}
+
+\begin{problema}
+Resolva o problema de valor inicial
+\[
+    y''+ty'-2y=4,\qquad y(0)=0,\quad y'(0)=0.
+\]
+\end{problema}
+
+\begin{problema}
+Resolva a equação integro-diferencial
+\[
+    y''+2y'+y+\int_0^t y(\tau)e^{-(t-\tau)}\,\d\tau=0,
+    \qquad y(0)=1,\quad y'(0)=-1.
+\]
+\end{problema}
+
+\begin{problema}
+Resolva
+\[
+    y''+4y'+3y=12e^{-2t},\qquad y(0)=0,\quad \int_0^{\infty}y(t)\,\d t=1.
+\]
+\end{problema}
+
+%=====================================================================
+\section*{10. Equações diferenciais e funções geradoras}
+%=====================================================================
+
+\begin{problema} Seja $S_n = \{1,\dots,n\}.$
+Seja $I_n$ o número de involuções em $S_n$. Isto é, $I_n$ é o número de permutações de $S_n$ que são iguais \`a própria inversa. 
+
+\begin{enumerate}
+    \item[(a)] Prove que, se definirmos $I_0 = 1,$ então
+    \[
+ I_1=1,\qquad I_n=I_{n-1}+(n-1)I_{n-2}.
+\]
+\item[(b)] Defina 
+$$F(t)=\sum_{n\ge 0}I_n\frac{t^n}{n!}.$$
+Deduza uma equação diferencial satisfeita por $F$. 
+\item[(c)] Identifique $F$ explicitamente.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Seja $B_0=1$ e
+\[
+    B_{n+1}=\sum_{k=0}^n \binom{n}{k}B_k.
+\]
+Defina $B(t)=\sum_{n\ge 0}B_n\frac{t^n}{n!}$. Deduza uma equação
+diferencial para $B(t)$, resolva-a e, expandindo a resposta em série de
+potências, deduza a fórmula de Dobinski
+\[
+    B_n=e^{-1}\sum_{m=0}^{\infty}\frac{m^n}{m!}.
+\]
+\end{problema}
+
+\begin{problema}
+Seja $D_n$ o número de permutações de $\{1,\ldots,n\}$ sem ponto fixo (os
+chamados desarranjos).
+\begin{enumerate}[label=(\alph*)]
+    \item Prove que $D_0=1$, $D_1=0$ e $D_{n+1}=n(D_n+D_{n-1})$ para
+    $n\ge 1$.
+    \item Para $F(t)=\sum_{n\ge 0}D_n\frac{t^n}{n!}$, deduza uma equação
+    diferencial de primeira ordem, resolva-a e conclua que
+    \[
+        D_n=n!\sum_{k=0}^n \frac{(-1)^k}{k!}.
+    \]
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Fixe um inteiro $m\ge 2$ e considere o grafo completo $K_m$ com vértices
+$\{1,\ldots,m\}$. Um passeio de comprimento $n$ é uma sequência de $n$
+arestas em que arestas consecutivas compartilham um vértice. Seja $a_n$ o
+número de passeios de comprimento $n$ que começam e terminam no vértice $1$,
+e $b_n$ o número de passeios de comprimento $n$ que começam no vértice $1$ e
+terminam em um vértice fixo $j\neq 1$.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove que
+    \[
+        a_{n+1}=(m-1)b_n,\qquad b_{n+1}=a_n+(m-2)b_n,
+    \]
+    com $a_0=1$ e $b_0=0$.
+    \item Para as funções geradoras exponenciais $A(t)$ e $B(t)$ de $a_n$ e
+    $b_n$, deduza o sistema de equações diferenciais correspondente.
+    \item Resolva o sistema e obtenha fórmulas fechadas para $a_n$ e $b_n$.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Seja $C_n$ o número de maneiras de colocar parênteses corretamente em um
+produto de $n+1$ fatores. Isto é, o número de maneiras de colocar parênteses num produto tal que todos os parênteses são abertos e depois fechados e tal que, para fechar um parêntese, é necessário fechar antes todos os outros neste contido. Note, por exemplo, que $C_0=C_1=1$ e $C_2=2$.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove que $C_{n+1}=\sum_{k=0}^n C_kC_{n-k}$.
+    \item Para $C(t)=\sum_{n\ge 0}C_nt^n$, mostre que $C(t)=1+tC(t)^2$. 
+    \item Deduza que $C_n=\dfrac{1}{n+1}\dbinom{2n}{n}$.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Seja $a_0=0$, $a_1=1$ e $a_{n+2}=a_{n+1}+a_n$ $(n\ge 0)$.
+\begin{enumerate}[label=(\alph*)]
+    \item Encontre a função geradora ordinária $A(t)=\sum_{n\ge 0}a_nt^n$.
+    \item Use a função geradora para provar a fórmula de Binet
+    \[
+        a_n=\frac{1}{\sqrt5}\left[
+        \left(\frac{1+\sqrt5}{2}\right)^n
+        -\left(\frac{1-\sqrt5}{2}\right)^n
+        \right].
+    \]
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Seja $a_0=1$, $a_1=4$ e $a_{n+2}=5a_{n+1}-6a_n$ $(n\ge 0)$. Encontre a
+função geradora ordinária $A(t)=\sum_{n\ge 0}a_nt^n$ e, a partir dela, uma
+fórmula fechada para $a_n$.
+\end{problema}
+
+\begin{problema}
+Seja $a_0=0$ e $a_{n+1}=2a_n+n$ $(n\ge 0)$. Encontre a função geradora
+ordinária $A(t)=\sum_{n\ge 0}a_nt^n$ e, a partir dela, uma fórmula fechada
+para $a_n$.
+\end{problema}
+
+\begin{problema}
+Seja $a_0=1$ e
+\[
+    a_{n+1}=\sum_{k=0}^n \binom{n}{k}a_ka_{n-k}
+    \qquad(n\ge 0).
+\]
+Para a função geradora exponencial $A(t)=\sum_{n\ge 0}a_n\frac{t^n}{n!}$,
+deduza uma equação diferencial, resolva-a e determine $a_n$ explicitamente.
+\end{problema}
+
+%=====================================================================
+\section*{11. Cálculo das variações}
+%=====================================================================
+
+\begin{problema}
+Determine a função $y\in C^1([0,L])$ que minimiza o funcional
+\[
+    \int_0^L (y'(x))^2\,\d x,
+\]
+sujeita a $y(0)=y(L)=0$ e $\int_0^L y(x)\,\d x=A$, onde $A>0$ é uma
+constante dada.
+\end{problema}
+
+\begin{problema}
+Suponha que exista um minimizador positivo do funcional
+\[
+    T[y]=\int_{x_0}^{x_1}\frac{\sqrt{1+y'(x)^2}}{\sqrt{y(x)}}\,\d x,
+    \qquad y>0.
+\]
+\begin{enumerate}
+    \item[(a)]Mostre que todo extremal satisfaz
+\[
+    y\bigl(1+y'^2\bigr)=a
+\]
+para alguma constante $a>0$. 
+ \item Integre esta equação e conclua que o minimizador é um arco de
+    ciclóide
+    \[
+        x(\varphi)=a(\varphi-\sin\varphi),
+        \qquad
+        y(\varphi)=a(1-\cos\varphi),
+    \]
+    a curva descrita por um ponto de um círculo de raio $a$ que rola sobre o
+    eixo $x$.
+    \item Explique por que a constante $a$ e o intervalo de $\varphi$ ficam
+    determinados pela exigência de que a curva passe por $(x_1,y_1)$.
+\end{enumerate}
+
+Tal curva é chamada a  \emph{braquistócrona.}
+\end{problema}
+
+
+\begin{problema}
+Uma tira elástica fina é modelada, na aproximação de pequenas inclinações,
+minimizando
+\[
+    E[y]=\int_0^1 y''(x)^2\,\d x
+\]
+entre funções suaves satisfazendo
+\[
+    y(0)=0,\quad y(1)=0,\quad y'(0)=\alpha,\quad y'(1)=\beta.
+\]
+Suponha que exista um minimizador. Mostre que ele tem de ser um polinômio cúbico, determinando-o explicitamente em termos
+de $\alpha$ e $\beta$.
+\end{problema}
+
+
+%=====================================================================
+\section*{12. Curvatura e geometria de curvas planas}
+%=====================================================================
+
+\noindent{\small A curvatura de uma curva mede a rapidez com que sua direção
+tangente varia, e está governada por equações diferenciais simples. Os
+problemas a seguir exploram esse ponto de vista.}
+
+\vspace{4mm}
+
+\begin{problema} Dada uma curva $\gamma:[0,L] \to \mathbb{R}^2,$ definimos sua \emph{curvatura com sinal} como a função 
+\[
+\kappa(s) = \frac{\det (\gamma'(s),\gamma''(s))}{\|\gamma'(s)\|^3},
+\]
+onde $(\gamma'(s),\gamma''(s))$ denota a matriz obtida fazendo $\gamma'(s) $ e $\gamma''(s)$ como seus vetores coluna. 
+\begin{enumerate}[label=(\alph*)]
+    \item Seja $f\in C^2$ e considere o gráfico $y=f(x)$. Mostre que sua
+    curvatura com sinal é
+    \[
+        \kappa(x)=\frac{f''(x)}{\bigl(1+f'(x)^2\bigr)^{3/2}}.
+    \]
+    \item Calcule a curvatura de uma reta e de uma circunferência de raio
+    $R$, e interprete geometricamente os resultados.
+    \item (Espiral de Euler) Considere uma curva parametrizada por
+    comprimento de arco cuja curvatura cresce linearmente, $\kappa(s)=s$.
+    Resolva a equação intrínseca $\theta'(s)=\kappa(s)$ e expresse a curva
+    $\gamma(s)=(x(s),y(s))$ por meio das integrais de Fresnel
+    $\int_0^s\cos(u^2/2)\,\d u$ e $\int_0^s\sin(u^2/2)\,\d u$.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Seja $\kappa:[0,L]\to\R$ contínua. Defina
+\[
+    \theta(s)=\theta_0+\int_0^s \kappa(u)\,\d u,
+\]
+e em seguida a curva $\gamma(s)=(x(s),y(s))$ por
+\[
+    x'(s)=\cos\theta(s),
+    \qquad
+    y'(s)=\sin\theta(s),
+    \qquad
+    \gamma(0)=p_0.
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Prove que $|\gamma'(s)|=1$, de modo que a curva está parametrizada
+    por comprimento de arco.
+    \item Definindo a curvatura com sinal por $\theta'(s)$, prove que a
+    curvatura com sinal de $\gamma$ é $\kappa(s)$.
+    \item Suponha que duas curvas parametrizadas por comprimento de arco
+    tenham a mesma curvatura com sinal. Após uma rotação e uma translação de
+    uma delas, suponha que ambas tenham o mesmo ponto inicial e o mesmo
+    ângulo tangente inicial. Prove que as duas curvas coincidem.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Seja $\gamma:[0,L]\to\R^2$ uma curva $C^2$ parametrizada por comprimento de
+arco, com curvatura com sinal constante $\kappa(s)=k$. Sejam
+\[
+    T(s)=\gamma'(s),
+    \qquad
+    N(s)=(-T_2(s),T_1(s)).
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Mostre que $T'(s)=kN(s)$ e $N'(s)=-kT(s)$.
+    \item Se $k=0$, prove que a imagem de $\gamma$ está contida em uma reta.
+    \item Se $k\neq 0$, prove que $\gamma(s)+\frac{1}{k}N(s)$ é constante.
+    Conclua que a imagem de $\gamma$ está contida em uma circunferência de
+    raio $1/|k|$.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Seja $\gamma$ uma curva plana suave, simples, fechada e estritamente
+convexa, parametrizada por comprimento de arco. Suponha que sua curvatura
+com sinal $\kappa$ seja positiva em todos os pontos, e escreva
+\[
+    \gamma'(s)=(\cos\theta(s),\sin\theta(s)),
+    \qquad
+    \theta'(s)=\kappa(s).
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Explique por que, ao percorrer a curva uma vez, a direção tangente
+    dá exatamente uma volta completa; ou seja, $\theta(L)=\theta(0)+2\pi$
+    para uma escolha contínua do ângulo tangente.
+    \item Deduza que $\int_0^L \kappa(s)\,\d s=2\pi$.
+    \item Explique brevemente por que a convexidade exclui voltas adicionais
+    da direção tangente.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Sejam $a>0$ e $L>2a$. Entre todas as funções suaves
+$y:[-a,a]\to[0,\infty)$ satisfazendo
+\[
+    y(-a)=y(a)=0,
+    \qquad
+    \int_{-a}^a \sqrt{1+y'(x)^2}\,\d x=L,
+\]
+considere o problema de maximizar a área $A[y]=\int_{-a}^a y(x)\,\d x$.
+Suponha que exista um maximizador, positivo em $(-a,a)$. Mostre que ele tem
+curvatura constante --- onde a curvatura com sinal de um gráfico é
+\[
+    \kappa=\frac{y''}{(1+y'^2)^{3/2}}
+\]
+--- e conclua que se trata de um arco de circunferência.
+\end{problema}
+
+\begin{problema}
+Uma curva plana é parametrizada por comprimento de arco e tem curvatura
+$\kappa(s)$. Seu ângulo tangente satisfaz
+\[
+    \theta'(s)=\kappa(s),\qquad
+    x'(s)=\cos\theta(s),\qquad
+    y'(s)=\sin\theta(s).
+\]
+Suponha que $\kappa$ seja contínua em $[0,\infty)$ e que
+$\int_0^\infty |\kappa(s)|\,\d s<\infty$.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove que $\theta(s)$ tem um limite finito $\theta_\infty$ quando
+    $s\to\infty$.
+    \item Explique por que o vetor tangente unitário $(x'(s),y'(s))$ tem
+    limite, isto é, a curva possui uma direção assintótica.
+    \item Suponha adicionalmente que
+    $\int_0^\infty s|\kappa(s)|\,\d s<\infty$. Prove que
+    \[
+        \int_0^\infty |\theta(s)-\theta_\infty|\,\d s<\infty.
+    \]
+    \item Deduza que a curva permanece a uma distância limitada da reta que
+    passa por $\gamma(0)$ na direção $(\cos\theta_\infty,\sin\theta_\infty)$.
+\end{enumerate}
+\end{problema}
+
+\end{document}

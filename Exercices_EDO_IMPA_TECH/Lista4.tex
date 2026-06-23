@@ -1,0 +1,284 @@
+\documentclass[10pt,a4paper]{amsart}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{enumitem}
+\usepackage[left=1.5cm, right=1.5cm]{geometry}
+
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\d}{\mathrm{d}}
+
+\title{Introdução às Equações Diferenciais - Lista 4}
+
+\begin{document}
+\maketitle
+
+
+
+
+
+\textbf{Problema 1.-} Seja \(f(x)\) uma função real tal que
+\[
+\lim_{x\to +\infty} \frac{f(x)}{e^x}=1
+\]
+e
+\[
+|f''(x)|<c|f'(x)|
+\]
+para todo \(x\) suficientemente grande. Prove que
+\[
+\lim_{x\to +\infty} \frac{f'(x)}{e^x}=1.
+\]
+
+\vspace{5mm}
+
+\textbf{Problema 2.-} Sejam \(a(x)\) e \(r(x)\) funções positivas e contínuas definidas no intervalo
+\([0,\infty)\), e suponha que
+\[
+\liminf_{x\to\infty} \bigl(x-r(x)\bigr)>0.
+\]
+Suponha que \(y(x)\) seja uma função contínua em toda a reta real, que seja
+diferenciável em \([0,\infty)\), e que satisfaça
+\[
+y'(x)=a(x)y(x-r(x))
+\]
+em \([0,\infty)\). Prove que o limite
+\[
+\lim_{x\to\infty} y(x)\exp\left\{-\int_0^x a(u)\,du\right\}
+\]
+existe e é finito.
+
+\vspace{5mm}
+
+\textbf{Problema 3.-} Sejam \(l_0,c,\alpha,g\) constantes positivas, e seja \(x(t)\) a solução da
+equação diferencial
+\[
+\bigl((l_0+ct^\alpha)^2x'\bigr)'
++g[l_0+ct^\alpha]\sin x=0,
+\qquad t\geq 0,\qquad -\frac{\pi}{2}<x<\frac{\pi}{2},
+\]
+satisfazendo as condições iniciais
+\[
+x(t_0)=x_0,\qquad x'(t_0)=0.
+\]
+Esta é a equação do pêndulo matemático cujo comprimento varia de acordo
+com a lei \(l=l_0+ct^\alpha\). Prove que \(x(t)\) está definida no intervalo
+\([t_0,\infty)\); além disso, se \(\alpha>2\), então, para todo \(x_0\neq 0\),
+existe \(t_0\) tal que
+\[
+\liminf_{t\to\infty}|x(t)|>0.
+\]
+
+\vspace{5mm}
+
+\textbf{Problema 4.-} Prove que, se \(a_i\) \((i=1,2,3,4)\) são constantes positivas,
+\(a_2-a_4>2\), e \(a_1a_3-a_2>2\), então a solução
+\((x(t),y(t))\) do sistema de equações diferenciais
+\[
+\dot{x}=a_1-a_2x+a_3xy,
+\]
+\[
+\dot{y}=a_4x-y-a_3xy
+\qquad (x,y\in\mathbb{R})
+\]
+com as condições iniciais
+\[
+x(0)=0,\qquad y(0)\geq a_1
+\]
+é tal que a função \(x(t)\) possui exatamente um máximo local estrito
+no intervalo \([0,\infty)\).
+
+\vspace{5mm}
+
+\textbf{Problema 5.-} Seja \(x:[0,\infty)\to\mathbb{R}\) uma função diferenciável que satisfaz a identidade
+\[
+x'(t)
+=
+-2x(t)\sin^2 t
++
+(2-|\cos t|+\cos t)
+\int_{t-1}^{t} x(s)\sin^2 s\,ds
+\]
+em \([1,\infty)\). Prove que \(x\) é limitada em \([0,\infty)\) e que
+\[
+\lim_{t\to\infty}x(t)=0.
+\]
+A conclusão continua verdadeira para funções que satisfazem a identidade
+\[
+x'(t)
+=
+-2x(t)
++
+(2-|\cos t|+\cos t)
+\int_{t-1}^{t}x(s)\,ds?
+\]
+
+\vspace{5mm}
+
+\textbf{Problem 6.-} Sejam \(A,B\) matrizes reais ou complexas. Prove que
+\[
+e^{t(A+B)}=e^{tA}\cdot e^{tB}
+\]
+para todo \(t\in\mathbb{R}\) se e somente se
+\[
+AB=BA.
+\]
+
+\vspace{5mm}
+
+\textbf{Problema 7.-}
+Seja \(f:[0,\infty)\to\mathbb{R}\) uma função duas vezes diferenciável tal que
+\[
+f(0)=0,\qquad f'(0)=1,
+\]
+e
+\[
+f''(x)=\frac{1}{1+f(x)}
+\]
+para todo \(x\in[0,1]\). Prove que
+\[
+f(1)<\frac{3}{2}.
+\]
+
+\vspace{5mm}
+
+\textbf{Problema 8.-}
+Seja \(a>0\). Encontre todas as funções continuamente diferenciáveis
+\[
+\varphi:[a,\infty)\to\mathbb{R}
+\]
+tais que, para todo \(x>a\),
+\[
+\varphi(x)^2
+=
+\int_a^x \left(|\varphi(y)|^2+|\varphi'(y)|^2\right)\,dy
+-(x-a)^3.
+\]
+
+\vspace{5mm}
+
+\textbf{Problema 9.-}
+Seja
+\[
+f_0:[0,1]\to\mathbb{R}
+\]
+uma função contínua. Para \(n\geq 1\), defina
+\[
+f_n(x)=\int_0^x f_{n-1}(t)\,dt.
+\]
+Prove que a série
+\[
+\sum_{n=1}^{\infty} f_n(x)
+\]
+converge para todo \(x\in[0,1]\), e encontre uma fórmula explícita para sua soma.
+
+\vspace{5mm}
+
+\textbf{Problem 10.-}
+\begin{enumerate}
+    \item Encontre a transformada de Laplace das seguintes funções.
+
+    \begin{enumerate}
+        \item 
+        \[
+        f(t)=\sin(2t)\cos(2t).
+        \]
+
+        \item 
+        \[
+        f(t)=\cos^2(3t).
+        \]
+
+        \item 
+        \[
+        f(t)=t e^{2t}\sin(3t).
+        \]
+
+        \item 
+        \[
+        f(t)=(t+3)u_7(t).
+        \]
+
+        \item 
+        \[
+        f(t)=t^2u_3(t).
+        \]
+
+        \item 
+        \[
+        f(t)=
+        \begin{cases}
+        1, & 0\leq t<2,\\
+        t^2-4t+4, & t\geq 2.
+        \end{cases}
+        \]
+
+        \item 
+        \[
+        f(t)=
+        \begin{cases}
+        t, & 0\leq t<3,\\
+        5, & t\geq 3.
+        \end{cases}
+        \]
+
+        \item 
+        \[
+        f(t)=
+        \begin{cases}
+        0, & t<\pi,\\
+        t-\pi, & \pi\leq t<2\pi,\\
+        0, & t\geq 2\pi.
+        \end{cases}
+        \]
+
+        \item 
+        \[
+        f(t)=
+        \begin{cases}
+        \cos(\pi t), & t<4,\\
+        0, & t\geq 4.
+        \end{cases}
+        \]
+
+        \item 
+        \[
+        f(t)=
+        \begin{cases}
+        t, & 0\leq t<1,\\
+        e^t, & t\geq 1.
+        \end{cases}
+        \]
+    \end{enumerate}
+
+    \item Encontre a transformada inversa de Laplace.
+
+    \begin{enumerate}
+        \item 
+        \[
+        F(s)=\frac{1}{(s+1)(s^2-1)}.
+        \]
+
+        \item 
+        \[
+        F(s)=\frac{2s+3}{s^2+4s+13}.
+        \]
+
+        \item 
+        \[
+        F(s)=\frac{e^{-3s}}{s-2}.
+        \]
+
+        \item 
+        \[
+        F(s)=\frac{1+e^{-2s}}{s^2+6}.
+        \]
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+\end{document}

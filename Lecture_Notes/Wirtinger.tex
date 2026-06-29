@@ -1,0 +1,834 @@
+\documentclass[11pt,a4paper]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage[left=2.3cm,right=2.3cm,top=2.6cm,bottom=2.6cm]{geometry}
+
+%==================== Comandos ====================
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\Q}{\mathcal{Q}}
+\newcommand{\Adm}{\mathcal{A}}
+
+%==================== Ambientes ====================
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{proposicao}[teorema]{Proposição}
+\newtheorem{corolario}[teorema]{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{definicao}[teorema]{Definição}
+\newtheorem{exercicio}[teorema]{Exercício}
+
+\theoremstyle{remark}
+\newtheorem{observacao}[teorema]{Observação}
+\newtheorem{pergunta}[teorema]{Pergunta}
+
+%==================== Título ====================
+\title[A desigualdade de Wirtinger]{A desigualdade de Wirtinger e a desigualdade
+isoperim\'etrica no plano}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+Estas notas provam a desigualdade de Wirtinger unidimensional (tamb\'em chamada
+de desigualdade de Poincar\'e--Wirtinger peri\'odica) por um argumento
+variacional t\'ipico de um curso de equa\c{c}\~oes diferenciais ordin\'arias:
+sup\~oe-se a exist\^encia de um extremizador, deriva-se a equa\c{c}\~ao de
+Euler--Lagrange associada, resolve-se a equa\c{c}\~ao diferencial de segunda
+ordem resultante e, a partir das solu\c{c}\~oes, l\^e-se a constante \'otima.
+Em nenhum momento usamos s\'eries de Fourier. Em seguida aplicamos a
+desigualdade \`a prova de Hurwitz da desigualdade isoperim\'etrica no plano.
+\end{abstract}
+
+\maketitle
+
+{\small\noindent Notas de aula para um curso de Equa\c{c}\~oes Diferenciais
+Ordin\'arias (segundo ano). O p\'ublico-alvo s\~ao estudantes que j\'a
+conhecem c\'alculo de v\'arias vari\'aveis e a teoria elementar de EDOs
+lineares de segunda ordem.}
+
+\vspace{3mm}
+
+%=====================================================================
+\section{Introdu\c{c}\~ao}
+%=====================================================================
+
+Comparar o ``tamanho'' de uma fun\c{c}\~ao com o ``tamanho'' de sua derivada
+\'e uma das ideias mais f\'erteis da an\'alise. A desigualdade de Wirtinger \'e
+o prot\'otipo unidimensional dessa compara\c{c}\~ao: ela afirma que, para uma
+fun\c{c}\~ao peri\'odica de m\'edia nula, a energia $\int u^2$ nunca excede a
+energia da derivada $\int (u')^2$. Intuitivamente, oscilar (ter m\'edia nula)
+custa derivada, e quanto mais devagar a fun\c{c}\~ao oscila, mais pr\'oxima a
+energia da fun\c{c}\~ao fica da energia da derivada.
+
+O ponto de vista que adotaremos \'e o do \emph{c\'alculo de varia\c{c}\~oes}.
+Em vez de expandir $u$ em uma s\'erie de senos e cossenos, vamos procurar a
+fun\c{c}\~ao que torna a raz\~ao $\int u^2 / \int (u')^2$ a maior poss\'\i vel.
+Tal fun\c{c}\~ao extremal, se existir, deve satisfazer uma equa\c{c}\~ao
+diferencial --- a \emph{equa\c{c}\~ao de Euler--Lagrange} --- que neste caso \'e
+simplesmente a equa\c{c}\~ao do oscilador harm\^onico
+\[
+  u'' + \omega^2 u = 0 .
+\]
+Resolver essa EDO e impor periodicidade revela que os \'unicos extremais
+poss\'\i veis s\~ao os ``harm\^onicos'' $A\cos kt + B\sin kt$, e a melhor
+escolha \'e o primeiro harm\^onico $k=1$. \'E dessa an\'alise de EDO que a
+constante \'otima emerge.
+
+Na \'ultima se\c{c}\~ao colhemos o fruto geom\'etrico: a desigualdade de
+Wirtinger fornece, quase que de imediato, a desigualdade isoperim\'etrica no
+plano,
+\[
+  4\pi A \le L^2 ,
+\]
+que diz que, dentre todas as curvas fechadas de comprimento $L$ fixado, o
+c\'\i rculo \'e a que encerra a maior \'area. Essa dedu\c{c}\~ao \'e devida a
+Hurwitz.
+
+%=====================================================================
+\section{A classe admiss\'\i vel e o enunciado}
+%=====================================================================
+
+Fixamos o per\'\i odo $2\pi$ ao longo de quase todo o texto; a forma geral, com
+per\'\i odo $L$, ser\'a obtida por uma mudan\c{c}a de escala na
+Se\c{c}\~ao~\ref{sec:escala}.
+
+\begin{definicao}[Classe admiss\'\i vel]\label{def:adm}
+Seja $\Adm$ o conjunto das fun\c{c}\~oes $u\colon\R\to\R$ de classe $C^1$,
+peri\'odicas de per\'\i odo $2\pi$ (isto \'e, $u(t+2\pi)=u(t)$ para todo $t$) e
+de \emph{m\'edia nula}:
+\[
+  \int_0^{2\pi} u(t)\,\d t = 0 .
+\]
+\end{definicao}
+
+Observe que se $u$ \'e $C^1$ e $2\pi$-peri\'odica, ent\~ao $u'$ tamb\'em \'e
+$2\pi$-peri\'odica e cont\'\i nua, de modo que todas as integrais que
+escreveremos s\~ao finitas.
+
+\begin{teorema}[Desigualdade de Wirtinger]\label{thm:wirtinger}
+Para toda $u\in\Adm$ vale
+\[
+  \int_0^{2\pi} u(t)^2 \,\d t \;\le\; \int_0^{2\pi} u'(t)^2 \,\d t .
+\]
+Al\'em disso, a igualdade ocorre \emph{se, e somente se,}
+\[
+  u(t) = a\cos t + b\sin t
+\]
+para constantes $a,b\in\R$.
+\end{teorema}
+
+A constante $1$ que multiplica $\int (u')^2$ \'e \emph{\'otima}: nenhuma
+constante menor que $1$ faria a desigualdade valer para toda $u\in\Adm$, pois
+ela j\'a se torna uma igualdade nos primeiros harm\^onicos. Demonstrar este
+teorema --- incluindo a otimalidade da constante e a descri\c{c}\~ao completa
+do caso de igualdade --- \'e o objetivo das Se\c{c}\~oes
+\ref{sec:rayleigh}--\ref{sec:conclusao}.
+
+\begin{pergunta}\label{perg:media}
+\textbf{Por que a condi\c{c}\~ao de m\'edia nula \'e indispens\'avel?}
+Sem ela a desigualdade \'e falsa. De fato, tome a fun\c{c}\~ao constante
+$u\equiv c\neq 0$. Ent\~ao $u'\equiv 0$, logo
+\[
+  \int_0^{2\pi} u^2 = 2\pi c^2 > 0 = \int_0^{2\pi}(u')^2 ,
+\]
+e a desigualdade $\int u^2\le\int (u')^2$ falha gritantemente. As constantes
+n\~ao nulas s\~ao exatamente as fun\c{c}\~oes peri\'odicas com derivada nula;
+a hip\'otese de m\'edia nula serve precisamente para exclu\'\i-las da
+competi\c{c}\~ao. Em termos das oscila\c{c}\~oes: $\int u^2$ mede o tamanho de
+$u$, mas a derivada s\'o ``enxerga'' a parte oscilante de $u$; impor m\'edia
+nula \'e descartar a parte constante, que a derivada ignora.
+\end{pergunta}
+
+%=====================================================================
+\section{O quociente de Rayleigh e a estrat\'egia variacional}
+\label{sec:rayleigh}
+%=====================================================================
+
+Para uma fun\c{c}\~ao $u\in\Adm$ \emph{n\~ao identicamente nula}, definimos o
+\emph{quociente de Rayleigh}
+\begin{equation}\label{eq:rayleigh}
+  \Q[u] \;=\; \frac{\displaystyle\int_0^{2\pi} u(t)^2\,\d t}
+                   {\displaystyle\int_0^{2\pi} u'(t)^2\,\d t}.
+\end{equation}
+O denominador \'e estritamente positivo: se fosse $\int (u')^2=0$, ent\~ao
+$u'\equiv 0$ (pois $u'$ \'e cont\'\i nua), logo $u$ seria constante; mas a
+\'unica constante de m\'edia nula \'e $u\equiv 0$, exclu\'\i da por
+hip\'otese. Assim $\Q[u]$ est\'a bem definido em $\Adm\setminus\{0\}$.
+
+A desigualdade de Wirtinger equivale exatamente \`a afirma\c{c}\~ao
+\[
+  \sup_{u\in\Adm\setminus\{0\}} \Q[u] \;=\; 1 ,
+\]
+com o supremo sendo atingido. De fato, $\Q[u]\le 1$ para toda $u$ \'e o mesmo
+que $\int u^2\le \int (u')^2$, e a igualdade $\Q[u]=1$ corresponde ao caso de
+igualdade do Teorema~\ref{thm:wirtinger}.
+
+\medskip
+
+\noindent\textbf{A hip\'otese de exist\^encia.}\quad
+A estrat\'egia variacional consiste em estudar um \emph{maximizador} de $\Q$.
+Para um curso de EDOs, faremos a seguinte hip\'otese de trabalho, e o leitor
+deve t\^e-la sempre em mente:
+
+\begin{observacao}[Caveat anal\'\i tico]\label{obs:existencia}
+\emph{Admitiremos que o supremo de $\Q$ em $\Adm\setminus\{0\}$ \'e atingido},
+isto \'e, que existe $u_\star\in\Adm\setminus\{0\}$ com
+$\Q[u_\star]=\sup_u\Q[u]$. Justificar rigorosamente essa exist\^encia exige o
+m\'etodo direto do c\'alculo de varia\c{c}\~oes em espa\c{c}os de Sobolev
+(compacidade da inclus\~ao $H^1\hookrightarrow L^2$), o que est\'a fora do
+escopo destas notas. Admitiremos ainda que o maximizador \'e suficientemente
+regular ($C^2$); a teoria de regularidade garante isso, mas, como veremos na
+Observa\c{c}\~ao~\ref{obs:bootstrap}, a pr\'opria equa\c{c}\~ao de
+Euler--Lagrange j\'a indica por que a regularidade \'e autom\'atica.
+\end{observacao}
+
+A partir de agora, $u$ denota um maximizador fixado. Como $\Q$ \'e
+invariante por reescala ($\Q[cu]=\Q[u]$ para $c\neq 0$), podemos
+\emph{normalizar} $u$ de modo que
+\begin{equation}\label{eq:normaliza}
+  \int_0^{2\pi} u'(t)^2\,\d t = 1 .
+\end{equation}
+Com essa normaliza\c{c}\~ao, maximizar $\Q[u]$ \'e o mesmo que maximizar
+$\int_0^{2\pi}u^2$ sujeito \`as duas restri\c{c}\~oes
+\begin{equation}\label{eq:restricoes}
+  \int_0^{2\pi}(u')^2 = 1 ,
+  \qquad
+  \int_0^{2\pi} u = 0 .
+\end{equation}
+
+%=====================================================================
+\section{A equa\c{c}\~ao de Euler--Lagrange}
+\label{sec:EL}
+%=====================================================================
+
+Vamos extrair de $u$ uma equa\c{c}\~ao diferencial. A ferramenta \'e o
+\emph{m\'etodo dos multiplicadores de Lagrange}, aplicado ao problema com
+v\'\i nculos \eqref{eq:restricoes}.
+
+\subsection{A condi\c{c}\~ao de estacionariedade}
+
+Como $u$ maximiza $\int u^2$ sob os v\'\i nculos \eqref{eq:restricoes}, o
+m\'etodo dos multiplicadores de Lagrange diz que existem constantes
+$\lambda,\mu\in\R$ tais que $u$ \'e um ponto cr\'\i tico \emph{livre} do
+funcional
+\begin{equation}\label{eq:lagrangiano}
+  \mathcal{L}[w]
+  \;=\; \int_0^{2\pi} w^2
+        \;-\;\lambda\!\left(\int_0^{2\pi}(w')^2 - 1\right)
+        \;-\;\mu\int_0^{2\pi} w .
+\end{equation}
+``Ponto cr\'\i tico livre'' significa que, para \emph{qualquer} fun\c{c}\~ao
+de teste $v$ de classe $C^1$ e $2\pi$-peri\'odica (sem nenhuma
+restri\c{c}\~ao sobre $v$), a fun\c{c}\~ao de uma vari\'avel
+$\varepsilon\mapsto \mathcal{L}[u+\varepsilon v]$ tem derivada nula em
+$\varepsilon=0$.
+
+Calculemos essa derivada. Expandindo,
+\[
+  \mathcal{L}[u+\varepsilon v]
+  = \int (u+\varepsilon v)^2
+    - \lambda\!\left(\int (u'+\varepsilon v')^2 - 1\right)
+    - \mu\int (u+\varepsilon v),
+\]
+e derivando em $\varepsilon$ no ponto $\varepsilon=0$ obtemos a
+\emph{primeira varia\c{c}\~ao}
+\begin{equation}\label{eq:primvar}
+  \left.\frac{\d}{\d\varepsilon}\right|_{\varepsilon=0}\!\!\mathcal{L}[u+\varepsilon v]
+  = 2\int_0^{2\pi} u\,v
+    - 2\lambda\int_0^{2\pi} u'\,v'
+    - \mu\int_0^{2\pi} v .
+\end{equation}
+A condi\c{c}\~ao de estacionariedade \'e que \eqref{eq:primvar} se anule para
+toda fun\c{c}\~ao de teste peri\'odica $v$:
+\begin{equation}\label{eq:fraca}
+  2\int_0^{2\pi} u\,v
+  - 2\lambda\int_0^{2\pi} u'\,v'
+  - \mu\int_0^{2\pi} v = 0
+  \qquad\text{para toda $v\in C^1$, $2\pi$-peri\'odica.}
+\end{equation}
+
+\subsection{Integra\c{c}\~ao por partes e o termo de fronteira}
+
+O \'unico termo de \eqref{eq:fraca} que ainda cont\'em uma derivada de $v$ \'e
+$\int u'v'$. Integramos por partes para passar a derivada de $v$ para $u$.
+Lembrando que admitimos $u\in C^2$ (Observa\c{c}\~ao~\ref{obs:existencia}),
+\begin{equation}\label{eq:partes}
+  \int_0^{2\pi} u'\,v' \,\d t
+  = \underbrace{\big[\,u'(t)\,v(t)\,\big]_0^{2\pi}}_{=\,0}
+    - \int_0^{2\pi} u''\,v \,\d t
+  = - \int_0^{2\pi} u''\,v \,\d t .
+\end{equation}
+
+\begin{pergunta}\label{perg:fronteira}
+\textbf{Onde entram as condi\c{c}\~oes de contorno peri\'odicas?}
+Exatamente aqui. O termo de fronteira \'e
+$u'(2\pi)v(2\pi) - u'(0)v(0)$. Como $u'$ e $v$ s\~ao $2\pi$-peri\'odicas,
+temos $u'(2\pi)=u'(0)$ e $v(2\pi)=v(0)$, e o termo se cancela
+\emph{automaticamente}. \'E isto que torna o problema peri\'odico t\~ao limpo:
+n\~ao h\'a fronteira ``de verdade'', e portanto nenhuma condi\c{c}\~ao de
+contorno extra precisa ser imposta sobre $v$ --- ela \'e arbitr\'aria entre as
+fun\c{c}\~oes peri\'odicas. (Em um problema de Dirichlet com extremos fixos,
+ao contr\'ario, exigir\'\i amos $v(0)=v(2\pi)=0$ para anular o termo de
+fronteira.)
+\end{pergunta}
+
+Substituindo \eqref{eq:partes} em \eqref{eq:fraca} e agrupando,
+\begin{equation}\label{eq:integral-nula}
+  \int_0^{2\pi} \big(\,2u + 2\lambda u'' - \mu\,\big)\,v\,\d t = 0
+  \qquad\text{para toda $v\in C^1$, $2\pi$-peri\'odica.}
+\end{equation}
+
+\subsection{Do integral ao pontual: o lema fundamental}
+
+Para converter \eqref{eq:integral-nula} numa equa\c{c}\~ao diferencial,
+usamos o lema fundamental do c\'alculo de varia\c{c}\~oes.
+
+\begin{lema}[Lema fundamental do c\'alculo de varia\c{c}\~oes]\label{lema:fundamental}
+Seja $h\colon\R\to\R$ cont\'\i nua e $2\pi$-peri\'odica. Se
+\[
+  \int_0^{2\pi} h(t)\,v(t)\,\d t = 0
+\]
+para toda fun\c{c}\~ao $v$ de classe $C^1$ e $2\pi$-peri\'odica, ent\~ao
+$h\equiv 0$.
+\end{lema}
+
+\begin{proof}
+Suponha, por absurdo, que $h(t_0)\neq 0$ para algum $t_0$; sem perda de
+generalidade $h(t_0)>0$ (caso contr\'ario troque $h$ por $-h$). Por
+continuidade, existe $\delta>0$ tal que $h(t) > \tfrac12 h(t_0) > 0$ para todo
+$t$ no intervalo $I=(t_0-\delta,\,t_0+\delta)$, que podemos supor contido num
+\'unico per\'\i odo. Escolha uma fun\c{c}\~ao ``bolha'' (bump)
+$v\colon\R\to\R$ de classe $C^1$, $2\pi$-peri\'odica, com $v\ge 0$,
+$v\equiv 0$ fora de $I$ (a menos de transla\c{c}\~oes por $2\pi$) e
+$v(t_0)>0$. Por exemplo, pode-se tomar a extens\~ao peri\'odica de
+$v(t)=\big(\delta^2-(t-t_0)^2\big)^2$ em $I$ e $0$ fora, que \'e $C^1$. Ent\~ao
+\[
+  \int_0^{2\pi} h\,v \,\d t = \int_I h\,v\,\d t
+  \;\ge\; \tfrac12 h(t_0)\int_I v\,\d t \;>\; 0 ,
+\]
+contradizendo a hip\'otese. Logo $h\equiv 0$.
+\end{proof}
+
+Aplicando o Lema~\ref{lema:fundamental} \`a fun\c{c}\~ao cont\'\i nua e
+peri\'odica $h = 2u + 2\lambda u'' - \mu$ em \eqref{eq:integral-nula}, obtemos
+a equa\c{c}\~ao \emph{pontual}
+\begin{equation}\label{eq:EL}
+  2u + 2\lambda u'' - \mu = 0,
+  \qquad\text{ou seja}\qquad
+  u + \lambda u'' = \frac{\mu}{2}.
+\end{equation}
+Esta \'e a equa\c{c}\~ao de Euler--Lagrange do nosso problema.
+
+\begin{observacao}[Por que a regularidade \'e ``de gra\c{c}a'']\label{obs:bootstrap}
+A identidade \eqref{eq:EL} pode ser obtida supondo apenas $u\in C^1$ (na forma
+fraca $2\lambda u'' = \mu - 2u$ no sentido das distribui\c{c}\~oes). Mas, uma
+vez sabido que $\lambda\neq 0$ (o que verificaremos abaixo), ela diz que
+$u'' = (\mu - 2u)/(2\lambda)$ \'e uma fun\c{c}\~ao \emph{cont\'\i nua} (pois
+$u$ \'e cont\'\i nua); logo $u\in C^2$. E ent\~ao o lado direito \'e $C^1$, de
+modo que $u\in C^3$, e assim por diante: $u\in C^\infty$. Este \'e o fen\^omeno
+de \emph{bootstrap} de regularidade, e \'e por isso que pudemos, sem grande
+abuso, admitir $u\in C^2$ desde o in\'\i cio.
+\end{observacao}
+
+\subsection{Eliminando o multiplicador $\mu$}
+
+Integramos \eqref{eq:EL} sobre um per\'\i odo:
+\[
+  \int_0^{2\pi} u \,\d t
+  + \lambda \int_0^{2\pi} u'' \,\d t
+  = \frac{\mu}{2}\int_0^{2\pi}\d t = \mu\pi .
+\]
+Os dois termos do lado esquerdo se anulam:
+\[
+  \int_0^{2\pi} u \,\d t = 0
+  \quad\text{(m\'edia nula, Defini\c{c}\~ao~\ref{def:adm});}
+  \qquad
+  \int_0^{2\pi} u'' \,\d t = \big[\,u'(t)\,\big]_0^{2\pi} = 0
+  \quad\text{(periodicidade de $u'$).}
+\]
+Logo $\mu\pi = 0$, donde
+\begin{equation}\label{eq:mu-zero}
+  \mu = 0 .
+\end{equation}
+A equa\c{c}\~ao de Euler--Lagrange reduz-se assim \`a equa\c{c}\~ao homog\^enea
+\begin{equation}\label{eq:EL-homog}
+  u + \lambda u'' = 0 .
+\end{equation}
+
+\subsection{O sinal do multiplicador $\lambda$}
+
+Resta determinar $\lambda$. Multiplicamos \eqref{eq:EL-homog} por $u$ e
+integramos:
+\[
+  \int_0^{2\pi} u^2 + \lambda\int_0^{2\pi} u\,u'' = 0 .
+\]
+Integrando por partes o segundo termo (com termo de fronteira nulo, como em
+\eqref{eq:partes}),
+\[
+  \int_0^{2\pi} u\,u'' = -\int_0^{2\pi}(u')^2 = -1
+\]
+pela normaliza\c{c}\~ao \eqref{eq:normaliza}. Portanto
+\begin{equation}\label{eq:lambda}
+  \int_0^{2\pi} u^2 - \lambda = 0
+  \qquad\Longrightarrow\qquad
+  \lambda = \int_0^{2\pi} u^2 = \Q[u] > 0 ,
+\end{equation}
+onde usamos que $u\not\equiv 0$ d\'a $\int u^2>0$. Em particular,
+\emph{$\lambda$ \'e exatamente o valor do quociente de Rayleigh no
+maximizador}, e \'e estritamente positivo. Isto nos permite escrever
+$\lambda = 1/\omega^2$ com $\omega>0$, e \eqref{eq:EL-homog} torna-se a
+equa\c{c}\~ao do oscilador harm\^onico
+\begin{equation}\label{eq:oscilador}
+  u'' + \omega^2 u = 0,
+  \qquad \omega = \frac{1}{\sqrt{\lambda}} > 0 .
+\end{equation}
+
+%=====================================================================
+\section{Resolu\c{c}\~ao da EDO e os extremais}
+\label{sec:edo}
+%=====================================================================
+
+A equa\c{c}\~ao \eqref{eq:oscilador} \'e uma EDO linear de segunda ordem com
+coeficientes constantes, cujo polin\^omio caracter\'\i stico $r^2+\omega^2=0$
+tem ra\'\i zes $r=\pm i\omega$. Logo sua solu\c{c}\~ao geral \'e
+\begin{equation}\label{eq:solgeral}
+  u(t) = A\cos(\omega t) + B\sin(\omega t),
+  \qquad A,B\in\R .
+\end{equation}
+
+\subsection{A periodicidade for\c{c}a a frequ\^encia a ser inteira}
+
+A fun\c{c}\~ao \eqref{eq:solgeral} \'e solu\c{c}\~ao da EDO para qualquer
+$\omega>0$, mas ela ainda precisa pertencer \`a classe admiss\'\i vel
+$\Adm$ --- em particular, ser $2\pi$-peri\'odica.
+
+\begin{lema}\label{lema:freq}
+Seja $u(t)=A\cos(\omega t)+B\sin(\omega t)$ com $(A,B)\neq(0,0)$ e $\omega>0$.
+Ent\~ao $u$ \'e $2\pi$-peri\'odica se, e somente se, $\omega$ \'e um inteiro
+positivo.
+\end{lema}
+
+\begin{proof}
+Se $\omega=k\in\N$, ent\~ao $\cos(kt)$ e $\sin(kt)$ t\^em per\'\i odo
+$2\pi/k$, que divide $2\pi$; logo ambas s\~ao $2\pi$-peri\'odicas, e $u$
+tamb\'em. Reciprocamente, suponha $u$ $2\pi$-peri\'odica. Podemos escrever
+$u(t)=R\cos(\omega t - \varphi)$ com $R=\sqrt{A^2+B^2}>0$ e fase $\varphi$
+adequada. A condi\c{c}\~ao $u(t+2\pi)=u(t)$ para todo $t$ significa
+\[
+  R\cos\big(\omega t + 2\pi\omega - \varphi\big) = R\cos(\omega t - \varphi)
+  \qquad\text{para todo }t .
+\]
+Como $R\neq 0$, a fun\c{c}\~ao $s\mapsto \cos(s-\varphi)$ \'e $2\pi$-peri\'odica
+e n\~ao constante; duas tais fun\c{c}\~oes coincidem para todo $t$ se, e
+somente se, seus argumentos diferem por um m\'ultiplo inteiro de $2\pi$, isto
+\'e, $2\pi\omega = 2\pi m$ para algum $m\in\Z$. Logo $\omega = m\in\Z$, e como
+$\omega>0$, temos $\omega=k$ com $k\in\{1,2,3,\dots\}$.
+\end{proof}
+
+\begin{pergunta}\label{perg:inteira}
+\textbf{Por que a frequ\^encia \emph{tem} de ser inteira?}
+Porque o dom\'\i nio \'e um c\'\i rculo (a reta com $t$ e $t+2\pi$
+identificados), e n\~ao um intervalo. Uma onda $\cos(\omega t)$ s\'o ``fecha''
+suavemente ao dar uma volta no c\'\i rculo se couber um n\'umero \emph{inteiro}
+de oscila\c{c}\~oes em $[0,2\pi]$. Frequ\^encias n\~ao inteiras produziriam uma
+descontinuidade ao reencontrar o ponto de partida, violando a periodicidade.
+Esta quantiza\c{c}\~ao da frequ\^encia \'e o eco, na linguagem de EDOs, do fato
+de que os autovalores do operador $-\d^2/\d t^2$ no c\'\i rculo s\~ao os
+quadrados perfeitos $k^2$.
+\end{pergunta}
+
+Pelo Lema~\ref{lema:freq}, todo candidato a extremal tem a forma
+\begin{equation}\label{eq:harmonico}
+  u(t) = A\cos(kt) + B\sin(kt),
+  \qquad k\in\{1,2,3,\dots\},\ (A,B)\neq(0,0) .
+\end{equation}
+Note que $k=0$ daria $u$ constante, exclu\'\i da pela m\'edia nula; e que
+qualquer fun\c{c}\~ao da forma \eqref{eq:harmonico} j\'a tem m\'edia nula
+automaticamente, pois $\int_0^{2\pi}\cos(kt)\,\d t = \int_0^{2\pi}\sin(kt)\,\d
+t = 0$ para $k\ge 1$. Assim \eqref{eq:harmonico} de fato pertence a $\Adm$.
+
+\subsection{O quociente de Rayleigh dos harm\^onicos}
+
+Calculemos $\Q$ na fam\'\i lia \eqref{eq:harmonico}. Usando as integrais
+elementares
+\[
+  \int_0^{2\pi}\cos^2(kt)\,\d t = \int_0^{2\pi}\sin^2(kt)\,\d t = \pi,
+  \qquad
+  \int_0^{2\pi}\cos(kt)\sin(kt)\,\d t = 0
+  \quad (k\ge 1),
+\]
+obtemos, para $u(t)=A\cos kt + B\sin kt$,
+\[
+  \int_0^{2\pi} u^2 \,\d t = \pi\,(A^2+B^2) .
+\]
+Como $u'(t) = -Ak\sin(kt) + Bk\cos(kt)$, o mesmo c\'alculo d\'a
+\[
+  \int_0^{2\pi} (u')^2 \,\d t = k^2\,\pi\,(A^2+B^2) .
+\]
+Portanto
+\begin{equation}\label{eq:Q-harmonico}
+  \Q[u] = \frac{\pi(A^2+B^2)}{k^2\,\pi(A^2+B^2)} = \frac{1}{k^2} .
+\end{equation}
+
+%=====================================================================
+\section{Conclus\~ao: a constante \'otima e o caso de igualdade}
+\label{sec:conclusao}
+%=====================================================================
+
+Reunimos agora as pe\c{c}as.
+
+\begin{proof}[Demonstra\c{c}\~ao do Teorema~\ref{thm:wirtinger}]
+Pela hip\'otese de exist\^encia (Observa\c{c}\~ao~\ref{obs:existencia}), seja
+$u$ um maximizador de $\Q$, normalizado por \eqref{eq:normaliza}. As
+Se\c{c}\~oes~\ref{sec:EL}--\ref{sec:edo} mostraram que $u$ resolve
+\eqref{eq:oscilador} e, por periodicidade (Lema~\ref{lema:freq}), tem a forma
+\eqref{eq:harmonico} para algum inteiro $k\ge 1$. Por \eqref{eq:Q-harmonico},
+\[
+  \sup_{w\in\Adm\setminus\{0\}}\Q[w] \;=\; \Q[u] \;=\; \frac{1}{k^2} .
+\]
+Mas o pr\'oprio primeiro harm\^onico $w_1(t)=\cos t$ pertence a
+$\Adm\setminus\{0\}$ e tem $\Q[w_1]=1$ por \eqref{eq:Q-harmonico} com $k=1$.
+Como $u$ realiza o supremo, devemos ter $1/k^2 = \Q[u] \ge \Q[w_1] = 1$, o que
+s\'o \'e poss\'\i vel se $k=1$. Logo
+\[
+  \sup_{w\in\Adm\setminus\{0\}}\Q[w] = 1 .
+\]
+Em particular, $\Q[w]\le 1$ para toda $w\in\Adm\setminus\{0\}$, isto \'e,
+\[
+  \int_0^{2\pi} w^2 \;\le\; \int_0^{2\pi} (w')^2
+  \qquad\text{para toda }w\in\Adm,
+\]
+o que tamb\'em vale trivialmente para $w\equiv 0$. Isto prova a desigualdade.
+
+\medskip
+\noindent\emph{Caso de igualdade.}\quad
+Se $w\in\Adm$ realiza a igualdade $\int w^2=\int(w')^2$ com $w\not\equiv 0$,
+ent\~ao $\Q[w]=1$, ou seja, $w$ \'e um maximizador. Repetindo todo o
+argumento das Se\c{c}\~oes~\ref{sec:EL}--\ref{sec:edo} com $w$ no lugar de $u$
+(a normaliza\c{c}\~ao foi apenas uma convenei\^encia de escala e n\~ao afeta a
+forma da solu\c{c}\~ao), conclu\'\i mos que $w(t)=A\cos kt + B\sin kt$ com
+$\Q[w]=1/k^2=1$, donde $k=1$ e
+\[
+  w(t) = a\cos t + b\sin t .
+\]
+Reciprocamente, toda fun\c{c}\~ao $w(t)=a\cos t+b\sin t$ pertence a $\Adm$ e
+satisfaz $\Q[w]=1$ por \eqref{eq:Q-harmonico}, logo realiza a igualdade. Isto
+caracteriza completamente o caso de igualdade.
+\end{proof}
+
+\begin{pergunta}\label{perg:constante}
+\textbf{Qual passo produz a constante \'otima?}
+O passo decisivo \'e \eqref{eq:Q-harmonico} seguido da escolha $k=1$. A
+an\'alise da EDO restringe os candidatos a extremal \`a fam\'\i lia discreta
+$\{A\cos kt + B\sin kt\}_{k\ge1}$, e nessa fam\'\i lia o quociente vale
+exatamente $1/k^2$. O \emph{maior} valor poss\'\i vel ocorre na menor
+frequ\^encia admiss\'\i vel, $k=1$, dando $\Q=1$. \'E literalmente a
+escolha do primeiro harm\^onico que fixa a constante \'otima da
+desigualdade.
+\end{pergunta}
+
+\begin{observacao}[Leitura espectral]
+A conta acima \'e a vers\~ao ``por EDO'' do fato de que os autovalores do
+problema $-u''=\nu u$ com condi\c{c}\~oes peri\'odicas em $[0,2\pi]$ s\~ao
+$\nu_k=k^2$ ($k=0,1,2,\dots$), com autofun\c{c}\~oes $1,\cos t,\sin t,\cos
+2t,\sin 2t,\dots$. A m\'edia nula remove o autovalor $\nu_0=0$ (a
+constante), e o menor autovalor restante, $\nu_1=1$, \'e exatamente a constante
+\'otima de Wirtinger.
+\end{observacao}
+
+%=====================================================================
+\section{A forma reescalada (per\'\i odo $L$)}
+\label{sec:escala}
+%=====================================================================
+
+A escolha do per\'\i odo $2\pi$ foi apenas uma normaliza\c{c}\~ao. Eis a forma
+geral, obtida por uma simples mudan\c{c}a de vari\'avel.
+
+\begin{corolario}[Wirtinger com per\'\i odo $L$]\label{cor:escala}
+Seja $u\colon\R\to\R$ de classe $C^1$, $L$-peri\'odica e de m\'edia nula,
+$\int_0^L u(x)\,\d x = 0$. Ent\~ao
+\[
+  \int_0^L u(x)^2 \,\d x \;\le\; \frac{L^2}{4\pi^2}\int_0^L u'(x)^2 \,\d x ,
+\]
+com igualdade se, e somente se,
+$u(x)=a\cos\!\big(\tfrac{2\pi x}{L}\big)+b\sin\!\big(\tfrac{2\pi x}{L}\big)$.
+\end{corolario}
+
+\begin{proof}
+Reparametrizamos para o per\'\i odo $2\pi$. Defina $w\colon\R\to\R$ por
+\[
+  w(t) = u\!\left(\frac{L}{2\pi}\,t\right) .
+\]
+Ent\~ao $w$ \'e $C^1$ e $2\pi$-peri\'odica, pois
+$w(t+2\pi)=u\big(\tfrac{L}{2\pi}t + L\big)=u\big(\tfrac{L}{2\pi}t\big)=w(t)$.
+Com a substitui\c{c}\~ao $x=\tfrac{L}{2\pi}t$, $\d x=\tfrac{L}{2\pi}\,\d t$,
+a m\'edia de $w$ \'e
+\[
+  \int_0^{2\pi} w(t)\,\d t
+  = \frac{2\pi}{L}\int_0^L u(x)\,\d x = 0 ,
+\]
+logo $w\in\Adm$. Pela regra da cadeia, $w'(t)=\tfrac{L}{2\pi}\,u'\!\big(\tfrac{L}{2\pi}t\big)$.
+Convertendo as duas integrais de Wirtinger para a vari\'avel $x$:
+\[
+  \int_0^{2\pi} w(t)^2\,\d t
+  = \frac{2\pi}{L}\int_0^L u(x)^2\,\d x,
+\]
+\[
+  \int_0^{2\pi} w'(t)^2\,\d t
+  = \left(\frac{L}{2\pi}\right)^{\!2}\frac{2\pi}{L}\int_0^L u'(x)^2\,\d x
+  = \frac{L}{2\pi}\int_0^L u'(x)^2\,\d x .
+\]
+Aplicando o Teorema~\ref{thm:wirtinger} a $w$, isto \'e
+$\int_0^{2\pi}w^2\le\int_0^{2\pi}(w')^2$, obtemos
+\[
+  \frac{2\pi}{L}\int_0^L u^2 \;\le\; \frac{L}{2\pi}\int_0^L (u')^2 ,
+\]
+e multiplicando por $\tfrac{L}{2\pi}$ chega-se a
+$\int_0^L u^2 \le \tfrac{L^2}{4\pi^2}\int_0^L (u')^2$. O caso de igualdade
+corresponde, via a mesma substitui\c{c}\~ao, a $w(t)=a\cos t+b\sin t$, ou seja
+$u(x)=a\cos\!\big(\tfrac{2\pi x}{L}\big)+b\sin\!\big(\tfrac{2\pi x}{L}\big)$.
+\end{proof}
+
+%=====================================================================
+\section{Aplica\c{c}\~ao: a desigualdade isoperim\'etrica no plano}
+\label{sec:isop}
+%=====================================================================
+
+A desigualdade isoperim\'etrica afirma que, dentre todas as curvas fechadas
+simples de um dado comprimento, o c\'\i rculo encerra a maior \'area. Daremos
+a elegante prova de Hurwitz, que reduz tudo \`a desigualdade de Wirtinger.
+
+\begin{teorema}[Desigualdade isoperim\'etrica]\label{thm:isop}
+Seja $\gamma$ uma curva plana fechada simples, de classe $C^1$, com
+comprimento $L$ e \'area encerrada $A$. Ent\~ao
+\[
+  4\pi A \;\le\; L^2 ,
+\]
+com igualdade se, e somente se, $\gamma$ \'e um c\'\i rculo.
+\end{teorema}
+
+\subsection{Prepara\c{c}\~ao: parametriza\c{c}\~ao por velocidade constante}
+
+Parametrizamos $\gamma$ no intervalo $[0,2\pi]$ proporcionalmente ao
+comprimento de arco, escrevendo $\gamma(t)=(f(t),g(t))$ com $f,g$ de classe
+$C^1$ e $2\pi$-peri\'odicas. ``Velocidade constante'' significa que
+$|\gamma'(t)|$ \'e constante. Como o comprimento total \'e
+$L=\int_0^{2\pi}|\gamma'(t)|\,\d t$, essa constante vale $L/2\pi$, isto \'e,
+\begin{equation}\label{eq:velocidade}
+  f'(t)^2 + g'(t)^2 = \left(\frac{L}{2\pi}\right)^{\!2}
+  = \frac{L^2}{4\pi^2}
+  \qquad\text{para todo }t .
+\end{equation}
+Integrando \eqref{eq:velocidade} sobre $[0,2\pi]$ obtemos a identidade que
+usaremos ao final:
+\begin{equation}\label{eq:int-velocidade}
+  \int_0^{2\pi}\!\big(f'^2 + g'^2\big)\,\d t
+  = 2\pi\cdot\frac{L^2}{4\pi^2}
+  = \frac{L^2}{2\pi} .
+\end{equation}
+Finalmente, \emph{transladamos} a curva na dire\c{c}\~ao horizontal de modo que
+\begin{equation}\label{eq:f-media-zero}
+  \int_0^{2\pi} f(t)\,\d t = 0 .
+\end{equation}
+Isto \'e leg\'\i timo: substituir $f$ por $f-c$ (com $c$ a m\'edia de $f$) \'e
+uma transla\c{c}\~ao r\'\i gida da curva, que n\~ao altera nem a \'area $A$ nem
+o comprimento $L$; e n\~ao altera $f'$, de modo que \eqref{eq:velocidade}
+continua valendo. Ap\'os a transla\c{c}\~ao, $f\in\Adm$.
+
+\subsection{A \'area via Teorema de Green}
+
+\begin{lema}[F\'ormula da \'area]\label{lema:area}
+Com a parametriza\c{c}\~ao acima (orientada positivamente),
+\[
+  A = \int_0^{2\pi} f(t)\,g'(t)\,\d t .
+\]
+\end{lema}
+
+\begin{proof}
+Pelo Teorema de Green, a \'area encerrada por uma curva fechada simples
+positivamente orientada \'e
+\[
+  A = \frac12\oint_\gamma (x\,\d y - y\,\d x)
+    = \frac12\int_0^{2\pi}\big(f g' - g f'\big)\,\d t .
+\]
+Integrando $\int_0^{2\pi} f g'\,\d t$ por partes, com termo de fronteira nulo
+pela periodicidade (como em \eqref{eq:partes}),
+\[
+  \int_0^{2\pi} f\,g'\,\d t
+  = \big[\,f g\,\big]_0^{2\pi} - \int_0^{2\pi} f'\,g\,\d t
+  = - \int_0^{2\pi} f'\,g\,\d t .
+\]
+Logo $-\int g f' = \int f g'$, e substituindo,
+\[
+  A = \frac12\Big(\int f g' - \int g f'\Big)
+    = \frac12\Big(\int f g' + \int f g'\Big)
+    = \int_0^{2\pi} f\,g'\,\d t . \qedhere
+\]
+\end{proof}
+
+\subsection{O n\'ucleo do argumento}
+
+Aqui se combina tudo. Partimos de $2A=2\int fg'$ e usamos o ``truque do
+quadrado'': para quaisquer n\'umeros reais $f$ e $g'$,
+\begin{equation}\label{eq:truque}
+  2fg' = f^2 + g'^2 - (f - g')^2 .
+\end{equation}
+Integrando \eqref{eq:truque} e descartando o termo $-\int (f-g')^2\le 0$,
+\begin{equation}\label{eq:2A}
+  2A = \int_0^{2\pi} 2 f g'
+     = \int_0^{2\pi}\!\big(f^2 + g'^2\big) - \int_0^{2\pi}(f-g')^2
+     \;\le\; \int_0^{2\pi} f^2 + \int_0^{2\pi} g'^2 .
+\end{equation}
+Agora aplicamos a desigualdade de Wirtinger (Teorema~\ref{thm:wirtinger}) \`a
+fun\c{c}\~ao $f\in\Adm$, que tem m\'edia nula por \eqref{eq:f-media-zero}:
+\begin{equation}\label{eq:wirtinger-f}
+  \int_0^{2\pi} f^2 \;\le\; \int_0^{2\pi} (f')^2 .
+\end{equation}
+Substituindo \eqref{eq:wirtinger-f} em \eqref{eq:2A},
+\[
+  2A \;\le\; \int_0^{2\pi}(f')^2 + \int_0^{2\pi}(g')^2
+      = \int_0^{2\pi}\!\big(f'^2 + g'^2\big)
+      \overset{\eqref{eq:int-velocidade}}{=} \frac{L^2}{2\pi} .
+\]
+Portanto $2A\le L^2/2\pi$, isto \'e,
+\[
+  \boxed{\,4\pi A \le L^2\,}.
+\]
+Isto prova a desigualdade isoperim\'etrica.
+
+\subsection{O caso de igualdade: a curva \'e um c\'\i rculo}
+
+Suponha agora que vale a igualdade $4\pi A = L^2$. Ent\~ao as duas
+desigualdades que usamos --- \eqref{eq:2A} e \eqref{eq:wirtinger-f} --- devem
+ser, ambas, igualdades.
+
+\emph{Igualdade em \eqref{eq:2A}} significa $\int_0^{2\pi}(f-g')^2 = 0$.
+Como o integrando \'e cont\'\i nuo e n\~ao negativo, conclu\'\i mos
+\begin{equation}\label{eq:g'=f}
+  g'(t) = f(t) \qquad\text{para todo }t .
+\end{equation}
+
+\emph{Igualdade em \eqref{eq:wirtinger-f}} \'e a igualdade na desigualdade de
+Wirtinger; pelo Teorema~\ref{thm:wirtinger}, isso for\c{c}a
+\begin{equation}\label{eq:f-harmonico}
+  f(t) = a\cos t + b\sin t
+\end{equation}
+para certas constantes $a,b$. Por \eqref{eq:g'=f}, $g'=f=a\cos t+b\sin t$,
+e integrando,
+\begin{equation}\label{eq:g}
+  g(t) = a\sin t - b\cos t + c
+\end{equation}
+para alguma constante $c$. Examinemos a curva resultante. Transladando-a
+verticalmente por $-c$ (o que n\~ao muda sua forma), obtemos
+$\gamma(t)-(0,c) = \big(a\cos t + b\sin t,\; a\sin t - b\cos t\big)$, e
+\[
+  f(t)^2 + \big(g(t)-c\big)^2
+  = (a\cos t + b\sin t)^2 + (a\sin t - b\cos t)^2
+  = a^2 + b^2 ,
+\]
+constante. Logo $\gamma$ \'e um c\'\i rculo de centro $(0,c)$ e raio
+$r=\sqrt{a^2+b^2}$.
+
+Reciprocamente, para um c\'\i rculo de raio $r$ tem-se $L=2\pi r$ e
+$A=\pi r^2$, de modo que $4\pi A = 4\pi\cdot\pi r^2 = (2\pi r)^2 = L^2$: o
+c\'\i rculo realiza a igualdade. Isto encerra a prova do
+Teorema~\ref{thm:isop}.
+\hfill$\qed$
+
+\begin{observacao}[Consist\^encia com a velocidade constante]
+Vale a pena verificar que a curva extremal \eqref{eq:f-harmonico}--\eqref{eq:g}
+de fato tem velocidade constante, como exigido em \eqref{eq:velocidade}. Com
+$f'=-a\sin t+b\cos t$ e $g'=f=a\cos t+b\sin t$,
+\[
+  f'^2 + g'^2
+  = (-a\sin t+b\cos t)^2 + (a\cos t+b\sin t)^2 = a^2+b^2 = r^2 ,
+\]
+constante, e igual a $L^2/4\pi^2$ pois $L=2\pi r$. Tudo \'e consistente: o
+c\'\i rculo percorrido a velocidade angular constante \'e exatamente a curva
+que satura simultaneamente as duas desigualdades.
+\end{observacao}
+
+%=====================================================================
+\section{S\'\i ntese e exerc\'\i cios}
+%=====================================================================
+
+\subsection*{Roteiro l\'ogico}
+O argumento inteiro pode ser lido como uma cadeia de implica\c{c}\~oes
+t\'\i picas de EDO:
+\[
+  \begin{gathered}
+  \text{maximizador de }\Q
+  \;\longrightarrow\;
+  \text{Euler--Lagrange } u''+\omega^2u=0
+  \;\longrightarrow\;
+  u = A\cos kt + B\sin kt \\[2pt]
+  \longrightarrow\quad
+  \Q=\tfrac{1}{k^2}\le 1 .
+  \end{gathered}
+\]
+A m\'edia nula remove a frequ\^encia $k=0$
+(Pergunta~\ref{perg:media}); a periodicidade faz o termo de fronteira
+desaparecer (Pergunta~\ref{perg:fronteira}) e quantiza a frequ\^encia
+(Pergunta~\ref{perg:inteira}); e a escolha $k=1$ produz a constante \'otima
+(Pergunta~\ref{perg:constante}). A desigualdade isoperim\'etrica segue por um
+\'unico ``truque do quadrado'' aliado a Wirtinger.
+
+\subsection*{Exerc\'\i cios}
+
+\begin{exercicio}
+Mostre que, sem a hip\'otese de m\'edia nula, vale a desigualdade de
+Poincar\'e $\int_0^{2\pi}\big(u-\bar u\big)^2\le \int_0^{2\pi}(u')^2$, onde
+$\bar u=\frac{1}{2\pi}\int_0^{2\pi}u$ \'e a m\'edia de $u$. (Sugest\~ao:
+aplique o Teorema~\ref{thm:wirtinger} a $u-\bar u$.)
+\end{exercicio}
+
+\begin{exercicio}
+Verifique diretamente, sem variar nada, que $\int_0^{2\pi}u^2\le
+\int_0^{2\pi}(u')^2$ para $u(t)=\sin t + \tfrac13\sin 3t$. Compare os dois
+lados e identifique a contribui\c{c}\~ao de cada harm\^onico.
+\end{exercicio}
+
+\begin{exercicio}
+Refa\c{c}a a dedu\c{c}\~ao da equa\c{c}\~ao de Euler--Lagrange para o problema
+de Dirichlet: maximizar $\int_0^{\pi}u^2$ sujeito a $\int_0^{\pi}(u')^2=1$
+\emph{e} $u(0)=u(\pi)=0$ (em vez de periodicidade). Mostre que agora as
+fun\c{c}\~oes de teste devem satisfazer $v(0)=v(\pi)=0$, e que os extremais
+s\~ao $u(t)=\sin(kt)$. Conclua a desigualdade $\int_0^\pi u^2\le\int_0^\pi
+(u')^2$ com igualdade em $u=\sin t$.
+\end{exercicio}
+
+\begin{exercicio}
+Prove o Lema~\ref{lema:freq} de um modo alternativo, impondo diretamente
+$u(0)=u(2\pi)$ e $u'(0)=u'(2\pi)$ na solu\c{c}\~ao geral
+$A\cos(\omega t)+B\sin(\omega t)$ e mostrando que um sistema com solu\c{c}\~ao
+$(A,B)\neq(0,0)$ exige $\cos(2\pi\omega)=1$.
+\end{exercicio}
+
+\begin{exercicio}
+Na prova isoperim\'etrica, explique por que foi essencial parametrizar a curva
+com velocidade constante. O que falha no passo \eqref{eq:int-velocidade} se a
+parametriza\c{c}\~ao for arbitr\'aria? (Sugest\~ao: a desigualdade
+$4\pi A\le L^2$ continua verdadeira, mas a identidade
+$\int(f'^2+g'^2)=L^2/2\pi$ usa crucialmente $|\gamma'|\equiv L/2\pi$.)
+\end{exercicio}
+
+\subsection*{Refer\^encias e coment\'arios}
+A prova variacional aqui apresentada \'e uma reformula\c{c}\~ao, em linguagem
+de EDO, da prova cl\'assica via s\'eries de Fourier (que aparece, por exemplo,
+em textos de an\'alise de Fourier). A aplica\c{c}\~ao \`a desigualdade
+isoperim\'etrica \'e devida a A.~Hurwitz (1901). Para a justificativa
+rigorosa da exist\^encia do maximizador (Observa\c{c}\~ao~\ref{obs:existencia})
+e da regularidade, consulte um tratamento do m\'etodo direto do c\'alculo de
+varia\c{c}\~oes em espa\c{c}os de Sobolev.
+
+\end{document}

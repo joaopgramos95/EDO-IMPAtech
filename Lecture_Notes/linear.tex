@@ -47,11 +47,11 @@ de equa\c{c}\~oes diferenciais ordin\'arias\\ e a exponencial de matrizes}
 
 \begin{abstract}
 Estas notas desenvolvem a teoria dos sistemas lineares aut\^onomos
-$x'(t)=Ax(t)$ a partir de um \'unico objeto central: a \emph{exponencial de
-matrizes} $e^{tA}$. Definimos $e^{tA}$ por sua s\'erie de pot\^encias, provamos
+$x'(t)=Mx(t)$ a partir de um \'unico objeto central: a \emph{exponencial de
+matrizes} $e^{tM}$. Definimos $e^{tM}$ por sua s\'erie de pot\^encias, provamos
 suas propriedades alg\'ebricas e de deriva\c{c}\~ao, e a usamos para resolver o
 problema de valor inicial. Em seguida desenvolvemos, com demonstra\c{c}\~oes
-completas, a \'algebra linear necess\'aria para \emph{calcular} $e^{tA}$: os
+completas, a \'algebra linear necess\'aria para \emph{calcular} $e^{tM}$: os
 autoespa\c{c}os generalizados, as cadeias de Jordan e a forma can\^onica de
 Jordan, culminando na f\'ormula expl\'\i cita para a exponencial de um bloco de
 Jordan. O texto inclui a decomposi\c{c}\~ao em cadeias --- e n\~ao apenas o
@@ -61,18 +61,25 @@ exerc\'\i cios.
 
 \maketitle
 
-{\small\noindent Notas de aula para um curso de Equa\c{c}\~oes Diferenciais
-Ordin\'arias. Sup\~oe-se familiaridade com \'algebra linear b\'asica (espa\c{c}os
-vetoriais, autovalores e autovetores, mudan\c{c}a de base) e com EDOs
-elementares. Trabalhamos sobre $\C$, onde o polin\^omio caracter\'\i stico se
-fatora completamente; coment\'arios sobre o caso real aparecem na
-Se\c{c}\~ao~\ref{sec:real}.}
 
 \vspace{2mm}
-{\small\noindent\textbf{Conven\c{c}\~ao.} $\Mat_n(\C)$ denota o espa\c{c}o das
-matrizes complexas $n\times n$. Um bloco de Jordan ter\'a sempre os $1$ na
-\emph{superdiagonal} (logo acima da diagonal principal); manteremos essa
-conven\c{c}\~ao do in\'\i cio ao fim.}
+{\small\noindent\textbf{Conven\c{c}\~ao e nota\c{c}\~ao.} $\Mat_n(\C)$ denota o
+espa\c{c}o das matrizes complexas $n\times n$. Escrevemos $J_k$ para a
+matriz $k\times k$ que tem $1$ em cada entrada da \emph{superdiagonal} (logo
+acima da diagonal principal) e $0$ nas demais,
+\[
+  J_k=\begin{pmatrix}
+        0 & 1 & 0 & \cdots & 0\\
+        0 & 0 & 1 & \cdots & 0\\
+        \vdots & & \ddots & \ddots & \vdots\\
+        0 & 0 & \cdots & 0 & 1\\
+        0 & 0 & \cdots & 0 & 0
+      \end{pmatrix}.
+\]
+Note que $J_k$ \emph{n\~ao} \'e um bloco de Jordan: \'e a matriz-deslocamento
+nilpotente ($J_k^{\,k}=0$). Um \emph{bloco de Jordan} de tamanho $k$ e autovalor
+$\lambda$ \'e $\lambda I + J_k$; manteremos os $1$ na superdiagonal do
+in\'\i cio ao fim.}
 
 \vspace{3mm}
 
@@ -82,9 +89,9 @@ conven\c{c}\~ao do in\'\i cio ao fim.}
 
 Considere o problema de valor inicial para um sistema linear aut\^onomo
 \begin{equation}\label{eq:pvi}
-  x'(t) = A\,x(t), \qquad x(0) = x_0,
+  x'(t) = M\,x(t), \qquad x(0) = x_0,
 \end{equation}
-onde $A\in\Mat_n(\C)$ \'e uma matriz constante e $x\colon\R\to\C^n$. Esses
+onde $M\in\Mat_n(\C)$ \'e uma matriz constante e $x\colon\R\to\C^n$. Esses
 sistemas s\~ao o coment\'ario de partida de toda a teoria qualitativa de EDOs:
 descrevem oscila\c{c}\~oes acopladas, circuitos, modelos populacionais
 linearizados e, via lineariza\c{c}\~ao, o comportamento local de sistemas n\~ao
@@ -93,17 +100,17 @@ lineares perto de equil\'\i brios.
 No caso escalar $n=1$, a equa\c{c}\~ao $x'=ax$ tem solu\c{c}\~ao
 $x(t)=e^{at}x_0$. A pergunta que organiza estas notas \'e: \emph{podemos manter
 exatamente essa f\'ormula no caso matricial?} A resposta \'e sim, desde que
-saibamos dar sentido a $e^{tA}$. A solu\c{c}\~ao de \eqref{eq:pvi} ser\'a
+saibamos dar sentido a $e^{tM}$. A solu\c{c}\~ao de \eqref{eq:pvi} ser\'a
 \begin{equation}\label{eq:formula}
-  x(t) = e^{tA}\,x_0,
+  x(t) = e^{tM}\,x_0,
 \end{equation}
 e as quest\~oes t\'ecnicas que precisamos responder s\~ao quatro:
 \begin{enumerate}[label=(\arabic*)]
-  \item O que \'e $e^{tA}$, e por que faz sentido?
+  \item O que \'e $e^{tM}$, e por que faz sentido?
   \item Por que \eqref{eq:formula} resolve o sistema, e por que \'e a
         \emph{\'unica} solu\c{c}\~ao?
-  \item Como calcular $e^{tA}$ na pr\'atica?
-  \item O que acontece quando $A$ \emph{n\~ao} \'e diagonaliz\'avel?
+  \item Como calcular $e^{tM}$ na pr\'atica?
+  \item O que acontece quando $M$ \emph{n\~ao} \'e diagonaliz\'avel?
 \end{enumerate}
 As duas primeiras perguntas s\~ao respondidas pela teoria da exponencial
 (Se\c{c}\~oes \ref{sec:exp}--\ref{sec:solucao}); a terceira e a quarta exigem
@@ -116,7 +123,7 @@ a forma can\^onica de Jordan (Se\c{c}\~oes
   \;\to\;
   \text{forma de Jordan}
   \;\to\;
-  \text{c\'alculo expl\'\i cito de }e^{tA}.
+  \text{c\'alculo expl\'\i cito de }e^{tM}.
 \]
 
 %=====================================================================
@@ -127,21 +134,21 @@ a forma can\^onica de Jordan (Se\c{c}\~oes
 \subsection{Norma de matrizes}
 
 Fixe em $\C^n$ a norma euclidiana $\norm{x}$. A \emph{norma de operador} de
-$A\in\Mat_n(\C)$ \'e
+$M\in\Mat_n(\C)$ \'e
 \[
-  \norm{A} = \sup_{\norm{x}=1}\norm{Ax}.
+  \norm{M} = \sup_{\norm{x}=1}\norm{Mx}.
 \]
 Ela satisfaz as propriedades que usaremos repetidamente:
 \begin{equation}\label{eq:submult}
-  \norm{Ax}\le \norm{A}\,\norm{x},
+  \norm{Mx}\le \norm{M}\,\norm{x},
   \qquad
-  \norm{AB}\le\norm{A}\,\norm{B},
+  \norm{MB}\le\norm{M}\,\norm{B},
   \qquad
-  \norm{A^m}\le\norm{A}^m .
+  \norm{M^m}\le\norm{M}^m .
 \end{equation}
 A segunda desigualdade (\emph{submultiplicatividade}) segue da primeira:
 \[
-  \norm{ABx}\le\norm{A}\,\norm{Bx}\le\norm{A}\,\norm{B}\,\norm{x};
+  \norm{MBx}\le\norm{M}\,\norm{Bx}\le\norm{M}\,\norm{B}\,\norm{x};
 \]
 a terceira segue por indu\c{c}\~ao. Identificando $\Mat_n(\C)$ com $\C^{n^2}$, ele \'e um
 espa\c{c}o vetorial normado de dimens\~ao finita, logo \emph{completo}: toda
@@ -150,34 +157,34 @@ s\'erie absolutamente convergente de matrizes converge.
 \subsection{Defini\c{c}\~ao e converg\^encia}
 
 \begin{definicao}\label{def:exp}
-Para $A\in\Mat_n(\C)$ definimos
+Para $M\in\Mat_n(\C)$ definimos
 \[
-  e^{A} = \sum_{m=0}^{\infty}\frac{A^m}{m!},
+  e^{M} = \sum_{m=0}^{\infty}\frac{M^m}{m!},
   \qquad\text{e, para } t\in\R,\qquad
-  e^{tA} = \sum_{m=0}^{\infty}\frac{t^m A^m}{m!},
+  e^{tM} = \sum_{m=0}^{\infty}\frac{t^m M^m}{m!},
 \]
-com a conven\c{c}\~ao $A^0 = I$.
+com a conven\c{c}\~ao $M^0 = I$.
 \end{definicao}
 
 \begin{proposicao}[Converg\^encia]\label{prop:conv}
-Para toda $A\in\Mat_n(\C)$, a s\'erie da Defini\c{c}\~ao~\ref{def:exp}
-converge absolutamente. Mais ainda, a s\'erie $\sum_m t^m A^m/m!$ converge
+Para toda $M\in\Mat_n(\C)$, a s\'erie da Defini\c{c}\~ao~\ref{def:exp}
+converge absolutamente. Mais ainda, a s\'erie $\sum_m t^m M^m/m!$ converge
 \emph{uniformemente} para $t$ em qualquer intervalo compacto $[-T,T]$.
 \end{proposicao}
 
 \begin{proof}
 Pela estimativa \eqref{eq:submult}, para $|t|\le T$,
 \[
-  \norm{\frac{t^m A^m}{m!}} = \frac{|t|^m}{m!}\norm{A^m}
-  \le \frac{(T\norm{A})^m}{m!}.
+  \norm{\frac{t^m M^m}{m!}} = \frac{|t|^m}{m!}\norm{M^m}
+  \le \frac{(T\norm{M})^m}{m!}.
 \]
-A s\'erie num\'erica $\sum_{m\ge0}\frac{(T\norm{A})^m}{m!} = e^{T\norm{A}}$
-\'e convergente. Pelo teste $M$ de Weierstrass, $\sum_m t^mA^m/m!$ converge
+A s\'erie num\'erica $\sum_{m\ge0}\frac{(T\norm{M})^m}{m!} = e^{T\norm{M}}$
+\'e convergente. Pelo teste $M$ de Weierstrass, $\sum_m t^mM^m/m!$ converge
 absoluta e uniformemente em $[-T,T]$. Tomando $T=|t|$ obtemos a
-converg\^encia absoluta para cada $t$ fixo; com $t=1$, a de $e^A$.
+converg\^encia absoluta para cada $t$ fixo; com $t=1$, a de $e^M$.
 \end{proof}
 
-Em particular $\norm{e^{tA}}\le e^{|t|\,\norm{A}}$.
+Em particular $\norm{e^{tM}}\le e^{|t|\,\norm{M}}$.
 
 %=====================================================================
 \section{Propriedades da exponencial}
@@ -185,15 +192,15 @@ Em particular $\norm{e^{tA}}\le e^{|t|\,\norm{A}}$.
 %=====================================================================
 
 \begin{teorema}\label{thm:propriedades}
-Sejam $A,B\in\Mat_n(\C)$ e $s,t\in\R$. Valem:
+Sejam $M,B\in\Mat_n(\C)$ e $s,t\in\R$. Valem:
 \begin{enumerate}[label=\textup{(\alph*)}]
   \item $e^{0}=I$;
   \item \textup{(invari\^ancia por semelhan\c{c}a)} se $P$ \'e invert\'\i vel,
-        $e^{PAP^{-1}} = P\,e^{A}\,P^{-1}$;
-  \item \textup{(matrizes que comutam)} se $AB=BA$, ent\~ao
-        $e^{A+B}=e^{A}e^{B}$;
-  \item $e^{sA}e^{tA}=e^{(s+t)A}$;
-  \item $e^{tA}$ \'e invert\'\i vel, com $\big(e^{tA}\big)^{-1}=e^{-tA}$.
+        $e^{PMP^{-1}} = P\,e^{M}\,P^{-1}$;
+  \item \textup{(matrizes que comutam)} se $MB=BM$, ent\~ao
+        $e^{M+B}=e^{M}e^{B}$;
+  \item $e^{sM}e^{tM}=e^{(s+t)M}$;
+  \item $e^{tM}$ \'e invert\'\i vel, com $\big(e^{tM}\big)^{-1}=e^{-tM}$.
 \end{enumerate}
 \end{teorema}
 
@@ -201,84 +208,84 @@ Sejam $A,B\in\Mat_n(\C)$ e $s,t\in\R$. Valem:
 \textbf{(a)} Apenas o termo $m=0$ sobrevive: $e^0=\sum_m 0^m/m! = I$.
 
 \medskip
-\textbf{(b)} Como $(PAP^{-1})^m = P A^m P^{-1}$, a soma parcial $S_M$ satisfaz
+\textbf{(b)} Como $(PMP^{-1})^m = P M^m P^{-1}$, a soma parcial $S_p$ satisfaz
 \[
-  \sum_{m=0}^{M}\frac{(PAP^{-1})^m}{m!}
-  = P\left(\sum_{m=0}^{M}\frac{A^m}{m!}\right)P^{-1}.
+  \sum_{m=0}^{p}\frac{(PMP^{-1})^m}{m!}
+  = P\left(\sum_{m=0}^{p}\frac{M^m}{m!}\right)P^{-1}.
 \]
 As aplica\c{c}\~oes $X\mapsto PX$ e $X\mapsto XP^{-1}$ s\~ao lineares em
-dimens\~ao finita, logo cont\'\i nuas; passando ao limite $M\to\infty$ obtemos
-$e^{PAP^{-1}}=Pe^{A}P^{-1}$.
+dimens\~ao finita, logo cont\'\i nuas; passando ao limite $p\to\infty$ obtemos
+$e^{PMP^{-1}}=Pe^{M}P^{-1}$.
 
 \medskip
 \textbf{(c)} Como ambas as s\'eries convergem absolutamente, podemos
 multiplic\'a-las pelo produto de Cauchy (v\'alido em uma \'algebra de Banach):
 \[
-  e^{A}e^{B}
-  = \left(\sum_{j\ge0}\frac{A^j}{j!}\right)\!\left(\sum_{k\ge0}\frac{B^k}{k!}\right)
-  = \sum_{m\ge0}\ \sum_{j+k=m}\frac{A^j B^k}{j!\,k!}.
+  e^{M}e^{B}
+  = \left(\sum_{j\ge0}\frac{M^j}{j!}\right)\!\left(\sum_{k\ge0}\frac{B^k}{k!}\right)
+  = \sum_{m\ge0}\ \sum_{j+k=m}\frac{M^j B^k}{j!\,k!}.
 \]
-Como $AB=BA$, vale o teorema binomial para matrizes,
+Como $MB=BM$, vale o teorema binomial para matrizes,
 \[
-  (A+B)^m = \sum_{j+k=m}\binom{m}{j}A^j B^k
-          = \sum_{j+k=m}\frac{m!}{j!\,k!}A^j B^k,
+  (M+B)^m = \sum_{j+k=m}\binom{m}{j}M^j B^k
+          = \sum_{j+k=m}\frac{m!}{j!\,k!}M^j B^k,
 \]
-de modo que $\sum_{j+k=m}\frac{A^jB^k}{j!\,k!} = \frac{(A+B)^m}{m!}$. Portanto
+de modo que $\sum_{j+k=m}\frac{M^jB^k}{j!\,k!} = \frac{(M+B)^m}{m!}$. Portanto
 \[
-  e^{A}e^{B} = \sum_{m\ge0}\frac{(A+B)^m}{m!} = e^{A+B}.
+  e^{M}e^{B} = \sum_{m\ge0}\frac{(M+B)^m}{m!} = e^{M+B}.
 \]
-\emph{A hip\'otese $AB=BA$ \'e essencial}: sem ela o binomial falha, e em geral
-$e^{A+B}\neq e^Ae^B$.
+\emph{A hip\'otese $MB=BM$ \'e essencial}: sem ela o binomial falha, e em geral
+$e^{M+B}\neq e^Me^B$.
 
 \medskip
-\textbf{(d)} As matrizes $sA$ e $tA$ comutam; por (c),
-$e^{sA}e^{tA}=e^{sA+tA}=e^{(s+t)A}$.
+\textbf{(d)} As matrizes $sM$ e $tM$ comutam; por (c),
+$e^{sM}e^{tM}=e^{sM+tM}=e^{(s+t)M}$.
 
 \medskip
 \textbf{(e)} Por (d) com $s=-t$ e por (a):
-$e^{tA}e^{-tA}=e^{0}=I$. Analogamente $e^{-tA}e^{tA}=I$. Logo $e^{tA}$ \'e
-invert\'\i vel com inversa $e^{-tA}$.
+$e^{tM}e^{-tM}=e^{0}=I$. Analogamente $e^{-tM}e^{tM}=I$. Logo $e^{tM}$ \'e
+invert\'\i vel com inversa $e^{-tM}$.
 \end{proof}
 
 A propriedade que torna a exponencial \'util para EDOs \'e a regra de
 deriva\c{c}\~ao.
 
 \begin{teorema}[Regra de deriva\c{c}\~ao]\label{thm:derivada}
-A fun\c{c}\~ao $t\mapsto e^{tA}$ \'e de classe $C^{\infty}$ e
+A fun\c{c}\~ao $t\mapsto e^{tM}$ \'e de classe $C^{\infty}$ e
 \[
-  \frac{\d}{\d t}\,e^{tA} = A\,e^{tA} = e^{tA}\,A .
+  \frac{\d}{\d t}\,e^{tM} = M\,e^{tM} = e^{tM}\,M .
 \]
 \end{teorema}
 
 \begin{proof}
-Consideramos a s\'erie $\sum_{m\ge0} f_m(t)$ com $f_m(t)=\dfrac{t^m A^m}{m!}$
+Consideramos a s\'erie $\sum_{m\ge0} f_m(t)$ com $f_m(t)=\dfrac{t^m M^m}{m!}$
 (uma s\'erie de fun\c{c}\~oes a valores em $\Mat_n(\C)$, que podemos tratar
 entrada a entrada). Cada $f_m$ \'e $C^1$ com
 \[
-  f_m'(t) = \frac{m\,t^{m-1}A^m}{m!} = \frac{t^{m-1}A^m}{(m-1)!}
+  f_m'(t) = \frac{m\,t^{m-1}M^m}{m!} = \frac{t^{m-1}M^m}{(m-1)!}
   \qquad (m\ge1),\qquad f_0'=0.
 \]
 A s\'erie das derivadas \'e
 \[
-  \sum_{m\ge1}\frac{t^{m-1}A^m}{(m-1)!}
-  = A\sum_{k\ge0}\frac{t^k A^k}{k!} = A\,e^{tA},
+  \sum_{m\ge1}\frac{t^{m-1}M^m}{(m-1)!}
+  = M\sum_{k\ge0}\frac{t^k M^k}{k!} = M\,e^{tM},
 \]
-e, pela Proposi\c{c}\~ao~\ref{prop:conv} aplicada a $A$ (a s\'erie das
-derivadas \'e, a menos do fator $A$, uma exponencial), ela converge
+e, pela Proposi\c{c}\~ao~\ref{prop:conv} aplicada a $M$ (a s\'erie das
+derivadas \'e, a menos do fator $M$, uma exponencial), ela converge
 uniformemente em cada compacto $[-T,T]$. Pelo teorema de deriva\c{c}\~ao
 termo a termo (se $\sum f_m$ converge em um ponto e $\sum f_m'$ converge
 uniformemente, ent\~ao $\sum f_m$ \'e deriv\'avel e
 $(\sum f_m)' = \sum f_m'$), conclu\'\i mos
 \[
-  \frac{\d}{\d t}e^{tA} = A\,e^{tA}.
+  \frac{\d}{\d t}e^{tM} = M\,e^{tM}.
 \]
-Como $A$ comuta com cada soma parcial $\sum_{m\le M} t^mA^m/m!$ (pois comuta com
-suas pr\'oprias pot\^encias), comuta com o limite; logo $Ae^{tA}=e^{tA}A$.
-Iterando, $e^{tA}$ \'e $C^\infty$.
+Como $M$ comuta com cada soma parcial $\sum_{m\le p} t^mM^m/m!$ (pois comuta com
+suas pr\'oprias pot\^encias), comuta com o limite; logo $Me^{tM}=e^{tM}M$.
+Iterando, $e^{tM}$ \'e $C^\infty$.
 \end{proof}
 
 %=====================================================================
-\section{Resolu\c{c}\~ao do sistema $x'=Ax$}
+\section{Resolu\c{c}\~ao do sistema $x'=Mx$}
 \label{sec:solucao}
 %=====================================================================
 
@@ -286,15 +293,15 @@ Iterando, $e^{tA}$ \'e $C^\infty$.
 Para todo $x_0\in\C^n$, o problema de valor inicial \eqref{eq:pvi} tem uma
 \emph{\'unica} solu\c{c}\~ao $x\colon\R\to\C^n$, dada por
 \[
-  x(t) = e^{tA}\,x_0.
+  x(t) = e^{tM}\,x_0.
 \]
 \end{teorema}
 
 \begin{proof}
-\textbf{Exist\^encia.} Seja $x(t)=e^{tA}x_0$. Pela
+\textbf{Exist\^encia.} Seja $x(t)=e^{tM}x_0$. Pela
 Teorema~\ref{thm:derivada},
 \[
-  x'(t) = \frac{\d}{\d t}\big(e^{tA}x_0\big) = A e^{tA}x_0 = A\,x(t),
+  x'(t) = \frac{\d}{\d t}\big(e^{tM}x_0\big) = M e^{tM}x_0 = M\,x(t),
 \]
 e $x(0)=e^{0}x_0 = Ix_0 = x_0$. Logo $x$ resolve \eqref{eq:pvi}.
 
@@ -302,27 +309,27 @@ e $x(0)=e^{0}x_0 = Ix_0 = x_0$. Logo $x$ resolve \eqref{eq:pvi}.
 \textbf{Unicidade.} Seja $x(t)$ \emph{qualquer} solu\c{c}\~ao de
 \eqref{eq:pvi}. Defina
 \[
-  y(t) = e^{-tA}\,x(t).
+  y(t) = e^{-tM}\,x(t).
 \]
 Pela regra do produto e pela Teorema~\ref{thm:derivada} (note que
-$\frac{\d}{\d t}e^{-tA} = -A e^{-tA}$),
+$\frac{\d}{\d t}e^{-tM} = -M e^{-tM}$),
 \[
-  y'(t) = -A e^{-tA}x(t) + e^{-tA}x'(t)
-        = -A e^{-tA}x(t) + e^{-tA}A\,x(t).
+  y'(t) = -M e^{-tM}x(t) + e^{-tM}x'(t)
+        = -M e^{-tM}x(t) + e^{-tM}M\,x(t).
 \]
-Como $A$ comuta com $e^{-tA}$ (Teorema~\ref{thm:derivada}),
-$e^{-tA}A = A e^{-tA}$, de modo que os dois termos se cancelam: $y'(t)=0$ para
+Como $M$ comuta com $e^{-tM}$ (Teorema~\ref{thm:derivada}),
+$e^{-tM}M = M e^{-tM}$, de modo que os dois termos se cancelam: $y'(t)=0$ para
 todo $t$. Portanto $y$ \'e constante, $y(t)=y(0)=e^{0}x_0 = x_0$. Logo
 \[
-  x(t) = e^{tA}y(t) = e^{tA}x_0. \qedhere
+  x(t) = e^{tM}y(t) = e^{tM}x_0. \qedhere
 \]
 \end{proof}
 
 \begin{observacao}
-A matriz $t\mapsto e^{tA}$ \'e a \emph{matriz fundamental} (ou matriz de
+A matriz $t\mapsto e^{tM}$ \'e a \emph{matriz fundamental} (ou matriz de
 transi\c{c}\~ao) do sistema: suas colunas formam uma base do espa\c{c}o de
-solu\c{c}\~oes, e $e^{tA}$ leva o estado inicial $x_0$ ao estado no instante
-$t$. A propriedade $e^{(s+t)A}=e^{sA}e^{tA}$ \'e a lei de fluxo: evoluir por
+solu\c{c}\~oes, e $e^{tM}$ leva o estado inicial $x_0$ ao estado no instante
+$t$. A propriedade $e^{(s+t)M}=e^{sM}e^{tM}$ \'e a lei de fluxo: evoluir por
 $s+t$ \'e o mesmo que evoluir por $t$ e depois por $s$.
 \end{observacao}
 
@@ -331,7 +338,7 @@ $s+t$ \'e o mesmo que evoluir por $t$ e depois por $s$.
 \label{sec:diag}
 %=====================================================================
 
-Antes de atacar o caso geral, calculamos $e^{tA}$ nos casos simples.
+Antes de atacar o caso geral, calculamos $e^{tM}$ nos casos simples.
 
 \subsection{Matrizes diagonais}
 Se $D=\diag(\lambda_1,\dots,\lambda_n)$, ent\~ao
@@ -341,21 +348,21 @@ $D^m=\diag(\lambda_1^m,\dots,\lambda_n^m)$, e somando entrada a entrada,
 \]
 
 \subsection{Matrizes diagonaliz\'aveis}
-Se $A = PDP^{-1}$ com $D$ diagonal, ent\~ao pela
+Se $M = PDP^{-1}$ com $D$ diagonal, ent\~ao pela
 Teorema~\ref{thm:propriedades}(b),
 \[
-  e^{tA} = P\,e^{tD}\,P^{-1}
+  e^{tM} = P\,e^{tD}\,P^{-1}
          = P\,\diag\!\big(e^{\lambda_1 t},\dots,e^{\lambda_n t}\big)\,P^{-1}.
 \]
-Concretamente, se $A$ possui uma base de autovetores $v_1,\dots,v_n$ com
-$Av_j=\lambda_j v_j$, ent\~ao as colunas de $P$ s\~ao os $v_j$, e a
-solu\c{c}\~ao geral de $x'=Ax$ \'e a combina\c{c}\~ao linear
+Concretamente, se $M$ possui uma base de autovetores $v_1,\dots,v_n$ com
+$Mv_j=\lambda_j v_j$, ent\~ao as colunas de $P$ s\~ao os $v_j$, e a
+solu\c{c}\~ao geral de $x'=Mx$ \'e a combina\c{c}\~ao linear
 \[
   x(t) = \sum_{j=1}^{n} c_j\,e^{\lambda_j t}\,v_j,
   \qquad c_j\in\C.
 \]
 De fato, $\frac{\d}{\d t}(e^{\lambda_j t}v_j)=\lambda_j e^{\lambda_j t}v_j
-= e^{\lambda_j t}Av_j = A(e^{\lambda_j t}v_j)$, logo cada $e^{\lambda_j t}v_j$
+= e^{\lambda_j t}Mv_j = M(e^{\lambda_j t}v_j)$, logo cada $e^{\lambda_j t}v_j$
 \'e solu\c{c}\~ao, e elas formam uma base do espa\c{c}o de solu\c{c}\~oes.
 
 Nem toda matriz \'e diagonaliz\'avel. O obst\'aculo s\~ao as matrizes
@@ -395,26 +402,26 @@ que vir\~ao os fatores polinomiais nas solu\c{c}\~oes de sistemas defeituosos.
 %=====================================================================
 
 A partir de agora trabalhamos sobre $\C$, onde o polin\^omio caracter\'\i stico
-$\chi_A(x)=\det(xI-A)$ se fatora completamente em fatores lineares (Teorema
+$\chi_M(x)=\det(xI-M)$ se fatora completamente em fatores lineares (Teorema
 Fundamental da \'Algebra). Escrevemos
 \[
-  \chi_A(x) = \prod_{i=1}^{k}(x-\lambda_i)^{a_i},
+  \chi_M(x) = \prod_{i=1}^{k}(x-\lambda_i)^{a_i},
 \]
 com $\lambda_1,\dots,\lambda_k$ os autovalores \emph{distintos} e $a_i$ suas
 multiplicidades alg\'ebricas, $\sum_i a_i = n$.
 
 \begin{definicao}\label{def:gen}
 Para um autovalor $\lambda$ e $m\ge1$, o \emph{$m$-\'esimo n\'ucleo iterado}
-\'e $\ker(A-\lambda I)^m$. O \emph{autoespa\c{c}o generalizado} associado a
+\'e $\ker(M-\lambda I)^m$. O \emph{autoespa\c{c}o generalizado} associado a
 $\lambda$ \'e
 \[
-  E_\lambda = \ker(A-\lambda I)^{n}.
+  K_\lambda = \ker(M-\lambda I)^{n}.
 \]
 \end{definicao}
 
 \subsection{A filtra\c{c}\~ao e sua estabiliza\c{c}\~ao}
 
-Escreva $T=A-\lambda I$. Os n\'ucleos iterados formam uma cadeia crescente
+Escreva $T=M-\lambda I$. Os n\'ucleos iterados formam uma cadeia crescente
 \begin{equation}\label{eq:filtracao}
   \{0\}\subseteq \ker T \subseteq \ker T^2 \subseteq \ker T^3 \subseteq\cdots,
 \end{equation}
@@ -423,7 +430,7 @@ pois $T^m v=0$ implica $T^{m+1}v=T(T^m v)=0$.
 \begin{lema}[Estabiliza\c{c}\~ao]\label{lema:estab}
 Se $\ker T^{m}=\ker T^{m+1}$ para algum $m$, ent\~ao $\ker T^{j}=\ker T^{m}$
 para todo $j\ge m$. Consequentemente a cadeia \eqref{eq:filtracao} estabiliza
-em um \'\i ndice $\le n$, e $\ker T^m = \ker T^n = E_\lambda$ para todo $m\ge n$.
+em um \'\i ndice $\le n$, e $\ker T^m = \ker T^n = K_\lambda$ para todo $m\ge n$.
 \end{lema}
 
 \begin{proof}
@@ -436,116 +443,168 @@ oposta j\'a vale por \eqref{eq:filtracao}.
 Enquanto a cadeia cresce estritamente, a dimens\~ao aumenta de pelo menos $1$ a
 cada passo; como ela \'e limitada por $n=\dim\C^n$, a cadeia deve estabilizar
 em algum \'\i ndice $\le n$. A partir da\'\i\ os n\'ucleos s\~ao todos iguais a
-$\ker T^n = E_\lambda$.
+$\ker T^n = K_\lambda$.
 \end{proof}
 
 \begin{lema}[Invari\^ancia]\label{lema:invar}
-$E_\lambda$ \'e invariante por $A$: $A(E_\lambda)\subseteq E_\lambda$.
+$K_\lambda$ \'e invariante por $M$: $M(K_\lambda)\subseteq K_\lambda$.
 \end{lema}
 
 \begin{proof}
-$A$ comuta com $T^n=(A-\lambda I)^n$ (ambos s\~ao polin\^omios em $A$). Se
-$v\in E_\lambda$, ou seja $T^n v=0$, ent\~ao $T^n(Av)=A(T^n v)=A\cdot 0=0$,
-logo $Av\in E_\lambda$.
+$M$ comuta com $T^n=(M-\lambda I)^n$ (ambos s\~ao polin\^omios em $M$). Se
+$v\in K_\lambda$, ou seja $T^n v=0$, ent\~ao $T^n(Mv)=M(T^n v)=M\cdot 0=0$,
+logo $Mv\in K_\lambda$. Em particular, qualquer polin\^omio em $M$ tamb\'em
+deixa $K_\lambda$ invariante.
+\end{proof}
+
+O pr\'oximo lema identifica a dimens\~ao de $K_\lambda$ com a multiplicidade
+alg\'ebrica de $\lambda$. Ele depende apenas de $M-\lambda I$ (um \'unico
+autovalor de cada vez), e por isso n\~ao usa a decomposi\c{c}\~ao prim\'aria ---
+ser\'a, ao contr\'ario, usado para prov\'a-la.
+
+\begin{lema}[Dimens\~ao do autoespa\c{c}o generalizado]\label{lema:dim}
+Para cada autovalor $\lambda$, o operador $M-\lambda I$ \'e nilpotente em
+$K_\lambda$, e
+\[
+  \dim K_\lambda = a_\lambda ,
+\]
+a multiplicidade alg\'ebrica de $\lambda$ (o expoente de $(x-\lambda)$ em
+$\chi_M$).
+\end{lema}
+
+\begin{proof}
+A nilpot\^encia \'e imediata: por defini\c{c}\~ao
+$K_\lambda=\ker(M-\lambda I)^n$, logo $(M-\lambda I)^n=0$ em $K_\lambda$.
+
+Para a dimens\~ao, escreva $S=M-\lambda I$ e separe $\C^n$ em n\'ucleo e imagem
+iterados de $S$ (a \emph{decomposi\c{c}\~ao de Fitting}). Pela
+estabiliza\c{c}\~ao (Lema~\ref{lema:estab}), $\ker S^n=\ker S^{n+1}$; por
+posto-nulidade, $\dim\img S^n=\dim\img S^{n+1}$, e como
+$\img S^{n+1}\subseteq\img S^n$, segue $\img S^{n+1}=\img S^n$. Assim $S$ leva
+$\img S^n$ sobre si mesmo, logo $S$ \'e \emph{invert\'\i vel} em $\img S^n$.
+
+Afirmamos que
+\[
+  \C^n = \underbrace{\ker S^n}_{=\,K_\lambda}\ \oplus\ \img S^n .
+\]
+De fato, se $v\in\ker S^n\cap\img S^n$, escreva $v=S^n w$; ent\~ao
+$S^{2n}w=S^n v=0$, donde $w\in\ker S^{2n}=\ker S^n$ (estabiliza\c{c}\~ao) e
+$v=S^n w=0$: a interse\c{c}\~ao \'e trivial. Como, por posto-nulidade,
+$\dim\ker S^n+\dim\img S^n=n$, a soma \'e direta e preenche $\C^n$. Ambos os
+somandos s\~ao invariantes por $M$ (n\'ucleo e imagem de um polin\^omio em $M$).
+
+Finalmente, o polin\^omio caracter\'\i stico \'e multiplicativo nessa soma
+direta invariante,
+\[
+  \chi_M = \chi_{M|_{K_\lambda}}\cdot \chi_{M|_{\img S^n}} .
+\]
+Como $M|_{K_\lambda}=\lambda I + S|_{K_\lambda}$ com $S|_{K_\lambda}$ nilpotente,
+$\chi_{M|_{K_\lambda}}(x)=(x-\lambda)^{\dim K_\lambda}$. E como $S=M-\lambda I$
+\'e invert\'\i vel em $\img S^n$, $\lambda$ n\~ao \'e autovalor de
+$M|_{\img S^n}$, de modo que $(x-\lambda)\nmid\chi_{M|_{\img S^n}}$. Logo o
+expoente de $(x-\lambda)$ em $\chi_M$ \'e exatamente $\dim K_\lambda$, isto \'e,
+$\dim K_\lambda=a_\lambda$.
 \end{proof}
 
 \subsection{A decomposi\c{c}\~ao prim\'aria}
 
 O resultado central desta se\c{c}\~ao \'e que $\C^n$ se decomp\~oe como soma
-direta dos autoespa\c{c}os generalizados. Usaremos o Teorema de
-Cayley--Hamilton, recordado da \'algebra linear.
-
-\begin{teorema}[Cayley--Hamilton, recordado]\label{thm:CH}
-Toda matriz $A\in\Mat_n(\C)$ anula seu pr\'oprio polin\^omio
-caracter\'\i stico: $\chi_A(A)=0$.
-\end{teorema}
+direta dos autoespa\c{c}os generalizados. Al\'em do Lema~\ref{lema:dim}, a
+ferramenta principal \'e o lema seguinte, que diz que $M-\mu I$ ``enxerga''
+apenas o autovalor $\lambda$ dentro de $K_\lambda$.
 
 \begin{lema}\label{lema:invertivel}
-Se $\mu\neq\lambda$, ent\~ao $A-\mu I$ \'e invert\'\i vel quando restrito a
-$E_\lambda$.
+Se $\mu\neq\lambda$, ent\~ao $M-\mu I$ \'e invert\'\i vel quando restrito a
+$K_\lambda$. Consequentemente $(M-\mu I)^m$ \'e invert\'\i vel em $K_\lambda$
+para todo $m\ge0$.
 \end{lema}
 
 \begin{proof}
-Em $E_\lambda$, $T=A-\lambda I$ satisfaz $T^n=0$, ou seja, \'e nilpotente.
-Escreva $A-\mu I = (A-\lambda I) - (\mu-\lambda)I = T - cI$ com
+Em $K_\lambda$, $T=M-\lambda I$ satisfaz $T^n=0$, ou seja, \'e nilpotente.
+Escreva $M-\mu I = (M-\lambda I) - (\mu-\lambda)I = T - cI$ com
 $c=\mu-\lambda\neq0$. Ent\~ao
 \[
-  A-\mu I = -c\Big(I - \tfrac{1}{c}T\Big),
+  M-\mu I = -c\Big(I - \tfrac{1}{c}T\Big),
 \]
 e como $\tfrac1c T$ \'e nilpotente, $I-\tfrac1c T$ \'e invert\'\i vel, com
 inversa $\sum_{m=0}^{n-1}\big(\tfrac1c T\big)^m$ (s\'erie geom\'etrica finita).
-Logo $A-\mu I$ \'e invert\'\i vel em $E_\lambda$.
+Logo $M-\mu I$ \'e invert\'\i vel em $K_\lambda$; e uma pot\^encia de um operador
+invert\'\i vel \'e invert\'\i vel.
 \end{proof}
 
 \begin{teorema}[Decomposi\c{c}\~ao prim\'aria]\label{thm:primaria}
 $\C^n$ \'e a soma direta dos autoespa\c{c}os generalizados:
 \[
-  \C^n = E_{\lambda_1}\oplus E_{\lambda_2}\oplus\cdots\oplus E_{\lambda_k},
+  \C^n = K_{\lambda_1}\oplus K_{\lambda_2}\oplus\cdots\oplus K_{\lambda_k},
 \]
-e cada $E_{\lambda_i}$ \'e invariante por $A$. Al\'em disso
-$E_{\lambda_i}=\ker(A-\lambda_i I)^{a_i}$.
+e cada $K_{\lambda_i}$ \'e invariante por $M$.
 \end{teorema}
 
-\begin{proof}
-Defina, para cada $i$, o polin\^omio
+A demonstra\c{c}\~ao tem duas partes independentes: primeiro mostramos que a
+soma \'e \emph{direta} (os $K_{\lambda_i}$ s\~ao independentes); depois, que ela
+preenche todo o $\C^n$. A invari\^ancia de cada $K_{\lambda_i}$ j\'a foi provada
+no Lema~\ref{lema:invar}. A \'unica ferramenta \'e o
+Lema~\ref{lema:invertivel}.
+
+\begin{proof}[Demonstra\c{c}\~ao --- Parte 1: a soma \'e direta]
+Comecemos pelo caso de dois \'\i ndices, que j\'a cont\'em a ideia.
+
+\emph{Interse\c{c}\~ao dois a dois.} Para $i\neq j$ afirmamos
+$K_{\lambda_i}\cap K_{\lambda_j}=\{0\}$. De fato, se
+$v\in K_{\lambda_i}\cap K_{\lambda_j}$, ent\~ao por um lado
+$v\in K_{\lambda_j}=\ker(M-\lambda_j I)^n$, isto \'e $(M-\lambda_j I)^n v=0$;
+por outro lado $v\in K_{\lambda_i}$, onde $(M-\lambda_j I)^n$ \'e invert\'\i vel
+(Lema~\ref{lema:invertivel}, pois $j\neq i$). Um operador invert\'\i vel s\'o
+leva a $0$ o vetor $0$, logo $v=0$.
+
+\emph{O caso geral.} Para mostrar que a soma
+$K_{\lambda_1}+\cdots+K_{\lambda_k}$ \'e direta, suponha uma rela\c{c}\~ao
+\begin{equation}\label{eq:relacao}
+  v_1 + v_2 + \cdots + v_k = 0,
+  \qquad v_m\in K_{\lambda_m},
+\end{equation}
+e mostremos que cada $v_m=0$. Fixe um \'\i ndice $i$ e \emph{construa a matriz}
 \[
-  p_i(x) = \frac{\chi_A(x)}{(x-\lambda_i)^{a_i}}
-         = \prod_{j\neq i}(x-\lambda_j)^{a_j}.
+  B_i \;=\; \prod_{j\neq i}(M-\lambda_j I)^{\,n}
+  \qquad(\text{um produto de pot\^encias de }M-\lambda_j I,\ j\neq i).
 \]
-Os $p_1,\dots,p_k$ n\~ao t\^em raiz comum (cada $\lambda_i$ \'e raiz de todos os
-$p_j$ com $j\neq i$, mas n\~ao de $p_i$). Logo $\gcd(p_1,\dots,p_k)=1$, e por
-Bézout existem polin\^omios $g_1,\dots,g_k$ com
-\begin{equation}\label{eq:bezout}
-  \sum_{i=1}^{k} g_i(x)\,p_i(x) = 1.
-\end{equation}
-Defina os operadores $\pi_i = g_i(A)\,p_i(A)$. Avaliando \eqref{eq:bezout} em
-$A$,
-\begin{equation}\label{eq:soma-pi}
-  \pi_1 + \cdots + \pi_k = I.
-\end{equation}
-
-\emph{Os $\pi_i$ s\~ao proje\c{c}\~oes ortogonais entre si.} Para $i\neq j$, o
-produto $p_i(x)p_j(x)$ \'e divis\'\i vel por $\chi_A(x)$ (cont\'em todos os
-fatores $(x-\lambda_l)^{a_l}$). Por Cayley--Hamilton
-(Teorema~\ref{thm:CH}), $\chi_A(A)=0$, logo $p_i(A)p_j(A)=0$ e portanto
-$\pi_i\pi_j=0$ para $i\neq j$. Multiplicando \eqref{eq:soma-pi} por $\pi_i$,
-$\pi_i = \pi_i\big(\sum_j\pi_j\big)=\pi_i^2$; cada $\pi_i$ \'e uma proje\c{c}\~ao.
-
-\emph{A imagem de $\pi_i$ \'e $\ker(A-\lambda_i I)^{a_i}$.} De um lado,
-$(A-\lambda_i I)^{a_i}\,p_i(A) = \chi_A(A) = 0$, logo
-$(A-\lambda_i I)^{a_i}\pi_i = g_i(A)\,(A-\lambda_i I)^{a_i}p_i(A)=0$; assim
-$\img\pi_i\subseteq\ker(A-\lambda_i I)^{a_i}$. De outro, se
-$v\in\ker(A-\lambda_i I)^{a_i}$, ent\~ao para $j\neq i$ o polin\^omio $p_j$
-cont\'em o fator $(x-\lambda_i)^{a_i}$, donde $p_j(A)v=0$ e $\pi_j v=0$; por
-\eqref{eq:soma-pi}, $v=\sum_l \pi_l v = \pi_i v\in\img\pi_i$. Logo
-$\img\pi_i=\ker(A-\lambda_i I)^{a_i}$.
-
-Como $I=\sum_i\pi_i$ com $\pi_i$ proje\c{c}\~oes que se anulam mutuamente,
-$\C^n = \bigoplus_i \img\pi_i = \bigoplus_i \ker(A-\lambda_i I)^{a_i}$, soma
-direta. Cada somando \'e invariante por $A$ pois $A$ comuta com $\pi_i$.
-
-\emph{Finalmente, $\ker(A-\lambda_i I)^{a_i}=E_{\lambda_i}$.} A inclus\~ao
-$\subseteq$ \'e clara (pois $a_i\le n$). Para $\supseteq$, seja $v\in E_{\lambda_i}=
-\ker(A-\lambda_i I)^n$ e escreva $v=\sum_j w_j$ com $w_j\in
-\ker(A-\lambda_j I)^{a_j}$ (pela soma direta j\'a obtida). Para $j\neq i$,
-$A-\lambda_i I$ \'e invert\'\i vel em $E_{\lambda_j}\supseteq w_j$
-(Lema~\ref{lema:invertivel}), logo $(A-\lambda_i I)^n w_j = 0$ for\c{c}a
-$w_j=0$. Assim $v=w_i\in\ker(A-\lambda_i I)^{a_i}$.
+Esses fatores s\~ao polin\^omios em $M$; em particular comutam entre si e
+deixam cada $K_{\lambda_m}$ invariante (Lema~\ref{lema:invar}). A matriz $B_i$
+foi feita para \emph{aniquilar todos os $K_{\lambda_j}$ exceto o $i$-\'esimo}:
+\begin{itemize}[leftmargin=1.6em,topsep=2pt]
+  \item Se $j\neq i$, o fator $(M-\lambda_j I)^n$ aparece em $B_i$ e anula
+        $K_{\lambda_j}=\ker(M-\lambda_j I)^n$; como os fatores comutam,
+        $B_i$ anula $K_{\lambda_j}$. Ou seja, $B_i v_j = 0$ para $j\neq i$.
+  \item Em $K_{\lambda_i}$, cada fator $(M-\lambda_j I)^n$ ($j\neq i$) \'e
+        invert\'\i vel (Lema~\ref{lema:invertivel}); um produto de operadores
+        invert\'\i veis \'e invert\'\i vel, logo $B_i$ \'e invert\'\i vel em
+        $K_{\lambda_i}$.
+\end{itemize}
+Aplicando $B_i$ \`a rela\c{c}\~ao \eqref{eq:relacao} e usando que todos os
+termos com $j\neq i$ se anulam,
+\[
+  0 = B_i\big(v_1+\cdots+v_k\big) = \sum_{m} B_i v_m = B_i v_i .
+\]
+Como $v_i\in K_{\lambda_i}$ e $B_i$ \'e invert\'\i vel em $K_{\lambda_i}$, segue
+$v_i=0$. O \'\i ndice $i$ era arbitr\'ario, logo todos os $v_m=0$: a soma \'e
+direta. (Se os $K_{\lambda_i}$ n\~ao fossem independentes, existiria uma
+rela\c{c}\~ao n\~ao trivial \eqref{eq:relacao}, e a matriz $B_i$ produziria a
+contradi\c{c}\~ao $v_i=0$ para o termo sobrevivente.)
 \end{proof}
 
-\begin{corolario}\label{cor:nilp-restr}
-A restri\c{c}\~ao de $T_i:=A-\lambda_i I$ a $E_{\lambda_i}$ \'e nilpotente
-(de fato $T_i^{\,a_i}=0$ em $E_{\lambda_i}$). Em particular $\dim E_{\lambda_i}=a_i$.
-\end{corolario}
-
-\begin{proof}
-Por defini\c{c}\~ao de $E_{\lambda_i}=\ker(A-\lambda_i I)^{a_i}$
-(Teorema~\ref{thm:primaria}), $T_i^{\,a_i}$ anula $E_{\lambda_i}$. A
-igualdade $\dim E_{\lambda_i}=a_i$ segue comparando o polin\^omio
-caracter\'\i stico de $A$ com o da restri\c{c}\~ao a cada somando invariante:
-$\chi_A=\prod_i \chi_{A|_{E_{\lambda_i}}}$, e $A|_{E_{\lambda_i}}=\lambda_i I + T_i$
-com $T_i$ nilpotente tem polin\^omio caracter\'\i stico
-$(x-\lambda_i)^{\dim E_{\lambda_i}}$.
+\begin{proof}[Demonstra\c{c}\~ao --- Parte 2: a soma preenche $\C^n$]
+Esta parte \'e agora imediata, por contagem de dimens\~oes. Pela Parte 1 a
+soma \'e direta, logo sua dimens\~ao \'e a soma das dimens\~oes dos somandos.
+Usando o Lema~\ref{lema:dim} (cada $\dim K_{\lambda_i}=a_i$) e que a soma das
+multiplicidades alg\'ebricas \'e o grau de $\chi_M$, isto \'e $n$:
+\[
+  \dim\big(K_{\lambda_1}\oplus\cdots\oplus K_{\lambda_k}\big)
+  = \sum_{i=1}^{k}\dim K_{\lambda_i}
+  = \sum_{i=1}^{k} a_i
+  = \deg\chi_M = n .
+\]
+Um subespa\c{c}o de $\C^n$ com dimens\~ao $n$ \'e o pr\'oprio $\C^n$. Portanto
+$K_{\lambda_1}\oplus\cdots\oplus K_{\lambda_k}=\C^n$.
 \end{proof}
 
 %=====================================================================
@@ -553,8 +612,8 @@ $(x-\lambda_i)^{\dim E_{\lambda_i}}$.
 \label{sec:cadeias}
 %=====================================================================
 
-Pela decomposi\c{c}\~ao prim\'aria, o estudo de $A$ se reduz, em cada
-$E_{\lambda_i}$, ao do operador \emph{nilpotente} $T_i=A-\lambda_i I$. O
+Pela decomposi\c{c}\~ao prim\'aria, o estudo de $M$ se reduz, em cada
+$K_{\lambda_i}$, ao do operador \emph{nilpotente} $T_i=M-\lambda_i I$. O
 teorema seguinte \'e o cora\c{c}\~ao da forma de Jordan: todo operador
 nilpotente admite uma base feita de \emph{cadeias}.
 
@@ -575,70 +634,108 @@ finita. Ent\~ao $V$ admite uma base formada por uni\~ao de cadeias de Jordan
 de $N$.
 \end{teorema}
 
-\begin{proof}
-Indu\c{c}\~ao em $\dim V$. Se $\dim V=0$ nada h\'a a provar. Suponha o
-resultado v\'alido para todo espa\c{c}o de dimens\~ao $<\dim V$.
-
-Seja $U=\img N = N(V)$. Como $N$ \'e nilpotente em $V\neq\{0\}$, $N$ n\~ao \'e
-sobrejetora (uma matriz nilpotente invert\'\i vel for\c{c}aria $V=\{0\}$), logo
-$\dim U<\dim V$. Al\'em disso $U$ \'e invariante por $N$ e $N|_U$ \'e
-nilpotente. Pela hip\'otese de indu\c{c}\~ao, $U$ tem uma base formada por
-cadeias; sejam elas geradas por $w_1,\dots,w_p\in U$, com comprimentos
-$k_1,\dots,k_p$:
+\paragraph{A ideia da demonstra\c{c}\~ao.}
+Queremos organizar uma base de $V$ em ``colunas'' --- as cadeias --- em que
+$N$ desce um degrau de cada vez,
 \[
+  \underbrace{v}_{\text{topo}} \;\xrightarrow{\,N\,}\; Nv
+  \;\xrightarrow{\,N\,}\; \cdots
+  \;\xrightarrow{\,N\,}\; \underbrace{N^{d-1}v}_{\text{fundo}\,\in\,\ker N}
+  \;\xrightarrow{\,N\,}\; 0 .
+\]
+A demonstra\c{c}\~ao \'e por indu\c{c}\~ao, e a chave \'e olhar para
+$U=\img N$: aplicar $N$ ``empurra tudo um degrau para baixo'', de modo que
+$U$ \'e menor que $V$ e nele a hip\'otese de indu\c{c}\~ao j\'a fornece cadeias.
+A partir dessas cadeias de $U$ fazemos duas coisas: \emph{levantamos} cada
+uma um degrau (achando uma pr\'e-imagem do seu topo, o que prolonga a cadeia
+para cima) e depois \emph{completamos} o que falta no n\'ucleo $\ker N$ com
+cadeias de comprimento $1$. O cuidado todo est\'a em mostrar que o resultado
+\'e de fato uma base --- e \'e a\'\i\ que a contagem por posto-nulidade entra.
+
+\begin{proof}
+Indu\c{c}\~ao em $\dim V$. Se $\dim V=0$ nada h\'a a provar (base vazia).
+Suponha o resultado v\'alido para todo espa\c{c}o de dimens\~ao $<\dim V$.
+
+\emph{Reduzir a $U=\img N$.} Seja $U=\img N = N(V)$. Como $N$ \'e nilpotente em
+$V\neq\{0\}$, ela n\~ao \'e sobrejetora (uma matriz nilpotente \emph{e}
+invert\'\i vel for\c{c}aria $V=\{0\}$), logo $\dim U<\dim V$. Al\'em disso $U$
+\'e invariante por $N$ e $N|_U$ \'e nilpotente. Pela hip\'otese de
+indu\c{c}\~ao, $U$ admite uma base formada por cadeias; sejam elas geradas por
+$w_1,\dots,w_p\in U$, com comprimentos $k_1,\dots,k_p$:
+\begin{equation}\label{eq:base-U}
   \big\{\,N^{j}w_i : 1\le i\le p,\ 0\le j\le k_i-1\,\big\}
   \quad\text{\'e base de } U,
   \qquad N^{k_i}w_i=0.
-\]
+\end{equation}
 
-\emph{Passo 1: levantar os topos.} Cada $w_i\in U=\img N$, logo existe
-$v_i\in V$ com $Nv_i=w_i$. Considere as cadeias mais longas geradas por $v_i$:
+\emph{Passo 1: levantar cada cadeia um degrau.} Cada topo $w_i$ pertence a
+$U=\img N$, logo \emph{tem uma pr\'e-imagem}: existe $v_i\in V$ com $Nv_i=w_i$.
+Trocando o topo $w_i$ por $v_i$, a cadeia gerada por $v_i$ \'e a de $w_i$
+prolongada um degrau para cima:
 \[
-  v_i,\ Nv_i=w_i,\ \dots,\ N^{k_i}v_i = N^{k_i-1}w_i,
+  v_i,\ Nv_i=w_i,\ N^2 v_i = N w_i,\ \dots,\ N^{k_i}v_i = N^{k_i-1}w_i,
   \qquad N^{k_i+1}v_i = N^{k_i}w_i = 0,
 \]
-de comprimento $k_i+1$. Seus fundos s\~ao $b_i := N^{k_i}v_i = N^{k_i-1}w_i$,
-que pertencem a $\ker N$ e fazem parte da base de $U$, logo s\~ao linearmente
-independentes.
+agora de comprimento $k_i+1$. Os fundos dessas cadeias prolongadas s\~ao
+\[
+  b_i := N^{k_i}v_i = N^{k_i-1}w_i \in \ker N ,
+\]
+e eles fazem parte da base \eqref{eq:base-U} de $U$ (s\~ao os fundos das
+cadeias originais), portanto s\~ao linearmente independentes.
 
-\emph{Passo 2: completar o n\'ucleo.} Estenda $\{b_1,\dots,b_p\}$ a uma base de
-$\ker N$ acrescentando vetores $z_1,\dots,z_q\in\ker N$. Cada $z_l$ \'e uma
-cadeia de comprimento $1$.
+\emph{Passo 2: completar o n\'ucleo.} Os $b_1,\dots,b_p$ s\~ao vetores
+independentes de $\ker N$, mas podem n\~ao ger\'a-lo. Estenda-os a uma base
+de $\ker N$ acrescentando vetores $z_1,\dots,z_q\in\ker N$. Cada $z_l$, sozinho,
+\'e uma cadeia de comprimento $1$ (seu pr\'oprio fundo).
 
-\emph{Afirma\c{c}\~ao:} o conjunto
+\emph{Afirma\c{c}\~ao.} A uni\~ao das cadeias prolongadas com as cadeias
+triviais, isto \'e
 \[
   \mathcal{B} = \big\{N^{j}v_i : 1\le i\le p,\ 0\le j\le k_i\big\}
-                \cup \{z_1,\dots,z_q\}
+                \cup \{z_1,\dots,z_q\},
 \]
-\'e uma base de $V$.
+\'e uma base de $V$. (Note que $\mathcal{B}$ \'e exatamente uma uni\~ao de
+cadeias de $N$, como quer\'\i amos.)
 
-\emph{Contagem.} $|\mathcal{B}| = \sum_i(k_i+1)+q = \big(\sum_i k_i\big)+p+q$.
-Ora, $\dim U=\sum_i k_i$ (tamanho da base de $U$) e $\dim\ker N=p+q$ (base
-estendida). Por posto-nulidade, $\dim V=\dim\img N+\dim\ker N = \sum_i k_i +
-(p+q) = |\mathcal{B}|$. Basta, ent\~ao, provar que $\mathcal{B}$ \'e linearmente
-independente.
-
-\emph{Independ\^encia.} Suponha
+\emph{Contagem.} O n\'umero de vetores \'e
+$|\mathcal{B}| = \sum_i(k_i+1)+q = \big(\sum_i k_i\big)+p+q$. Ora,
+$\dim U=\sum_i k_i$ (tamanho da base \eqref{eq:base-U}) e $\dim\ker N=p+q$
+(base estendida no Passo 2). Pela rela\c{c}\~ao posto-nulidade,
 \[
+  \dim V=\dim\img N+\dim\ker N = \textstyle\sum_i k_i + (p+q) = |\mathcal{B}|.
+\]
+Como $|\mathcal{B}|=\dim V$, basta provar que $\mathcal{B}$ \'e linearmente
+independente para concluir que \'e base.
+
+\emph{Independ\^encia.} Suponha uma combina\c{c}\~ao linear nula
+\begin{equation}\label{eq:comb-nula}
   \sum_{i=1}^{p}\sum_{j=0}^{k_i} a_{ij}\,N^{j}v_i
   + \sum_{l=1}^{q} c_l\,z_l = 0.
-\]
-Aplique $N$. Como $z_l\in\ker N$, esses termos somem; e $N(N^{j}v_i)=N^{j+1}v_i$,
-sendo $N^{k_i+1}v_i=0$. Logo
+\end{equation}
+A estrat\'egia \'e aplicar $N$ para ``empurrar tudo para baixo'' e usar a
+base de $U$. Aplicando $N$ a \eqref{eq:comb-nula}: os termos $z_l$ desaparecem
+(est\~ao em $\ker N$), e $N(N^{j}v_i)=N^{j+1}v_i$, com $N^{k_i+1}v_i=0$
+matando o termo de topo $j=k_i$. Sobra
 \[
   \sum_{i=1}^{p}\sum_{j=0}^{k_i-1} a_{ij}\,N^{j+1}v_i = 0,
   \qquad\text{ou seja}\qquad
   \sum_{i=1}^{p}\sum_{j=0}^{k_i-1} a_{ij}\,N^{j}w_i = 0,
 \]
-pois $N^{j+1}v_i=N^{j}w_i$. Como $\{N^{j}w_i:0\le j\le k_i-1\}$ \'e base de $U$,
-todos os $a_{ij}=0$ para $0\le j\le k_i-1$. Resta
+pois $N^{j+1}v_i=N^{j}w_i$. Esses s\~ao precisamente os vetores da base
+\eqref{eq:base-U} de $U$; logo todos os coeficientes se anulam:
+\[
+  a_{ij}=0 \quad\text{para } 0\le j\le k_i-1 .
+\]
+Voltando a \eqref{eq:comb-nula}, sobrevivem apenas os termos de topo $j=k_i$
+e os $z_l$:
 \[
   \sum_{i=1}^{p} a_{i,k_i}\,N^{k_i}v_i + \sum_{l=1}^{q} c_l z_l
   = \sum_{i=1}^{p} a_{i,k_i}\,b_i + \sum_{l=1}^{q} c_l z_l = 0.
 \]
-Mas $\{b_i\}\cup\{z_l\}$ \'e base de $\ker N$, logo todos os $a_{i,k_i}=0$ e
-$c_l=0$. Portanto todos os coeficientes s\~ao nulos: $\mathcal{B}$ \'e
-independente, logo base de $V$.
+Mas $\{b_1,\dots,b_p,z_1,\dots,z_q\}$ \'e base de $\ker N$ (Passo 2), portanto
+$a_{i,k_i}=0$ e $c_l=0$ para todos $i,l$. Assim todos os coeficientes de
+\eqref{eq:comb-nula} s\~ao nulos: $\mathcal{B}$ \'e independente, logo \'e base
+de $V$. Isto conclui a indu\c{c}\~ao.
 \end{proof}
 
 \begin{observacao}[A cadeia produz um bloco de Jordan]\label{obs:bloco}
@@ -649,10 +746,11 @@ para o topo:
   \qquad (\text{isto \'e, } w_s = N^{r-s}v).
 \]
 Ent\~ao $Nw_1 = N^r v = 0$ e, para $s\ge2$, $Nw_s = N^{r-s+1}v = w_{s-1}$. Na
-base ordenada $(w_1,\dots,w_r)$, a matriz de $N$ \'e a matriz-deslocamento com
-$1$ na superdiagonal,
+base ordenada $(w_1,\dots,w_r)$, a matriz de $N$ \'e precisamente a
+matriz-deslocamento $J_r$ (os $1$ na superdiagonal),
 \[
   [N]
+  = J_r
   = \begin{pmatrix}
       0 & 1 & 0 & \cdots & 0\\
       0 & 0 & 1 & \cdots & 0\\
@@ -672,47 +770,49 @@ Reunindo a decomposi\c{c}\~ao prim\'aria com a base de cadeias, obtemos o
 teorema de estrutura.
 
 \begin{teorema}[Forma can\^onica de Jordan]\label{thm:jordan}
-Para toda $A\in\Mat_n(\C)$ existe uma matriz invert\'\i vel $P$ tal que
+Para toda $M\in\Mat_n(\C)$ existe uma matriz invert\'\i vel $P$ tal que
 \[
-  P^{-1}AP = J = \diag(J_1,\dots,J_s),
+  P^{-1}MP = \mathcal{J} = \diag\big(\lambda_1 I + J_{k_1},\ \dots,\
+  \lambda_s I + J_{k_s}\big),
 \]
-onde cada bloco tem a forma
+isto \'e, $\mathcal{J}$ \'e diagonal em blocos, cada bloco sendo um bloco de
+Jordan
 \[
-  J_b = \lambda I + N =
+  \lambda I + J_k =
   \begin{pmatrix}
     \lambda & 1 & & \\
     & \lambda & \ddots & \\
     & & \ddots & 1\\
     & & & \lambda
-  \end{pmatrix},
+  \end{pmatrix}
+  \qquad(k\times k),
 \]
-com $\lambda$ um autovalor de $A$ e $N$ a matriz-deslocamento nilpotente com
-$1$ na superdiagonal. Se o bloco tem tamanho $r$, ent\~ao $N^r=0$.
+com $\lambda$ um autovalor de $M$ e $J_k$ a matriz-deslocamento ($J_k^{\,k}=0$).
 \end{teorema}
 
 \begin{proof}
 Pela Teorema~\ref{thm:primaria},
-$\C^n=\bigoplus_{i=1}^{k}E_{\lambda_i}$, com cada $E_{\lambda_i}$ invariante por
-$A$. Em $E_{\lambda_i}$, o operador $T_i=A-\lambda_i I$ \'e nilpotente
-(Corol\'ario~\ref{cor:nilp-restr}); pela
-Teorema~\ref{thm:nilp-jordan}, $E_{\lambda_i}$ tem uma base feita de
-cadeias de $T_i$. Ordenando cada cadeia do fundo para o topo
-(Observa\c{c}\~ao~\ref{obs:bloco}), a matriz de $T_i$ nessa cadeia \'e a
-matriz-deslocamento $N$; como $A=\lambda_i I + T_i$, a matriz de $A$ na cadeia
-\'e o bloco de Jordan $\lambda_i I + N$.
+$\C^n=\bigoplus_{i=1}^{k}K_{\lambda_i}$, com cada $K_{\lambda_i}$ invariante por
+$M$. Em $K_{\lambda_i}$, o operador $T_i=M-\lambda_i I$ \'e nilpotente
+(Lema~\ref{lema:dim}); pela
+Teorema~\ref{thm:nilp-jordan}, $K_{\lambda_i}$ tem uma base feita de
+cadeias de $T_i$. Ordenando cada cadeia (de comprimento $k$) do fundo para o
+topo (Observa\c{c}\~ao~\ref{obs:bloco}), a matriz de $T_i$ nessa cadeia \'e a
+matriz-deslocamento $J_k$; como $M=\lambda_i I + T_i$, a matriz de $M$ na
+cadeia \'e o bloco de Jordan $\lambda_i I + J_k$.
 
-Justapondo as bases de cadeias de todos os $E_{\lambda_i}$ obtemos uma base de
+Justapondo as bases de cadeias de todos os $K_{\lambda_i}$ obtemos uma base de
 $\C^n$; seja $P$ a matriz cujas colunas s\~ao esses vetores de base. Nessa
-base, $A$ \'e diagonal em blocos, com um bloco de Jordan por cadeia. Isto \'e
-$P^{-1}AP=J$.
+base, $M$ \'e diagonal em blocos, com um bloco de Jordan por cadeia. Isto \'e
+$P^{-1}MP=\mathcal{J}$.
 \end{proof}
 
 \begin{observacao}[Diciton\'ario das multiplicidades]
 Para um autovalor $\lambda$: o n\'umero de blocos de Jordan de $\lambda$ \'e a
-\emph{multiplicidade geom\'etrica} $\dim\ker(A-\lambda I)$ (cada cadeia
+\emph{multiplicidade geom\'etrica} $\dim\ker(M-\lambda I)$ (cada cadeia
 contribui exatamente um autovetor, seu fundo); a soma dos tamanhos dos blocos
 de $\lambda$ \'e a \emph{multiplicidade alg\'ebrica} $a_\lambda=\dim
-E_\lambda$. A matriz \'e diagonaliz\'avel se, e somente se, todos os blocos
+K_\lambda$. A matriz \'e diagonaliz\'avel se, e somente se, todos os blocos
 t\^em tamanho $1$, ou seja, multiplicidade geom\'etrica $=$ alg\'ebrica para
 todo $\lambda$.
 \end{observacao}
@@ -722,13 +822,14 @@ todo $\lambda$.
 \label{sec:exp-jordan}
 %=====================================================================
 
-Agora colhemos o fruto: calcular $e^{tJ}$ explicitamente para um bloco.
+Agora colhemos o fruto: calcular explicitamente a exponencial de um bloco de
+Jordan.
 
 \begin{teorema}\label{thm:exp-bloco}
-Seja $J=\lambda I + N$ um bloco de Jordan $r\times r$, com $N$ a
-matriz-deslocamento ($N^r=0$). Ent\~ao
+Seja $\lambda I + J_r$ um bloco de Jordan $r\times r$, onde $J_r$ \'e a
+matriz-deslocamento ($J_r^{\,r}=0$). Ent\~ao
 \[
-  e^{tJ} = e^{\lambda t}\sum_{m=0}^{r-1}\frac{t^m N^m}{m!}
+  e^{t(\lambda I + J_r)} = e^{\lambda t}\sum_{m=0}^{r-1}\frac{t^m J_r^{\,m}}{m!}
          = e^{\lambda t}
            \begin{pmatrix}
              1 & t & \dfrac{t^2}{2!} & \cdots & \dfrac{t^{r-1}}{(r-1)!}\\[2mm]
@@ -741,19 +842,19 @@ matriz-deslocamento ($N^r=0$). Ent\~ao
 \end{teorema}
 
 \begin{proof}
-As matrizes $\lambda I$ e $N$ comutam, logo pela
+As matrizes $\lambda I$ e $J_r$ comutam, logo pela
 Teorema~\ref{thm:propriedades}(c),
 \[
-  e^{tJ} = e^{t\lambda I + tN} = e^{t\lambda I}\,e^{tN}
-         = e^{\lambda t}\,e^{tN}.
+  e^{t(\lambda I + J_r)} = e^{t\lambda I + tJ_r} = e^{t\lambda I}\,e^{tJ_r}
+         = e^{\lambda t}\,e^{tJ_r}.
 \]
-Como $N^r=0$, a Proposi\c{c}\~ao~\ref{prop:exp-nilp} d\'a
-$e^{tN}=\sum_{m=0}^{r-1}t^mN^m/m!$. Resta identificar as entradas. A
-pot\^encia $N^m$ \'e a matriz com $1$ na $m$-\'esima superdiagonal e $0$ nas
-demais (deslocar $m$ vezes), isto \'e $(N^m)_{ij}=1$ se $j-i=m$ e $0$ caso
-contr\'ario. Portanto
+Como $J_r^{\,r}=0$, a Proposi\c{c}\~ao~\ref{prop:exp-nilp} d\'a
+$e^{tJ_r}=\sum_{m=0}^{r-1}t^m J_r^{\,m}/m!$. Resta identificar as entradas. A
+pot\^encia $J_r^{\,m}$ \'e a matriz com $1$ na $m$-\'esima superdiagonal e $0$
+nas demais (deslocar $m$ vezes), isto \'e $(J_r^{\,m})_{ij}=1$ se $j-i=m$ e $0$
+caso contr\'ario. Portanto
 \[
-  (e^{tN})_{ij}=\sum_{m\ge0}\frac{t^m}{m!}(N^m)_{ij}
+  (e^{tJ_r})_{ij}=\sum_{m\ge0}\frac{t^m}{m!}(J_r^{\,m})_{ij}
   = \begin{cases}\dfrac{t^{\,j-i}}{(j-i)!}, & j\ge i,\\[2mm] 0, & j<i,\end{cases}
 \]
 que \'e exatamente a matriz triangular superior do enunciado, multiplicada por
@@ -761,63 +862,68 @@ $e^{\lambda t}$.
 \end{proof}
 
 \begin{corolario}\label{cor:fatores}
-As solu\c{c}\~oes de $x'=Ax$ associadas a uma cadeia de Jordan de tamanho $r$
+As solu\c{c}\~oes de $x'=Mx$ associadas a uma cadeia de Jordan de tamanho $r$
 para o autovalor $\lambda$ s\~ao combina\c{c}\~oes de termos
 \[
   e^{\lambda t}\,p(t),
 \]
 onde $p$ \'e um polin\^omio vetorial de grau $\le r-1$. Em particular, fatores
 polinomiais aparecem \emph{exatamente} quando o bloco tem tamanho $\ge2$, isto
-\'e, quando $A$ \'e defeituosa.
+\'e, quando $M$ \'e defeituosa.
 \end{corolario}
 
 %=====================================================================
-\section{A f\'ormula geral para $e^{tA}$}
+\section{A f\'ormula geral para $e^{tM}$}
 \label{sec:geral}
 %=====================================================================
 
 \begin{teorema}\label{thm:geral}
-Seja $A=PJP^{-1}$ a forma de Jordan, com $J=\diag(J_1,\dots,J_s)$. Ent\~ao
+Seja $M=P\,\mathcal{J}\,P^{-1}$ a forma de Jordan, com
+$\mathcal{J}=\diag\big(\lambda_1 I + J_{k_1},\dots,\lambda_s I + J_{k_s}\big)$.
+Ent\~ao
 \[
-  e^{tA} = P\,e^{tJ}\,P^{-1},
+  e^{tM} = P\,e^{t\mathcal{J}}\,P^{-1},
   \qquad
-  e^{tJ} = \diag\!\big(e^{tJ_1},\dots,e^{tJ_s}\big),
+  e^{t\mathcal{J}} = \diag\!\Big(e^{t(\lambda_1 I + J_{k_1})},\dots,
+  e^{t(\lambda_s I + J_{k_s})}\Big),
 \]
-e cada $e^{tJ_b}$ \'e dado pela Teorema~\ref{thm:exp-bloco}. A
-solu\c{c}\~ao de $x'=Ax,\ x(0)=x_0$, \'e $x(t)=P\,e^{tJ}\,P^{-1}x_0$.
+e cada bloco $e^{t(\lambda_b I + J_{k_b})}$ \'e dado pela
+Teorema~\ref{thm:exp-bloco}. A solu\c{c}\~ao de $x'=Mx,\ x(0)=x_0$, \'e
+$x(t)=P\,e^{t\mathcal{J}}\,P^{-1}x_0$.
 \end{teorema}
 
 \begin{proof}
-A f\'ormula $e^{tA}=Pe^{tJ}P^{-1}$ \'e a Teorema~\ref{thm:propriedades}(b).
-Para uma matriz diagonal em blocos $J=\diag(J_1,\dots,J_s)$, tem-se
-$J^m=\diag(J_1^m,\dots,J_s^m)$, e somando entrada a entrada a s\'erie da
-exponencial, $e^{tJ}=\diag(e^{tJ_1},\dots,e^{tJ_s})$. O restante \'e a
-Teorema~\ref{thm:pvi}.
+A f\'ormula $e^{tM}=P\,e^{t\mathcal{J}}\,P^{-1}$ \'e a
+Teorema~\ref{thm:propriedades}(b). Para uma matriz diagonal em blocos, a
+$m$-\'esima pot\^encia \'e diagonal nos mesmos blocos, cada um elevado a $m$;
+somando entrada a entrada a s\'erie da exponencial, $e^{t\mathcal{J}}$ \'e
+diagonal em blocos com os $e^{t(\lambda_b I + J_{k_b})}$ na diagonal. O restante
+\'e a Teorema~\ref{thm:pvi}.
 \end{proof}
 
 Isto fornece um m\'etodo completo: \emph{(i)} ache autovalores e autoespa\c{c}os
 generalizados; \emph{(ii)} em cada um, construa cadeias de Jordan e monte $P$;
-\emph{(iii)} escreva $e^{tJ}$ bloco a bloco; \emph{(iv)} retorne via
-$e^{tA}=Pe^{tJ}P^{-1}$.
+\emph{(iii)} escreva $e^{t\mathcal{J}}$ bloco a bloco; \emph{(iv)} retorne via
+$e^{tM}=P\,e^{t\mathcal{J}}\,P^{-1}$.
 
 %=====================================================================
 \section{Sistemas reais e autovalores complexos}
 \label{sec:real}
 %=====================================================================
 
-Se $A\in\Mat_n(\R)$, ainda assim a forma de Jordan vive naturalmente sobre
+Se $M\in\Mat_n(\R)$, ainda assim a forma de Jordan vive naturalmente sobre
 $\C$. Mas as solu\c{c}\~oes de interesse f\'\i sico s\~ao reais; eis como
 recuper\'a-las.
 
 \begin{itemize}[leftmargin=1.4em]
   \item Autovalores complexos de uma matriz real ocorrem em \emph{pares
-        conjugados}: se $Av=\lambda v$ com $\lambda=\alpha+i\beta$, ent\~ao,
-        conjugando, $A\bar v=\bar\lambda\bar v$.
-  \item Dada uma solu\c{c}\~ao complexa $z(t)=e^{\lambda t}v$ de $x'=Ax$ com $A$
+        conjugados}: se $Mv=\lambda v$ com $\lambda=\alpha+i\beta$, ent\~ao,
+        conjugando, $M\bar v=\bar\lambda\bar v$.
+  \item Dada uma solu\c{c}\~ao complexa $z(t)=e^{\lambda t}v$ de $x'=Mx$ com $M$
         real, suas partes real e imagin\'aria, $\operatorname{Re}z$ e
         $\operatorname{Im}z$, s\~ao solu\c{c}\~oes \emph{reais}. De fato,
-        $z'=Az$ com $A$ real implica $(\operatorname{Re}z)'=A\operatorname{Re}z$
-        e $(\operatorname{Im}z)'=A\operatorname{Im}z$.
+        $z'=Mz$ com $M$ real implica $(\operatorname{Re}z)'=M\operatorname{Re}z$
+        e $(\operatorname{Im}z)'=M\operatorname{Im}z$.
   \item Para um par $\alpha\pm i\beta$, as solu\c{c}\~oes reais envolvem
         \[
           e^{\alpha t}\cos(\beta t), \qquad e^{\alpha t}\sin(\beta t),
@@ -829,7 +935,7 @@ Existe uma \emph{forma can\^onica real} que substitui cada par de blocos
 complexos conjugados por um bloco real com mini-blocos
 $\big(\begin{smallmatrix}\alpha&-\beta\\ \beta&\alpha\end{smallmatrix}\big)$;
 n\~ao a desenvolveremos aqui para n\~ao desviar do c\'alculo central de
-$e^{tA}$. O Exemplo~\ref{ex:rotacao} ilustra o caso $\alpha=0$.
+$e^{tM}$. O Exemplo~\ref{ex:rotacao} ilustra o caso $\alpha=0$.
 
 %=====================================================================
 \section{Exemplos}
@@ -837,78 +943,79 @@ $e^{tA}$. O Exemplo~\ref{ex:rotacao} ilustra o caso $\alpha=0$.
 %=====================================================================
 
 \begin{exemplo}[Matriz diagonal]
-Seja $A=\begin{pmatrix}2&0\\0&-1\end{pmatrix}$. Ent\~ao
+Seja $M=\begin{pmatrix}2&0\\0&-1\end{pmatrix}$. Ent\~ao
 \[
-  e^{tA}=\begin{pmatrix}e^{2t}&0\\0&e^{-t}\end{pmatrix},
+  e^{tM}=\begin{pmatrix}e^{2t}&0\\0&e^{-t}\end{pmatrix},
 \]
-e a solu\c{c}\~ao de $x'=Ax$ \'e
+e a solu\c{c}\~ao de $x'=Mx$ \'e
 $x(t)=\big(x_1(0)e^{2t},\,x_2(0)e^{-t}\big)$. A primeira coordenada cresce, a
 segunda decai: a origem \'e um ponto de sela.
 \end{exemplo}
 
 \begin{exemplo}[Diagonaliz\'avel, mas n\~ao diagonal]\label{ex:diag}
-Seja $A=\begin{pmatrix}1&1\\4&1\end{pmatrix}$. O polin\^omio
+Seja $M=\begin{pmatrix}1&1\\4&1\end{pmatrix}$. O polin\^omio
 caracter\'\i stico \'e $\lambda^2-2\lambda-3=(\lambda-3)(\lambda+1)$, com
-autovalores $3$ e $-1$. Resolvendo $(A-3I)v=0$ e $(A+I)v=0$,
+autovalores $3$ e $-1$. Resolvendo $(M-3I)v=0$ e $(M+I)v=0$,
 \[
   v_3=\begin{pmatrix}1\\2\end{pmatrix},\qquad
   v_{-1}=\begin{pmatrix}1\\-2\end{pmatrix}.
 \]
 Tome $P=\begin{pmatrix}1&1\\2&-2\end{pmatrix}$, $\det P=-4$,
 $P^{-1}=\begin{pmatrix}1/2&1/4\\ 1/2&-1/4\end{pmatrix}$. Ent\~ao
-$e^{tA}=P\diag(e^{3t},e^{-t})P^{-1}$, isto \'e
+$e^{tM}=P\diag(e^{3t},e^{-t})P^{-1}$, isto \'e
 \[
-  e^{tA}=\begin{pmatrix}
+  e^{tM}=\begin{pmatrix}
     \dfrac{e^{3t}+e^{-t}}{2} & \dfrac{e^{3t}-e^{-t}}{4}\\[2mm]
     e^{3t}-e^{-t} & \dfrac{e^{3t}+e^{-t}}{2}
   \end{pmatrix}.
 \]
 \emph{Verifica\c{c}\~ao:} em $t=0$ d\'a $I$; derivando em $t=0$ recupera-se
-$A$.
+$M$.
 \end{exemplo}
 
 \begin{exemplo}[Um bloco de Jordan $2\times2$]
-Seja $A=\begin{pmatrix}\lambda&1\\0&\lambda\end{pmatrix}=\lambda I+N$ com
-$N=\big(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\big)$, $N^2=0$. Ent\~ao
+Seja $M=\begin{pmatrix}\lambda&1\\0&\lambda\end{pmatrix}=\lambda I+J_2$ com
+$J_2=\big(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\big)$, $J_2^{\,2}=0$.
+Ent\~ao
 \[
-  e^{tA}=e^{\lambda t}(I+tN)
+  e^{tM}=e^{\lambda t}(I+tJ_2)
         =e^{\lambda t}\begin{pmatrix}1&t\\0&1\end{pmatrix}.
 \]
-A solu\c{c}\~ao $x(t)=e^{tA}x_0$ cont\'em o fator polinomial $t$, sinal da
+A solu\c{c}\~ao $x(t)=e^{tM}x_0$ cont\'em o fator polinomial $t$, sinal da
 defici\^encia de autovetores.
 \end{exemplo}
 
 \begin{exemplo}[Um bloco de Jordan $3\times3$]
-Seja $A=\begin{pmatrix}\lambda&1&0\\0&\lambda&1\\0&0&\lambda\end{pmatrix}$.
+Seja $M=\begin{pmatrix}\lambda&1&0\\0&\lambda&1\\0&0&\lambda\end{pmatrix}$.
 Ent\~ao
 \[
-  e^{tA}=e^{\lambda t}
+  e^{tM}=e^{\lambda t}
   \begin{pmatrix}1&t&t^2/2\\0&1&t\\0&0&1\end{pmatrix}.
 \]
 \end{exemplo}
 
 \begin{exemplo}[Encontrando uma cadeia: caso $3\times3$ triangular]
 \label{ex:cadeia3}
-Seja $A=\begin{pmatrix}1&1&0\\0&1&1\\0&0&1\end{pmatrix}$. O \'unico autovalor
-\'e $\lambda=1$, e $A-I=\begin{pmatrix}0&1&0\\0&0&1\\0&0&0\end{pmatrix}=N$, com
-$(A-I)^2=\begin{pmatrix}0&0&1\\0&0&0\\0&0&0\end{pmatrix}$ e $(A-I)^3=0$.
-Procuramos $v$ com $(A-I)^2 v\neq0$: tome $v=e_3=(0,0,1)^\top$, pois
-$(A-I)^2 e_3 = e_1\neq0$ e $(A-I)^3 e_3=0$. A cadeia, do fundo ao topo, \'e
+Seja $M=\begin{pmatrix}1&1&0\\0&1&1\\0&0&1\end{pmatrix}$. O \'unico autovalor
+\'e $\lambda=1$, e $M-I=\begin{pmatrix}0&1&0\\0&0&1\\0&0&0\end{pmatrix}=J_3$, com
+$(M-I)^2=\begin{pmatrix}0&0&1\\0&0&0\\0&0&0\end{pmatrix}$ e $(M-I)^3=0$.
+Procuramos $v$ com $(M-I)^2 v\neq0$: tome $v=e_3=(0,0,1)^\top$, pois
+$(M-I)^2 e_3 = e_1\neq0$ e $(M-I)^3 e_3=0$. A cadeia, do fundo ao topo, \'e
 \[
-  w_1=(A-I)^2 e_3 = e_1,\quad w_2=(A-I)e_3=e_2,\quad w_3=e_3,
+  w_1=(M-I)^2 e_3 = e_1,\quad w_2=(M-I)e_3=e_2,\quad w_3=e_3,
 \]
-que j\'a \'e a base can\^onica: $A$ j\'a est\'a em forma de Jordan, e
-$e^{tA}=e^{t}\big(\begin{smallmatrix}1&t&t^2/2\\0&1&t\\0&0&1\end{smallmatrix}\big)$.
+que j\'a \'e a base can\^onica: $M$ j\'a est\'a em forma de Jordan, e
+$e^{tM}=e^{t}\big(\begin{smallmatrix}1&t&t^2/2\\0&1&t\\0&0&1\end{smallmatrix}\big)$.
 \end{exemplo}
 
 \begin{exemplo}[Encontrando uma cadeia: caso defeituoso n\~ao triangular]
 \label{ex:cadeia2}
-Seja $A=\begin{pmatrix}3&1\\-1&1\end{pmatrix}$. O polin\^omio
+Seja $M=\begin{pmatrix}3&1\\-1&1\end{pmatrix}$. O polin\^omio
 caracter\'\i stico \'e $\lambda^2-4\lambda+4=(\lambda-2)^2$: autovalor $2$ com
 multiplicidade alg\'ebrica $2$. Mas
-$A-2I=\begin{pmatrix}1&1\\-1&-1\end{pmatrix}$ tem posto $1$, logo um \'unico
+$M-2I=\begin{pmatrix}1&1\\-1&-1\end{pmatrix}$ tem posto $1$, logo um \'unico
 autovetor (a menos de escala): $v_1=(1,-1)^\top$. A matriz \'e defeituosa.
-Buscamos um autovetor generalizado $v_2$ com $(A-2I)v_2=v_1$:
+Buscamos um autovetor generalizado $v_2$ com $(M-2I)v_2=v_1$:
 \[
   \begin{pmatrix}1&1\\-1&-1\end{pmatrix}v_2=\begin{pmatrix}1\\-1\end{pmatrix}
   \ \Longrightarrow\ v_2=\begin{pmatrix}1\\0\end{pmatrix}\ \text{(uma escolha).}
@@ -916,27 +1023,27 @@ Buscamos um autovetor generalizado $v_2$ com $(A-2I)v_2=v_1$:
 A cadeia \'e $w_1=v_1=(1,-1)^\top$ (fundo), $w_2=v_2=(1,0)^\top$ (topo). Com
 $P=\begin{pmatrix}1&1\\-1&0\end{pmatrix}$, $\det P=1$,
 $P^{-1}=\begin{pmatrix}0&-1\\1&1\end{pmatrix}$, obtemos
-$P^{-1}AP=\begin{pmatrix}2&1\\0&2\end{pmatrix}$. Logo
+$P^{-1}MP=\begin{pmatrix}2&1\\0&2\end{pmatrix}$. Logo
 \[
-  e^{tA}=P\,e^{2t}\begin{pmatrix}1&t\\0&1\end{pmatrix}P^{-1}
+  e^{tM}=P\,e^{2t}\begin{pmatrix}1&t\\0&1\end{pmatrix}P^{-1}
         =e^{2t}\begin{pmatrix}1+t & t\\ -t & 1-t\end{pmatrix}.
 \]
 \emph{Verifica\c{c}\~ao:} em $t=0$ d\'a $I$; a derivada em $t=0$ \'e
-$\big(\begin{smallmatrix}3&1\\-1&1\end{smallmatrix}\big)=A$.
+$\big(\begin{smallmatrix}3&1\\-1&1\end{smallmatrix}\big)=M$.
 \end{exemplo}
 
 \begin{exemplo}[Matriz real com autovalores complexos]\label{ex:rotacao}
-Seja $A=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$. Como
-$A^2=-I$, temos $A^{2k}=(-1)^k I$ e $A^{2k+1}=(-1)^k A$. Logo
+Seja $M=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$. Como
+$M^2=-I$, temos $M^{2k}=(-1)^k I$ e $M^{2k+1}=(-1)^k M$. Logo
 \[
-  e^{tA}=\sum_{m\ge0}\frac{t^m A^m}{m!}
+  e^{tM}=\sum_{m\ge0}\frac{t^m M^m}{m!}
   =\Big(\sum_{k\ge0}\frac{(-1)^k t^{2k}}{(2k)!}\Big)I
-  +\Big(\sum_{k\ge0}\frac{(-1)^k t^{2k+1}}{(2k+1)!}\Big)A
-  =\cos t\,I+\sin t\,A,
+  +\Big(\sum_{k\ge0}\frac{(-1)^k t^{2k+1}}{(2k+1)!}\Big)M
+  =\cos t\,I+\sin t\,M,
 \]
 isto \'e
 \[
-  e^{tA}=\begin{pmatrix}\cos t & -\sin t\\ \sin t & \cos t\end{pmatrix}.
+  e^{tM}=\begin{pmatrix}\cos t & -\sin t\\ \sin t & \cos t\end{pmatrix}.
 \]
 Os autovalores s\~ao $\pm i$; as solu\c{c}\~oes giram em c\'\i rculos em torno
 da origem (um centro).
@@ -949,14 +1056,14 @@ da origem (um centro).
 
 \subsection*{B\'asicos}
 \begin{exercicio}
-Mostre que $e^{tA}$ comuta com $A$ para todo $t$.
+Mostre que $e^{tM}$ comuta com $M$ para todo $t$.
 \end{exercicio}
 \begin{exercicio}
 Prove diretamente, a partir da defini\c{c}\~ao, que
-$e^{sA}e^{tA}=e^{(s+t)A}$.
+$e^{sM}e^{tM}=e^{(s+t)M}$.
 \end{exercicio}
 \begin{exercicio}
-Calcule $e^{tA}$ para $A=\diag(\lambda_1,\dots,\lambda_n)$.
+Calcule $e^{tM}$ para $M=\diag(\lambda_1,\dots,\lambda_n)$.
 \end{exercicio}
 \begin{exercicio}
 Calcule $e^{tN}$ para $N=\big(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\big)$.
@@ -964,41 +1071,17 @@ Calcule $e^{tN}$ para $N=\big(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\big)$
 
 \subsection*{Intermedi\'arios}
 \begin{exercicio}
-Diagonalize $A=\big(\begin{smallmatrix}0&1\\-2&-3\end{smallmatrix}\big)$ e
-resolva $x'=Ax$.
+Diagonalize $M=\big(\begin{smallmatrix}0&1\\-2&-3\end{smallmatrix}\big)$ e
+resolva $x'=Mx$.
 \end{exercicio}
 \begin{exercicio}
-Calcule $e^{tA}$ para o bloco $A=\big(\begin{smallmatrix}\lambda&1\\0&\lambda
+Calcule $e^{tM}$ para o bloco $M=\big(\begin{smallmatrix}\lambda&1\\0&\lambda
 \end{smallmatrix}\big)$ e para o bloco $3\times3$ correspondente.
 \end{exercicio}
 \begin{exercicio}
-Encontre uma cadeia de Jordan para $A=\big(\begin{smallmatrix}3&1\\-1&1
+Encontre uma cadeia de Jordan para $M=\big(\begin{smallmatrix}3&1\\-1&1
 \end{smallmatrix}\big)$ (compare com o Exemplo~\ref{ex:cadeia2}) e para uma
 matriz $3\times3$ com um \'unico autovalor e um \'unico autovetor.
-\end{exercicio}
-
-\subsection*{Conceituais}
-\begin{exercicio}
-Explique por que fatores polinomiais aparecem nas solu\c{c}\~oes quando $A$
-n\~ao \'e diagonaliz\'avel. (Sugest\~ao:
-Corol\'ario~\ref{cor:fatores}.)
-\end{exercicio}
-\begin{exercicio}
-Mostre que, se $A=PJP^{-1}$, ent\~ao $e^{tA}=Pe^{tJ}P^{-1}$, e use isso para
-justificar o m\'etodo de c\'alculo da Se\c{c}\~ao~\ref{sec:geral}.
-\end{exercicio}
-\begin{exercicio}
-Prove que autoespa\c{c}os generalizados de autovalores distintos s\~ao
-linearmente independentes. (Sugest\~ao: use as proje\c{c}\~oes $\pi_i$ da
-Teorema~\ref{thm:primaria}.)
-\end{exercicio}
-\begin{exercicio}
-Prove a forma de Jordan para um operador nilpotente $2\times2$ e $3\times3$
-diretamente, exibindo as cadeias.
-\end{exercicio}
-\begin{exercicio}
-D\^e um exemplo de matrizes $A,B$ com $e^{A+B}\neq e^A e^B$, ilustrando a
-necessidade de $AB=BA$ na Teorema~\ref{thm:propriedades}(c).
 \end{exercicio}
 
 %=====================================================================

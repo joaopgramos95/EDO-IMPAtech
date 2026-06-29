@@ -1,0 +1,388 @@
+\documentclass[10pt,a4paper]{amsart}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{enumitem}
+\usepackage[left=1.5cm,right=1.5cm]{geometry}
+
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\Lap}{\mathcal{L}}
+
+\theoremstyle{definition}
+\newtheorem{problema}{Problema}
+
+\title{Introducao as Equacoes Diferenciais -- Sugestoes para a Prova 2}
+
+\begin{document}
+\maketitle
+
+\noindent{\small
+Este arquivo e um banco curto para montar a segunda prova. A recomendacao
+natural para uma prova com 6 questoes e escolher 3 problemas faceis, 1
+problema medio-dificil, 1 problema dificil e 1 problema ultra-dificil. As
+observacoes entre colchetes sao apenas para o professor e indicam o papel
+sugerido de cada questao.
+}
+
+\vspace{4mm}
+
+%=====================================================================
+\section*{Problemas faceis}
+%=====================================================================
+
+\begin{problema}
+\textbf{[Facil; Lista 4, equacoes lineares de segunda ordem.]}
+Resolva
+\[
+    y''-2y'+y=e^t(1+t),
+    \qquad y(0)=0,\qquad y'(0)=1.
+\]
+\end{problema}
+
+\begin{problema}
+\textbf{[Facil; Lista 4, reducao de ordem.]}
+Sabendo que $y_1(t)=t$ e uma solucao em $(0,\infty)$, encontre a solucao
+geral de
+\[
+    t^2y''-2ty'+2y=0.
+\]
+\end{problema}
+
+\begin{problema}
+\textbf{[Facil; Lista 4, Wronskiano e formula de Abel.]}
+Sejam $y_1,y_2$ solucoes de
+\[
+    y''+\tan(t)y'+\cos(t)y=0
+\]
+em $(-\pi/2,\pi/2)$, cujo Wronskiano satisfaz $W(0)=2$. Encontre $W(t)$ e
+decida se $y_1,y_2$ podem se tornar linearmente dependentes nesse intervalo.
+\end{problema}
+
+\begin{problema}
+\textbf{[Facil; Lista 4, ressonancia.]}
+Resolva
+\[
+    y''+4y=3\sin(2t),
+    \qquad y(0)=0,
+    \qquad y'(0)=1.
+\]
+\end{problema}
+
+\begin{problema}
+\textbf{[Facil; Lista 4, exponencial de matriz.]}
+Calcule $e^{tA}$ e resolva $x'=Ax$ para
+\[
+    A=\begin{pmatrix}
+        2&1&0\\
+        0&2&0\\
+        0&0&-1
+    \end{pmatrix}.
+\]
+\end{problema}
+
+\begin{problema}
+\textbf{[Facil; Lista 4, transformada de Laplace.]}
+Encontre a transformada de Laplace das seguintes funcoes.
+\begin{enumerate}[label=(\alph*)]
+    \item $f(t)=\sin(2t)\cos(2t)$.
+    \item $f(t)=t e^{2t}\sin(3t)$.
+    \item $f(t)=(t+3)u_7(t)$.
+    \item
+    \[
+        f(t)=
+        \begin{cases}
+        1, & 0\le t<2,\\
+        t^2-4t+4, & t\ge 2.
+        \end{cases}
+    \]
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+\textbf{[Facil; Lista 4, transformada inversa.]}
+Encontre a transformada inversa de Laplace.
+\begin{enumerate}[label=(\alph*)]
+    \item $F(s)=\dfrac{2s+3}{s^2+4s+13}$.
+    \item $F(s)=\dfrac{e^{-3s}}{s-2}$.
+    \item $F(s)=\dfrac{1+e^{-2s}}{s^2+6}$.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+\textbf{[Facil; Lista 4, equacao integral vira PVI.]}
+Seja $f:[0,\infty)\to\R$ continua e suponha que
+\[
+    f(x)=1+\int_0^x (x-t)\bigl(f(t)-2e^t\bigr)\,\d t
+    \qquad(x\ge 0).
+\]
+Mostre que $f$ satisfaz um problema de valor inicial de segunda ordem e
+resolva-o explicitamente.
+\end{problema}
+
+%=====================================================================
+\section*{Problemas medio-dificeis}
+%=====================================================================
+
+\begin{problema}
+\textbf{[Medio-dificil; Lista 4, ideia central: comparar derivadas/series.]}
+Sejam $A,B$ matrizes reais ou complexas. Prove que
+\[
+    e^{t(A+B)}=e^{tA}e^{tB}
+\]
+para todo $t\in\R$ se e somente se
+\[
+    AB=BA.
+\]
+\end{problema}
+
+\begin{problema}
+\textbf{[Medio-dificil; Lista 4, ideia central: somar iteracoes integrais.]}
+Seja $f_0:[0,1]\to\R$ uma funcao continua. Para $n\ge 1$, defina
+\[
+    f_n(x)=\int_0^x f_{n-1}(t)\,\d t.
+\]
+Prove que a serie
+\[
+    \sum_{n=1}^{\infty} f_n(x)
+\]
+converge para todo $x\in[0,1]$, e encontre uma formula explicita para sua
+soma.
+\end{problema}
+
+\begin{problema}
+\textbf{[Medio-dificil; Lista 4, ideia central: conservacao de energia.]}
+Considere a equacao nao-linear de Ermakov--Pinney
+\[
+    y''+y=\frac{1}{y^3},
+    \qquad y(0)=1,\quad y'(0)=1.
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item A partir da equacao, obtenha uma equacao de primeira ordem e uma
+    quantidade conservada ao longo do tempo.
+    \item Use as condicoes iniciais para determinar o valor da quantidade
+    conservada.
+    \item Resolva a equacao da quantidade conservada e encontre uma solucao
+    da equacao inicial.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+\textbf{[Medio-dificil; Lista 4, sistemas matriciais.]}
+Considere matrizes $A,B\in\R^{2\times2}$ e a equacao diferencial matricial
+\[
+    X'(t)=AX(t)+X(t)B,\qquad X(t)\in\R^{2\times2}.
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Prove que $X(t)=e^{At}X(0)e^{Bt}$ e solucao.
+    \item Se
+    \[
+        A=\begin{pmatrix}0&-\omega\\ \omega&0\end{pmatrix},
+        \qquad
+        B=\begin{pmatrix}\alpha&0\\0&\beta\end{pmatrix},
+    \]
+    escreva explicitamente a solucao $X(t)$ para
+    $X(0)=\begin{pmatrix}x_{11}&x_{12}\\x_{21}&x_{22}\end{pmatrix}$.
+    \item Prove que, caso $B=-A$, entao, para todo $k\in\mathbb{N}$, o traco
+    $\operatorname{Tr}(X(t)^k)$ e constante ao longo do tempo.
+\end{enumerate}
+\end{problema}
+
+%=====================================================================
+\section*{Problemas dificeis}
+%=====================================================================
+
+\begin{problema}
+\textbf{[Dificil; Lista 4, Jacobi--Liouville.]}
+Seja $A:[0,T]\to M_n(\R)$ continua e seja $X:[0,T]\to M_n(\R)$ a solucao de
+\[
+    X'(t)=A(t)X(t),
+    \qquad X(0)=I.
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Prove a identidade de Jacobi
+    \[
+        \frac{\d}{\d t}\det X=\det X\cdot\operatorname{tr}(X^{-1}X')
+    \]
+    enquanto $X$ for invertivel.
+    \item Prove a formula de Liouville
+    \[
+        \det X(t)=\exp\left(\int_0^t \operatorname{tr}(A(s))\,\d s\right),
+    \]
+    e conclua, em particular, que $X(t)$ e invertivel para todo $t$.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+\textbf{[Dificil; Lista 4, equacao diferencial funcional.]}
+Seja $a>0$. Encontre todas as funcoes continuamente diferenciaveis
+\[
+    \varphi:[a,\infty)\to\R
+\]
+tais que, para todo $x>a$,
+\[
+    \varphi(x)^2
+    =
+    \int_a^x \left(|\varphi(y)|^2+|\varphi'(y)|^2\right)\,\d y
+    -(x-a)^3.
+\]
+\end{problema}
+
+\begin{problema}
+\textbf{[Dificil; Lista 4, estimativa assintotica.]}
+Seja $f(x)$ uma funcao real tal que
+\[
+    \lim_{x\to+\infty}\frac{f(x)}{e^x}=1
+\]
+e
+\[
+    |f''(x)|<c|f'(x)|
+\]
+para todo $x$ suficientemente grande. Prove que
+\[
+    \lim_{x\to+\infty}\frac{f'(x)}{e^x}=1.
+\]
+\end{problema}
+
+\begin{problema}
+\textbf{[Dificil; Lista 4, sistemas nao-lineares e contracao.]}
+Considere um sistema autonomo
+\[
+    \frac{\d x_i}{\d t}=F_i(x_1,\dots,x_n),
+\]
+onde $F=(F_1,\dots,F_n):\R^n\to\R^n$ e um campo vetorial de classe $C^1$.
+\begin{enumerate}[label=(\alph*)]
+    \item Sejam $U$ e $V$ duas solucoes em $a<t<b$. Supondo que
+    \[
+        \langle DF(x)z,z\rangle\le 0
+    \]
+    para todos $x,z\in\R^n$, mostre que $|U(t)-V(t)|^2$ e uma funcao
+    decrescente de $t$.
+    \item Seja $W(t)$ uma solucao definida para $t>0$. Supondo que
+    \[
+        \langle DF(x)z,z\rangle\le -|z|^2,
+    \]
+    mostre que existe $C\in\R^n$ tal que
+    \[
+        \lim_{t\to\infty}W(t)=C.
+    \]
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+\textbf{[Dificil; banco/Lista 4, series e funcoes geradoras.]}
+Seja $B_0=1$ e
+\[
+    B_{n+1}=\sum_{k=0}^n \binom{n}{k}B_k.
+\]
+Defina
+\[
+    B(t)=\sum_{n\ge 0}B_n\frac{t^n}{n!}.
+\]
+Deduza uma equacao diferencial para $B(t)$, resolva-a e, expandindo a
+resposta em serie de potencias, deduza a formula de Dobinski
+\[
+    B_n=e^{-1}\sum_{m=0}^{\infty}\frac{m^n}{m!}.
+\]
+\end{problema}
+
+\begin{problema}
+\textbf{[Dificil; Lista 4, transformada de Laplace com condicao integral.]}
+Resolva
+\[
+    y''+4y'+3y=12e^{-2t},
+    \qquad y(0)=0,
+    \qquad \int_0^\infty y(t)\,\d t=1.
+\]
+\end{problema}
+
+%=====================================================================
+\section*{Problemas ultra-dificeis}
+%=====================================================================
+
+\begin{problema}
+\textbf{[Ultra-dificil; Lista 4, equacao com retardo.]}
+Sejam $a(x)$ e $r(x)$ funcoes positivas e continuas em $[0,\infty)$, e
+suponha que
+\[
+    \liminf_{x\to\infty}\bigl(x-r(x)\bigr)>0.
+\]
+Suponha que $y(x)$ seja uma funcao continua em toda a reta real,
+diferenciavel em $[0,\infty)$, e que satisfaca
+\[
+    y'(x)=a(x)y(x-r(x))
+\]
+em $[0,\infty)$. Prove que o limite
+\[
+    \lim_{x\to\infty} y(x)\exp\left\{-\int_0^x a(u)\,\d u\right\}
+\]
+existe e e finito.
+\end{problema}
+
+\begin{problema}
+\textbf{[Ultra-dificil / candidato a impossivel; Lista 4, pendulo com
+comprimento variavel.]}
+Sejam $l_0,c,\alpha,g$ constantes positivas, e seja $x(t)$ a solucao da
+equacao diferencial
+\[
+    \bigl((l_0+ct^\alpha)^2x'\bigr)'
+    +g[l_0+ct^\alpha]\sin x=0,
+    \qquad t\ge 0,\qquad -\frac{\pi}{2}<x<\frac{\pi}{2},
+\]
+satisfazendo as condicoes iniciais
+\[
+    x(t_0)=x_0,\qquad x'(t_0)=0.
+\]
+Esta e a equacao do pendulo matematico cujo comprimento varia de acordo com
+a lei $l=l_0+ct^\alpha$. Prove que $x(t)$ esta definida no intervalo
+$[t_0,\infty)$; alem disso, se $\alpha>2$, entao, para todo $x_0\neq 0$,
+existe $t_0$ tal que
+\[
+    \liminf_{t\to\infty}|x(t)|>0.
+\]
+\end{problema}
+
+
+\begin{problema}
+\textbf{[Ultra-dificil; Lista 4, sistema nao-linear e numero de extremos.]}
+Prove que, se $a_i$ $(i=1,2,3,4)$ sao constantes positivas,
+$a_2-a_4>2$ e $a_1a_3-a_2>2$, entao a solucao $(x(t),y(t))$ do sistema
+\[
+    \dot{x}=a_1-a_2x+a_3xy,
+    \qquad
+    \dot{y}=a_4x-y-a_3xy
+    \qquad (x,y\in\R),
+\]
+com as condicoes iniciais
+\[
+    x(0)=0,\qquad y(0)\ge a_1,
+\]
+tem a propriedade de que a funcao $x(t)$ possui exatamente um maximo local estrito no
+intervalo $[0,\infty)$.
+\end{problema}
+
+\begin{problema}
+\textbf{[Ultra-dificil; Lista 4, equacao integral com retardo.]}
+Seja $x:[0,\infty)\to\R$ uma funcao diferenciavel que satisfaz
+\[
+    x'(t)
+    =
+    -2x(t)\sin^2 t
+    +
+    (2-|\cos t|+\cos t)
+    \int_{t-1}^{t}x(s)\sin^2 s\,\d s
+\]
+em $[1,\infty)$. Prove que $x$ e limitada em $[0,\infty)$ e que
+\[
+    \lim_{t\to\infty}x(t)=0.
+\]
+A conclusao continua verdadeira para funcoes que satisfazem
+\[
+    x'(t)
+    =
+    -2x(t)
+    +
+    (2-|\cos t|+\cos t)
+    \int_{t-1}^{t}x(s)\,\d s\,?
+\]
+\end{problema}
+
+\end{document}
